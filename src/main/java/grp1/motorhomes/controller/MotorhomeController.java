@@ -14,7 +14,6 @@ import java.util.List;
 @Controller
 public class MotorhomeController {
 
-
     @Autowired
     MotorhomeService motorhomeService;
 
