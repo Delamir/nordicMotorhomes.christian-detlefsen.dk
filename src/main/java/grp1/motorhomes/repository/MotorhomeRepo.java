@@ -9,18 +9,27 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author Patrick
+ */
 @Repository
 public class MotorhomeRepo {
 
     @Autowired
     JdbcTemplate template;
 
+    /**
+     * @author Patrick
+     */
     public List<Motorhome> fetchAllMotorhomes() {
         String sql = "SELECT registration as licencePlate, type, brand, model FROM motorhomes JOIN models using(model_id);";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sql, rowMapper);
     }
 
+    /**
+     * @author Patrick
+     */
     public void createMotorhome(Motorhome motorhome) {
 
         String insertModel = "INSERT INTO models(model, brand) VALUES (?, ?)";
@@ -30,15 +39,14 @@ public class MotorhomeRepo {
         template.update(insertMotorhome, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription());
     }
 
+    /**
+     * @author Patrick
+     */
     /*
     public Motorhome findMotorhomeById(int id) {
         String selectSql = "";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.queryForObject(selectSql, rowMapper, id);
-    }
-
-    public addMotorhome(Motorhome motorhome) {
-
     }
 */
 }

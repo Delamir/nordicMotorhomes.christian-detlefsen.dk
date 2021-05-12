@@ -4,6 +4,9 @@ package grp1.motorhomes.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * @author Patrick
+ */
 @Entity
 public class Motorhome {
 
