@@ -11,12 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+/**
+ * @author Patrick
+ */
 @Controller
 public class MotorhomeController {
 
     @Autowired
     MotorhomeService motorhomeService;
 
+    /**
+     * @author Patrick
+     */
     @GetMapping ("/motorhomeIndex")
     public String motorhomeIndex(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
@@ -24,11 +30,17 @@ public class MotorhomeController {
         return "home/motorhomeIndex";
     }
 
+    /**
+     * @author Patrick
+     */
     @GetMapping("/createMotorhome")
     public String createMotorhome() {
         return "home/createMotorhome";
     }
 
+    /**
+     * @author Patrick
+     */
     @PostMapping("/createMotorhome")
     public String createMotorhome(@ModelAttribute Motorhome motorhome) {
         motorhomeService.createMotorhome(motorhome);
