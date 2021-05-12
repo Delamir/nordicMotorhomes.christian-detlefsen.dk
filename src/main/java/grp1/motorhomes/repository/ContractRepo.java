@@ -18,12 +18,20 @@ public class ContractRepo {
     @Autowired
     JdbcTemplate template;
 
+    /**
+     * @author Christian
+     * @return
+     */
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "";
         RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
         return template.query(sqlStatement, rowMapper);
     }
 
+    /**
+     * @author Christian
+     * @param contract
+     */
     public void createRentalContract(Contract contract) {
         String insert = "";
     }

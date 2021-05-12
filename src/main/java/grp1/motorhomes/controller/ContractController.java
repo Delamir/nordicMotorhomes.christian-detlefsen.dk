@@ -20,18 +20,32 @@ public class ContractController {
     @Autowired
     ContractService contractService;
 
+    /**
+     * @author Christian
+     * @param model
+     * @return
+     */
     @GetMapping("/contractIndex")
     public String rentalIndex(Model model) {
-        List<Contract> contractList = model.fetchAllContracts();
+        List<Contract> contractList = contractService.fetchAllContracts();
         model.addAttribute("contract", contractList);
         return "home/contractIndex";
     }
 
+    /**
+     * @author Christian
+     * @return
+     */
     @GetMapping("/createContract")
     public String createRentalContract() {
         return "home/createContract";
     }
 
+    /**
+     * @author Chritian
+     * @param contract
+     * @return
+     */
     @PostMapping("/createContract")
     public String createRentalContract(@ModelAttribute Contract contract) {
         contractService.createRentalContract(contract);

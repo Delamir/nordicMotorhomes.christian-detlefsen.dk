@@ -16,10 +16,18 @@ public class ContractService {
     @Autowired
     ContractRepo contractRepo;
 
-    public List<Contract> fecthAllContracts() {
+    /**
+     * @author Christian
+     * @return
+     */
+    public List<Contract> fetchAllContracts() {
         return contractRepo.fetchAllContracts();
     }
 
+    /**
+     * @author Christian
+     * @param contract
+     */
     public void createRentalContract(Contract contract) {
         contractRepo.createRentalContract(contract);
     }
