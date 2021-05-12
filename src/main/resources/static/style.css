@@ -1,24 +1,26 @@
+/* With inspiration from https://www.w3schools.com/howto/howto_js_topnav.asp */
 .topmenu {
-    background-color: olive;
+    background-color: black;
     overflow: hidden;
     opacity: 85%;
+    font-family: "Times New Roman";
 }
 
 .topmenu a {
     float: left;
-    color: indianred;
+    color: grey;
     text-align: center;
     padding: 18px 20px;
     font-size: 20px;
 }
 
 .topmenu a:hover {
-    background-color: olive;
+    background-color: bisque;
     color: black;
     opacity: 100%;
 }
 
-topmenu a.active {
-    background-color: greenyellow;
+.topmenu a.active {
+    background-color: grey;
     color: white;
 }
