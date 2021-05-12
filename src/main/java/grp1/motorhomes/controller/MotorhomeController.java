@@ -29,11 +29,11 @@ public class MotorhomeController {
     public String createMotorhome() {
         return "home/createMotorhome";
     }
-
+/*
     @PostMapping("/createMotorhome")
     public String createMotorhome(@ModelAttribute Motorhome motorhome) {
         motorhomeService.createMotorhome(motorhome);
         return "redirect:/motorhomeIndex";
     }
-
+*/
 }

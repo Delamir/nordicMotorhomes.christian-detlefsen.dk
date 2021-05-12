@@ -12,7 +12,8 @@ public class MotorhomeService {
 
 
     public List<Motorhome> fetchAllMotorhomes() {
-        return MotorhomeRepo.fetchAllMotorhomes();
+        //return MotorhomeRepo.fetchAllMotorhomes();
+        return null;
     }
 
 /*
