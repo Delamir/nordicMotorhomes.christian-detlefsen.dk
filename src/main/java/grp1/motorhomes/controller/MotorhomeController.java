@@ -22,18 +22,18 @@ public class MotorhomeController {
     public String motorhomeIndex(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
         model.addAttribute("motorhomes", motorhomeList);
-        return "home/motorhomeMenu";
+        return "home/motorhomeIndex";
     }
 
     @GetMapping("/createMotorhome")
     public String createMotorhome() {
         return "home/createMotorhome";
     }
-/*
+
     @PostMapping("/createMotorhome")
     public String createMotorhome(@ModelAttribute Motorhome motorhome) {
         motorhomeService.createMotorhome(motorhome);
         return "redirect:/motorhomeIndex";
     }
-*/
+
 }

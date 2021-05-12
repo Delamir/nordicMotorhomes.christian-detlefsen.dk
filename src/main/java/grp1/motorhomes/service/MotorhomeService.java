@@ -2,6 +2,7 @@ package grp1.motorhomes.service;
 
 import grp1.motorhomes.model.Motorhome;
 import grp1.motorhomes.repository.MotorhomeRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,17 +11,17 @@ import java.util.List;
 public class MotorhomeService {
 
 
+    @Autowired
+    MotorhomeRepo motorhomeRepo;
 
     public List<Motorhome> fetchAllMotorhomes() {
-        //return MotorhomeRepo.fetchAllMotorhomes();
-        return null;
+        return motorhomeRepo.fetchAllMotorhomes();
     }
 
+    public void createMotorhome(Motorhome motorhome) {
+        motorhomeRepo.createMotorhome(motorhome);
+    }
 /*
-    public void addMotorhome(Motorhome motorhome) {
-        motorhomeRepo.addMotorhome(motorhome);
-    }
-
     public Motorhome findMotorhomeById(int id) {
         return motorhomeRepo.findMotorhomeById(id);
     }

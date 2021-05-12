@@ -16,9 +16,18 @@ public class MotorhomeRepo {
     JdbcTemplate template;
 
     public List<Motorhome> fetchAllMotorhomes() {
-        String sql = "";
+        String sql = "SELECT registration as licencePlate, type, brand, model FROM motorhomes JOIN models using(model_id);";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sql, rowMapper);
+    }
+
+    public void createMotorhome(Motorhome motorhome) {
+
+        String insertModel = "INSERT INTO models(model, brand) VALUES (?, ?)";
+        template.update(insertModel, motorhome.getModel(),motorhome.getBrand());
+
+        String insertMotorhome = "INSERT INTO motorhomes(registration, type, description, model_id) select ?, ?,? ,model_id FROM models WHERE brand = 'Fiat' AND model = '500'";
+        template.update(insertMotorhome, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription());
     }
 
     /*
