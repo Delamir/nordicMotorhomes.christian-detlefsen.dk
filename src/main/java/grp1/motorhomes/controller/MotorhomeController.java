@@ -14,7 +14,6 @@ import java.util.List;
 @Controller
 public class MotorhomeController {
 
-
     @Autowired
     MotorhomeService motorhomeService;
 
@@ -22,7 +21,7 @@ public class MotorhomeController {
     public String motorhomeIndex(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
         model.addAttribute("motorhomes", motorhomeList);
-        return "home/motorhomeMenu";
+        return "home/motorhomeIndex";
     }
 
     @GetMapping("/createMotorhome")
