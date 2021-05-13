@@ -2,6 +2,8 @@ package grp1.motorhomes.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,8 +16,8 @@ public class Contract {
     @Id
     private int contractId;
 
-    private LocalDateTime fromDate;
-    private LocalDateTime toDate;
+    private Timestamp fromDate;
+    private Timestamp toDate;
     private int odometer;
     private int customerNumber;
     private int price;
@@ -37,7 +39,7 @@ public class Contract {
      * @param customerNumber
      * @param price
      */
-    public Contract (int contractId, LocalDateTime fromDate, LocalDateTime toDate, int odometer, int customerNumber,
+    public Contract (int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
                      int price, String motorhome) {
         this.contractId = contractId;
         this.fromDate = fromDate;
@@ -56,32 +58,47 @@ public class Contract {
         this.contractId = contractId;
     }
 
-    public LocalDateTime getFromDate() {
+    public Timestamp getFromDate() {
         return fromDate;
     }
 
     /**
      * @author Sverri
      * @param from
-     *spring was not able to parse LocalDateTime on its own
+     *spring was not able to parse Timestamp on its own
      */
     public void setFromDate(String from) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        this.fromDate = LocalDateTime.parse(from, formatter);
+        LocalDateTime localDateTime;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+            localDateTime = LocalDateTime.parse(from, formatter);
+
+        }catch (Exception e){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            localDateTime = LocalDateTime.parse(from, formatter);
+        }
+        this.fromDate = Timestamp.valueOf(localDateTime);
     }
-    public LocalDateTime getToDate() {
+    public Timestamp getToDate() {
         return toDate;
     }
 
     /**
      * @author Sverri
      * @param to
-     *spring was not able to parse LocalDateTime on its own
+     *spring was not able to parse Timstamp on its own
      */
     public void setToDate(String to) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        this.toDate = LocalDateTime.parse(to, formatter);
+        LocalDateTime localDateTime;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+            localDateTime = LocalDateTime.parse(to, formatter);
 
+        }catch (Exception e){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            localDateTime = LocalDateTime.parse(to, formatter);
+        }
+        this.toDate = Timestamp.valueOf(localDateTime);
     }
 
     public int getOdometer() {
