@@ -10,7 +10,9 @@
 
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
-    <a class="active" th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a class="active" th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
 </div>
 <br>
 
@@ -28,7 +30,7 @@
     <label>Description:</label>
     <input type="text" name="description" th:value="${motorhome.description}">
     <label></label>
-    <input type="submit" id="editMotorhome" value="Edit Motorhome">
+    <input type="submit" id="addMotorhome" value="Edit Motorhome">
     <input type="hidden" name="previousLicencePlate" th:value="${motorhome.licencePlate}">
 
 </form>
