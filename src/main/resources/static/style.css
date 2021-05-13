@@ -4,13 +4,13 @@
 .topmenu {
     background-color: black;
     overflow: hidden;
-    opacity: 85%;
+    opacity: 0.9;
     font-family: "Times New Roman";
 }
 
 .topmenu a {
     float: left;
-    color: grey;
+    color: white;
     text-align: center;
     padding: 18px 20px;
     font-size: 20px;
@@ -64,5 +64,4 @@
 
 #submitButton:hover {
     background-color: #A0A0A0;
-
 }
