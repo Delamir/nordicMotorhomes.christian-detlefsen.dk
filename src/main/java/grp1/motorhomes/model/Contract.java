@@ -19,6 +19,7 @@ public class Contract {
     private int odometer;
     private int customerNumber;
     private int price;
+    private String motorhome;
 
     /**
      * @author Christian
@@ -36,13 +37,15 @@ public class Contract {
      * @param customerNumber
      * @param price
      */
-    public Contract (int contractId, LocalDateTime fromDate, LocalDateTime toDate, int odometer, int customerNumber, int price) {
+    public Contract (int contractId, LocalDateTime fromDate, LocalDateTime toDate, int odometer, int customerNumber,
+                     int price, String motorhome) {
         this.contractId = contractId;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.odometer = odometer;
         this.customerNumber = customerNumber;
         this.price = price;
+        this.motorhome = motorhome;
     }
 
     public int getContractId() {
@@ -56,6 +59,7 @@ public class Contract {
     public LocalDateTime getFromDate() {
         return fromDate;
     }
+
     /**
      * @author Sverri
      * @param from
@@ -65,7 +69,6 @@ public class Contract {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         this.fromDate = LocalDateTime.parse(from, formatter);
     }
-
     public LocalDateTime getToDate() {
         return toDate;
     }
@@ -103,6 +106,14 @@ public class Contract {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getMotorhome() {
+        return motorhome;
+    }
+
+    public void setMotorhome(String motorhome) {
+        this.motorhome = motorhome;
     }
 
     @Override

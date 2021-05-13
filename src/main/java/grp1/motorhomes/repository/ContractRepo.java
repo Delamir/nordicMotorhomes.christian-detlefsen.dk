@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -26,7 +25,7 @@ public class ContractRepo {
      */
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate, " +
-                "odometer, price, customer_number AS customer, customer_number AS customerNumber " +
+                "odometer, price, customer_number AS customer, customer_number AS customerNumber, motorhome " +
                 "FROM contracts ";
         RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
         return template.query(sqlStatement, rowMapper);

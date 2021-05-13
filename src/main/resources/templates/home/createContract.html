@@ -22,10 +22,17 @@
     <input type="datetime-local" name="toDate">
     <label>Odometer: </label>
     <input type="text" name="odometer" placeholder="Odometer">
-    <label>Customer ID: </label>
-    <input type="text" name="customerNumber" placeholder="Customer ID">
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price">
+    <label>Customer:</label>
+    <select>
+        <option th:each="customer:${customers}" th:value="${customer.customerNumber}" th:text="${customer.name}"></option>
+    </select>
+    <label>Motorhome:</label>
+    <select>
+        <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
+                th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+    </select>
     <label></label>
     <input type="submit" id="submitButton" value="Create Contract">
 </form>
