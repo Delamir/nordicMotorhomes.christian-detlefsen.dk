@@ -7,11 +7,11 @@ import javax.persistence.Id;
 /**
  * @author Christian
  */
-@Entity
+
 @Embeddable
 public class Customer {
 
-    @Id
+
     private int customerNumber;
 
     private String name;
