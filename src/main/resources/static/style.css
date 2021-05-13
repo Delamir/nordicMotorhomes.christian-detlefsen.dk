@@ -1,28 +1,31 @@
 /* With inspiration from https://www.w3schools.com/howto/howto_js_topnav.asp
 @Author Joachim*/
-
 .topmenu {
-    background-color: black;
+    background-color: #1d1c1c;
+    opacity: 0.85;
     overflow: hidden;
-    opacity: 85%;
     font-family: "Times New Roman";
 }
 
+
 .topmenu a {
     float: left;
-    color: grey;
+    color: white;
     text-align: center;
     padding: 18px 20px;
     font-size: 20px;
+    opacity: 0.9;
+    text-decoration: none;
 }
 
 .topmenu a:hover {
-    background-color: grey;
-    color: black;
-    opacity: 100%;
+    background-color: black;
+    color: white;
+    opacity: 1;
 }
 
 .topmenu a.active {
+    opacity: 1;
     background-color: darkorange;
     color: white;
 }
@@ -64,5 +67,4 @@
 
 #submitButton:hover {
     background-color: #A0A0A0;
-
 }
