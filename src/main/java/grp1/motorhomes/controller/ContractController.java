@@ -38,7 +38,7 @@ public class ContractController {
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
         List<Contract> contractList = contractService.fetchAllContracts();
-        model.addAttribute("contract", contractList);
+        model.addAttribute("contracts", contractList);
         return "home/contractIndex";
     }
 
@@ -62,6 +62,7 @@ public class ContractController {
      */
     @PostMapping("/createContract")
     public String createContract(@ModelAttribute Contract contract) {
+        System.out.println(contract);
         contractService.createContract(contract);
         return "redirect:/contractIndex";
     }

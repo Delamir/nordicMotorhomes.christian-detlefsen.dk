@@ -36,9 +36,9 @@ public class ContractRepo {
      * @param contract
      */
     public void createContract(Contract contract) {
-        String insertContractValues = "INSERT INTO contracts (contract_id, from_date, to_date, odometer, price, customer_number) "
+        String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, price, customer_number, motorhome) "
                 + "VALUES (?, ?, ?, ?, ?, ?)";
-        template.update(insertContractValues, contract.getContractId(), Timestamp.valueOf(contract.getFromDate()),
-                Timestamp.valueOf(contract.getToDate()), contract.getOdometer(), contract.getPrice(), contract.getCustomer());
+        template.update(insertContractValues, Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()),
+                contract.getOdometer(), contract.getPrice(), contract.getCustomerNumber(), contract.getMotorhome());
     }
 }

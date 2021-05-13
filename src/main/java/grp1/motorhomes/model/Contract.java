@@ -92,11 +92,11 @@ public class Contract {
         this.odometer = odometer;
     }
 
-    public int getCustomer() {
+    public int getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomer(int customerNumber) {
+    public void setCustomerNumber(int customerNumber) {
         this.customerNumber = customerNumber;
     }
 
@@ -123,8 +123,9 @@ public class Contract {
                 ", fromDate=" + fromDate +
                 ", toDate=" + toDate +
                 ", odometer=" + odometer +
-                ", customer=" + customerNumber +
+                ", customerNumber=" + customerNumber +
                 ", price=" + price +
+                ", motorhome='" + motorhome + '\'' +
                 '}';
     }
 }

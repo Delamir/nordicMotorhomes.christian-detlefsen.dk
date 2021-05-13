@@ -34,8 +34,8 @@
     <th>Price for rental</th>
 
     <tr th:each="customer : ${customers}">
-        <td th:text="${customer.fromDate}"></td>
-        <td th:text="${customer.toDate}"></td>
+        <td th:text="${#temporals.format(customer.fromDate, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${#temporals.format(customer.toDate, 'yyyy-MM-dd HH:mm')}"></td>
         <td th:text="${customer.odometer}"></td>
         <td th:text="${customer.customerNumber}"></td>
         <td th:text="$customer.price}"></td>
