@@ -94,6 +94,7 @@ public class MotorhomeRepo {
     }
 
     /**
+     * @param licencePlate
      * @author Patrick
      */
     public void deleteMotorhome(String licencePlate) {
