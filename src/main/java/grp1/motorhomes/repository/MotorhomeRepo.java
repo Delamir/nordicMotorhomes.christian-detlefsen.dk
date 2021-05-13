@@ -22,7 +22,7 @@ public class MotorhomeRepo {
      * @author Patrick
      */
     public List<Motorhome> fetchAllMotorhomes() {
-        String sql = "SELECT registration as licencePlate, type, brand, model FROM motorhomes JOIN models using(model_id);";
+        String sql = "SELECT registration AS licencePlate, type, brand, model FROM motorhomes JOIN models USING(model_id);";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sql, rowMapper);
     }
@@ -30,6 +30,7 @@ public class MotorhomeRepo {
     /**
      * @author Patrick
      */
+
     public void createMotorhome(Motorhome motorhome) {
 
         String insertModel = "INSERT INTO models(model, brand) VALUES (?, ?)";
@@ -40,7 +41,7 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @author Patrick
+     * @author Joachim
      */
     /*
     public Motorhome findMotorhomeById(int id) {

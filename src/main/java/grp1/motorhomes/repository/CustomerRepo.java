@@ -30,8 +30,8 @@ public class CustomerRepo {
 /*
     public void createCustomer(Customer customer) {
 
-        String insertModel ="";
-        template.update(insertModel, )
+        String insertModel ="INSERT INTO ";
+        template.update(insertModel, );
+        }
+ */
     }
-    */
-}
