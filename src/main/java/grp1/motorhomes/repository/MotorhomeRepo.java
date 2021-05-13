@@ -32,11 +32,8 @@ public class MotorhomeRepo {
      */
     public void createMotorhome(Motorhome motorhome) {
 
-        String selectModel = "SELECT count(*) FROM models WHERE model = ? and brand = ?";
-        if (template.queryForObject(selectModel, Integer.class, motorhome.getModel(), motorhome.getBrand()) == 0) {
-        String insertModel = "INSERT INTO models(model, brand) VALUES (?, ?)";
-        template.update(insertModel, motorhome.getModel(),motorhome.getBrand());
-        }
+        String insertModel = "INSERT INTO models(brand, model) VALUES(?, ?) WHERE NOT EXISTS ( SELECT * FROM models WHERE brand = ? AND model = ?";
+        template.update(insertModel, motorhome.getBrand(),motorhome.getModel(),motorhome.getBrand(),motorhome.getModel());
 
         String insertMotorhome = "INSERT INTO motorhomes(registration, type, description, model_id) select ?, ?,? , " +
                 "model_id FROM models WHERE brand = ? AND model = ?";
