@@ -19,6 +19,10 @@ public class CustomerService {
     public List<Customer> fetchAllCustomers() {
         return customerRepo.fetchAllCustomers();
     }
+
+    /**
+     * @author Joachim
+     */
 /*
     public void createCustomer(Customer customer) {
         customerRepo.createCustomer(customer);
