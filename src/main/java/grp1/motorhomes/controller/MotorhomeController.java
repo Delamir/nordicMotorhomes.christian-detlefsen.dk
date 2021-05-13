@@ -27,6 +27,7 @@ public class MotorhomeController {
     public String motorhomeIndex(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
         model.addAttribute("motorhomes", motorhomeList);
+        System.out.println(motorhomeList);
         return "home/motorhomeIndex";
     }
 

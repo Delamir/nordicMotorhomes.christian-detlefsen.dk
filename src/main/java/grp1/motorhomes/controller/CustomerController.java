@@ -28,8 +28,7 @@ public class CustomerController {
     public String customerIndex(Model model) {
         List<Customer> customerList = customerService.fetchAllCustomers();
         model.addAttribute("customers", customerList);
-        for (Customer c : customerList)
-            System.out.println(c);
+        System.out.println(customerList);
         return "home/customerIndex";
     }
 

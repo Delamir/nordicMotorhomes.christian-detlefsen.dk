@@ -14,7 +14,6 @@ public class Contract {
     private int contractId;
 
     private LocalDate from;
-
     private LocalDate to;
     private int odometer;
     private Customer customer;

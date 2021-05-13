@@ -13,13 +13,12 @@ public class Customer {
 
 
     private int customerNumber;
-
     private String name;
-
     private String licenceNumber;
     private String street;
     private String city;
     private int postCode;
+
     /**
      * @author Christian
      */
