@@ -93,6 +93,9 @@ public class MotorhomeRepo {
                 motorhome.getImagePath(), modelId, motorhome.getPreviousLicencePlate());
     }
 
+    /**
+     * @author Patrick
+     */
     public void deleteMotorhome(String licencePlate) {
         String deleteSql = "DELETE FROM motorhomes WHERE registration = ? ";
         template.update(deleteSql, licencePlate);
