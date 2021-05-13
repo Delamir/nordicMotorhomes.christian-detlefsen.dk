@@ -1,7 +1,6 @@
 package grp1.motorhomes.controller;
 
 import grp1.motorhomes.model.Contract;
-import grp1.motorhomes.model.Customer;
 import grp1.motorhomes.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +26,7 @@ public class ContractController {
      * @return
      */
     @GetMapping("/contractIndex")
-    public String rentalIndex(Model model) {
+    public String contractIndex(Model model) {
         List<Contract> contractList = contractService.fetchAllContracts();
         model.addAttribute("contract", contractList);
         return "home/contractIndex";
@@ -38,7 +37,7 @@ public class ContractController {
      * @return
      */
     @GetMapping("/createContract")
-    public String createRentalContract() {
+    public String createContract() {
         return "home/createContract";
     }
 
@@ -48,8 +47,8 @@ public class ContractController {
      * @return
      */
     @PostMapping("/createContract")
-    public String createRentalContract(@ModelAttribute Contract contract) {
-        contractService.createRentalContract(contract);
+    public String createContract(@ModelAttribute Contract contract) {
+        contractService.createContract(contract);
         return "redirect:/contractIndex";
     }
 

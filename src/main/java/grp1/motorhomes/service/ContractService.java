@@ -28,7 +28,7 @@ public class ContractService {
      * @author Christian
      * @param contract
      */
-    public void createRentalContract(Contract contract) {
-        contractRepo.createRentalContract(contract);
+    public void createContract(Contract contract) {
+        contractRepo.createContract(contract);
     }
 }
