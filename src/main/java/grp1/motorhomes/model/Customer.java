@@ -7,11 +7,11 @@ import javax.persistence.Id;
 /**
  * @author Christian
  */
-@Entity
+
 @Embeddable
 public class Customer {
 
-    @Id
+
     private int customerNumber;
 
     private String name;
@@ -93,4 +93,15 @@ public class Customer {
         this.postCode = postCode;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerNumber=" + customerNumber +
+                ", name='" + name + '\'' +
+                ", licenceNumber='" + licenceNumber + '\'' +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", postCode=" + postCode +
+                '}';
+    }
 }
