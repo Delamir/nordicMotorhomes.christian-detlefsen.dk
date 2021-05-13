@@ -58,7 +58,7 @@ public class Contract {
     }
     /**
      * @author Sverri
-     * @param to
+     * @param from
      *spring was not able to parse LocalDateTime on its own
      */
     public void setFromDate(String from) {
