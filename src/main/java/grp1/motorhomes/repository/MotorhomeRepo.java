@@ -90,7 +90,7 @@ public class MotorhomeRepo {
         //update the motorhome
         String sqlUpdate = "UPDATE motorhomes SET registration = ?, type = ?, description = ?, image_path = ?, model_id = ? WHERE registration = ?";
         template.update(sqlUpdate, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription(),
-                motorhome.getImagePath(), modelId, motorhome.getLicencePlate());
+                motorhome.getImagePath(), modelId, motorhome.getPreviousLicencePlate());
     }
 
     public void deleteMotorhome(String licencePlate) {

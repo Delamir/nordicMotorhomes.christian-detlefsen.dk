@@ -3,6 +3,7 @@ package grp1.motorhomes.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * @author Patrick
@@ -13,12 +14,16 @@ public class Motorhome {
     @Id
     private String licencePlate;
 
+    @Transient  // means that we ignore this variable when interacting with the database
+    // used when editing licencePlate
+    private String previousLicencePlate;
+
     private String type;
+
     private String brand;
     private String model;
     private String description;
     private String imagePath;
-
     public Motorhome() {
     }
 
@@ -80,6 +85,14 @@ public class Motorhome {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public String getPreviousLicencePlate() {
+        return previousLicencePlate;
+    }
+
+    public void setPreviousLicencePlate(String previousLicencePlate) {
+        this.previousLicencePlate = previousLicencePlate;
     }
 
     @Override
