@@ -41,15 +41,25 @@ public class MotorhomeRepo {
                 motorhome.getBrand(), motorhome.getModel());
     }
 
-
     /**
      * @author Joachim
      */
-    /*
-    public Motorhome findMotorhomeById(int id) {
-        String selectSql = "";
+
+    public Motorhome findMotorhome(String licencePlate) {
+        String selectSql = "SELECT registration as licencePlate, type, brand, model, description FROM motorhomes" +
+                " JOIN models using(model_id) WHERE registration = ?";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
-        return template.queryForObject(selectSql, rowMapper, id);
+        return template.queryForObject(selectSql, rowMapper, licencePlate);
     }
-*/
+
+    public void editMotorhome(Motorhome motorhome) {
+
+        String insertModel = "INSERT INTO models(brand, model) SELECT ?, ? WHERE NOT EXISTS ( SELECT * FROM models WHERE brand = ? AND model = ?)";
+        template.update(insertModel, motorhome.getBrand(),motorhome.getModel(),motorhome.getBrand(),motorhome.getModel());
+
+        String sqlUpdate = "UPDATE motorhomes SET registration = ?, type = ?, description = ?, image_path = ? WHERE registration = ?";
+        template.update(sqlUpdate, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription(),
+                motorhome.getImagePath(), motorhome.getLicencePlate());
+    }
+
 }

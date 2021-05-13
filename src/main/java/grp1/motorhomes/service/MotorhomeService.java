@@ -21,15 +21,16 @@ public class MotorhomeService {
     public void createMotorhome(Motorhome motorhome) {
         motorhomeRepo.createMotorhome(motorhome);
     }
+
+    public Motorhome findMotorhome(String licencePlate) {
+        return motorhomeRepo.findMotorhome(licencePlate);
+    }
+
+
+    public void editMotorhome(Motorhome motorhome) {
+        motorhomeRepo.editMotorhome(motorhome);
+    }
 /*
-    public Motorhome findMotorhomeById(int id) {
-        return motorhomeRepo.findMotorhomeById(id);
-    }
-
-    public void updateMotorhome(Motorhome motorhome) {
-        motorhomeRepo.updateMotorhome(motorhome);
-    }
-
     public void deleteMotorhome(int id) {
         motorhomeRepo.deleteMotorhome(id);
     }

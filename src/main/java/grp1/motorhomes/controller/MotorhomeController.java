@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -45,6 +46,18 @@ public class MotorhomeController {
     @PostMapping("/createMotorhome")
     public String createMotorhome(@ModelAttribute Motorhome motorhome) {
         motorhomeService.createMotorhome(motorhome);
+        return "redirect:/motorhomeIndex";
+    }
+
+    @GetMapping("/editMotorhome/{licencePlate}")
+    public String editMotorhome(@PathVariable("licencePlate") String licencePlate, Model model) {
+        model.addAttribute("motorhome", motorhomeService.findMotorhome(licencePlate));
+        return "home/editMotorhome";
+    }
+
+    @PostMapping("/editMotorhome")
+    public String editMotorhome(@ModelAttribute Motorhome motorhome) {
+        motorhomeService.editMotorhome(motorhome);
         return "redirect:/motorhomeIndex";
     }
 

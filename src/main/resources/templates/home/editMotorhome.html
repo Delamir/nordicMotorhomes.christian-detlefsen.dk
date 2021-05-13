@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="author" content="Patrick">
+    <meta charset="UTF-8">
+    <title>Edit Motorhome</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a class="active" th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+</div>
+<br>
+
+<h1>Edit a Motorhome</h1>
+
+<form class="form" action="/editMotorhome/" method="post">
+    <label>Licence plate:</label>
+    <input type="text" name="licencePlate" th:value="${motorhome.licencePlate}">
+    <label>Type:</label>
+    <input type="text" name="type" th:value="${motorhome.type}">
+    <label>Brand:</label>
+    <input type="text" name="brand" th:value="${motorhome.brand}">
+    <label>Model:</label>
+    <input type="text" name="model" th:value="${motorhome.model}">
+    <label>Description:</label>
+    <input type="text" name="description" th:value="${motorhome.description}">
+    <label></label>
+    <input type="submit" id="editMotorhome" value="Edit Motorhome">
+
+</form>
+</body>
+</html>
