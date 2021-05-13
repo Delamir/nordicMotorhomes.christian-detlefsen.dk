@@ -1,6 +1,5 @@
 package grp1.motorhomes.model;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -8,11 +7,12 @@ import javax.persistence.Id;
  * @author Christian
  */
 
-@Embeddable
+@Entity
 public class Customer {
 
-
+    @Id
     private int customerNumber;
+
     private String name;
     private String licenceNumber;
     private String street;
