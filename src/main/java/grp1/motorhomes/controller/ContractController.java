@@ -27,7 +27,7 @@ public class ContractController {
      * @return
      */
     @GetMapping("/contractIndex")
-    public String rentalIndex(Model model) {
+    public String contractIndex(Model model) {
         List<Contract> contractList = contractService.fetchAllContracts();
         model.addAttribute("contract", contractList);
         return "home/contractIndex";
@@ -38,7 +38,7 @@ public class ContractController {
      * @return
      */
     @GetMapping("/createContract")
-    public String createRentalContract() {
+    public String createContract() {
         return "home/createContract";
     }
 
@@ -48,7 +48,7 @@ public class ContractController {
      * @return
      */
     @PostMapping("/createContract")
-    public String createRentalContract(@ModelAttribute Contract contract) {
+    public String createContract(@ModelAttribute Contract contract) {
         contractService.createRentalContract(contract);
         return "redirect:/contractIndex";
     }
