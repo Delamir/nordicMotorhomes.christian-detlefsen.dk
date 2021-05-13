@@ -2,7 +2,8 @@ package grp1.motorhomes.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author Christian
@@ -13,8 +14,8 @@ public class Contract {
     @Id
     private int contractId;
 
-    private LocalDate fromDate;
-    private LocalDate toDate;
+    private LocalDateTime fromDate;
+    private LocalDateTime toDate;
     private int odometer;
     private int customerNumber;
     private int price;
@@ -35,7 +36,7 @@ public class Contract {
      * @param customerNumber
      * @param price
      */
-    public Contract (int contractId, LocalDate fromDate, LocalDate toDate, int odometer, int customerNumber, int price) {
+    public Contract (int contractId, LocalDateTime fromDate, LocalDateTime toDate, int odometer, int customerNumber, int price) {
         this.contractId = contractId;
         this.fromDate = fromDate;
         this.toDate = toDate;
@@ -52,20 +53,32 @@ public class Contract {
         this.contractId = contractId;
     }
 
-    public LocalDate getFromDate() {
+    public LocalDateTime getFromDate() {
         return fromDate;
     }
-
-    public void setFromDate(LocalDate from) {
-        this.fromDate = from;
+    /**
+     * @author Sverri
+     * @param to
+     *spring was not able to parse LocalDateTime on its own
+     */
+    public void setFromDate(String from) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        this.fromDate = LocalDateTime.parse(from, formatter);
     }
 
-    public LocalDate getToDate() {
+    public LocalDateTime getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDate to) {
-        this.toDate = to;
+    /**
+     * @author Sverri
+     * @param to
+     *spring was not able to parse LocalDateTime on its own
+     */
+    public void setToDate(String to) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        this.toDate = LocalDateTime.parse(to, formatter);
+
     }
 
     public int getOdometer() {
