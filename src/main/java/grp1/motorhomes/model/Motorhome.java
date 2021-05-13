@@ -20,7 +20,6 @@ public class Motorhome {
     private String imagePath;
 
     public Motorhome() {
-
     }
 
     public Motorhome(String licencePlate, String type, String brand, String model, String description, String imagePath) {
