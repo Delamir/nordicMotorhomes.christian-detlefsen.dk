@@ -1,6 +1,7 @@
 package grp1.motorhomes.controller;
 
 import grp1.motorhomes.model.Contract;
+import grp1.motorhomes.model.Customer;
 import grp1.motorhomes.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

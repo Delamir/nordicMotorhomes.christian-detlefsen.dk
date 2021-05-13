@@ -13,10 +13,10 @@ public class Contract {
     @Id
     private int contractId;
 
-    private LocalDate from;
-    private LocalDate to;
+    private LocalDate fromDate;
+    private LocalDate toDate;
     private int odometer;
-    private Customer customer;
+    private int customerNumber;
     private int price;
 
     /**
@@ -29,18 +29,18 @@ public class Contract {
     /**
      * @author Christian
      * @param contractId
-     * @param from
-     * @param to
+     * @param fromDate
+     * @param toDate
      * @param odometer
-     * @param customer
+     * @param customerNumber
      * @param price
      */
-    public Contract (int contractId, LocalDate from, LocalDate to, int odometer, Customer customer, int price) {
+    public Contract (int contractId, LocalDate fromDate, LocalDate toDate, int odometer, int customerNumber, int price) {
         this.contractId = contractId;
-        this.from = from;
-        this.to = to;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
         this.odometer = odometer;
-        this.customer = customer;
+        this.customerNumber = customerNumber;
         this.price = price;
     }
 
@@ -52,20 +52,20 @@ public class Contract {
         this.contractId = contractId;
     }
 
-    public LocalDate getFrom() {
-        return from;
+    public LocalDate getFromDate() {
+        return fromDate;
     }
 
-    public void setFrom(LocalDate from) {
-        this.from = from;
+    public void setFromDate(LocalDate from) {
+        this.fromDate = from;
     }
 
-    public LocalDate getTo() {
-        return to;
+    public LocalDate getToDate() {
+        return toDate;
     }
 
-    public void setTo(LocalDate to) {
-        this.to = to;
+    public void setToDate(LocalDate to) {
+        this.toDate = to;
     }
 
     public int getOdometer() {
@@ -76,12 +76,12 @@ public class Contract {
         this.odometer = odometer;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCustomer() {
+        return customerNumber;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(int customerNumber) {
+        this.customerNumber = customerNumber;
     }
 
     public int getPrice() {
@@ -90,5 +90,17 @@ public class Contract {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "contractId=" + contractId +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                ", odometer=" + odometer +
+                ", customer=" + customerNumber +
+                ", price=" + price +
+                '}';
     }
 }

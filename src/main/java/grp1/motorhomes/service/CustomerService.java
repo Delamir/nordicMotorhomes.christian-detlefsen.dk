@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author Joachim
+ */
 @Service
 public class CustomerService {
 
