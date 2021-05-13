@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Contract Management</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a class="active" th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+</div>
+
+<h1>Contract Management</h1>
+
+<a th:href="@{'/createContract/'}">
+    <button type="button">Add new contract</button>
+</a>
+
+<table class="table">
+
+    <tr>
+        <th>Contracts</th>
+    </tr>
+
+    <tbody>
+    <th>Contract start date</th>
+    <th>Contract end date</th>
+    <th>Odometer</th>
+    <th>Customer ID</th>
+    <th>Price for rental</th>
+
+    <tr th:each="customer : ${customers}">
+        <td th:text="${customer.fromDate}"></td>
+        <td th:text="${customer.toDate}"></td>
+        <td th:text="${customer.odometer}"></td>
+        <td th:text="${customer.customerNumber}"></td>
+        <td th:text="$customer.price}"></td>
+
+    </tr>
+    </tbody>
+
+</table>
 
 </body>
 </html>

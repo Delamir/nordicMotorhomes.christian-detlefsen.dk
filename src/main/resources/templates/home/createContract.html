@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a class="active" th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+</div>
+
+<form class="form" action="/createContract" method="post">
+    <label>Contract Start Date: </label>
+    <input type="date" name="fromDate">
+    <label>Contract End Date: </label>
+    <input type="date" name="toDate">
+    <label>Odometer: </label>
+    <input type="text" name="odometer" placeholder="Odometer">
+    <label>Customer ID: </label>
+    <input type="text" name="customerNumber" placeholder="Customer ID">
+    <label>Price: </label>
+    <input type="text" name="price" placeholder="Price">
+    <label></label>
+    <input type="submit" id="addMotorhome" value="Create Contract">
+</form>
 
 </body>
 </html>
