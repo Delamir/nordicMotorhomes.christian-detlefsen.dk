@@ -57,16 +57,22 @@ public class Contract {
         return fromDate;
     }
 
-    public void setFromDate(LocalDateTime from) {
-        this.fromDate = from;
+    public void setFromDate(String from) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        this.fromDate = LocalDateTime.parse(from, formatter);
     }
 
     public LocalDateTime getToDate() {
         return toDate;
     }
 
+    /**
+     * @author Sverri
+     * @param to
+     *spring was not able to parse LocalDateTime on its own
+     */
     public void setToDate(String to) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         this.toDate = LocalDateTime.parse(to, formatter);
 
     }
