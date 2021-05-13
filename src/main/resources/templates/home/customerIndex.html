@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta name="author" content="Joachim">
     <meta charset="UTF-8">
     <title>Manage Customer</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
 
-<!-- @Author Joachim -->
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
     <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
@@ -18,7 +18,7 @@
 <h1>Customer Management</h1>
 
 <a th:href="@{'/createCustomer/'}">
-
+    <button type="button" id="addMotorhome">Add new customer</button>
 </a>
 
 </body>

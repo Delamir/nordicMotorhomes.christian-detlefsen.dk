@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta name="author" content="Joachim">
     <meta charset="UTF-8">
     <title>Create new customer</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a class="active" th:href="@{'/customerIndex/'}">Manage Customer</a>
+</div>
+
+<form class="form" action="/createCustomer" method="post">
+    <label>Customer ID: </label>
+    <input type="text" name="customerNumber" placeholder="Customer ID">
+    <label>Name: </label>
+    <input type="text" name="name" placeholder="Name">
+    <label>Licence Number: </label>
+    <input type="text" name="licenceNumber" placeholder="Licence Number">
+    <label>Street: </label>
+    <input type="text" name="street" placeholder="Street">
+    <label>City: </label>
+    <input type="text" name="city" placeholder="City">
+    <label>Postcode: </label>
+    <input type="text" name="postCode" placeholder="Postcode">
+    <label></label>
+    <input type="submit" id="submitButton" value="Create Customer">
+</form>
 
 </body>
 </html>
