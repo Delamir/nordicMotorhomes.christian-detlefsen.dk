@@ -1,14 +1,14 @@
 package grp1.motorhomes.repository;
 
 import grp1.motorhomes.model.Contract;
-import grp1.motorhomes.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.object.MappingSqlQuery;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -37,8 +37,9 @@ public class ContractRepo {
      * @param contract
      */
     public void createContract(Contract contract) {
-        String insertContractValues = "INSERT INTO contracts (contract_id, from_date, to_date, odometer, price, customer_number)";
-        template.update(insertContractValues, contract.getContractId(), contract.getFromDate(), contract.getToDate(),
-                contract.getOdometer(), contract.getPrice(), contract.getCustomer());
+        String insertContractValues = "INSERT INTO contracts (contract_id, from_date, to_date, odometer, price, customer_number) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
+        template.update(insertContractValues, contract.getContractId(), Timestamp.valueOf(contract.getFromDate()),
+                Timestamp.valueOf(contract.getToDate()), contract.getOdometer(), contract.getPrice(), contract.getCustomer());
     }
 }
