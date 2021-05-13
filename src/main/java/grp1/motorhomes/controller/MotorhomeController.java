@@ -61,4 +61,10 @@ public class MotorhomeController {
         return "redirect:/motorhomeIndex";
     }
 
+    @GetMapping("/deleteMotorhome/{licencePlate}")
+    public String deleteMotorhome(@PathVariable("licencePlate") String licencePlate) {
+        motorhomeService.deleteMotorhome(licencePlate);
+        return "redirect:/motorhomeIndex";
+    }
+
 }

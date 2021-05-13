@@ -33,6 +33,7 @@ public class MotorhomeRepo {
     }
 
     /**
+     * @param motorhome
      * @author Patrick
      */
     public void createMotorhome(Motorhome motorhome) {
@@ -47,7 +48,8 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @author Joachim
+     * @param licencePlate
+     * @author Patrick og Sverri
      */
 
     public Motorhome findMotorhome(String licencePlate) {
@@ -91,4 +93,8 @@ public class MotorhomeRepo {
                 motorhome.getImagePath(), modelId, motorhome.getLicencePlate());
     }
 
+    public void deleteMotorhome(String licencePlate) {
+        String deleteSql = "DELETE FROM motorhomes WHERE registration = ? ";
+        template.update(deleteSql, licencePlate);
+    }
 }

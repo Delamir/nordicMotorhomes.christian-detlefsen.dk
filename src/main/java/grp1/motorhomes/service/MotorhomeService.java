@@ -30,10 +30,10 @@ public class MotorhomeService {
     public void editMotorhome(Motorhome motorhome) {
         motorhomeRepo.editMotorhome(motorhome);
     }
-/*
-    public void deleteMotorhome(int id) {
-        motorhomeRepo.deleteMotorhome(id);
+
+    public void deleteMotorhome(String licencePlate) {
+        motorhomeRepo.deleteMotorhome(licencePlate);
     }
-*/
+
 
 }
