@@ -3,6 +3,7 @@ package grp1.motorhomes.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author Christian
@@ -64,8 +65,10 @@ public class Contract {
         return toDate;
     }
 
-    public void setToDate(LocalDateTime to) {
-        this.toDate = to;
+    public void setToDate(String to) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        this.toDate = LocalDateTime.parse(to, formatter);
+
     }
 
     public int getOdometer() {
