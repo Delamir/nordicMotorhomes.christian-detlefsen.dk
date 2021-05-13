@@ -26,3 +26,18 @@
     background-color: grey;
     color: white;
 }
+
+.form{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: 10px;
+}
+
+.form input{
+    text-align: left;
+}
+
+.form label{
+    text-align: right;
+    padding-top: 3px;
+}

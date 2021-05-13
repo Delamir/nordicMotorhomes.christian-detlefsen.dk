@@ -18,5 +18,43 @@
 <button type="button">Add new motorhome</button>
 </a>
 
+<table class="table">
+
+    <tr>
+        <th class="motorhomeTitle">Motorhomes</th>
+    </tr>
+
+    <tbody>
+    <th>Type</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Licence Plate</th>
+    <th>Description</th>
+    <th>Image</th>
+
+    <tr th:each="motorhome : ${motorhomes}">
+
+        <td th:text="${motorhome.type}"></td>
+        <td th:text="${motorhome.brand}"></td>
+        <td th:text="${motorhome.model}"></td>
+        <td th:text="${motorhome.licencePlate}"></td>
+        <td th:text="${motorhome.description}"></td>
+        <td th:text="${motorhome.imagePath}"></td>
+
+        <td>
+            <a th:href="@{'/updateMotorhome/'+${motorhome.licencePlate}}">
+                <button type="button">Edit</button>
+            </a>
+        </td>
+
+        <td>
+        <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}">
+            <button type="button">Delete</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
 </body>
 </html>
