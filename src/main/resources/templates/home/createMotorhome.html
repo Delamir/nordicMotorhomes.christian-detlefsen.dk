@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="author" content="Patrick">
     <meta charset="UTF-8">
@@ -7,6 +7,12 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a class="active" th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+</div>
+<br>
 
 <form class="form" action="/createMotorhome" method="post">
     <label>Licence plate:</label>
@@ -19,9 +25,9 @@
     <input type="text" name="model"placeholder="Model">
     <label>Description:</label>
     <input type="text" name="description"placeholder="Motorhome Description">
-    <input type="submit" value="Add Motorhome" >
+    <label></label>
+    <input type="submit" id="addMotorhome" value="Add Motorhome">
 
 </form>
-
 </body>
 </html>

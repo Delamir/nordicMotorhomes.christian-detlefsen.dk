@@ -31,13 +31,38 @@
     display: grid;
     grid-template-columns: max-content max-content;
     grid-gap: 10px;
+    top: 25%;
+    left: 25%;
+    position: absolute;
+    font-size: larger;
 }
 
 .form input{
     text-align: left;
+    height: 30px;
+    width: 200px;
 }
 
 .form label{
     text-align: right;
     padding-top: 3px;
+}
+
+#addMotorhome {
+    height: 30px;
+    width: 150px;
+    font-size: 16px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    left: 225px;
+    top: -225px;
+    background-color: lightgray;
+    color: black;
+    cursor: pointer;
+}
+
+#addMotorhome:hover {
+    background-color: #A0A0A0;
+
 }
