@@ -78,7 +78,6 @@ public class ContractController {
      * @param model
      * @return
      */
-
     @GetMapping("/editContract/{contractId}")
     public String editContract(@PathVariable int contractId, Model model) {
         Contract contract = contractService.findContract(contractId);
