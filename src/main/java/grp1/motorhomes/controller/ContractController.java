@@ -89,7 +89,7 @@ public class ContractController {
         return "redirect:/contractIndex";
     }
 
-    @GetMapping("/deleteContract")
+    @GetMapping("/deleteContract/{contractId}")
     public String deleteContract(@PathVariable int contractId){
         contractService.deleteContract(contractId);
         return "redirect:/contractIndex";
