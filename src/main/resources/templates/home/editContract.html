@@ -27,7 +27,7 @@
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price">
     <label>Customer:</label>
-        <label>Motorhome:</label>
+        <label>Motorhome: </label>
         <select name="motorhome">
             <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
                     th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>

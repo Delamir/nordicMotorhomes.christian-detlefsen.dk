@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a class="active" th:href="@{'/customerIndex/'}">Manage Customer</a>
+</div>
+<br>
+
+<h1>Edit a Customer</h1>
+
+<form class="form" action="/editCostumer/" method="post">
+    <label>Customer name: </label>
+    <input type="text" name="name">
+    <label>Licence number: </label>
+    <input type="text" name="licenceNumber">
+    <label>Street: </label>
+    <input type="text" name="street">
+    <label>City: </label>
+    <input type="text" name="city">
+    <label>Postcode: </label>
+    <input type="text" name="postCode">
+    <label>Customer: </label>
+    <select name="customer">
+        <option th:each="customer:${customers}"
+                th:text="${customer.name} ', ' + ${customer.licenceNumber}"></option>
+    </select>
+    <label></label>
+
+    <button type="submit" id="submitButton">Edit Customer</button>
+
+</form>
+</body>
+</html>

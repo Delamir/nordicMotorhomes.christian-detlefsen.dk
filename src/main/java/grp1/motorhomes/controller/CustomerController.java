@@ -51,11 +51,34 @@ public class CustomerController {
         return "redirect:/customerIndex";
     }
 
-
-/*
+    /**
+     * @author Joachim
+     */
     @GetMapping("/editCustomer/{customerNumber}")
     public String editCustomer(@PathVariable int customerNumber, Model model) {
-        Customer customer = customerService.findCustomer
+        Customer customer = customerService.findCustomer(customerNumber);
+        model.addAttribute("customer", customer);
+        List<Customer> customerList = customerService.fetchAllCustomers();
+        model.addAttribute("customers", customerList);
+        return "home/editCustomer";
     }
-*/
+
+    /**
+     * @author Joachim
+     */
+    @PostMapping("editCostumer")
+    public String editCustomer(@ModelAttribute Customer customer) {
+        customerService.editCustomer(customer);
+        return "redirect:/customerIndex";
+    }
+
+    /**
+     * @author Joachim
+     */
+    @GetMapping("/deleteCustomer/{customerNumber}")
+    public String deleteCustomer(@PathVariable int customerNumber) {
+        customerService.deleteCustomer(customerNumber);
+        return "redirect:/customerIndex";
+    }
+
 }

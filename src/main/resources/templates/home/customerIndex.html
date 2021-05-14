@@ -40,6 +40,18 @@
         <td th:text="${customer.street}"></td>
         <td th:text="${customer.city}"></td>
         <td th:text="${customer.postCode}"></td>
+
+        <td>
+            <a th:href="@{'/editCustomer/'+${customer.customerNumber}}">
+                <button type="button">Edit</button>
+            </a>
+        </td>
+
+        <td>
+            <a th:href="@{'/deleteCostumer/'+${customer.customerNumber}}">
+                <button type="button">Delete</button>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
