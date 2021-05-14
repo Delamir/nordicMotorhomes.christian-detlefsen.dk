@@ -39,10 +39,6 @@ public class ContractController {
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
         List<Contract> contractList = contractService.fetchAllContracts();
-        for (Contract c: contractList ) {
-            System.out.println(c);
-
-        }
         model.addAttribute("contracts", contractList);
         return "home/contractIndex";
     }

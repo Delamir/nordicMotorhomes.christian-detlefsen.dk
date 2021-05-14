@@ -26,9 +26,8 @@ public class CustomerService {
     /**
      * @author Joachim
      */
-/*
     public void createCustomer(Customer customer) {
         customerRepo.createCustomer(customer);
     }
-    */
+
 }
