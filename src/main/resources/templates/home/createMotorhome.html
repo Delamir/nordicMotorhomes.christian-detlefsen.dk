@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta name="author" content="Patrick">
     <meta charset="UTF-8">
@@ -29,7 +29,28 @@
     <input type="text" name="description"placeholder="Motorhome Description">
     <label></label>
     <input type="submit" id="submitButton" value="Add Motorhome">
-
 </form>
+
+<!--
+<button onclick="popup()">Add motorhome</button>
+
+<div id="id01" class="popup">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close popup">&times;</span>
+    <form class="popup-content" action="/createMotorhome" method="post">
+        <div class="container">
+            <h1>Create Motorhome</h1>
+            <p>Are you sure you want to create new motorhome?</p>
+
+            <div class="clearfix">
+                <button type="button" class="cancelbutton">Cancel</button>
+                <button type="submit" class="deletebutton">Add new motorhome</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="popup.js"></script>
+-->
+
 </body>
 </html>
