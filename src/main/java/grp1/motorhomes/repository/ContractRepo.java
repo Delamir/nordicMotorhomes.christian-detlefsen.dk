@@ -42,6 +42,11 @@ public class ContractRepo {
                 contract.getOdometer(), contract.getPrice(), contract.getCustomerNumber(), contract.getMotorhome());
     }
 
+    /**
+     * @author Sverri
+     * @param contractId
+     * @return
+     */
     public Contract findContract(int contractId) {
         String selectSql = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate," +
                 "odometer, price, customer_number AS customer, customer_number AS customerNumber, motorhome " +
@@ -50,10 +55,19 @@ public class ContractRepo {
         return template.queryForObject(selectSql, rowMapper, contractId);
     }
 
+    /**
+     * @author Sverri
+     * @param contract
+     */
     public void editContract(Contract contract) {
         String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, price = ?, customer_number = ?, motorhome = ? WHERE contract_id = ?";
         template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(),contract.getPrice(),contract.getCustomerNumber(), contract.getMotorhome(), contract.getContractId());
     }
+
+    /**
+     * @author Sverri
+     * @param contractId
+     */
     public void deleteContract(int contractId){
         String deleteSql = "DELETE FROM contracts WHERE contract_id = ?";
         template.update(deleteSql,contractId);
