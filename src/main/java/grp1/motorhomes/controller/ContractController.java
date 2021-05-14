@@ -90,7 +90,7 @@ public class ContractController {
     }
 
     /**
-     * @suthor Sverri
+     * @author Sverri
      * @param contract
      * @return
      */
