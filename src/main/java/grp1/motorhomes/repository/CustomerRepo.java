@@ -23,7 +23,7 @@ public class CustomerRepo {
      */
     public List<Customer> fetchAllCustomers() {
         String sql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber, post_code AS postCode, street, city " +
-                "FROM customers JOIN addresses USING(post_code)";
+                "FROM customers JOIN addresses USING(customer_number)";
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
         return template.query(sql, rowMapper);
     }

@@ -46,7 +46,8 @@ public class ContractRepo {
         String selectSql = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate," +
                 "odometer, price, customer_number AS customer, customer_number AS customerNumber, motorhome " +
                 "FROM contracts WHERE contract_id = ?";
-        return template.queryForObject(selectSql, Contract.class, contractId);
+        RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
+        return template.queryForObject(selectSql, rowMapper, contractId);
     }
 
     public void editContract(Contract contract) {

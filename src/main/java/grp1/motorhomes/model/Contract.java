@@ -76,7 +76,7 @@ public class Contract {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
             localDateTime = LocalDateTime.parse(from, formatter);
         }
-        this.toDate = Timestamp.valueOf(localDateTime);
+        this.fromDate = Timestamp.valueOf(localDateTime);
     }
     public Timestamp getToDate() {
         return toDate;
