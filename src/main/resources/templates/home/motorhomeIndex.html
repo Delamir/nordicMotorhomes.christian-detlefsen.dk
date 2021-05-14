@@ -22,9 +22,6 @@
 
 <table class="table">
 
-    <tr>
-        <th class="motorhomeTitle">Motorhomes</th>
-    </tr>
 
     <tbody>
     <th>Type</th>
@@ -33,6 +30,7 @@
     <th>Licence Plate</th>
     <th>Description</th>
     <th>Image</th>
+    <th>Actions</th>
 
     <tr th:each="motorhome : ${motorhomes}">
 
@@ -47,9 +45,7 @@
             <a th:href="@{'/editMotorhome/'+${motorhome.licencePlate}}">
                 <button type="button">Edit</button>
             </a>
-        </td>
 
-        <td>
         <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}">
             <button type="button">Delete</button>
             </a>
