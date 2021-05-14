@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Contract</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a class="active" th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+</div>
+<br>
+
+<h1>Edit a Contract</h1>
+
+<form class="form" action="/editContract/" method="post">
+    <label>Contract Start Date: </label>
+    <input type="datetime-local" name="fromDate">
+    <label>Contract End Date: </label>
+    <input type="datetime-local" name="toDate">
+    <label>Odometer: </label>
+    <input type="text" name="odometer" placeholder="Odometer">
+    <label>Price: </label>
+    <input type="text" name="price" placeholder="Price">
+    <label>Customer:</label>
+        <label>Motorhome:</label>
+        <select name="motorhome">
+            <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
+                    th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+        </select>
+        <label></label>
+
+        <button type="submit" id="submitButton">Edit Contract</button>
+
+
+</form>
+</body>
+</html>

@@ -15,7 +15,7 @@ import java.sql.Statement;
 import java.util.List;
 
 /**
- * @author Patrick
+ * @author Patrick and Sverri
  */
 @Repository
 public class MotorhomeRepo {

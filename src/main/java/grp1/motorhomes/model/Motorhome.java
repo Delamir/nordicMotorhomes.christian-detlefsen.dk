@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 /**
- * @author Patrick
+ * @author Patrick and Sverrri
  */
 @Entity
 public class Motorhome {

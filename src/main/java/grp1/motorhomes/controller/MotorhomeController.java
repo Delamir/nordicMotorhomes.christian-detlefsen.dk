@@ -49,18 +49,27 @@ public class MotorhomeController {
         return "redirect:/motorhomeIndex";
     }
 
+    /**
+     * @author Patrick
+     */
     @GetMapping("/editMotorhome/{licencePlate}")
     public String editMotorhome(@PathVariable("licencePlate") String licencePlate, Model model) {
         model.addAttribute("motorhome", motorhomeService.findMotorhome(licencePlate));
         return "home/editMotorhome";
     }
 
+    /**
+     * @author Patrick
+     */
     @PostMapping("/editMotorhome")
     public String editMotorhome(@ModelAttribute Motorhome motorhome) {
         motorhomeService.editMotorhome(motorhome);
         return "redirect:/motorhomeIndex";
     }
 
+    /**
+     * @author Patrick
+     */
     @GetMapping("/deleteMotorhome/{licencePlate}")
     public String deleteMotorhome(@PathVariable("licencePlate") String licencePlate) {
         motorhomeService.deleteMotorhome(licencePlate);
