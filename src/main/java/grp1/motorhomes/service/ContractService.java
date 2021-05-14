@@ -31,4 +31,17 @@ public class ContractService {
     public void createContract(Contract contract) {
         contractRepo.createContract(contract);
     }
+
+    public Contract findContract(int contractId) {
+        return contractRepo.findContract(contractId);
+    }
+
+    public void editContract(Contract contract) {
+        contractRepo.editContract(contract);
+    }
+
+    public void deleteContract(int contractId){
+        contractRepo.deleteContract(contractId);
+    }
+
 }

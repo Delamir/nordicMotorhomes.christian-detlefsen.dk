@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -70,5 +71,30 @@ public class ContractController {
         contractService.createContract(contract);
         return "redirect:/contractIndex";
     }
+
+    @GetMapping("/editContract/{contractId}")
+    public String editContract(@PathVariable int contractId, Model model) {
+        Contract contract = contractService.findContract(contractId);
+        model.addAttribute("contract", contract);
+        List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
+        List<Customer> customerList = customerService.fetchAllCustomers();
+        model.addAttribute("motorhomes", motorhomeList);
+        model.addAttribute("customers", customerList);
+        return "home/editContract";
+    }
+
+    @PostMapping("/editContract")
+    public String editContract(@ModelAttribute Contract contract){
+        contractService.editContract(contract);
+        return "redirect:/contractIndex";
+    }
+
+    @GetMapping("/deleteContract")
+    public String deleteContract(@PathVariable int contractId){
+        contractService.deleteContract(contractId);
+        return "redirect:/contractIndex";
+    }
+
+
 
 }

@@ -20,8 +20,8 @@ public class ContractRepo {
     JdbcTemplate template;
 
     /**
-     * @author Christian
      * @return
+     * @author Christian
      */
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate, " +
@@ -32,8 +32,8 @@ public class ContractRepo {
     }
 
     /**
-     * @author Christian
      * @param contract
+     * @author Christian
      */
     public void createContract(Contract contract) {
         String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, price, customer_number, motorhome) "
@@ -41,4 +41,21 @@ public class ContractRepo {
         template.update(insertContractValues, contract.getFromDate(), contract.getToDate(),
                 contract.getOdometer(), contract.getPrice(), contract.getCustomerNumber(), contract.getMotorhome());
     }
+
+    public Contract findContract(int contractId) {
+        String selectSql = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate," +
+                "odometer, price, customer_number AS customer, customer_number AS customerNumber, motorhome " +
+                "FROM contracts WHERE contract_id = ?";
+        return template.queryForObject(selectSql, Contract.class, contractId);
+    }
+
+    public void editContract(Contract contract) {
+        String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, price = ?, customer_number = ?, motorhome = ? WHERE contract_id = ?";
+        template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(),contract.getPrice(),contract.getCustomerNumber(), contract.getMotorhome(), contract.getContractId());
+    }
+    public void deleteContract(int contractId){
+        String deleteSql = "DELETE FROM contracts WHERE contract_id = ?";
+        template.update(deleteSql,contractId);
+    }
+
 }
