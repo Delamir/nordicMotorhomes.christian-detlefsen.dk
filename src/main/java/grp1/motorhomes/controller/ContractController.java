@@ -72,6 +72,13 @@ public class ContractController {
         return "redirect:/contractIndex";
     }
 
+    /**
+     * @author Sverri
+     * @param contractId
+     * @param model
+     * @return
+     */
+
     @GetMapping("/editContract/{contractId}")
     public String editContract(@PathVariable int contractId, Model model) {
         Contract contract = contractService.findContract(contractId);
@@ -83,12 +90,22 @@ public class ContractController {
         return "home/editContract";
     }
 
+    /**
+     * @author Sverri
+     * @param contract
+     * @return
+     */
     @PostMapping("/editContract")
     public String editContract(@ModelAttribute Contract contract){
         contractService.editContract(contract);
         return "redirect:/contractIndex";
     }
 
+    /**
+     * @author Sverri
+     * @param contractId
+     * @return
+     */
     @GetMapping("/deleteContract/{contractId}")
     public String deleteContract(@PathVariable int contractId){
         contractService.deleteContract(contractId);
