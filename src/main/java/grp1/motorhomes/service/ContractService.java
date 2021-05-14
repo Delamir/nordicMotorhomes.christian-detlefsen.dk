@@ -32,14 +32,26 @@ public class ContractService {
         contractRepo.createContract(contract);
     }
 
+    /**
+     * @author Sverri
+     * @param contractId
+     * @return
+     */
     public Contract findContract(int contractId) {
         return contractRepo.findContract(contractId);
     }
 
+    /**
+     * @author Sverri
+      * @param contract
+     */
     public void editContract(Contract contract) {
         contractRepo.editContract(contract);
     }
 
+    /**
+     * @author Sverri
+     */
     public void deleteContract(int contractId){
         contractRepo.deleteContract(contractId);
     }

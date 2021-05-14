@@ -24,9 +24,22 @@ public class Motorhome {
     private String model;
     private String description;
     private String imagePath;
+
+    /**
+     * @author Sverri
+     */
     public Motorhome() {
     }
 
+    /**
+     * @author Patrick
+     * @param licencePlate
+     * @param type
+     * @param brand
+     * @param model
+     * @param description
+     * @param imagePath
+     */
     public Motorhome(String licencePlate, String type, String brand, String model, String description, String imagePath) {
 
         this.licencePlate = licencePlate;
