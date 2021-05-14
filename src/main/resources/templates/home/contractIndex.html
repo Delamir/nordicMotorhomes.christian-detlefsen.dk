@@ -41,13 +41,13 @@
         <td th:text="${contract.price}"></td>
 
         <td>
-            <a th:href="@{'/editContract/'+${motorhome.contractId}}">
+            <a th:href="@{'/editContract/'+${contract.contractId}}">
                 <button type="button">Edit</button>
             </a>
         </td>
 
         <td>
-            <a th:href="@{'/deleteContract/'+${motorhome.contractId}}">
+            <a th:href="@{'/deleteContract/'+${contract.contractId}}">
                 <button type="button">Delete</button>
             </a>
         </td>
