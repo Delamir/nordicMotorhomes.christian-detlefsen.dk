@@ -69,15 +69,14 @@ public class Contract {
      */
     public void setFromDate(String from) {
         LocalDateTime localDateTime;
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
-            localDateTime = LocalDateTime.parse(from, formatter);
-
-        }catch (Exception e){
+        if(from.contains("T")) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
             localDateTime = LocalDateTime.parse(from, formatter);
+        }else {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+            localDateTime = LocalDateTime.parse(from, formatter);
         }
-        this.fromDate = Timestamp.valueOf(localDateTime);
+        this.toDate = Timestamp.valueOf(localDateTime);
     }
     public Timestamp getToDate() {
         return toDate;
@@ -90,12 +89,11 @@ public class Contract {
      */
     public void setToDate(String to) {
         LocalDateTime localDateTime;
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
-            localDateTime = LocalDateTime.parse(to, formatter);
-
-        }catch (Exception e){
+        if(to.contains("T")) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            localDateTime = LocalDateTime.parse(to, formatter);
+        }else {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
             localDateTime = LocalDateTime.parse(to, formatter);
         }
         this.toDate = Timestamp.valueOf(localDateTime);
