@@ -87,13 +87,13 @@
 
 
 
-/*
 
+/*
 * {box-sizing: border-box}
 
 .popup-button {
     opacity: 0.9;
-    color: white;
+    color: black;
     background-color: #f8f3f3;
     padding: 14px 20px;
     margin: 8px 0;

@@ -19,23 +19,17 @@
 
 <form class="form" action="/editCostumer/" method="post">
     <label>Customer name: </label>
-    <input type="text" name="name">
+    <input type="text" name="name" th:value="${customer.name}">
     <label>Licence number: </label>
-    <input type="text" name="licenceNumber">
+    <input type="text" name="licenceNumber" th:value="${customer.licenceNumber}">
     <label>Street: </label>
-    <input type="text" name="street">
+    <input type="text" name="street" th:value="${customer.street}">
     <label>City: </label>
-    <input type="text" name="city">
+    <input type="text" name="city" th:value="${customer.city}">
     <label>Postcode: </label>
-    <input type="text" name="postCode">
-    <label>Customer: </label>
-    <select name="customer">
-        <option th:each="customer:${customers}"
-                th:text="${customer.name} ', ' + ${customer.licenceNumber}"></option>
-    </select>
+    <input type="text" name="postCode" th:value="${customer.postCode}">
     <label></label>
-
-    <button type="submit" id="submitButton">Edit Customer</button>
+    <input type="submit" id="submitButton" value="Edit Customer">
 
 </form>
 </body>

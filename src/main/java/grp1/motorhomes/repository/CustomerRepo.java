@@ -66,7 +66,7 @@ public class CustomerRepo {
 
         public void editCustomer(Customer customer) {
         String updateSql = "UPDATE customers SET licence_number = ?, name = ? WHERE customer_number = ?";
-        template.update(updateSql, customer.getName(), customer.getLicenceNumber());
+        template.update(updateSql, customer.getLicenceNumber(), customer.getName());
         }
 
         public void deleteCustomer(int customerNumber) {
