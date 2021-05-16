@@ -46,8 +46,10 @@
                 <button type="button">Edit</button>
             </a>
 
-        <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}">
-            <button type="button" onclick="return confirm('Are you sure you want to delete this motorhome?')">Delete</button>
+        <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}"  >
+            <button type="button"
+                    th:confirm="'are you sure you want to delete ' + ${motorhome.licencePlate}"
+                    onclick="return confirm(this.getAttribute('confirm'))" >Delete</button>
             </a>
         </td>
     </tr>
