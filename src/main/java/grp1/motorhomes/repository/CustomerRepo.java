@@ -64,8 +64,8 @@ public class CustomerRepo {
      */
 
     public Customer findCustomer(int customerNumber) {
-        String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber " +
-                "FROM customers WHERE customer_number = ?";
+        String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber, post_code AS postCode, street, city " +
+                "FROM customers JOIN addresses USING(customer_number) WHERE customer_number = ?";
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
         return template.queryForObject(selectSql, rowMapper, customerNumber);
     }
