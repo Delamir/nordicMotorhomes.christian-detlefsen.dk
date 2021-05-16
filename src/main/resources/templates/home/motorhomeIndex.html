@@ -47,9 +47,11 @@
             </a>
 
         <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}"  >
+            <!-- help from https://stackoverflow.com/questions/59992208/thymeleaf-thonclick-event-calling-confirm-function -->
             <button type="button"
                     th:confirm="'are you sure you want to delete ' + ${motorhome.licencePlate}"
                     onclick="return confirm(this.getAttribute('confirm'))" >Delete</button>
+
             </a>
         </td>
     </tr>
