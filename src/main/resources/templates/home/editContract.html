@@ -17,7 +17,7 @@
 
 <h1>Edit a Contract</h1>
 
-<form class="form" action="/editContract/" method="post">
+<form class="form" onsubmit="return confirm('Are you sure you want to edit this contract?')" action="/editContract/" method="post">
     <label>Contract Start Date: </label>
     <input type="datetime-local" name="fromDate">
     <label>Contract End Date: </label>

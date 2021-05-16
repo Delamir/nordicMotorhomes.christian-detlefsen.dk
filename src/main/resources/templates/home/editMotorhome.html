@@ -18,7 +18,7 @@
 
 <h1>Edit a Motorhome</h1>
 
-<form class="form" action="/editMotorhome/" method="post">
+<form class="form" onsubmit="return confirm('Are you sure you want to edit this motorhome?')" action="/editMotorhome/" method="post">
     <label>Licence plate:</label>
     <input type="text" name="licencePlate" th:value="${motorhome.licencePlate}">
     <label>Type:</label>

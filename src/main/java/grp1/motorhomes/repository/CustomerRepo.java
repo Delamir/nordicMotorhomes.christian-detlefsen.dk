@@ -34,7 +34,7 @@ public class CustomerRepo {
     }
 
     /**
-     * @author Joachim
+     * @author Joachim og Sverri
      */
     public void createCustomer(Customer customer) {
 
@@ -56,23 +56,23 @@ public class CustomerRepo {
 
         template.update(insertAddressValues, keyHolder.getKey().intValue(), customer.getStreet(), customer.getPostCode(),
                 customer.getCity());
-        }
+    }
 
     /**
-     * @author Christian og Sverri
+     * @Author Christian og Joachim
      * @param customerNumber
-     * @return
      */
+
     public Customer findCustomer(int customerNumber) {
-        String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber, post_code AS postCode, street, city " +
-                "FROM customers JOIN addresses USING(customer_number) WHERE customer_number = ?";
+        String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber " +
+                "FROM customers WHERE customer_number = ?";
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
         return template.queryForObject(selectSql, rowMapper, customerNumber);
-        }
+    }
 
     /**
-     * @author Christian
      * @param customer
+     * @Author Christian og Joachim
      */
     public void editCustomer(Customer customer) {
         String updateSql = "UPDATE customers SET licence_number = ?, name = ? WHERE customer_number = ?";
@@ -80,10 +80,9 @@ public class CustomerRepo {
 
         updateSql = "UPDATE addresses SET street = ?, post_code = ?, city = ? WHERE customer_number = ?";
         template.update(updateSql, customer.getStreet(), customer.getPostCode(), customer.getCity(), customer.getCustomerNumber());
-        }
-
+    }
     /**
-     * @author Sverri
+     * @Author Christian og Joachim
      * @param customerNumber
      */
     public void deleteCustomer(int customerNumber) {
@@ -91,6 +90,6 @@ public class CustomerRepo {
         template.update(deleteSql, customerNumber);
         deleteSql = "DELETE FROM customers WHERE customer_number = ?";
         template.update(deleteSql, customerNumber);
-        }
-
     }
+
+}

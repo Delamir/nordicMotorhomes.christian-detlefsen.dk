@@ -49,7 +49,7 @@
 
         <td>
             <a th:href="@{'/deleteCustomer/'+${customer.customerNumber}}">
-                <button type="button">Delete</button>
+                <button type="button" onclick="return confirm('Are you sure you want to delete this customer?')">Delete</button>
             </a>
         </td>
     </tr>
