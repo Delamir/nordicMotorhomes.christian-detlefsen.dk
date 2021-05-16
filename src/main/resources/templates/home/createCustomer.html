@@ -15,7 +15,7 @@
     <a class="active" th:href="@{'/customerIndex/'}">Manage Customer</a>
 </div>
 
-<form class="form" action="/createCustomer" method="post">
+<form class="form" onsubmit="return confirm('hej')" action="/createCustomer" method="post">
     <label>Name: </label>
     <input type="text" name="name" placeholder="Name">
     <label>Licence Number: </label>
@@ -27,7 +27,7 @@
     <label>Postcode: </label>
     <input type="text" name="postCode" placeholder="Postcode">
     <label></label>
-    <button onclick="popupCreateCustomer()" type="submit" id="submitButton">Create Customer</button>
+    <button type="submit" id="submitButton">Create Customer</button>
 </form>
 
 </body>

@@ -29,7 +29,7 @@
     <label>Customer:</label>
         <label>Motorhome: </label>
         <select name="motorhome">
-            <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
+            <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}" th:selected="${motorhome.licencePlate.equals(contract.motorhome)}"
                     th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
         </select>
         <label></label>
