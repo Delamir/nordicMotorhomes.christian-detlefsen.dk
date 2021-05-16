@@ -55,11 +55,9 @@ public class CustomerController {
      * @author Joachim
      */
     @GetMapping("/editCustomer/{customerNumber}")
-    public String editCustomer(@PathVariable int customerNumber, Model model) {
+    public String editCustomer(@PathVariable ("customerNumber") int customerNumber, Model model) {
         Customer customer = customerService.findCustomer(customerNumber);
         model.addAttribute("customer", customer);
-        List<Customer> customerList = customerService.fetchAllCustomers();
-        model.addAttribute("customers", customerList);
         return "home/editCustomer";
     }
 

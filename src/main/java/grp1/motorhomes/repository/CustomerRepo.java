@@ -58,19 +58,35 @@ public class CustomerRepo {
                 customer.getCity());
         }
 
-        public Customer findCustomer(int customerNumber) {
-        String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber " +
-                "FROM customers WHERE customer_number = ?";
+    /**
+     * @author Christian og Sverri
+     * @param customerNumber
+     * @return
+     */
+    public Customer findCustomer(int customerNumber) {
+        String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber, post_code AS postCode, street, city " +
+                "FROM customers JOIN addresses USING(customer_number) WHERE customer_number = ?";
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
         return template.queryForObject(selectSql, rowMapper, customerNumber);
         }
 
-        public void editCustomer(Customer customer) {
+    /**
+     * @author Christian
+     * @param customer
+     */
+    public void editCustomer(Customer customer) {
         String updateSql = "UPDATE customers SET licence_number = ?, name = ? WHERE customer_number = ?";
-        template.update(updateSql, customer.getLicenceNumber(), customer.getName());
+        template.update(updateSql, customer.getLicenceNumber(), customer.getName(), customer.getCustomerNumber());
+
+        updateSql = "UPDATE addresses SET street = ?, post_code = ?, city = ? WHERE customer_number = ?";
+        template.update(updateSql, customer.getStreet(), customer.getPostCode(), customer.getCity(), customer.getCustomerNumber());
         }
 
-        public void deleteCustomer(int customerNumber) {
+    /**
+     * @author Sverri
+     * @param customerNumber
+     */
+    public void deleteCustomer(int customerNumber) {
         String deleteSql = "DELETE FROM addresses WHERE customer_number = ? ";
         template.update(deleteSql, customerNumber);
         deleteSql = "DELETE FROM customers WHERE customer_number = ?";
