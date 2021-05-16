@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SqlInOutParameter;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -70,7 +71,9 @@ public class CustomerRepo {
         }
 
         public void deleteCustomer(int customerNumber) {
-        String deleteSql = "DELETE FROM customers WHERE customer_number = ?";
+        String deleteSql = "DELETE FROM addresses WHERE customer_number = ? ";
+        template.update(deleteSql, customerNumber);
+        deleteSql = "DELETE FROM customers WHERE customer_number = ?";
         template.update(deleteSql, customerNumber);
         }
 

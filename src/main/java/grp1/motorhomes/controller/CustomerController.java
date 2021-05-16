@@ -76,7 +76,7 @@ public class CustomerController {
      * @author Joachim
      */
     @GetMapping("/deleteCustomer/{customerNumber}")
-    public String deleteCustomer(@PathVariable int customerNumber) {
+    public String deleteCustomer(@PathVariable("customerNumber") int customerNumber) {
         customerService.deleteCustomer(customerNumber);
         return "redirect:/customerIndex";
     }
