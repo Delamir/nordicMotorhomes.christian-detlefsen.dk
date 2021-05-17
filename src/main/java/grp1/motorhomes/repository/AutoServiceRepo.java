@@ -19,7 +19,11 @@ public class AutoServiceRepo {
     /**
      * @author Christian
      */
+    /*
     public List<AutoService> fetchAllAutoServices() {
         String sqlStatement = "";
     }
+
+     */
+
 }

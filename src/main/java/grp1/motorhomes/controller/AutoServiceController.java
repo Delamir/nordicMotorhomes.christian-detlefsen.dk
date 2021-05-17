@@ -26,12 +26,15 @@ public class AutoServiceController {
     /**
      * @Author Christian
      */
+    /*
     @GetMapping("/serviceIndex")
     public String serviceIndex(Model model) {
         List<AutoService> autoServiceList = autoServiceService.fetchAllAutoServices();
         model.addAttribute("services", autoServiceList);
         return "home/serviceIndex";
     }
+
+     */
 
 
 }
