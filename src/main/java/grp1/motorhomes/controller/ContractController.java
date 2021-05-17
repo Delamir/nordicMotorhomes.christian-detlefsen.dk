@@ -100,7 +100,4 @@ public class ContractController {
         contractService.deleteContract(contractId);
         return "redirect:/contractIndex";
     }
-
-
-
 }

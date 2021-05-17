@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.containsString;
@@ -25,6 +27,9 @@ public class ContractControllerTests {
 
     @Autowired
     MockMvc mockMvc;
+
+    @MockBean
+    ContractController contractController;
 
     @MockBean
     ContractService contractService;
@@ -62,7 +67,11 @@ public class ContractControllerTests {
         Contract contract = new Contract(1, Timestamp.valueOf("2021-06-17 10:20:20"), Timestamp.valueOf("2021-07-17 10:20:20"),
                 6900, 1, 1337, "Caravan");
 
-        ContractController.
-    }
 
+        contractController.editContract(contract);
+
+
+
+
+    }
 }
