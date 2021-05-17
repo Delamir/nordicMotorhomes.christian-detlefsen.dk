@@ -21,9 +21,7 @@ public class AutoServiceRepo {
      */
     /*
     public List<AutoService> fetchAllAutoServices() {
-        String sqlStatement = "";
+        String sqlStatement = "INSERT INTO ";
     }
-
      */
-
 }
