@@ -26,8 +26,7 @@ public class MotorhomeController {
      */
     @GetMapping ("/motorhomeIndex")
     public String motorhomeIndex(Model model) {
-        List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
-        model.addAttribute("motorhomes", motorhomeList);
+        model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
         return "home/motorhomeIndex";
     }
 

@@ -38,8 +38,7 @@ public class ContractController {
      */
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
-        List<Contract> contractList = contractService.fetchAllContracts();
-        model.addAttribute("contracts", contractList);
+        model.addAttribute("contracts", contractService.fetchAllContracts());
         return "home/contractIndex";
     }
 
@@ -49,10 +48,8 @@ public class ContractController {
      */
     @GetMapping("/createContract")
     public String createContract(Model model) {
-        List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
-        List<Customer> customerList = customerService.fetchAllCustomers();
-        model.addAttribute("motorhomes", motorhomeList);
-        model.addAttribute("customers", customerList);
+        model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
+        model.addAttribute("customers", customerService.fetchAllCustomers());
         return "home/createContract";
     }
 
@@ -76,12 +73,9 @@ public class ContractController {
      */
     @GetMapping("/editContract/{contractId}")
     public String editContract(@PathVariable int contractId, Model model) {
-        Contract contract = contractService.findContract(contractId);
-        model.addAttribute("contract", contract);
-        List<Motorhome> motorhomeList = motorhomeService.fetchAllMotorhomes();
-        List<Customer> customerList = customerService.fetchAllCustomers();
-        model.addAttribute("motorhomes", motorhomeList);
-        model.addAttribute("customers", customerList);
+        model.addAttribute("contract", contractService.findContract(contractId));
+        model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
+        model.addAttribute("customers", customerService.fetchAllCustomers());
         return "home/editContract";
     }
 

@@ -19,7 +19,6 @@ public class Motorhome {
     private String previousLicencePlate;
 
     private String type;
-
     private String brand;
     private String model;
     private String description;
