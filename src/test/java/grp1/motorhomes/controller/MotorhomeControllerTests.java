@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.containsString;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +27,21 @@ public class MotorhomeControllerTests {
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    MotorhomeController motorhomeController;
+
     @MockBean
     MotorhomeService motorhomeService;
 
+    /**
+     * @throws Exception
+     * @author Sverri
+     */
     @Test
     public void motorHomeFetchTest() throws Exception {
         List<Motorhome> motorhomes = new ArrayList<Motorhome>();
 
-        for(int i = 1 ; i <= 10 ; i++) {
+        for (int i = 1; i <= 10; i++) {
             Motorhome motorhome = new Motorhome();
             motorhome.setLicencePlate("licencePlate" + i);
             motorhome.setType("type" + i);
@@ -42,12 +53,13 @@ public class MotorhomeControllerTests {
         }
         when(motorhomeService.fetchAllMotorhomes()).thenReturn(motorhomes);
 
-        mockMvc.perform(get("/motorhomeIndex"));
-
-
-
-
+        mockMvc.perform(get("/motorhomeIndex")).andExpect(model().attribute("motorhomes", motorhomes))
+                .andExpect(content().string(containsString("Motorhome Management")))
+                .andExpect(content().string(containsString("brand1")))
+                .andExpect(content().string(containsString("type5")))
+                .andExpect(content().string(containsString("description10")));
 
     }
+
 
 }
