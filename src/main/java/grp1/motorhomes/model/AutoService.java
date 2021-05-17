@@ -7,7 +7,7 @@ import javax.persistence.Id;
  * @author Christian
  */
 @Entity
-public class Service {
+public class AutoService {
     @Id
-    int serviceId;
+    int autoServiceId;
 }
