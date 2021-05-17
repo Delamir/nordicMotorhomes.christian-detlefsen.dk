@@ -25,7 +25,7 @@
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price">
     <label>Customer:</label>
-    <select name="customerNumber">
+    <select name="customerNumber">f
         <option th:each="customer:${customers}" th:value="${customer.customerNumber}" th:text="${customer.name}"></option>
     </select>
     <label>Motorhome:</label>
