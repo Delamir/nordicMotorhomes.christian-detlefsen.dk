@@ -1,6 +1,8 @@
 package grp1.motorhomes.controller;
 
 import grp1.motorhomes.model.Contract;
+import grp1.motorhomes.model.Customer;
+import grp1.motorhomes.model.Motorhome;
 import grp1.motorhomes.service.ContractService;
 import grp1.motorhomes.service.CustomerService;
 import grp1.motorhomes.service.MotorhomeService;
@@ -30,7 +32,6 @@ import static org.mockito.Mockito.when;
 @WebMvcTest(ContractController.class)
 public class ContractControllerTests {
 
-
     @Autowired
     MockMvc mockMvc;
 
@@ -44,6 +45,8 @@ public class ContractControllerTests {
     CustomerService customerService;
 
     static List<Contract> contracts;
+    static Motorhome motorhome;
+    static Customer customer;
 
     /**
      * @author Christian
@@ -51,13 +54,17 @@ public class ContractControllerTests {
     @BeforeAll
     public static void before() {
         contracts = new ArrayList<>();
+        customer = new Customer(1, "Fred", "AD847852",
+                "Christmas Møllers Plads", "Aabenraa", 2300);
+        motorhome = new Motorhome("BA854713", "Lux", "Honda", "XRT380", "Dejlig Bil, rigtig god på literen og kører som smurt. " +
+                "God til off-road kørsel og ellers en allertiders dejlig bil at køre i.", "JPEG");
 
         for (int i = 1; i <= 10; i++) {
             Contract contract = new Contract();
             contract.setContractId(i);
             contract.setFromDate("2021-05-17T13:20");
             contract.setToDate("2021-06-17T13:20");
-            contract.setMotorhome("Jack");
+            contract.setMotorhome(motorhome.getLicencePlate());
             contract.setCustomerNumber(1);
             contract.setOdometer(95000);
             contract.setPrice(1337);
@@ -126,13 +133,14 @@ public class ContractControllerTests {
     @Test
     public void editTest() throws Exception {
 
+        when(contractService.findContract(contracts.get(0).getContractId())).thenReturn(contracts.get(0));
+
         mockMvc.perform(get("/editContract/" + contracts.get(0).getContractId()))
                 .andExpect(model().attribute("contract", contracts.get(0)))
                 .andExpect(content().string(containsString("Edit a Contract")))
                 .andExpect(content().string(containsString("1")))
                 .andExpect(content().string(containsString("2021-05-17 13:20")))
                 .andExpect(content().string(containsString("2021-06-17 13:20")))
-                .andExpect(content().string(containsString("Jack")))
                 .andExpect(content().string(containsString("95000")))
                 .andExpect(content().string(containsString("1")))
                 .andExpect(content().string(containsString("1337")))

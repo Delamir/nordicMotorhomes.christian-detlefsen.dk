@@ -19,13 +19,13 @@
 
 <form class="form" onsubmit="return confirm('Are you sure you want to edit this contract?')" action="/editContract/" method="post">
     <label>Contract Start Date: </label>
-    <input type="datetime-local" name="fromDate">
+    <input type="datetime-local" name="fromDate" th:value="${contract.fromDate}">
     <label>Contract End Date: </label>
-    <input type="datetime-local" name="toDate">
+    <input type="datetime-local" name="toDate" th:value="${contract.toDate}">
     <label>Odometer: </label>
-    <input type="text" name="odometer" placeholder="Odometer">
+    <input type="text" name="odometer" placeholder="Odometer" th:value="${contract.odometer}">
     <label>Price: </label>
-    <input type="text" name="price" placeholder="Price">
+    <input type="text" name="price" placeholder="Price" th:value="${contract.price}">
     <label>Customer:</label>
         <label>Motorhome: </label>
         <select name="motorhome">
@@ -35,7 +35,6 @@
         <label></label>
 
         <button type="submit" id="submitButton">Edit Contract</button>
-
 
 </form>
 </body>
