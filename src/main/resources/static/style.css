@@ -84,6 +84,12 @@
     padding: 5px;
 }
 
+#genericTableHeader {
+    font-family: Arial, serif;
+    font-weight: bold;
+    font-size: 120%;
+}
+
 #genericHeader {
     text-align: center;
     font-family: "Britannic Bold", serif;
@@ -101,92 +107,22 @@
     transform: translate(-50%, -50%);
 }
 
-
-/*
-* {box-sizing: border-box}
-
-.popup-button {
-    opacity: 0.9;
-    color: black;
-    background-color: #f8f3f3;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 75%;
+#addButton {
+    margin-top: 35px;
 }
 
-.popupbutton:hover {
-    opacity: 1;
+#welcomePage {
+    background-image: url("https://victoria.mediaplanet.com/app/uploads/sites/69/2019/06/iStock-915747216.jpg");
+    background-size: cover;
 }
 
-.cancelbutton, .deletebutton {
-    float: left;
-    width: 50%;
-}
-
-.cancelbutton {
-    background-color: #F8F3F3;
-    color: white;
-}
-
-.deletebutton {
-    background-color: darkorange;
-}
-
-.container {
-    padding: 14px;
+#welcomePageHeader {
     text-align: center;
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: white;
-    padding-top: 25px;
-}
-
-.popup-content {
-    background-color: #474e5d;
-    margin: 5% auto 15% auto;
-    border: 1px solid grey;
-    width: 80%;
-}
-
-hr {
-    border: 1px solid white;
-    margin-bottom: 25px;
-}
-
-.close {
+    font-size: xxx-large;
+    top: 45%;
+    left: 50%;
+    margin: 0;
     position: absolute;
-    right: 35px;
-    top: 15px;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
-
-.close:hover, .close:focus {
-    color: red;
-    cursor: pointer;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-@media screen and (max-width: 300px) {
-    .cancelbutton, .deletebutton {
-        width: 100%;
-    }
-}
-*/

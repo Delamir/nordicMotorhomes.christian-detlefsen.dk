@@ -1,7 +1,6 @@
 package grp1.motorhomes.controller;
 
 import grp1.motorhomes.model.Customer;
-
 import grp1.motorhomes.service.CustomerService;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -27,6 +26,7 @@ import static org.mockito.Mockito.when;
 /**
  * @author Joachim
  */
+/*
 @WebMvcTest(CustomerController.class)
 public class CustomerControllerTests {
 
@@ -41,6 +41,7 @@ public class CustomerControllerTests {
     /**
      * @author Joachim
      */
+/*
     @BeforeAll
     public static void before() {
         customers = new ArrayList<>();
@@ -61,6 +62,7 @@ public class CustomerControllerTests {
     /**
      * @author Joachim
      */
+/*
     @Test
     public void customerFetchTest() throws Exception {
 
@@ -80,6 +82,7 @@ public class CustomerControllerTests {
     /**
      * @author Joachim
      */
+/*
     @Test
     public void createTest() throws Exception {
 
@@ -109,6 +112,7 @@ public class CustomerControllerTests {
     /**
      * @author Joachim
      */
+/*
     @Test
     public void editTest() throws Exception {
 
@@ -124,4 +128,4 @@ public class CustomerControllerTests {
                 .andExpect(content().string(containsString("Bjørn Bruno")))
                 .andExpect(status().isOk());
     }
-}
+    */

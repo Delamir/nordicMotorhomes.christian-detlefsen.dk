@@ -19,6 +19,9 @@
 <div class="centering">
 <table class="table">
 
+    <tr>
+        <th id="genericTableHeader" colspan="7">Motorhomes</th>
+    </tr>
 
     <tbody>
     <th>Type</th>
@@ -30,7 +33,6 @@
     <th>Actions</th>
 
     <tr th:each="motorhome : ${motorhomes}">
-
         <td th:text="${motorhome.type}"></td>
         <td th:text="${motorhome.brand}"></td>
         <td th:text="${motorhome.model}"></td>
