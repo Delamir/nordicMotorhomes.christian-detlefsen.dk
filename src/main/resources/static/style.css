@@ -89,6 +89,17 @@
     font-family: "Britannic Bold", serif;
 }
 
+/* With inspiration from https://www.w3schools.com/howto/howto_css_center_button.asp
+@Author Joachim*/
+
+.centering {
+    top: 30%;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 
 
 /*

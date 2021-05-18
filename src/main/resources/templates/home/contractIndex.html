@@ -16,12 +16,8 @@
 
 <h1>Contract Management</h1>
 
-<a th:href="@{'/createContract/'}">
-    <button type="button">Add new contract</button>
-</a>
-
+<div class="centering">
 <table class="table">
-
     <tr>
         <th>Contracts</th>
     </tr>
@@ -56,6 +52,11 @@
     </tbody>
 
 </table>
+    <a th:href="@{'/createContract/'}">
+        <button type="button" id="addButton">Add new contract</button>
+    </a>
+
+</div>
 
 </body>
 </html>
