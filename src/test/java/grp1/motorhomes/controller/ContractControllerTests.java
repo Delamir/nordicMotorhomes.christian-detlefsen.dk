@@ -35,9 +35,6 @@ public class ContractControllerTests {
     MockMvc mockMvc;
 
     @MockBean
-    ContractController contractController;
-
-    @MockBean
     ContractService contractService;
 
     @MockBean
@@ -57,9 +54,9 @@ public class ContractControllerTests {
 
         for (int i = 1; i <= 10; i++) {
             Contract contract = new Contract();
+            contract.setContractId(i);
             contract.setFromDate("2021-05-17T13:20");
             contract.setToDate("2021-06-17T13:20");
-            contract.setContractId(1);
             contract.setCustomerNumber(1);
             contract.setMotorhome("Jack");
             contract.setOdometer(95000);
@@ -74,18 +71,7 @@ public class ContractControllerTests {
      */
     @Test
     public void contractFetchTest() throws Exception {
-        List<Contract> contracts = new ArrayList<>();
 
-        for (int i = 1; i <= 10; i++) {
-            Contract contract = new Contract();
-            contract.setFromDate("2021-05-17T13:20");
-            contract.setToDate("2021-06-17T13:20");
-            contract.setContractId(1);
-            contract.setCustomerNumber(1);
-            contract.setMotorhome("Jack");
-            contract.setOdometer(95000);
-            contract.setPrice(1337);
-        }
 
         when(contractService.fetchAllContracts()).thenReturn(contracts);
 
@@ -112,18 +98,19 @@ public class ContractControllerTests {
 
 
         mockMvc.perform(post("/createContract")
-                .param("fromDate", contracts.get(0).getFromDate())
-                .param("toDate", contracts.get(0).getToDate())
-                .param("odometer", contracts.get(0).getOdometer())
-                .param("price", contracts.get(0).getPrice()))
-                .param("customer", contracts.get(0).getCustomerNumber()))
-                .param("motorhome", contracts.get(0).getMotorhome()))
+                .param("fromDate", contracts.get(0).getFromDate().toString())
+                .param("toDate", contracts.get(0).getToDate().toString())
+                .param("odometer", contracts.get(0).getOdometer()+"")
+                .param("price", contracts.get(0).getPrice()+"")
+                .param("customerNumber", contracts.get(0).getCustomerNumber()+"")
+                .param("motorhome", contracts.get(0).getMotorhome())
+                .param("contractId", contracts.get(0).getContractId()+""))
                 .andExpect(status().is(302));
 
         ArgumentCaptor<Contract> argsCap = ArgumentCaptor.forClass(Contract.class);
         Mockito.verify(contractService).createContract(argsCap.capture());
 
-        assertEquals(argsCap.getValue().toString(), contracts.get(0).toString());
+        assertEquals(contracts.get(0).toString(), argsCap.getValue().toString());
     }
 
     /**
@@ -133,8 +120,8 @@ public class ContractControllerTests {
     @Test
     public void editTest() throws Exception {
 
-        mockMvc.perform(get("/contractIndex"))
-                .andExpect(model().attribute("contracts", contracts))
+        mockMvc.perform(get("/contractEdit/"+contracts.get(0).getContractId()))
+                .andExpect(model().attribute("contract", contracts.get(0)))
                 .andExpect(content().string(containsString("2021-05-17T13:20")))
                 .andExpect(content().string(containsString("2021-06-17T13:20")))
                 .andExpect(content().string(containsString("Jack")))

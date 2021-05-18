@@ -27,18 +27,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(MotorhomeController.class)
 public class MotorhomeControllerTests {
 
-    @Autowired
+    @Autowired // we are testing on a pretend view
     MockMvc mockMvc;
 
-    @Autowired
-    MotorhomeController motorhomeController;
-
-    @MockBean
+    @MockBean // we are testing on a pretend service
     MotorhomeService motorhomeService;
 
     static List<Motorhome> motorhomes;
 
-    @BeforeAll
+    @BeforeAll  // some model data to work with for each test
     public static void before() {
         motorhomes = new ArrayList<>();
 
@@ -59,9 +56,10 @@ public class MotorhomeControllerTests {
      */
     @Test
     public void motorHomeFetchTest() throws Exception {
-
+        // telling the pretend service to return our test model data if asked
         when(motorhomeService.fetchAllMotorhomes()).thenReturn(motorhomes);
 
+        //
         mockMvc.perform(get("/motorhomeIndex"))
                 .andExpect(model().attribute("motorhomes", motorhomes))
                 .andExpect(content().string(containsString("Motorhome Management")))
@@ -110,13 +108,19 @@ public class MotorhomeControllerTests {
     @Test
     public void editTest() throws Exception {
 
-        mockMvc.perform(get("/motorhomeIndex"))
-                .andExpect(model().attribute("motorhomes", motorhomes))
-                .andExpect(content().string(containsString("Motorhome Management")))
+        when(motorhomeService.findMotorhome(motorhomes.get(0).getLicencePlate())).thenReturn(motorhomes.get(0));
+
+        mockMvc.perform(get("/editMotorhome/" + motorhomes.get(0).getLicencePlate()))
+                .andExpect(model().attribute("motorhome", motorhomes.get(0)))
+                .andExpect(content().string(containsString("Edit a Motorhome")))
                 .andExpect(content().string(containsString("brand1")))
-                .andExpect(content().string(containsString("type5")))
-                .andExpect(content().string(containsString("description10")))
+                .andExpect(content().string(containsString("type1")))
+                .andExpect(content().string(containsString("description1")))
                 .andExpect(status().isOk());
+
+
+
+
 
     }
 
