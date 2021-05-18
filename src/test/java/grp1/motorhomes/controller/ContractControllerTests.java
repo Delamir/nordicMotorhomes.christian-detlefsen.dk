@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
-
+/**
+ * @author Christian
+ */
 @WebMvcTest(ContractController.class)
 public class ContractControllerTests {
 
