@@ -82,13 +82,18 @@
 .table th {
     border: 1px solid black;
     padding: 5px;
+}
 
+.table tr:hover {
+    background-color: #cbcbcb;
 }
 
 #genericTableHeader {
     font-family: Arial, serif;
     font-weight: bold;
     font-size: 120%;
+    background-color: #1d1c1c;
+    color: white;
 }
 
 #genericHeader {
