@@ -57,8 +57,8 @@ public class ContractControllerTests {
             contract.setContractId(i);
             contract.setFromDate("2021-05-17T13:20");
             contract.setToDate("2021-06-17T13:20");
-            contract.setCustomerNumber(1);
             contract.setMotorhome("Jack");
+            contract.setCustomerNumber(1);
             contract.setOdometer(95000);
             contract.setPrice(1337);
             contracts.add(contract);
@@ -74,7 +74,16 @@ public class ContractControllerTests {
 
         when(contractService.fetchAllContracts()).thenReturn(contracts);
 
-        mockMvc.perform(get("/contractIndex"));
+        mockMvc.perform(get("/contractIndex"))
+                .andExpect(model().attribute("contracts", contracts))
+                .andExpect(content().string(containsString("Contract Management")))
+                .andExpect(content().string(containsString("10")))
+                .andExpect(content().string(containsString("2021-05-17 13:20")))
+                .andExpect(content().string(containsString("2021-06-17 13:20")))
+                .andExpect(content().string(containsString("1")))
+                .andExpect(content().string(containsString("95000")))
+                .andExpect(content().string(containsString("1337")))
+                .andExpect(status().isOk());
 
     }
 
@@ -98,11 +107,11 @@ public class ContractControllerTests {
         mockMvc.perform(post("/createContract")
                 .param("fromDate", contracts.get(0).getFromDate().toString())
                 .param("toDate", contracts.get(0).getToDate().toString())
-                .param("odometer", contracts.get(0).getOdometer()+"")
-                .param("price", contracts.get(0).getPrice()+"")
-                .param("customerNumber", contracts.get(0).getCustomerNumber()+"")
+                .param("odometer", contracts.get(0).getOdometer() + "")
+                .param("price", contracts.get(0).getPrice() + "")
+                .param("customerNumber", contracts.get(0).getCustomerNumber() + "")
                 .param("motorhome", contracts.get(0).getMotorhome())
-                .param("contractId", contracts.get(0).getContractId()+""))
+                .param("contractId", contracts.get(0).getContractId() + ""))
                 .andExpect(status().is(302));
 
         ArgumentCaptor<Contract> argsCap = ArgumentCaptor.forClass(Contract.class);
@@ -121,8 +130,8 @@ public class ContractControllerTests {
                 .andExpect(model().attribute("contract", contracts.get(0)))
                 .andExpect(content().string(containsString("Edit a Contract")))
                 .andExpect(content().string(containsString("1")))
-                .andExpect(content().string(containsString("2021-05-17T13:20")))
-                .andExpect(content().string(containsString("2021-06-17T13:20")))
+                .andExpect(content().string(containsString("2021-05-17 13:20")))
+                .andExpect(content().string(containsString("2021-06-17 13:20")))
                 .andExpect(content().string(containsString("Jack")))
                 .andExpect(content().string(containsString("95000")))
                 .andExpect(content().string(containsString("1")))
