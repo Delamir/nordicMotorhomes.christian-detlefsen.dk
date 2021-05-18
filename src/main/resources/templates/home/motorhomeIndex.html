@@ -20,7 +20,7 @@
 <table class="table">
 
     <tr>
-        <th id="genericTableHeader" colspan="7">Motorhomes</th>
+        <th id="genericTableHeader" colspan="10">Motorhomes</th>
     </tr>
 
     <tbody>
@@ -30,7 +30,9 @@
     <th>Licence Plate</th>
     <th>Description</th>
     <th>Image</th>
-    <th>Actions</th>
+    <th>Price</th>
+    <th>Availability</th>
+    <th colspan="2">Actions</th>
 
     <tr th:each="motorhome : ${motorhomes}">
         <td th:text="${motorhome.type}"></td>
@@ -39,12 +41,16 @@
         <td th:text="${motorhome.licencePlate}"></td>
         <td th:text="${motorhome.description}"></td>
         <td th:text="${motorhome.imagePath}"></td>
+        <td th:text="${motorhome.price}"></td>
+        <td th:text="${motorhome.available}"></td>
 
         <td>
             <a th:href="@{'/editMotorhome/'+${motorhome.licencePlate}}">
                 <button type="button">Edit</button>
             </a>
+            </td>
 
+        <td>
         <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}"  >
             <!-- help from https://stackoverflow.com/questions/59992208/thymeleaf-thonclick-event-calling-confirm-function -->
             <button type="button"

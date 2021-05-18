@@ -29,6 +29,10 @@
     <input type="text" name="model" th:value="${motorhome.model}">
     <label>Description:</label>
     <input type="text" name="description" th:value="${motorhome.description}">
+    <label>Price: </label>
+    <input type="text" name="price" th:value="${motorhome.price}">
+    <label>Availability: </label>
+    <input type="checkbox" name="available" th:value="${motorhome.available}">
     <label></label>
     <input type="submit" id="submitButton" value="Edit Motorhome">
     <input type="hidden" name="previousLicencePlate" th:value="${motorhome.licencePlate}">

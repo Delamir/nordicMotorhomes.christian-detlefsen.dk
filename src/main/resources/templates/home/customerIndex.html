@@ -22,7 +22,7 @@
 
 
     <tr>
-        <th id="genericTableHeader" colspan="5">Customers</th>
+        <th id="genericTableHeader" colspan="7">Customers</th>
     </tr>
     <tbody>
     <th>Customer Name</th>
@@ -30,6 +30,7 @@
     <th>Street</th>
     <th>City</th>
     <th>Postcode</th>
+    <th colspan="2">Actions</th>
 
     <tr th:each="customer : ${customers}">
         <td th:text="${customer.name}"></td>

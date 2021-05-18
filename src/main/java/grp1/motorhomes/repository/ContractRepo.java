@@ -24,7 +24,7 @@ public class ContractRepo {
      */
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate, " +
-                "odometer, price, customer_number AS customer, customer_number AS customerNumber, motorhome " +
+                "odometer, customer_number AS customer, customer_number AS customerNumber, motorhome " +
                 "FROM contracts ";
         RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
         return template.query(sqlStatement, rowMapper);
@@ -35,10 +35,10 @@ public class ContractRepo {
      * @author Christian
      */
     public void createContract(Contract contract) {
-        String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, price, customer_number, motorhome) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+        String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, customer_number, motorhome) "
+                + "VALUES (?, ?, ?, ?, ?)";
         template.update(insertContractValues, contract.getFromDate(), contract.getToDate(),
-                contract.getOdometer(), contract.getPrice(), contract.getCustomerNumber(), contract.getMotorhome());
+                contract.getOdometer(), contract.getCustomerNumber(), contract.getMotorhome());
     }
 
     /**
@@ -48,7 +48,7 @@ public class ContractRepo {
      */
     public Contract findContract(int contractId) {
         String selectSql = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate," +
-                "odometer, price, customer_number AS customer, customer_number AS customerNumber, motorhome " +
+                "odometer, customer_number AS customer, customer_number AS customerNumber, motorhome " +
                 "FROM contracts WHERE contract_id = ?";
         RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
         return template.queryForObject(selectSql, rowMapper, contractId);
@@ -59,8 +59,8 @@ public class ContractRepo {
      * @param contract
      */
     public void editContract(Contract contract) {
-        String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, price = ?, customer_number = ?, motorhome = ? WHERE contract_id = ?";
-        template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(),contract.getPrice(),contract.getCustomerNumber(), contract.getMotorhome(), contract.getContractId());
+        String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, customer_number = ?, motorhome = ? WHERE contract_id = ?";
+        template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(), contract.getCustomerNumber(), contract.getMotorhome(), contract.getContractId());
     }
 
     /**

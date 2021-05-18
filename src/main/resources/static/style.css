@@ -82,6 +82,7 @@
 .table th {
     border: 1px solid black;
     padding: 5px;
+
 }
 
 #genericTableHeader {
@@ -99,7 +100,7 @@
 @Author Joachim*/
 
 .centering {
-    top: 30%;
+    top: 45%;
     left: 50%;
     margin: 0;
     position: absolute;

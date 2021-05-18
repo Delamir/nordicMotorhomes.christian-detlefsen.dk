@@ -23,6 +23,8 @@ public class Motorhome {
     private String model;
     private String description;
     private String imagePath;
+    private int price;
+    private boolean available;
 
     /**
      * @author Sverri
@@ -39,7 +41,7 @@ public class Motorhome {
      * @param description
      * @param imagePath
      */
-    public Motorhome(String licencePlate, String type, String brand, String model, String description, String imagePath) {
+    public Motorhome(String licencePlate, String type, String brand, String model, String description, String imagePath, int price, boolean available) {
 
         this.licencePlate = licencePlate;
         this.type = type;
@@ -47,6 +49,8 @@ public class Motorhome {
         this.model = model;
         this.description = description;
         this.imagePath = imagePath;
+        this.price = price;
+        this.available = available;
     }
 
 
@@ -99,6 +103,22 @@ public class Motorhome {
         this.imagePath = imagePath;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
     public String getPreviousLicencePlate() {
         return previousLicencePlate;
     }
@@ -116,6 +136,7 @@ public class Motorhome {
                 ", model='" + model + '\'' +
                 ", description='" + description + '\'' +
                 ", imagePath='" + imagePath + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

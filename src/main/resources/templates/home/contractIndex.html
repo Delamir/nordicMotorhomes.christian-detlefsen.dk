@@ -14,12 +14,12 @@
     <a th:href="@{'/customerIndex/'}">Manage Customer</a>
 </div>
 
-<h1>Contract Management</h1>
+<h1 id="genericHeader">Contract Management</h1>
 
 <div class="centering">
 <table class="table">
     <tr>
-        <th id="genericTableHeader" colspan="5">Contracts</th>
+        <th id="genericTableHeader" colspan="7">Contracts</th>
     </tr>
 
     <tbody>
@@ -28,6 +28,7 @@
     <th>Odometer</th>
     <th>Customer ID</th>
     <th>Price for rental</th>
+    <th colspan="2">Actions</th>
 
     <tr th:each="contract : ${contracts}">
         <td th:text="${contract.fromDate}"></td>

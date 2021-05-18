@@ -17,7 +17,8 @@
 
 <h1>Edit a Contract</h1>
 
-<form class="form" onsubmit="return confirm('Are you sure you want to edit this contract?')" action="/editContract/" method="post">
+<form class="form" onsubmit="return confirm('Are you sure you want to edit this contract?')" action="/editContract/"
+      method="post">
     <label>Contract Start Date: </label>
     <input type="datetime-local" name="fromDate" th:value="${contract.fromDate}">
     <label>Contract End Date: </label>
@@ -27,14 +28,21 @@
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price" th:value="${contract.price}">
     <label>Customer:</label>
-        <label>Motorhome: </label>
-        <select name="motorhome">
-            <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}" th:selected="${motorhome.licencePlate.equals(contract.motorhome)}"
-                    th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
-        </select>
-        <label></label>
-
-        <button type="submit" id="submitButton">Edit Contract</button>
+    <label>Motorhome: </label>
+    <label></label>
+    <input type="submit" id="submitButton" value="Edit contract">
+    <select name="motorhome">
+        <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
+                th:selected="${motorhome.licencePlate.equals(contract.motorhome)}"
+                th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+    </select>
+    <!--
+    <select name="customer">
+        <option th:each="customer:${customers}" th:value="${customer.customerNumber}"
+                th:selected="${customer.customerNumber.equals(contract.customer)}"
+                th:text="${customer.name} + ', ' + ${customer.licenceNumber}"></option>
+    </select>
+--->
 
 </form>
 </body>
