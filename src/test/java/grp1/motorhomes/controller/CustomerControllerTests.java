@@ -50,7 +50,7 @@ public class CustomerControllerTests {
             customer.setCustomerNumber(1);
             customer.setCity("Glostrup" + i);
             customer.setStreet("Vestergårdsvej 123" + i);
-            customer.setPostCode(2600 + i);
+            customer.setPostCode(2600);
             customer.setLicenceNumber("AD598741" + i);
             customer.setName("Bjørn Bruno" + i);
             customers.add(customer);
@@ -71,7 +71,7 @@ public class CustomerControllerTests {
                 .andExpect(content().string(containsString("Customer Management")))
                 .andExpect(content().string(containsString("Glostrup2")))
                 .andExpect(content().string(containsString("Vestergårdsvej 1235")))
-                .andExpect(content().string(containsString("26008")))
+                .andExpect(content().string(containsString("2600")))
                 .andExpect(content().string(containsString("AD5987419")))
                 .andExpect(content().string(containsString("Bjørn Bruno1")))
                 .andExpect(status().isOk());
@@ -114,8 +114,9 @@ public class CustomerControllerTests {
 
         when(customerService.findCustomer(customers.get(0).getCustomerNumber())).thenReturn(customers.get(0));
 
-        mockMvc.perform(get("/customerEdit/" + customers.get(0).getCustomerNumber()))
+        mockMvc.perform(get("/editCustomer/" + customers.get(0).getCustomerNumber()))
                 .andExpect(model().attribute("customer", customers.get(0)))
+                .andExpect(content().string(containsString("Edit a Customer")))
                 .andExpect(content().string(containsString("Glostrup")))
                 .andExpect(content().string(containsString("Vestergårdsvej 123")))
                 .andExpect(content().string(containsString("2600")))

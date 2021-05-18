@@ -122,8 +122,9 @@ public class ContractControllerTests {
     @Test
     public void editTest() throws Exception {
 
-        mockMvc.perform(get("/contractEdit/"+contracts.get(0).getContractId()))
+        mockMvc.perform(get("/editContract/" + contracts.get(0).getContractId()))
                 .andExpect(model().attribute("contract", contracts.get(0)))
+                .andExpect(content().string(containsString("Edit a Contract")))
                 .andExpect(content().string(containsString("2021-05-17T13:20")))
                 .andExpect(content().string(containsString("2021-06-17T13:20")))
                 .andExpect(content().string(containsString("Jack")))

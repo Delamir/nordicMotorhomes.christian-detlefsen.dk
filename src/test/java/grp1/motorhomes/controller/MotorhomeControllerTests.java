@@ -117,11 +117,5 @@ public class MotorhomeControllerTests {
                 .andExpect(content().string(containsString("type1")))
                 .andExpect(content().string(containsString("description1")))
                 .andExpect(status().isOk());
-
-
-
-
-
     }
-
 }
