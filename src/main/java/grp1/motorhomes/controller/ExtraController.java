@@ -19,35 +19,54 @@ public class ExtraController {
     @Autowired
     ExtraService extraService;
 
+    /**
+     * @author Patrick
+     * @param model
+     */
     @GetMapping("/extraIndex")
     public String extraIndex(Model model) {
         model.addAttribute("extras", extraService.fetchAllExtras());
         return "home/extraIndex";
     }
 
+    /**
+     * @author Patrick
+     */
     @GetMapping("/createExtra")
     public String createExtra() {
         return "home/createExtra";
     }
 
+    /**
+     * @author Patrick
+     */
     @PostMapping("/createExtra")
     public String createExtra(@ModelAttribute Extra extra) {
         extraService.createExtras(extra);
         return "redirect:/extraIndex";
     }
 
+    /**
+     * @author Patrick
+     */
     @PostMapping("/editExtra")
     public String editExtra(@ModelAttribute Extra extra) {
         extraService.editExtra(extra);
         return "redirect:/extraIndex";
     }
 
+    /**
+     * @author Patrick
+     */
     @GetMapping("/editExtra/{extraId}")
     public String editExtra(@PathVariable("extraId") int extraId, Model model) {
         model.addAttribute("extra", extraService.findExtra(extraId));
         return "home/editExtra";
     }
 
+    /**
+     * @author Patrick
+     */
     @GetMapping("/deleteExtra/{extraId}")
     public String deleteExtra(@PathVariable("extraId") int extraId) {
         extraService.deleteExtra(extraId);
