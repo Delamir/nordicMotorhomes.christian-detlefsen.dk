@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="author" content="Patrick">
+    <meta charset="UTF-8">
+    <title>Create new Extra</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a class="active" th:href="@{'/extraIndex/'}">Manage Extra</a>
+</div>
+<br>
+
+<form class="form" onsubmit="return confirm('Are you sure you want to create a extra item?')" action="/createExtra" method="post">
+    <label>Name:</label>
+    <input type="text" name="name" placeholder="name">
+    <label>Description:</label>
+    <input type="text" name="description" placeholder="description">
+    <label>Price:</label>
+    <input type="text" name="price" placeholder="price">
+    <label></label>
+    <input type="submit" id="submitButton" value="Add Extra">
+
+</form>
+</body>
+</html>
