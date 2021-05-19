@@ -23,7 +23,9 @@ public class Contract {
     private String motorhome;
     private int excessKm;
     private int transferKm;
-
+    private boolean delivered;
+    private boolean pickedUp;
+    private boolean closed;
 
     /**
      * @author Christian
@@ -52,6 +54,9 @@ public class Contract {
         this.motorhome = motorhome;
         this.excessKm = excessKm;
         this.transferKm = transferKm;
+        this.delivered = isDelivered();
+        this.pickedUp = isPickedUp();
+        this.closed = isClosed();
     }
 
     public int getContractId() {
@@ -86,6 +91,7 @@ public class Contract {
     public Timestamp getToDate() {
         return toDate;
     }
+
     /**
      * @author Sverri
      * @param to
@@ -102,7 +108,6 @@ public class Contract {
         }
         this.toDate = Timestamp.valueOf(localDateTime);
     }
-
     public int getOdometer() {
         return odometer;
     }
@@ -149,6 +154,30 @@ public class Contract {
 
     public void setTransferKm(int transferKm) {
         this.transferKm = transferKm;
+    }
+
+    public boolean isDelivered() {
+        return delivered;
+    }
+
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
+    }
+
+    public boolean isPickedUp() {
+        return pickedUp;
+    }
+
+    public void setPickedUp(boolean pickedUp) {
+        this.pickedUp = pickedUp;
+    }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
     }
 
     @Override

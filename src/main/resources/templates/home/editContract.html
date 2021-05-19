@@ -27,6 +27,16 @@
     <input type="text" name="odometer" placeholder="Odometer" th:value="${contract.odometer}">
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price" th:value="${contract.price}">
+    <label>Excess Km: </label>
+    <input type="text" name="excessKm">
+    <label>Transfer Km: </label>
+    <input type="text" name="transerKm">
+    <label>Delivered: </label>
+    <input type="checkbox" name="delivered">
+    <label>Picked up: </label>
+    <input type="checkbox" name="pickedUp">
+    <label>Closed: </label>
+    <input type="checkbox" name="closed">
     <label>Customer:</label>
     <label>Motorhome: </label>
     <label></label>
@@ -36,6 +46,7 @@
                 th:selected="${motorhome.licencePlate.equals(contract.motorhome)}"
                 th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
     </select>
+
     <!--
     <select name="customer">
         <option th:each="customer:${customers}" th:value="${customer.customerNumber}"

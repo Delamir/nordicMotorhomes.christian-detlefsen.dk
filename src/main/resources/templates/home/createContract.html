@@ -24,8 +24,18 @@
     <input type="text" name="odometer" placeholder="Odometer">
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price">
+    <label>Excess Km: </label>
+    <input type="text" name="excessKm">
+    <label>Transfer Km: </label>
+    <input type="text" name="transerKm">
+    <label>Delivered: </label>
+    <input type="checkbox" name="delivered">
+    <label>Picked up: </label>
+    <input type="checkbox" name="pickedUp">
+    <label>Closed: </label>
+    <input type="checkbox" name="closed">
     <label>Customer:</label>
-    <select name="customerNumber">f
+    <select name="customerNumber">
         <option th:each="customer:${customers}" th:value="${customer.customerNumber}" th:text="${customer.name}"></option>
     </select>
     <label>Motorhome:</label>
