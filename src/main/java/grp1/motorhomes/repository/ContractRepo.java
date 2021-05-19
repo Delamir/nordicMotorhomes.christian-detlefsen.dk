@@ -29,9 +29,9 @@ public class ContractRepo {
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "SELECT contract_id, from_date, to_date, " +
                 "odometer, excess_km, transfer_km, customer_number, customer_number, " +
-                "motorhome, delivered, picked_up, closed, extra_id, price, name, description " +
+                "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
                 "FROM contracts JOIN contracts_extras using(contract_id) JOIN extras using(extra_id)";
-        ResultSetExtractor extractor = new ContractResultSetExtractor();
+        ContractResultSetExtractor extractor = new ContractResultSetExtractor();
         return (List<Contract>) template.query(sqlStatement, extractor);
     }
 
@@ -41,11 +41,11 @@ public class ContractRepo {
      */
     public void createContract(Contract contract) {
         String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, excess_km, " +
-                "transfer_km, customer_number, motorhome, delivered, picked_up, closed) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "transfer_km, customer_number, motorhome) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         template.update(insertContractValues, contract.getFromDate(), contract.getToDate(),
                 contract.getOdometer(), contract.getExcessKm(), contract.getTransferKm(), contract.getCustomerNumber(),
-                contract.getMotorhome(), contract.isDelivered(), contract.isPickedUp(), contract.isClosed());
+                contract.getMotorhome());
     }
 
     /**
@@ -54,11 +54,15 @@ public class ContractRepo {
      * @author Sverri
      */
     public Contract findContract(int contractId) {
-        String selectSql = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate," +
-                "odometer, customer_number AS customer, customer_number AS customerNumber, motorhome " +
-                "FROM contracts WHERE contract_id = ?";
-        RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
-        return template.queryForObject(selectSql, rowMapper, contractId);
+        String selectSql = "SELECT contract_id, from_date, to_date, " +
+                "odometer, excess_km, transfer_km, customer_number, customer_number, " +
+                "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
+                "FROM contracts JOIN contracts_extras using(contract_id) JOIN extras using(extra_id) WHERE contract_id = ?";
+        ContractResultSetExtractor extractor = new ContractResultSetExtractor();
+        //RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
+        List<Contract> contracts = (List<Contract>) template.query(selectSql, extractor, contractId);
+        return contracts.get(0);
+
     }
 
     /**
@@ -67,11 +71,16 @@ public class ContractRepo {
      */
     public void editContract(Contract contract) {
         String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, customer_number = ?, motorhome = ?, " +
-                "excess_km = ?, transfer_km = ?, delivered = ?, picked_up = ?, closed = ?" +
+                "excess_km = ?, transfer_km = ?, delivery_point = ?, delivered = ?, pickup_point = ?, picked_up = ?, closed = ?" +
                 " WHERE contract_id = ?";
         template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(), contract.getCustomerNumber(),
-                contract.getMotorhome(), contract.getExcessKm(), contract.getTransferKm(), contract.isDelivered(),
-                contract.isPickedUp(), contract.isClosed(), contract.getContractId());
+                contract.getMotorhome(), contract.getExcessKm(), contract.getTransferKm(), contract.getDeliveryPoint(),
+                contract.isDelivered(), contract.getPickupPoint(), contract.isPickedUp(), contract.isClosed(), contract.getContractId());
+    }
+
+    public void editExtra(Extra extra){
+        String updateSql = "UPDATE extras SET price = ?, name = ?, description = ? WHERE extra_id = ?";
+            template.update(updateSql, extra.getPrice(), extra.getName(), extra.getDescription(), extra.getExtraId());
     }
 
     /**
@@ -79,7 +88,9 @@ public class ContractRepo {
      * @author Sverri
      */
     public void deleteContract(int contractId) {
-        String deleteSql = "DELETE FROM contracts WHERE contract_id = ?";
+        String deleteSql = "DELETE FROM contracts_extras WHERE contract_id = ?";
+        template.update(deleteSql, contractId);
+        deleteSql = "DELETE FROM contracts WHERE contract_id = ?";
         template.update(deleteSql, contractId);
     }
 
