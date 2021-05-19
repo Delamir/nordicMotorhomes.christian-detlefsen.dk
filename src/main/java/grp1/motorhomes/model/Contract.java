@@ -24,12 +24,13 @@ public class Contract {
     private String motorhome;
     private int excessKm;
     private int transferKm;
+    private String deliveryPoint;
+    private String pickupPoint;
 
     @ManyToMany
     private List<Extra> extras;
 
     private boolean delivered;
-
     private boolean pickedUp;
     private boolean closed;
     /**
@@ -215,5 +216,21 @@ public class Contract {
                 ", pickedUp=" + pickedUp +
                 ", closed=" + closed +
                 '}';
+    }
+
+    public String getDeliveryPoint() {
+        return deliveryPoint;
+    }
+
+    public void setDeliveryPoint(String deliveryPoint) {
+        this.deliveryPoint = deliveryPoint;
+    }
+
+    public String getPickupPoint() {
+        return pickupPoint;
+    }
+
+    public void setPickupPoint(String pickupPoint) {
+        this.pickupPoint = pickupPoint;
     }
 }

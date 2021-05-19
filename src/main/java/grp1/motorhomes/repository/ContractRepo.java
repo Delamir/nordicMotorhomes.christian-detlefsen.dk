@@ -29,7 +29,7 @@ public class ContractRepo {
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "SELECT contract_id, from_date, to_date, " +
                 "odometer, excess_km, transfer_km, customer_number, customer_number, " +
-                "motorhome, delivered, picked_up, closed, extra_id, price, name, description " +
+                "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
                 "FROM contracts JOIN contracts_extras using(contract_id) JOIN extras using(extra_id)";
         ResultSetExtractor extractor = new ContractResultSetExtractor();
         return (List<Contract>) template.query(sqlStatement, extractor);
