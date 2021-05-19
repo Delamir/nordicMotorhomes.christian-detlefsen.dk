@@ -25,8 +25,9 @@ public class ContractRepo {
      */
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate, " +
-                "odometer, excess_km AS excessKm, transfer_km AS transferKm, customer_number AS customer, customer_number AS customerNumber, " +
-                "motorhome,  extra_id AS extraId " +
+                "odometer, excess_km AS excessKm, transfer_km AS transferKm, delivered, picked_up AS pickedUp, closed, " +
+                "customer_number AS customer, customer_number AS customerNumber, " +
+                "motorhome, extra_id AS extraId " +
                 "FROM contracts JOIN contracts_extras using(contract_id)";
         RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
         return template.query(sqlStatement, rowMapper);
@@ -48,10 +49,11 @@ public class ContractRepo {
      * @author Christian
      */
     public void createContract(Contract contract) {
-        String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, customer_number, motorhome) "
-                + "VALUES (?, ?, ?, ?, ?)";
+        String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, customer_number, motorhome, delivered, picked_up, closed) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         template.update(insertContractValues, contract.getFromDate(), contract.getToDate(),
-                contract.getOdometer(), contract.getCustomerNumber(), contract.getMotorhome());
+                contract.getOdometer(), contract.getCustomerNumber(), contract.getMotorhome(),
+                contract.isDelivered(), contract.isPickedUp(), contract.isClosed());
     }
 
     /**
@@ -72,8 +74,12 @@ public class ContractRepo {
      * @param contract
      */
     public void editContract(Contract contract) {
-        String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, customer_number = ?, motorhome = ? WHERE contract_id = ?";
-        template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(), contract.getCustomerNumber(), contract.getMotorhome(), contract.getContractId());
+        String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, customer_number = ?, motorhome = ?, " +
+                "excess_km = ?, transfer_km = ?, delivered = ?, picked_up = ?, closed = ?" +
+                " WHERE contract_id = ?";
+        template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(), contract.getCustomerNumber(),
+                contract.getMotorhome(), contract.getExcessKm(), contract.getTransferKm(), contract.isDelivered(),
+                contract.isPickedUp(), contract.isClosed(), contract.getContractId());
     }
 
     /**
