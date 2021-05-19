@@ -3,6 +3,7 @@ package grp1.motorhomes.repository;
 import grp1.motorhomes.model.Contract;
 import grp1.motorhomes.model.Extra;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -18,6 +19,8 @@ public class ContractRepo {
 
     @Autowired
     JdbcTemplate template;
+
+
 
     /**
      * @return

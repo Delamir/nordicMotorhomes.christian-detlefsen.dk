@@ -1,10 +1,10 @@
 package grp1.motorhomes.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /**
  * @author Christian
@@ -23,6 +23,8 @@ public class Contract {
     private String motorhome;
     private int excessKm;
     private int transferKm;
+    @ManyToMany
+    private List<Extra> extras;
 
 
     /**
@@ -54,6 +56,10 @@ public class Contract {
         this.transferKm = transferKm;
     }
 
+    public void addExtra(int extra_id, int price, String name, String desription) {
+        extras.add(new Extra(extra_id, price, name, desription));
+    }
+
     public int getContractId() {
         return contractId;
     }
@@ -82,10 +88,10 @@ public class Contract {
         }
         this.fromDate = Timestamp.valueOf(localDateTime);
     }
-
     public Timestamp getToDate() {
         return toDate;
     }
+
     /**
      * @author Sverri
      * @param to
