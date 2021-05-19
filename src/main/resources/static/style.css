@@ -104,6 +104,7 @@
 .genericHeaderPosition {
     text-align: center;
     font-family: "Britannic Bold", serif;
+    color: white;
     position: absolute;
     top: 25%;
     left: 50%;
