@@ -3,6 +3,9 @@ package grp1.motorhomes.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * @author Christian
+ */
 @Entity
 public class Extra {
 
@@ -13,10 +16,20 @@ public class Extra {
     private String description;
     private String name;
 
+    /**
+     * @author Christian
+     */
     public Extra() {
 
     }
 
+    /**
+     * @author Christain
+     * @param extraId
+     * @param price
+     * @param description
+     * @param name
+     */
     public Extra(int extraId, int price, String description, String name) {
         this.extraId = extraId;
         this.price = price;
