@@ -32,6 +32,10 @@ public class ContractRepo {
         return template.query(sqlStatement, rowMapper);
     }
 
+    /**
+     * @author Christian
+     * @return
+     */
     public List<Extra> fetchAllExtras() {
         String sqlStatement = "SELECT extra_id AS extraId, price, description, name " +
                 "FROM extras";
