@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -21,30 +22,17 @@ public class ContractRepo {
     JdbcTemplate template;
 
 
-
     /**
      * @return
      * @author Christian
      */
     public List<Contract> fetchAllContracts() {
-        String sqlStatement = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate, " +
-                "odometer, excess_km AS excessKm, transfer_km AS transferKm, delivered, picked_up AS pickedUp, closed, " +
-                "customer_number AS customer, customer_number AS customerNumber, " +
-                "motorhome, extra_id AS extraId " +
-                "FROM contracts JOIN contracts_extras using(contract_id)";
-        RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
-        return template.query(sqlStatement, rowMapper);
-    }
-
-    /**
-     * @author Christian
-     * @return
-     */
-    public List<Extra> fetchAllExtras() {
-        String sqlStatement = "SELECT extra_id AS extraId, price, description, name " +
-                "FROM extras";
-        RowMapper<Extra> rowMapper = new BeanPropertyRowMapper<>(Extra.class);
-        return template.query(sqlStatement,rowMapper);
+        String sqlStatement = "SELECT contract_id, from_date, to_date, " +
+                "odometer, excess_km, transfer_km, customer_number, customer_number, " +
+                "motorhome, delivered, picked_up, closed, extra_id, price, name, description " +
+                "FROM contracts JOIN contracts_extras using(contract_id) JOIN extras using(extra_id)";
+        ResultSetExtractor extractor = new ContractResultSetExtractor();
+        return (List<Contract>) template.query(sqlStatement, extractor);
     }
 
     /**
@@ -61,9 +49,9 @@ public class ContractRepo {
     }
 
     /**
-     * @author Sverri
      * @param contractId
      * @return
+     * @author Sverri
      */
     public Contract findContract(int contractId) {
         String selectSql = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate," +
@@ -74,8 +62,8 @@ public class ContractRepo {
     }
 
     /**
-     * @author Sverri
      * @param contract
+     * @author Sverri
      */
     public void editContract(Contract contract) {
         String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, customer_number = ?, motorhome = ?, " +
@@ -87,12 +75,12 @@ public class ContractRepo {
     }
 
     /**
-     * @author Sverri
      * @param contractId
+     * @author Sverri
      */
-    public void deleteContract(int contractId){
+    public void deleteContract(int contractId) {
         String deleteSql = "DELETE FROM contracts WHERE contract_id = ?";
-        template.update(deleteSql,contractId);
+        template.update(deleteSql, contractId);
     }
 
 }

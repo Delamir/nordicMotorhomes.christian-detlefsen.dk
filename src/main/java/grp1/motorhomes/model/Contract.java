@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,13 +24,14 @@ public class Contract {
     private String motorhome;
     private int excessKm;
     private int transferKm;
+
     @ManyToMany
     private List<Extra> extras;
 
     private boolean delivered;
+
     private boolean pickedUp;
     private boolean closed;
-
     /**
      * @author Christian
      */
@@ -45,9 +47,10 @@ public class Contract {
      * @param odometer
      * @param customerNumber
      * @param price
+     * @param extras
      */
-    public Contract (int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
-                     int price, String motorhome, int excessKm, int transferKm) {
+    public Contract(int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
+                    int price, String motorhome, int excessKm, int transferKm, List<Extra> extras) {
         this.contractId = contractId;
         this.fromDate = fromDate;
         this.toDate = toDate;
@@ -57,6 +60,45 @@ public class Contract {
         this.motorhome = motorhome;
         this.excessKm = excessKm;
         this.transferKm = transferKm;
+        this.extras = extras;
+    }
+
+    public void addExtra(int id, int price, String name, String description){
+        if(extras == null)
+            extras = new ArrayList<>();
+        extras.add(new Extra(id, price, name, description));
+    }
+
+    public List<Extra> getExtras() {
+        return extras;
+    }
+
+    public void setExtras(List<Extra> extras) {
+        this.extras = extras;
+    }
+
+    public boolean isDelivered() {
+        return delivered;
+    }
+
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
+    }
+
+    public boolean isPickedUp() {
+        return pickedUp;
+    }
+
+    public void setPickedUp(boolean pickedUp) {
+        this.pickedUp = pickedUp;
+    }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
     }
 
     public int getContractId() {
@@ -166,6 +208,12 @@ public class Contract {
                 ", customerNumber=" + customerNumber +
                 ", price=" + price +
                 ", motorhome='" + motorhome + '\'' +
+                ", excessKm=" + excessKm +
+                ", transferKm=" + transferKm +
+                ", extras=" + extras +
+                ", delivered=" + delivered +
+                ", pickedUp=" + pickedUp +
+                ", closed=" + closed +
                 '}';
     }
 }

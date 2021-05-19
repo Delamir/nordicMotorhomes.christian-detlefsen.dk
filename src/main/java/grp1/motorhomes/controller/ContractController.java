@@ -38,6 +38,7 @@ public class ContractController {
      */
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
+        System.out.println(contractService.fetchAllContracts().get(0));
         model.addAttribute("contracts", contractService.fetchAllContracts());
         return "home/contractIndex";
     }

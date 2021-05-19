@@ -67,4 +67,14 @@ public class Extra {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Extra{" +
+                "extraId=" + extraId +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
