@@ -88,6 +88,7 @@
     background-color: #cbcbcb;
 }
 
+
 #genericTableHeader {
     font-family: Arial, serif;
     font-weight: bold;
@@ -96,16 +97,38 @@
     color: white;
 }
 
+.genericHeaderContainer {
+    position: relative;
+}
+
+.genericHeaderPosition {
+    text-align: center;
+    font-family: "Britannic Bold", serif;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #genericHeader {
     text-align: center;
     font-family: "Britannic Bold", serif;
+}
+
+.imgBlur {
+    filter: blur(3px);
+    width: 75%;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* With inspiration from https://www.w3schools.com/howto/howto_css_center_button.asp
 @Author Joachim*/
 
 .centering {
-    top: 45%;
+    top: 30%;
     left: 50%;
     margin: 0;
     position: absolute;
@@ -131,4 +154,7 @@
     position: absolute;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+#topPic {
 }
