@@ -13,7 +13,9 @@ import java.util.List;
 
 /**
  * @author Sverri
- * customer ResultSetExtractor so that we can map multiple rows in a join query to a single object
+ * contract ResultSetExtractor so that we can map multiple rows in a join query to a single object.
+ * made wtih help from:
+ * https://stackoverflow.com/questions/32093350/rowmapper-put-multiple-results-into-list-attribute
  */
 public class ContractResultSetExtractor implements ResultSetExtractor {
 
