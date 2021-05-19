@@ -49,11 +49,12 @@ public class ContractRepo {
      * @author Christian
      */
     public void createContract(Contract contract) {
-        String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, customer_number, motorhome, delivered, picked_up, closed) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, customer_number, excess_km, " +
+                "transfer_km, motorhome, delivered, picked_up, closed) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         template.update(insertContractValues, contract.getFromDate(), contract.getToDate(),
-                contract.getOdometer(), contract.getCustomerNumber(), contract.getMotorhome(),
-                contract.isDelivered(), contract.isPickedUp(), contract.isClosed());
+                contract.getOdometer(), contract.getCustomerNumber(), contract.getExcessKm(), contract.getTransferKm(),
+                contract.getMotorhome(), contract.isDelivered(), contract.isPickedUp(), contract.isClosed());
     }
 
     /**
