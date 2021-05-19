@@ -2,7 +2,6 @@ package grp1.motorhomes.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,6 +21,9 @@ public class Contract {
     private int customerNumber;
     private int price;
     private String motorhome;
+    private int excessKm;
+    private int transferKm;
+
 
     /**
      * @author Christian
@@ -40,7 +42,7 @@ public class Contract {
      * @param price
      */
     public Contract (int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
-                     int price, String motorhome) {
+                     int price, String motorhome, int excessKm, int transferKm) {
         this.contractId = contractId;
         this.fromDate = fromDate;
         this.toDate = toDate;
@@ -48,6 +50,8 @@ public class Contract {
         this.customerNumber = customerNumber;
         this.price = price;
         this.motorhome = motorhome;
+        this.excessKm = excessKm;
+        this.transferKm = transferKm;
     }
 
     public int getContractId() {
@@ -78,10 +82,10 @@ public class Contract {
         }
         this.fromDate = Timestamp.valueOf(localDateTime);
     }
+
     public Timestamp getToDate() {
         return toDate;
     }
-
     /**
      * @author Sverri
      * @param to
@@ -129,6 +133,22 @@ public class Contract {
 
     public void setMotorhome(String motorhome) {
         this.motorhome = motorhome;
+    }
+
+    public int getExcessKm() {
+        return excessKm;
+    }
+
+    public void setExcessKm(int excessKm) {
+        this.excessKm = excessKm;
+    }
+
+    public int getTransferKm() {
+        return transferKm;
+    }
+
+    public void setTransferKm(int transferKm) {
+        this.transferKm = transferKm;
     }
 
     @Override

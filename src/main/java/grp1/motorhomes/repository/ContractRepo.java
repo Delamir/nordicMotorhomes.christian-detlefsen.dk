@@ -1,6 +1,7 @@
 package grp1.motorhomes.repository;
 
 import grp1.motorhomes.model.Contract;
+import grp1.motorhomes.model.Extra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,10 +25,18 @@ public class ContractRepo {
      */
     public List<Contract> fetchAllContracts() {
         String sqlStatement = "SELECT contract_id AS contractId, from_date AS fromDate, to_date AS toDate, " +
-                "odometer, customer_number AS customer, customer_number AS customerNumber, motorhome " +
-                "FROM contracts ";
+                "odometer, excess_km AS excessKm, transfer_km AS transferKm, customer_number AS customer, customer_number AS customerNumber, " +
+                "motorhome,  extra_id AS extraId " +
+                "FROM contracts JOIN contracts_extras using(contract_id)";
         RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
         return template.query(sqlStatement, rowMapper);
+    }
+
+    public List<Extra> fetchAllExtras() {
+        String sqlStatement = "SELECT extra_id AS extraId, price, description, name " +
+                "FROM extras";
+        RowMapper<Extra> rowMapper = new BeanPropertyRowMapper<>(Extra.class);
+        return template.query(sqlStatement,rowMapper);
     }
 
     /**
