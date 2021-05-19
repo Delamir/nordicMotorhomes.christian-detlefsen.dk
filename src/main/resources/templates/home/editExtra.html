@@ -20,6 +20,7 @@
 <h1>Edit an Extra</h1>
 
 <form class="form" onsubmit="return confirm('Are you sure you want to edit this extra item?')" action="/editExtra/" method="post">
+    <input type="hidden" name="extraId" th:value="${extra.extraId}">
     <label>Name:</label>
     <input type="text" name="name" th:value="${extra.name}">
     <label>Description:</label>

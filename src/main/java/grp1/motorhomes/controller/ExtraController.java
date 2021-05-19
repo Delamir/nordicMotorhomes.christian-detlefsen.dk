@@ -25,15 +25,21 @@ public class ExtraController {
         return "home/extraIndex";
     }
 
-    @GetMapping("/CreateExtra")
+    @GetMapping("/createExtra")
     public String createExtra() {
         return "home/createExtra";
+    }
+
+    @PostMapping("/createExtra")
+    public String createExtra(@ModelAttribute Extra extra) {
+        extraService.createExtras(extra);
+        return "redirect:/extraIndex";
     }
 
     @PostMapping("/editExtra")
     public String editExtra(@ModelAttribute Extra extra) {
         extraService.editExtra(extra);
-        return "redirect:extraIndex";
+        return "redirect:/extraIndex";
     }
 
     @GetMapping("/editExtra/{extraId}")

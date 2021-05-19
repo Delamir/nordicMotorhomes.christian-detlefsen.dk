@@ -37,7 +37,7 @@ public class ExtraRepo {
     }
 
     public void editExtra(Extra extra) {
-        String updateSql = "UPDATE extras SET price = ?, description = ?, name = ?; WHERE extra_id = ?";
+        String updateSql = "UPDATE extras SET price = ?, description = ?, name = ? WHERE extra_id = ?";
         template.update(updateSql, extra.getPrice(), extra.getDescription(), extra.getName(), extra.getExtraId());
     }
 
