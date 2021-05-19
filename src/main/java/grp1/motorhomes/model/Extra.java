@@ -8,7 +8,6 @@ public class Extra {
 
     @Id
     private int extraId;
-
     private int price;
     private String description;
     private String name;
