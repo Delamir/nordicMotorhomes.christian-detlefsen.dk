@@ -23,7 +23,6 @@ public class Customer {
      * @author Christian
      */
     public Customer() {
-
     }
 
     /**
