@@ -28,15 +28,15 @@
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price" th:value="${contract.price}">
     <label>Excess Km: </label>
-    <input type="text" name="excessKm">
+    <input type="text" name="excessKm" th:value="${contract.excessKm}">
     <label>Transfer Km: </label>
-    <input type="text" name="transerKm">
+    <input type="text" name="transerKm" th:value="${contract.transferKm}">
     <label>Delivered: </label>
-    <input type="checkbox" name="delivered">
+    <input type="checkbox" name="delivered" th:value="${contract.delivered}">
     <label>Picked up: </label>
-    <input type="checkbox" name="pickedUp">
+    <input type="checkbox" name="pickedUp" th:value="${contract.pickedUp}">
     <label>Closed: </label>
-    <input type="checkbox" name="closed">
+    <input type="checkbox" name="closed" th:value="${contract.closed}">
     <label>Customer:</label>
     <label>Motorhome: </label>
     <label></label>
