@@ -26,6 +26,9 @@ public class Contract {
     @ManyToMany
     private List<Extra> extras;
 
+    private boolean delivered;
+    private boolean pickedUp;
+    private boolean closed;
 
     /**
      * @author Christian
@@ -56,10 +59,6 @@ public class Contract {
         this.transferKm = transferKm;
     }
 
-    public void addExtra(int extra_id, int price, String name, String desription) {
-        extras.add(new Extra(extra_id, price, name, desription));
-    }
-
     public int getContractId() {
         return contractId;
     }
@@ -88,10 +87,10 @@ public class Contract {
         }
         this.fromDate = Timestamp.valueOf(localDateTime);
     }
+
     public Timestamp getToDate() {
         return toDate;
     }
-
     /**
      * @author Sverri
      * @param to
