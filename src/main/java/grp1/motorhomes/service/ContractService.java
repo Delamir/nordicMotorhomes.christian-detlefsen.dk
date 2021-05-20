@@ -56,4 +56,7 @@ public class ContractService {
         contractRepo.deleteContract(contractId);
     }
 
+    public void deliverContract(Contract contract) {
+        contractRepo.deliverContract(contract);
+    }
 }

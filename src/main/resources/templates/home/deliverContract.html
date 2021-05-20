@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Deliver Contract</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a th:href="@{'/extraIndex/'}">Manage Extra</a>
+</div>
+
+<form class="form" method="post" action="/deliverContract">
+    <label>transfer km</label>
+    <input type="hidden" name="contractId" th:value="${contract.contractId}">
+    <input type="number" name="transferKm" placeholder="transfer km">
+    <input type="submit" value="Deliver">
+</form>
+
+
+
+
+
+</body>
+</html>
