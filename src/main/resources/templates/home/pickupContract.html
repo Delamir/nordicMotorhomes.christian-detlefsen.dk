@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Deliver Contract</title>
+    <title>Pickup Contract</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
@@ -15,16 +15,11 @@
     <a th:href="@{'/extraIndex/'}">Manage Extra</a>
 </div>
 
-<form class="form" method="post" action="/deliverContract">
-    <label>Transfer km: </label>
+<form class="form" method="post" action="/pickupContract">
+    <label>Pickup Point: </label>
     <input type="hidden" name="contractId" th:value="${contract.contractId}">
-    <input type="number" name="transferKm" placeholder="transfer km">
-    <input type="submit" value="Deliver">
+    <input type="text" name="pickupPoint" placeholder="Pickup Point">
+    <input type="submit" value="Pick Up">
 </form>
-
-
-
-
-
 </body>
 </html>

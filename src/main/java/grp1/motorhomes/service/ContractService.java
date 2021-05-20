@@ -161,4 +161,12 @@ public class ContractService {
     public int daysBetweenDates(Timestamp from, Timestamp to) {
         return (int) Duration.between(from.toLocalDateTime().toLocalDate().atStartOfDay(), to.toLocalDateTime().toLocalDate().atStartOfDay()).toDays();
     }
+
+    /**
+     * @author Joachim
+     * @param contract
+     */
+    public void pickupContract(Contract contract) {
+        contractRepo.pickupContract(contract);
+    }
 }

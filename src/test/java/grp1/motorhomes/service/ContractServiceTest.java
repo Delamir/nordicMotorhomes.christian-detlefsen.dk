@@ -50,5 +50,17 @@ class ContractServiceTest {
 
     @Test
     void cancellationFee() {
+
+        ArrayList<Extra> extraList = new ArrayList<>();
+        extraList.add(new Extra(1, 200, "Table", "Picnic Table"));
+        extraList.add(new Extra(1, 800, "Bike Rack", "Bike Rack"));
+
+        ContractService contractService = new ContractService();
+        Motorhome m = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
+                "A motorhome", "An ImagePath", 4000, true);
+        Contract c = new Contract(1, Timestamp.valueOf("2021-05-09 12:20:20"), Timestamp.valueOf("2021-06-28 12:20:20"),
+                200000, 2, 5000, "AD99999", extraList);
+
+
     }
 }
