@@ -32,9 +32,9 @@ public class ContractController {
     CustomerService customerService;
 
     /**
-     * @author Christian
      * @param model
      * @return
+     * @author Christian
      */
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
@@ -43,8 +43,8 @@ public class ContractController {
     }
 
     /**
-     * @author Christian
      * @return
+     * @author Christian
      */
     @GetMapping("/createContract")
     public String createContract(Model model) {
@@ -54,9 +54,9 @@ public class ContractController {
     }
 
     /**
-     * @author Chritian
      * @param contract
      * @return
+     * @author Chritian
      */
     @PostMapping("/createContract")
     public String createContract(@ModelAttribute Contract contract) {
@@ -66,10 +66,10 @@ public class ContractController {
     }
 
     /**
-     * @author Sverri
      * @param contractId
      * @param model
      * @return
+     * @author Sverri
      */
     @GetMapping("/editContract/{contractId}")
     public String editContract(@PathVariable int contractId, Model model) {
@@ -80,24 +80,54 @@ public class ContractController {
     }
 
     /**
-     * @author Sverri
      * @param contract
      * @return
+     * @author Sverri
      */
     @PostMapping("/editContract")
-    public String editContract(@ModelAttribute Contract contract){
+    public String editContract(@ModelAttribute Contract contract) {
         contractService.editContract(contract);
         return "redirect:/contractIndex";
     }
 
     /**
-     * @author Sverri
      * @param contractId
      * @return
+     * @author Sverri
      */
     @GetMapping("/deleteContract/{contractId}")
-    public String deleteContract(@PathVariable int contractId){
+    public String deleteContract(@PathVariable int contractId) {
         contractService.deleteContract(contractId);
         return "redirect:/contractIndex";
     }
+
+    /**
+     * @author Patrick
+     * @param contractId
+     * @param model
+     * @return
+     */
+    @GetMapping("/deliverContract/{contractId}")
+    public String deliverContract(@PathVariable int contractId, Model model) {
+        model.addAttribute("contract", contractService.findContract(contractId));
+        return "home/deliverContract";
+    }
+
+    /**
+     * @author Patrick
+     * @param contract
+     * @return
+     */
+    @PostMapping("/deliverContract")
+    public String deliverContract(@ModelAttribute Contract contract) {
+        contractService.deliverContract(contract);
+        return "redirect:/contractIndex";
+    }
+
+    @GetMapping("/pickupContract")
+    public String pickupContract(@PathVariable int contractId, Model model){
+        model.addAttribute("contract", contractService.findContract(contractId));
+        return "home/pickupContract";
+    }
+
 }

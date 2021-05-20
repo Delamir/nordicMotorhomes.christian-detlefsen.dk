@@ -30,7 +30,7 @@ public class ContractRepo {
         String sqlStatement = "SELECT contract_id, from_date, to_date, " +
                 "odometer, excess_km, transfer_km, customer_number, customer_number, " +
                 "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
-                "FROM contracts JOIN contracts_extras using(contract_id) JOIN extras using(extra_id)";
+                "FROM contracts LEFT JOIN contracts_extras using(contract_id) LEFT JOIN extras using(extra_id)";
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
         return (List<Contract>) template.query(sqlStatement, extractor);
     }
@@ -57,7 +57,7 @@ public class ContractRepo {
         String selectSql = "SELECT contract_id, from_date, to_date, " +
                 "odometer, excess_km, transfer_km, customer_number, customer_number, " +
                 "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
-                "FROM contracts JOIN contracts_extras using(contract_id) JOIN extras using(extra_id) WHERE contract_id = ?";
+                "FROM contracts LEFT JOIN contracts_extras using(contract_id) LEFT JOIN extras using(extra_id) WHERE contract_id = ?";
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
         //RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
         List<Contract> contracts = (List<Contract>) template.query(selectSql, extractor, contractId);
@@ -94,4 +94,8 @@ public class ContractRepo {
         template.update(deleteSql, contractId);
     }
 
+    public void deliverContract(Contract contract) {
+        String updateSql = "UPDATE contracts SET delivered = true, transfer_km = ? WHERE contract_id = ?";
+        template.update(updateSql, contract.getTransferKm(), contract.getContractId());
+    }
 }

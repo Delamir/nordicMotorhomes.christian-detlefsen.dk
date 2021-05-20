@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Contract Management</title>
@@ -17,49 +17,63 @@
 
 <div class="genericHeaderContainer">
     <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
-<h1 class="genericHeaderPosition">Contract Management</h1>
+    <h1 class="genericHeaderPosition">Contract Management</h1>
 </div>
 
 <div class="centering">
-<table class="table">
-    <tr>
-        <th id="genericTableHeader" colspan="7">Contracts</th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th id="genericTableHeader" colspan="7">Contracts</th>
+        </tr>
 
-    <tbody>
-    <th>Contract start date</th>
-    <th>Contract end date</th>
-    <th>Odometer</th>
-    <th>Customer ID</th>
-    <th>Price for rental</th>
-    <th colspan="2">Actions</th>
+        <tbody>
+        <th>Contract start date</th>
+        <th>Contract end date</th>
+        <th>Odometer</th>
+        <th>Customer ID</th>
+        <th>Price for rental</th>
+        <th colspan="2">Actions</th>
 
-    <tr th:each="contract : ${contracts}">
-        <td th:text="${contract.fromDate}"></td>
-        <td th:text="${contract.toDate}"></td>
-        <td th:text="${contract.odometer}"></td>
-        <td th:text="${contract.customerNumber}"></td>
-        <td th:text="${contract.price}"></td>
+        <tr th:each="contract : ${contracts}">
+            <td th:text="${contract.fromDate}"></td>
+            <td th:text="${contract.toDate}"></td>
+            <td th:text="${contract.odometer}"></td>
+            <td th:text="${contract.customerNumber}"></td>
+            <td th:text="${contract.price}"></td>
 
-        <td>
-            <a th:href="@{'/editContract/'+${contract.contractId}}">
-                <button type="button">Edit</button>
-            </a>
-        </td>
+            <td>
+                <a th:if="${!contract.delivered}" th:href="@{'/deliverContract/'+${contract.contractId}}">
+                    <button type="button">Deliver</button>
+                </a>
 
-        <td>
-            <a th:href="@{'/deleteContract/'+${contract.contractId}}">
-                <button type="button" onclick="return confirm('Are you sure you want to delete this contract?')">Delete</button>
-            </a>
-        </td>
+                <a th:if="${!contract.pickedUp} AND ${contract.delivered}" th:href="@{'/pickupContract/'+${contract.contractId}}">
+                    <button type="button">Pick up</button>
+                </a>
 
-    </tr>
-    </tbody>
+                <a th:if="${!contract.closed} AND ${contract.pickedUp}" th:href="@{'/closeContract/'+${contract.contractId}}">
+                    <button type="button">Close</button>
+                </a>
 
-</table>
+
+                <a th:href="@{'/editContract/'+${contract.contractId}}">
+                    <button type="button">Edit</button>
+                </a>
+
+                <a th:href="@{'/deleteContract/'+${contract.contractId}}">
+                    <button type="button" onclick="return confirm('Are you sure you want to delete this contract?')">
+                        Delete
+                    </button>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
     <a th:href="@{'/createContract/'}">
         <button type="button" id="addButton">Add new contract</button>
     </a>
+
 
 </div>
 
