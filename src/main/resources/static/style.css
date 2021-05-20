@@ -68,10 +68,16 @@
     background-color: #A0A0A0;
 }
 
-.table {
+.table{
+    position: relative;
+    top: -25px;
+}
+
+.table table{
     margin: auto auto;
     text-align: center;
     border-collapse: collapse;
+    background-color: white;
 }
 
 .table td {
@@ -111,11 +117,6 @@
     transform: translate(-50%, -50%);
 }
 
-#genericHeader {
-    text-align: center;
-    font-family: "Britannic Bold", serif;
-}
-
 .imgBlur {
     filter: blur(3px);
     width: 75%;
@@ -127,15 +128,6 @@
 
 /* With inspiration from https://www.w3schools.com/howto/howto_css_center_button.asp
 @Author Joachim*/
-
-.centering {
-    top: 31%;
-    left: 50%;
-    margin: 0;
-    position: absolute;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
 
 #addButton {
     margin-top: 35px;
@@ -155,7 +147,4 @@
     position: absolute;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
-
-#topPic {
 }
