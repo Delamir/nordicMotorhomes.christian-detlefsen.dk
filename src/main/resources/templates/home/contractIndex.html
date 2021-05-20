@@ -20,8 +20,8 @@
     <h1 class="genericHeaderPosition">Contract Management</h1>
 </div>
 
-<div class="centering">
-    <table class="table">
+<div class="table">
+    <table>
         <tr>
             <th id="genericTableHeader" colspan="7">Contracts</th>
         </tr>
@@ -35,8 +35,8 @@
         <th colspan="2">Actions</th>
 
         <tr th:each="contract : ${contracts}">
-            <td th:text="${contract.fromDate}"></td>
-            <td th:text="${contract.toDate}"></td>
+            <td th:text="${contract.getFromDateAsString}"></td>
+            <td th:text="${#strings.substring(contract.toDate.toString(),0,16)}"></td>
             <td th:text="${contract.odometer}"></td>
             <td th:text="${contract.customerNumber}"></td>
             <td th:text="${contract.price}"></td>

@@ -113,6 +113,14 @@ public class Contract {
         return fromDate;
     }
 
+    public String getFromDateAsString(){
+        String returnString = "";
+        returnString += fromDate.toLocalDateTime().getDayOfMonth()+". ";
+        returnString += fromDate.toLocalDateTime().getMonth().name().toLowerCase() + " ";
+        returnString += fromDate.toLocalDateTime().getHour() + ":" + fromDate.toLocalDateTime().getMinute();
+        return returnString;
+    }
+
     /**
      * @author Sverri
      * @param from
