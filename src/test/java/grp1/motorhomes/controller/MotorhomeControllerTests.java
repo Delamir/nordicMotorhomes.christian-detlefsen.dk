@@ -24,6 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 // made with help from https://spring.io/guides/gs/testing-web/
 
+/**
+ * @author Sverri
+ */
 @WebMvcTest(MotorhomeController.class)
 public class MotorhomeControllerTests {
 
@@ -35,6 +38,9 @@ public class MotorhomeControllerTests {
 
     static List<Motorhome> motorhomes;
 
+    /**
+     * @author Sverri
+     */
     @BeforeAll  // some model data to work with for each test
     public static void before() {
         motorhomes = new ArrayList<>();

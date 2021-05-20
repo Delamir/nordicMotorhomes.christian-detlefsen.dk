@@ -52,7 +52,7 @@ public class Contract {
      * @param extras
      */
     public Contract(int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
-                    int price, String motorhome, int excessKm, int transferKm, List<Extra> extras) {
+                    int price, String motorhome, List<Extra> extras) {
         this.contractId = contractId;
         this.fromDate = fromDate;
         this.toDate = toDate;
@@ -60,8 +60,6 @@ public class Contract {
         this.customerNumber = customerNumber;
         this.price = price;
         this.motorhome = motorhome;
-        this.excessKm = excessKm;
-        this.transferKm = transferKm;
         this.extras = extras;
     }
 
