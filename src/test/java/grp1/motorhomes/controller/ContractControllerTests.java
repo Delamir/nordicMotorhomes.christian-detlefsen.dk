@@ -58,7 +58,6 @@ public class ContractControllerTests {
             contract.setToDate("2021-06-17T13:20");
             contract.setCustomerNumber(1);
             contract.setOdometer(95000);
-            contract.setPrice(1337);
             contracts.add(contract);
         }
     }
@@ -106,7 +105,6 @@ public class ContractControllerTests {
                 .param("fromDate", contracts.get(0).getFromDate().toString())
                 .param("toDate", contracts.get(0).getToDate().toString())
                 .param("odometer", contracts.get(0).getOdometer() + "")
-                .param("price", contracts.get(0).getPrice() + "")
                 .param("customerNumber", contracts.get(0).getCustomerNumber() + "")
                 .param("motorhome", contracts.get(0).getMotorhome())
                 .param("contractId", contracts.get(0).getContractId() + ""))

@@ -9,6 +9,7 @@ import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.Temporal;
@@ -69,32 +70,35 @@ public class ContractService {
     /**
      * @author Christian og Patrick
      */
-    public double calculatePrice(Contract contract, Motorhome motorhome) {
+    public double calculatePrice(Contract contract, int motorHomePrice) {
         double priceExtra = 0;
         double priceMotorhome;
         double transferFee = 0;
         double fuelCost = 0;
         double excessKm = 0;
+        int rentalDays = daysBetweenDates(contract.getFromDate(), contract.getToDate());
 
         //Calculate price based on season
         if (LocalDateTime.now().getMonth().getValue() >= Constants.MAY &&
                 LocalDateTime.now().getMonth().getValue() <= Constants.SEPTEMBER) {
 
-            priceMotorhome = motorhome.getPrice(); //peak season price
+            priceMotorhome = motorHomePrice * rentalDays; //peak season price
 
         } else if (LocalDateTime.now().getMonth().getValue() >= Constants.NOVEMBER ||
                 LocalDateTime.now().getMonth().getValue() <= Constants.FEBRUARY) {
 
-            priceMotorhome = motorhome.getPrice() - (motorhome.getPrice() * Constants.LOW_SEASON); //low season price
+            priceMotorhome = (motorHomePrice - (motorHomePrice * Constants.LOW_SEASON)) * rentalDays; //low season price
 
         } else {
-            priceMotorhome = motorhome.getPrice() - (motorhome.getPrice() * Constants.MID_SEASON); //mid season price
+            priceMotorhome = (motorHomePrice - (motorHomePrice * Constants.MID_SEASON)) * rentalDays; //mid season price
         }
 
         //Calculate the price of all extras
         for (int i = 0; i < contract.getExtras().size(); i++) {
             priceExtra += contract.getExtras().get(i).getPrice();
         }
+
+        priceExtra = priceExtra * rentalDays;
 
         //Calculate potential transfer fee
         if (contract.isDelivered() || contract.isPickedUp()) {
@@ -118,36 +122,33 @@ public class ContractService {
     /**
      * @author Christian og Patrick
      */
-    public double cancellationFee(Contract contract, Motorhome motorhome) {
-        double contractPrice = calculatePrice(contract, motorhome);
-        double cancellationFee = 0;
+    public double cancellationFee(Contract contract, int motorHomePrice) {
+        double contractPrice = calculatePrice(contract, motorHomePrice);
+        double cancellationFee;
+        int rentalDays = daysBetweenDates(contract.getFromDate(), contract.getToDate());
 
-
-        if (Duration.between(LocalDateTime.now(), (Temporal) contract.getFromDate()).hashCode() >= Constants.CANCELLATION_50_DAYS) {
+        if (rentalDays >= Constants.CANCELLATION_50_DAYS) {
 
             cancellationFee = contractPrice * Constants.CANCELLATION_FEE_50;
 
-            if (cancellationFee < Constants.MINIMUM_CANCELLATION_FEE) {
-
-                cancellationFee = Constants.MINIMUM_CANCELLATION_FEE;
-
-            } else if (Duration.between(LocalDateTime.now(), (Temporal) contract.getFromDate()).hashCode() <= Constants.CANCELLATION_49_DAYS &&
-                    Duration.between(LocalDateTime.now(), (Temporal) contract.getFromDate()).hashCode() >= Constants.CANCELLATION_15_DAYS) {
+            } else if (rentalDays >= Constants.CANCELLATION_15_DAYS) {
 
                 cancellationFee = contractPrice * Constants.CANCELLATION_FEE_49_TO_15;
 
-            } else if (Duration.between(LocalDateTime.now(), (Temporal) contract.getFromDate()).hashCode() < Constants.CANCELLATION_15_DAYS &&
-                    Duration.between(LocalDateTime.now(), (Temporal) contract.getFromDate()).hashCode() > Constants.CANCELLATION_SAME_DAY) {
+            } else if (rentalDays > Constants.CANCELLATION_SAME_DAY) {
 
                 cancellationFee = contractPrice * Constants.CANCELLATION_FEE_LESS_15;
 
-            } else if (Duration.between(LocalDateTime.now(), (Temporal) contract.getFromDate()).hashCode() == Constants.CANCELLATION_SAME_DAY) {
+            } else if (rentalDays  == Constants.CANCELLATION_SAME_DAY) {
 
                 cancellationFee = contractPrice * Constants.CANCELLATION_FEE_ON_DAY;
 
             } else {
                 cancellationFee = contractPrice;
             }
+
+        if(cancellationFee < Constants.MINIMUM_CANCELLATION_FEE) {
+            cancellationFee = Constants.MINIMUM_CANCELLATION_FEE;
         }
 
         return cancellationFee;
@@ -155,5 +156,9 @@ public class ContractService {
 
     public void deliverContract(Contract contract) {
         contractRepo.deliverContract(contract);
+    }
+
+    public int daysBetweenDates(Timestamp from, Timestamp to) {
+        return (int) Duration.between(from.toLocalDateTime().toLocalDate().atStartOfDay(), to.toLocalDateTime().toLocalDate().atStartOfDay()).toDays();
     }
 }

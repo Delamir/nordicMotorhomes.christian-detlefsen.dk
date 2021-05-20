@@ -20,7 +20,6 @@ public class Contract {
     private Timestamp toDate;
     private int odometer;
     private int customerNumber;
-    private int price;
     private String motorhome;
     private int excessKm;
     private int transferKm;
@@ -48,17 +47,15 @@ public class Contract {
      * @param toDate
      * @param odometer
      * @param customerNumber
-     * @param price
      * @param extras
      */
     public Contract(int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
-                    int price, String motorhome, List<Extra> extras) {
+                    String motorhome, List<Extra> extras) {
         this.contractId = contractId;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.odometer = odometer;
         this.customerNumber = customerNumber;
-        this.price = price;
         this.motorhome = motorhome;
         this.extras = extras;
     }
@@ -174,14 +171,6 @@ public class Contract {
         this.customerNumber = customerNumber;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public String getMotorhome() {
         return motorhome;
     }
@@ -238,7 +227,6 @@ public class Contract {
                 ", toDate=" + toDate +
                 ", odometer=" + odometer +
                 ", customerNumber=" + customerNumber +
-                ", price=" + price +
                 ", motorhome='" + motorhome + '\'' +
                 ", excessKm=" + excessKm +
                 ", transferKm=" + transferKm +
