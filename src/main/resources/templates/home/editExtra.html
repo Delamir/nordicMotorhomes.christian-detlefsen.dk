@@ -15,9 +15,11 @@
     <a th:href="@{'/customerIndex/'}">Manage Customer</a>
     <a class="active" th:href="@{'/extraIndex/'}">Manage Extra</a>
 </div>
-<br>
 
-<h1>Edit an Extra</h1>
+<div class="genericHeaderContainer">
+    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="genericHeaderPosition">Edit an Extra Item</h1>
+</div>
 
 <form class="form" onsubmit="return confirm('Are you sure you want to edit this extra item?')" action="/editExtra/" method="post">
     <input type="hidden" name="extraId" th:value="${extra.extraId}">
