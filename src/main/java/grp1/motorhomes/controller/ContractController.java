@@ -124,10 +124,27 @@ public class ContractController {
         return "redirect:/contractIndex";
     }
 
-    @GetMapping("/pickupContract")
+    /**
+     * @author Joachim
+     * @param contractId
+     * @param model
+     * @return
+     */
+    @GetMapping("/pickupContract/{contractId}")
     public String pickupContract(@PathVariable int contractId, Model model){
         model.addAttribute("contract", contractService.findContract(contractId));
         return "home/pickupContract";
+    }
+
+    /**
+     * @author Joachim
+     * @param contract
+     * @return
+     */
+    @PostMapping("/pickupContract")
+    public String pickupContract(@ModelAttribute Contract contract) {
+        contractService.pickupContract(contract);
+        return "redirect:/contractIndex";
     }
 
 }

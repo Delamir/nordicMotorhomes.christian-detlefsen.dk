@@ -156,4 +156,12 @@ public class ContractService {
     public void deliverContract(Contract contract) {
         contractRepo.deliverContract(contract);
     }
+
+    /**
+     * @author Joachim
+     * @param contract
+     */
+    public void pickupContract(Contract contract) {
+        contractRepo.pickupContract(contract);
+    }
 }
