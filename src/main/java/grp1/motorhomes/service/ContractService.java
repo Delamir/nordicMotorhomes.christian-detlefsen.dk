@@ -158,6 +158,12 @@ public class ContractService {
         contractRepo.deliverContract(contract);
     }
 
+    /**
+     * @author Sverri and Christian
+     * @param from
+     * @param to
+     * @return
+     */
     public int daysBetweenDates(Timestamp from, Timestamp to) {
         return (int) Duration.between(from.toLocalDateTime().toLocalDate().atStartOfDay(), to.toLocalDateTime().toLocalDate().atStartOfDay()).toDays();
     }
