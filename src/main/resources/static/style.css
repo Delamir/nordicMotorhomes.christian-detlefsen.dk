@@ -78,6 +78,7 @@
     text-align: center;
     border-collapse: collapse;
     background-color: white;
+
 }
 
 .table td {
@@ -94,6 +95,23 @@
     background-color: #cbcbcb;
 }
 
+.table .actions{
+    padding: 0px;
+}
+.table table button{
+    border: none;
+    height: 40px;
+    width: 50px;
+    padding: 0px;
+}
+
+.edit-button{
+    background-color: cadetblue;
+}
+
+.delete-button{
+    background-color: red;
+}
 
 #genericTableHeader {
     font-family: Arial, serif;
