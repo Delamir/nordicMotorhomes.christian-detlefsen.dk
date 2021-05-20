@@ -30,6 +30,7 @@ public class Contract {
     @ManyToMany
     private List<Extra> extras;
 
+    private boolean underHalfFuelTank;
     private boolean delivered;
     private boolean pickedUp;
     private boolean closed;
@@ -134,6 +135,7 @@ public class Contract {
     public Timestamp getToDate() {
         return toDate;
     }
+
     /**
      * @author Sverri
      * @param to
@@ -150,7 +152,6 @@ public class Contract {
         }
         this.toDate = Timestamp.valueOf(localDateTime);
     }
-
     public int getOdometer() {
         return odometer;
     }
@@ -199,6 +200,30 @@ public class Contract {
         this.transferKm = transferKm;
     }
 
+    public boolean isUnderHalfFuelTank() {
+        return underHalfFuelTank;
+    }
+
+    public void setUnderHalfFuelTank(boolean underHalfFuelTank) {
+        this.underHalfFuelTank = underHalfFuelTank;
+    }
+
+    public String getDeliveryPoint() {
+        return deliveryPoint;
+    }
+
+    public void setDeliveryPoint(String deliveryPoint) {
+        this.deliveryPoint = deliveryPoint;
+    }
+
+    public String getPickupPoint() {
+        return pickupPoint;
+    }
+
+    public void setPickupPoint(String pickupPoint) {
+        this.pickupPoint = pickupPoint;
+    }
+
     @Override
     public String toString() {
         return "Contract{" +
@@ -216,21 +241,5 @@ public class Contract {
                 ", pickedUp=" + pickedUp +
                 ", closed=" + closed +
                 '}';
-    }
-
-    public String getDeliveryPoint() {
-        return deliveryPoint;
-    }
-
-    public void setDeliveryPoint(String deliveryPoint) {
-        this.deliveryPoint = deliveryPoint;
-    }
-
-    public String getPickupPoint() {
-        return pickupPoint;
-    }
-
-    public void setPickupPoint(String pickupPoint) {
-        this.pickupPoint = pickupPoint;
     }
 }
