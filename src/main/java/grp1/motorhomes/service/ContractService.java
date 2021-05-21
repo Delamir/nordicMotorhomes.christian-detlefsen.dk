@@ -155,7 +155,7 @@ public class ContractService {
     }
 
     /**
-     * @author Joachim
+     * @author Sverri
      * @param contract
      */
     public void deliverContract(Contract contract) {
