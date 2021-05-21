@@ -33,6 +33,7 @@ public class Contract {
     private boolean delivered;
     private boolean pickedUp;
     private boolean closed;
+
     /**
      * @author Christian
      */
@@ -41,13 +42,13 @@ public class Contract {
     }
 
     /**
-     * @author Christian
      * @param contractId
      * @param fromDate
      * @param toDate
      * @param odometer
      * @param customerNumber
      * @param extras
+     * @author Christian
      */
     public Contract(int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
                     String motorhome, List<Extra> extras) {
@@ -60,8 +61,8 @@ public class Contract {
         this.extras = extras;
     }
 
-    public void addExtra(int id, int price, String name, String description){
-        if(extras == null)
+    public void addExtra(int id, int price, String name, String description) {
+        if (extras == null)
             extras = new ArrayList<>();
         extras.add(new Extra(id, price, name, description));
     }
@@ -70,8 +71,14 @@ public class Contract {
         return extras;
     }
 
-    public void setExtras(List<Extra> extras) {
-        this.extras = extras;
+    //  public void setExtras(List<Extra> extras) {
+    //    this.extras = extras;
+    // }
+
+    public void setExtras(List<Integer> extras) {
+        for (int i : extras) {
+            addExtra(i, 0, null, null);
+        }
     }
 
     public boolean isDelivered() {
@@ -110,25 +117,24 @@ public class Contract {
         return fromDate;
     }
 
-    public String getFromDateAsString(){
+    public String getFromDateAsString() {
         String returnString = "";
-        returnString += fromDate.toLocalDateTime().getDayOfMonth()+". ";
+        returnString += fromDate.toLocalDateTime().getDayOfMonth() + ". ";
         returnString += fromDate.toLocalDateTime().getMonth().name().toLowerCase() + " ";
         returnString += fromDate.toLocalDateTime().getHour() + ":" + fromDate.toLocalDateTime().getMinute();
         return returnString;
     }
 
     /**
+     * @param from spring was not able to parse Timestamp on its own
      * @author Sverri
-     * @param from
-     *spring was not able to parse Timestamp on its own
      */
     public void setFromDate(String from) {
         LocalDateTime localDateTime;
-        if(from.contains("T")) {
+        if (from.contains("T")) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
             localDateTime = LocalDateTime.parse(from, formatter);
-        }else {
+        } else {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
             localDateTime = LocalDateTime.parse(from, formatter);
         }
@@ -140,21 +146,21 @@ public class Contract {
     }
 
     /**
+     * @param to spring was not able to parse Timstamp on its own
      * @author Sverri
-     * @param to
-     *spring was not able to parse Timstamp on its own
      */
     public void setToDate(String to) {
         LocalDateTime localDateTime;
-        if(to.contains("T")) {
+        if (to.contains("T")) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
             localDateTime = LocalDateTime.parse(to, formatter);
-        }else {
+        } else {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
             localDateTime = LocalDateTime.parse(to, formatter);
         }
         this.toDate = Timestamp.valueOf(localDateTime);
     }
+
     public int getOdometer() {
         return odometer;
     }

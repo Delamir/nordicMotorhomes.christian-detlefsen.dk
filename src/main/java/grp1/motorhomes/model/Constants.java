@@ -18,7 +18,7 @@ public class Constants {
     public static final double CANCELLATION_50_DAYS = 50;
     public static final double CANCELLATION_49_DAYS = 49;
     public static final double CANCELLATION_15_DAYS = 15;
-    public static final double CANCELLATION_SAME_DAY = 1;
+    public static final double CANCELLATION_SAME_DAY = 0;
     public static final int JANUARY = 1;
     public static final int FEBRUARY = 2;
     public static final int MARCH = 3;

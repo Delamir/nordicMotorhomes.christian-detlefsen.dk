@@ -154,6 +154,10 @@ public class ContractService {
         return cancellationFee;
     }
 
+    /**
+     * @author Sverri
+     * @param contract
+     */
     public void deliverContract(Contract contract) {
         contractRepo.deliverContract(contract);
     }
