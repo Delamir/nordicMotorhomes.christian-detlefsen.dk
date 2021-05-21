@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -106,5 +107,6 @@ public class ContractRepo {
     public void pickupContract(Contract contract) {
         String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ? WHERE contract_id = ?";
         template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getContractId());
+
     }
 }
