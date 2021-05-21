@@ -175,4 +175,13 @@ public class ContractService {
     public void pickupContract(Contract contract) {
         contractRepo.pickupContract(contract);
     }
+
+    /**
+     * @author Joachim
+     * @param contract
+     */
+    public void closeContract(Contract contract) {
+        contractRepo.closeContract(contract);
+    }
+
 }

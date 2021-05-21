@@ -109,4 +109,14 @@ public class ContractRepo {
         template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getContractId());
 
     }
+
+    /**
+     * @author Joachim
+     * @param contract
+     */
+    public void closeContract(Contract contract) {
+        String updateSql = "UPDATE contracts SET closed = true WHERE contract_id = ?";
+        template.update(updateSql, contract.getContractId());
+    }
+
 }

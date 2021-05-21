@@ -1,8 +1,6 @@
 package grp1.motorhomes.controller;
 
 import grp1.motorhomes.model.Contract;
-import grp1.motorhomes.model.Customer;
-import grp1.motorhomes.model.Motorhome;
 import grp1.motorhomes.service.ContractService;
 import grp1.motorhomes.service.CustomerService;
 import grp1.motorhomes.service.MotorhomeService;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
 
 /**
  * @author Christian
@@ -144,6 +140,18 @@ public class ContractController {
     @PostMapping("/pickupContract")
     public String pickupContract(@ModelAttribute Contract contract) {
         contractService.pickupContract(contract);
+        return "redirect:/contractIndex";
+    }
+
+    @GetMapping("/closeContract/{contractId}")
+    public String closedContract(@PathVariable int contractId, Model model) {
+        model.addAttribute("contract", contractService.findContract(contractId));
+        return "home/closeContract";
+    }
+
+    @PostMapping("/closeContract")
+    public String closedContract(@ModelAttribute Contract contract) {
+        contractService.closeContract(contract);
         return "redirect:/contractIndex";
     }
 
