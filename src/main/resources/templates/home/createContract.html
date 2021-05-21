@@ -38,9 +38,8 @@
                 th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
     </select>
     <label>Extras</label>
-    <select name="extras">
-        <option th:each="extra:${extras}" th:value="${extra.extraId}" th:text="${extra.name} + ' ' + ${extra.price}"></option>
-
+    <select multiple name="extras">
+        <option th:each="extra:${extras}" th:value="${extra.extraId}" th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
     </select>
     <label></label>
     <button type="submit" id="submitButton">Create Contract</button>
