@@ -145,7 +145,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-
      * @return
      */
     @GetMapping("/closeContract/{contractId}")
