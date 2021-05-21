@@ -104,7 +104,7 @@ public class ContractRepo {
      * @param contract
      */
     public void pickupContract(Contract contract) {
-        String updateSql = "UPDATE contracts SET picked_up = true, pickup_point = ? WHERE contract_id = ?";
-        template.update(updateSql, contract.getPickupPoint(), contract.getContractId());
+        String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ? WHERE contract_id = ?";
+        template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getContractId());
     }
 }
