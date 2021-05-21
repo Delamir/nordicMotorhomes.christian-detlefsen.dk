@@ -20,43 +20,45 @@
     <h1 class="genericHeaderPosition">Extras Management</h1>
 </div>
 
-<div class="centering">
-<table class="table">
+<div class="table">
+    <table>
 
-    <tr>
-        <th id="genericTableHeader" colspan="5">Contracts</th>
-    </tr>
-
-
-    <tbody>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th colspan="2">Actions</th>
+        <tr>
+            <th id="genericTableHeader" colspan="5">Contracts</th>
+        </tr>
 
 
-    <tr th:each="extra : ${extras}">
-        <td th:text="${extra.name}"></td>
-        <td th:text="${extra.description}"></td>
-        <td th:text="${extra.price}"></td>
+        <tbody>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th colspan="2">Actions</th>
 
-        <td>
-            <a th:href="@{'/editExtra/'+${extra.extraId}}">
-                <button type="button">Edit</button>
-            </a>
-        </td>
 
-        <td>
-            <a th:href="@{'/deleteExtra/'+${extra.extraId}}">
-                <button type="button" onclick="return confirm('Are you sure you want to delete this extra item?')">Delete</button>
-            </a>
-        </td>
+        <tr th:each="extra : ${extras}">
+            <td th:text="${extra.name}"></td>
+            <td th:text="${extra.description}"></td>
+            <td th:text="${extra.price}"></td>
 
-    </tr>
+            <td class="actions">
+                <a th:href="@{'/editExtra/'+${extra.extraId}}">
+                    <button class="edit-button" type="button">Edit</button>
+                </a>
+            </td>
 
-    </tbody>
+            <td class="actions">
+                <a th:href="@{'/deleteExtra/'+${extra.extraId}}">
+                    <button class="delete-button" type="button" onclick="return confirm('Are you sure you want to delete this extra item?')">
+                        Delete
+                    </button>
+                </a>
+            </td>
 
-</table>
+        </tr>
+
+        </tbody>
+
+    </table>
     <a th:href="@{'/createExtra/'}">
         <button type="button" id="addButton">Add new extra</button>
     </a>

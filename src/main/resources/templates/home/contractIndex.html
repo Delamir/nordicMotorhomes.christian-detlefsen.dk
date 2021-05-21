@@ -32,7 +32,7 @@
         <th>Contract end date</th>
         <th>Odometer</th>
         <th>Customer ID</th>
-        <th colspan="2">Actions</th>
+        <th colspan="3">Actions</th>
 
         <tr th:each="contract : ${contracts}">
             <td th:text="${contract.getFromDateAsString}"></td>
@@ -40,23 +40,27 @@
             <td th:text="${contract.odometer}"></td>
             <td th:text="${contract.customerNumber}"></td>
 
-            <td class="actions">
-                <a th:if="${!contract.delivered}" th:href="@{'/deliverContract/'+${contract.contractId}}">
+            <td class="actions" th:if="${!contract.delivered}">
+                <a  th:href="@{'/deliverContract/'+${contract.contractId}}">
                     <button type="button">Deliver</button>
                 </a>
-
-                <a th:if="${!contract.pickedUp} AND ${contract.delivered}" th:href="@{'/pickupContract/'+${contract.contractId}}">
+            </td>
+            <td class="actions" th:if="${!contract.pickedUp} AND ${contract.delivered}">
+                <a  th:href="@{'/pickupContract/'+${contract.contractId}}">
                     <button type="button">Pick up</button>
                 </a>
-
-                <a th:if="${!contract.closed} AND ${contract.pickedUp}" th:href="@{'/closeContract/'+${contract.contractId}}">
+            </td>
+            <td class="actions" th:if="${!contract.closed} AND ${contract.pickedUp}">
+                <a th:href="@{'/closeContract/'+${contract.contractId}}">
                     <button type="button">Close</button>
                 </a>
-
+            </td>
+            <td class="actions">
                 <a th:href="@{'/editContract/'+${contract.contractId}}">
                     <button class="edit-button" type="button">Edit</button>
                 </a>
-
+            </td>
+            <td class="actions">
                 <a th:href="@{'/deleteContract/'+${contract.contractId}}">
                     <button class="delete-button" type="button" onclick="return confirm('Are you sure you want to delete this contract?')">
                         Delete

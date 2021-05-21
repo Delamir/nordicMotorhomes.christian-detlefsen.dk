@@ -16,59 +16,59 @@
 </div>
 
 
-
 <div class="genericHeaderContainer">
     <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
     <h1 class="genericHeaderPosition">Motorhome Management</h1>
 </div>
 
-<div class="centering">
-<table class="table">
+<div class="table">
+    <table>
 
 
-    <tr>
-        <th id="genericTableHeader" colspan="10">Motorhomes</th>
-    </tr>
+        <tr>
+            <th id="genericTableHeader" colspan="10">Motorhomes</th>
+        </tr>
 
-    <tbody>
-    <th>Type</th>
-    <th>Brand</th>
-    <th>Model</th>
-    <th>Licence Plate</th>
-    <th>Description</th>
-    <th>Image</th>
-    <th>Price</th>
-    <th>Availability</th>
-    <th colspan="2">Actions</th>
+        <tbody>
+        <th>Type</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Licence Plate</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Availability</th>
+        <th colspan="2">Actions</th>
 
-    <tr th:each="motorhome : ${motorhomes}">
-        <td th:text="${motorhome.type}"></td>
-        <td th:text="${motorhome.brand}"></td>
-        <td th:text="${motorhome.model}"></td>
-        <td th:text="${motorhome.licencePlate}"></td>
-        <td th:text="${motorhome.description}"></td>
-        <td th:text="${motorhome.imagePath}"></td>
-        <td th:text="${motorhome.price}"></td>
-        <td th:text="${motorhome.available}"></td>
+        <tr th:each="motorhome : ${motorhomes}">
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.licencePlate}"></td>
+            <td th:text="${motorhome.description}"></td>
+            <td th:text="${motorhome.imagePath}"></td>
+            <td th:text="${motorhome.price}"></td>
+            <td th:text="${motorhome.available}"></td>
 
-        <td>
-            <a th:href="@{'/editMotorhome/'+${motorhome.licencePlate}}">
-                <button type="button">Edit</button>
-            </a>
+            <td class="actions">
+                <a th:href="@{'/editMotorhome/'+${motorhome.licencePlate}}">
+                    <button class="edit-button" type="button">Edit</button>
+                </a>
             </td>
 
-        <td>
-        <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}"  >
-            <!-- help from https://stackoverflow.com/questions/59992208/thymeleaf-thonclick-event-calling-confirm-function -->
-            <button type="button"
-                    th:confirm="'Are you sure you want to delete ' + ${motorhome.licencePlate} + '?'"
-                    onclick="return confirm(this.getAttribute('confirm'))">Delete</button>
+            <td class="actions">
+                <a th:href="@{'/deleteMotorhome/'+${motorhome.licencePlate}}">
+                    <!-- help from https://stackoverflow.com/questions/59992208/thymeleaf-thonclick-event-calling-confirm-function -->
+                    <button class="delete-button" type="button"
+                            th:confirm="'Are you sure you want to delete ' + ${motorhome.licencePlate} + '?'"
+                            onclick="return confirm(this.getAttribute('confirm'))">Delete
+                    </button>
 
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
     <a th:href="@{'/createMotorhome/'}">
         <button type="button" id="addButton">Add new motorhome</button>
     </a>
