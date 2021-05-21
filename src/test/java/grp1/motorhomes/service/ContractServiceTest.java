@@ -51,6 +51,9 @@ class ContractServiceTest {
         assertEquals(3000, contractService.calculatePrice(c3, m.getPrice()));
     }
 
+    /**
+     * @author Patrick og Christian
+     */
     @Test
     void cancellationFee() {
 
