@@ -58,8 +58,15 @@ class ContractServiceTest {
         ContractService contractService = new ContractService();
         Motorhome m = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
                 "A motorhome", "An ImagePath", 4000, true);
-        //Contract c = new Contract(1, Timestamp.valueOf("2021-05-09 12:20:20"), Timestamp.valueOf("2021-06-28 12:20:20"),
-               // 200000, 2, 5000, "AD99999", extraList);
+        Contract c50 = new Contract(1, Timestamp.valueOf("2021-05-09 12:20:20"), Timestamp.valueOf("2021-05-19 12:20:20"),
+                200000, 2, "AD99999", extraList);
+        Contract cBetween49And15 = new Contract(1, Timestamp.valueOf("2021-05-09 13:45:42"), Timestamp.valueOf("2021-05-19 12:20:20"),
+                200000, 2, "AD99999", extraList);
+        Contract cUnder15 = new Contract(1, Timestamp.valueOf("2021-05-09 11:10:20"), Timestamp.valueOf("2021-05-19 12:20:20"),
+                200000, 2, "AD99999", extraList);
+        Contract cSameDay = new Contract(1, Timestamp.valueOf("2021-05-09 11:10:20"), Timestamp.valueOf("2021-05-19 12:20:20"),
+                200000, 2, "AD99999", extraList);
+
 
 
     }

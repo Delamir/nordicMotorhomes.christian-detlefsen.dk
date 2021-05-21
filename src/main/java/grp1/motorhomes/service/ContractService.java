@@ -125,7 +125,7 @@ public class ContractService {
     public double cancellationFee(Contract contract, int motorHomePrice) {
         double contractPrice = calculatePrice(contract, motorHomePrice);
         double cancellationFee;
-        int rentalDays = daysBetweenDates(contract.getFromDate(), contract.getToDate());
+        int rentalDays = daysBetweenDates(Timestamp.valueOf(LocalDateTime.now()), contract.getFromDate());
 
         if (rentalDays >= Constants.CANCELLATION_50_DAYS) {
 
