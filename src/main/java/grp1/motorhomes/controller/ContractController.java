@@ -38,6 +38,12 @@ public class ContractController {
         return "home/contractIndex";
     }
 
+    @GetMapping("/contractIndex/closed")
+    public String closedContractIndex(Model model) {
+        model.addAttribute("contracts", contractService.fetchAllClosedContracts());
+        return "home/contractIndex";
+    }
+
     /**
      * @return
      * @author Christian
@@ -148,8 +154,9 @@ public class ContractController {
      * @return
      */
     @GetMapping("/closeContract/{contractId}")
-    public String closedContract(@PathVariable int contractId, Model model) {
+    public String closeContract(@PathVariable int contractId, Model model) {
         model.addAttribute("contract", contractService.findContract(contractId));
+        System.out.println(contractService.findContract(contractId));
         return "home/closeContract";
     }
 
@@ -159,7 +166,7 @@ public class ContractController {
      * @return
      */
     @PostMapping("/closeContract")
-    public String closedContract(@ModelAttribute Contract contract) {
+    public String closeContract(@ModelAttribute Contract contract) {
         contractService.closeContract(contract);
         return "redirect:/contractIndex";
     }

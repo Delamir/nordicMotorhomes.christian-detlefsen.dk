@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Closed Contracts</title>
+    <title>Close a Contract</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body>
+<body id="manageBg">
 
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
@@ -19,6 +19,17 @@
     <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
     <h1 class="genericHeaderPosition">Closed Contracts</h1>
 </div>
+
+<label>Start Date: </label>
+<p th:text="${contract.getFromDateAsString()}"></p>
+<label>End Date: </label>
+<p th:text="${contract.toDate}"></p>
+<label>Odometer: </label>
+<p th:text="${contract.odometer}"></p>
+<form name="form" method="post" action="/closeContract/">
+<input style="float: right" type="number" name="excessKm" placeholder="Excess Km">
+</form>
+<input type="submit" id="submitButton" value="Submit">
 
 </body>
 </html>

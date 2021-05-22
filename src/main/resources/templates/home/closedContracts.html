@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Closed Contracts</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body id="manageBg">
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a class="active" th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a th:href="@{'/extraIndex/'}">Manage Extra</a>
+</div>
+
+<div class="genericHeaderContainer">
+    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="genericHeaderPosition">Closed Contracts</h1>
+</div>
+
+<div class="table">
+
+    <table>
+        <tr>
+            <th id="genericTableHeader" colspan="7">Closed Contracts</th>
+        </tr>
+
+        <tbody>
+        <th>Contract start date</th>
+        <th>Contract end date</th>
+        <th>Odometer</th>
+        <th>Customer ID</th>
+        <th>Closed</th>
+
+        <tr th:each="contract : ${contracts}">
+            <td th:text="${contract.getFromDateAsString}"></td>
+            <td th:text="${#strings.substring(contract.toDate.toString(),0,16)}"></td>
+            <td th:text="${contract.odometer}"></td>
+            <td th:text="${contract.customerNumber}"></td>
+            <td th:text="${contract.closed}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

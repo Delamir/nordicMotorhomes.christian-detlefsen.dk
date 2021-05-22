@@ -40,6 +40,15 @@ public class ContractRepo {
         return (List<Contract>) template.query(sqlStatement, extractor);
     }
 
+    public List<Contract> fetchAllClosedContracts() {
+        String sqlStatement = "SELECT contract_id, from_date, to_date, " +
+                "odometer, excess_km, transfer_km, customer_number, customer_number, " +
+                "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
+                "FROM contracts LEFT JOIN contracts_extras using(contract_id) LEFT JOIN extras using(extra_id) WHERE closed = true";
+        ContractResultSetExtractor extractor = new ContractResultSetExtractor();
+        return (List<Contract>) template.query(sqlStatement, extractor);
+    }
+
     /**
      * @param contract
      * @author Christian
@@ -149,5 +158,4 @@ public class ContractRepo {
         String updateSql = "UPDATE contracts SET closed = true WHERE contract_id = ?";
         template.update(updateSql, contract.getContractId());
     }
-
 }

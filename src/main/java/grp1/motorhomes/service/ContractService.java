@@ -35,6 +35,10 @@ public class ContractService {
         return contractRepo.fetchAllContracts();
     }
 
+    public List<Contract> fetchAllClosedContracts() {
+        return contractRepo.fetchAllClosedContracts();
+    }
+
     /**
      * @param contract
      * @author Christian
