@@ -47,12 +47,12 @@
             </td>
             <td class="actions" th:if="${!contract.pickedUp} AND ${contract.delivered}">
                 <a  th:href="@{'/pickupContract/'+${contract.contractId}}">
-                    <button type="button">Pick up</button>
+                    <button class="close-button" type="button">Pick up</button>
                 </a>
             </td>
             <td class="actions" th:if="${!contract.closed} AND ${contract.pickedUp}">
                 <a th:href="@{'/closeContract/'+${contract.contractId}}">
-                    <button type="button">Close</button>
+                    <button class="close-button" type="button">Close</button>
                 </a>
             </td>
             <td class="actions">

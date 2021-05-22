@@ -81,6 +81,7 @@
 .table td {
     border: 1px solid gray;
     padding: 10px;
+    font-family: Arial, serif;
 }
 
 .table th {
@@ -88,6 +89,7 @@
     padding: 5px;
     background-color: #2f2d2d;
     color: white;
+    font-family: Arial, serif;
 }
 
 .table tr:hover {
@@ -108,8 +110,33 @@
     background-color: cadetblue;
 }
 
+.edit-button:hover {
+    background-color: #65c6ca;
+}
+
 .delete-button{
-    background-color: red;
+    background-color: #a70e0e;
+}
+
+.delete-button:hover{
+    background-color: #ff0000;
+}
+
+.close-button {
+    background-color: #096709;
+}
+
+.close-button:hover {
+    background-color: #03a003;
+}
+
+#addButton {
+    font-family: 'Lato', Arial, serif;
+    font-size: large;
+    margin-top: 35px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #genericTableHeader {
@@ -145,13 +172,6 @@
 
 /* With inspiration from https://www.w3schools.com/howto/howto_css_center_button.asp
 @Author Joachim*/
-
-#addButton {
-    margin-top: 35px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 #manageBg {
     background-color: #e3e3e3;
