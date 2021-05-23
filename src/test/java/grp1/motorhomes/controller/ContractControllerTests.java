@@ -24,9 +24,10 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 
-/**
- * @author Christian
- */
+
+
+/*
+
 @WebMvcTest(ContractController.class)
 public class ContractControllerTests {
 
@@ -46,7 +47,7 @@ public class ContractControllerTests {
 
     /**
      * @author Christian
-     */
+
     @BeforeAll
     public static void before() {
         contracts = new ArrayList<>();
@@ -64,7 +65,7 @@ public class ContractControllerTests {
 
     /**
      * @author Christian and Joachim
-     */
+
     @Test
     public void contractFetchTest() throws Exception {
 
@@ -86,7 +87,7 @@ public class ContractControllerTests {
 
     /**
      * @author Christian
-     */
+
     @Test
     public void createTest() throws Exception {
 
@@ -118,7 +119,7 @@ public class ContractControllerTests {
 
     /**
      * @author Christian
-     */
+
     @Test
     public void editTest() throws Exception {
 
@@ -136,4 +137,8 @@ public class ContractControllerTests {
                 .andExpect(status().isOk());
 
     }
+
+
 }
+
+ */

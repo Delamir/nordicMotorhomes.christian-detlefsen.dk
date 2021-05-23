@@ -3,18 +3,12 @@ package grp1.motorhomes.repository;
 import grp1.motorhomes.model.Contract;
 import grp1.motorhomes.model.Extra;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -28,35 +22,57 @@ public class ContractRepo {
 
 
     /**
-     * @return
      * @author Christian
      */
     public List<Contract> fetchAllContracts() {
-        String sqlStatement = "SELECT contract_id, from_date, to_date, " +
-                "odometer, excess_km, transfer_km, customer_number, customer_number, " +
-                "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
-                "FROM contracts LEFT JOIN contracts_extras using(contract_id) LEFT JOIN extras using(extra_id)";
+        String sqlStatement =
+                "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
+                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
+                        "extras.price, extras.name, extras.description, " +
+                        "type, motorhomes.description, image_path, model_id, motorhomes.price, available, model, brand, " +
+                        "customers.name, licence_number, address_id, street, post_code, city " +
+                        "FROM contracts " +
+                        "LEFT JOIN contracts_extras using(contract_id) " +
+                        "LEFT JOIN extras using(extra_id) " +
+                        "JOIN customers using(customer_number) " +
+                        "JOIN addresses using(customer_number) " +
+                        "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
+                        "JOIN models using(model_id)";
+
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
+
         return (List<Contract>) template.query(sqlStatement, extractor);
     }
 
+    /**
+     * @author Sverri
+     * @return
+     */
     public List<Contract> fetchAllClosedContracts() {
-        String sqlStatement = "SELECT contract_id, from_date, to_date, " +
-                "odometer, excess_km, transfer_km, customer_number, customer_number, " +
-                "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
-                "FROM contracts LEFT JOIN contracts_extras using(contract_id) LEFT JOIN extras using(extra_id) WHERE closed = true";
+        String sqlStatement =
+                "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
+                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
+                        "extras.price, extras.name, extras.description, " +
+                        "type, motorhomes.description, image_path, model_id, motorhomes.price, available, model, brand, " +
+                        "customers.name, licence_number, address_id, street, post_code, city " +
+                        "FROM contracts " +
+                        "LEFT JOIN contracts_extras using(contract_id) " +
+                        "LEFT JOIN extras using(extra_id) " +
+                        "JOIN customers using(customer_number) " +
+                        "JOIN addresses using(customer_number) " +
+                        "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
+                        "JOIN models using(model_id) WHERE closed = true";
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
         return (List<Contract>) template.query(sqlStatement, extractor);
     }
 
     /**
-     * @param contract
      * @author Christian
      */
     public void createContract(Contract contract) {
         String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, excess_km, " +
-                "transfer_km, customer_number, motorhome) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "transfer_km, customer_number, motorhome, delivery_point, delivered, pickup_point, picked_up, closed) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -69,44 +85,54 @@ public class ContractRepo {
             preparedStatement.setInt(3, contract.getOdometer());
             preparedStatement.setInt(4, contract.getExcessKm());
             preparedStatement.setInt(5, contract.getTransferKm());
-            preparedStatement.setInt(6, contract.getCustomerNumber());
-            preparedStatement.setString(7, contract.getMotorhome());
+            preparedStatement.setInt(6, contract.getCustomer().getCustomerNumber());
+            preparedStatement.setString(7, contract.getMotorhome().getLicencePlate());
+            preparedStatement.setString(8, contract.getDeliveryPoint());
+            preparedStatement.setBoolean(9, contract.isDelivered());
+            preparedStatement.setString(10, contract.getPickupPoint());
+            preparedStatement.setBoolean(11, contract.isPickedUp());
+            preparedStatement.setBoolean(12, contract.isClosed());
             return preparedStatement;
         }, keyHolder);
 
         template.update(insertContractValues, contract.getFromDate(), contract.getToDate(),
-                contract.getOdometer(), contract.getExcessKm(), contract.getTransferKm(), contract.getCustomerNumber(),
+                contract.getOdometer(), contract.getExcessKm(), contract.getTransferKm(), contract.getCustomer(),
                 contract.getMotorhome());
 
-        if(contract.getExtras().size() > 0){
-            String insertExtraRelations = "INSERT INTO contracts_extras(contract_id, extra_id) VALUES(?,?)";
-            for(Extra extra : contract.getExtras()){
-                template.update(insertExtraRelations,keyHolder.getKey().intValue(),extra.getExtraId());
+        if (contract.getExtras().size() > 0) {
+            String insertExtraRelations = "INSERT INTO contracts_extras(contract_id, extra_id) VALUES(?, ?)";
+            for (Extra extra : contract.getExtras()) {
+                template.update(insertExtraRelations, keyHolder.getKey().intValue(), extra.getExtraId());
             }
-
-
         }
     }
 
     /**
-     * @param contractId
-     * @return
      * @author Sverri
      */
     public Contract findContract(int contractId) {
-        String selectSql = "SELECT contract_id, from_date, to_date, " +
-                "odometer, excess_km, transfer_km, customer_number, customer_number, " +
-                "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, price, name, description " +
-                "FROM contracts LEFT JOIN contracts_extras using(contract_id) LEFT JOIN extras using(extra_id) WHERE contract_id = ?";
+        String sqlStatement =
+                "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
+                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
+                        "extras.price, extras.name, extras.description, " +
+                        "type, motorhomes.description, image_path, model_id, motorhomes.price, available, model, brand, " +
+                        "customers.name, licence_number, address_id, street, post_code, city " +
+                        "FROM contracts " +
+                        "LEFT JOIN contracts_extras using(contract_id) " +
+                        "LEFT JOIN extras using(extra_id) " +
+                        "JOIN customers using(customer_number) " +
+                        "JOIN addresses using(customer_number) " +
+                        "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
+                        "JOIN models using(model_id)";
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
-        //RowMapper<Contract> rowMapper = new BeanPropertyRowMapper<>(Contract.class);
-        List<Contract> contracts = (List<Contract>) template.query(selectSql, extractor, contractId);
+
+        List<Contract> contracts = (List<Contract>) template.query(sqlStatement, extractor, contractId);
+
         return contracts.get(0);
 
     }
 
     /**
-     * @param contract
      * @author Sverri
      */
     public void editContract(Contract contract) {
@@ -114,18 +140,21 @@ public class ContractRepo {
                 "excess_km = ?, transfer_km = ?, delivery_point = ?, delivered = ?, pickup_point = ?, picked_up = ?, closed = ?" +
                 " WHERE contract_id = ?";
 
-        template.update(updateSql,contract.getFromDate(),contract.getToDate(),contract.getOdometer(), contract.getCustomerNumber(),
+        template.update(updateSql, contract.getFromDate(), contract.getToDate(), contract.getOdometer(), contract.getCustomer(),
                 contract.getMotorhome(), contract.getExcessKm(), contract.getTransferKm(), contract.getDeliveryPoint(),
                 contract.isDelivered(), contract.getPickupPoint(), contract.isPickedUp(), contract.isClosed(), contract.getContractId());
     }
 
-    public void editExtra(Extra extra){
+    /**
+     * @auhtor Sverri
+     * @param extra
+     */
+    public void editExtra(Extra extra) {
         String updateSql = "UPDATE extras SET price = ?, name = ?, description = ? WHERE extra_id = ?";
-            template.update(updateSql, extra.getPrice(), extra.getName(), extra.getDescription(), extra.getExtraId());
+        template.update(updateSql, extra.getPrice(), extra.getName(), extra.getDescription(), extra.getExtraId());
     }
 
     /**
-     * @param contractId
      * @author Sverri
      */
     public void deleteContract(int contractId) {
@@ -142,7 +171,6 @@ public class ContractRepo {
 
     /**
      * @author Joachim
-     * @param contract
      */
     public void pickupContract(Contract contract) {
         String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ? WHERE contract_id = ?";
@@ -152,7 +180,6 @@ public class ContractRepo {
 
     /**
      * @author Joachim
-     * @param contract
      */
     public void closeContract(Contract contract) {
         String updateSql = "UPDATE contracts SET closed = true WHERE contract_id = ?";

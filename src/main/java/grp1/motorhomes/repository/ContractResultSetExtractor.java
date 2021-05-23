@@ -46,8 +46,13 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
                 contract.setFromDate(resultSet.getTimestamp("from_Date").toString());
                 contract.setToDate(resultSet.getTimestamp("to_Date").toString());
                 contract.setOdometer(resultSet.getInt("odometer"));
-                contract.setCustomerNumber(resultSet.getInt("customer_number"));
-                contract.setMotorhome(resultSet.getString("motorhome"));
+                contract.setCustomer(resultSet.getInt("customer_number"),
+                        resultSet.getString("name"), resultSet.getString("licence_number"),
+                        resultSet.getString("street"), resultSet.getString("city"), resultSet.getInt("post_code"));
+                contract.setMotorhome(resultSet.getString("registration"),
+                        resultSet.getString("type"), resultSet.getString("brand"),
+                        resultSet.getString("model"), resultSet.getString("description"),
+                        resultSet.getString("image_path"), resultSet.getInt("price"), resultSet.getBoolean("available"));
                 contract.setExcessKm(resultSet.getInt("excess_km"));
                 contract.setTransferKm(resultSet.getInt("transfer_km"));
                 contract.setDeliveryPoint(resultSet.getString("delivery_point"));

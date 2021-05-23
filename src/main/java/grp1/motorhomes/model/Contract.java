@@ -19,8 +19,6 @@ public class Contract {
     private Timestamp fromDate;
     private Timestamp toDate;
     private int odometer;
-    private int customerNumber;
-    private String motorhome;
     private int excessKm;
     private int transferKm;
     private String deliveryPoint;
@@ -29,7 +27,13 @@ public class Contract {
     @ManyToMany
     private List<Extra> extras;
 
+    @OneToOne
+    Customer customer;
+
+    @OneToOne
+    Motorhome motorhome;
     private boolean underHalfFuelTank;
+
     private boolean delivered;
     private boolean pickedUp;
     private boolean closed;
@@ -40,23 +44,22 @@ public class Contract {
     public Contract() {
 
     }
-
     /**
      * @param contractId
      * @param fromDate
      * @param toDate
      * @param odometer
-     * @param customerNumber
+     * @param customer
      * @param extras
      * @author Christian
      */
-    public Contract(int contractId, Timestamp fromDate, Timestamp toDate, int odometer, int customerNumber,
-                    String motorhome, List<Extra> extras) {
+    public Contract(int contractId, Timestamp fromDate, Timestamp toDate, int odometer, Customer customer,
+                    Motorhome motorhome, List<Extra> extras) {
         this.contractId = contractId;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.odometer = odometer;
-        this.customerNumber = customerNumber;
+        this.customer = customer;
         this.motorhome = motorhome;
         this.extras = extras;
     }
@@ -70,10 +73,6 @@ public class Contract {
     public List<Extra> getExtras() {
         return extras;
     }
-
-    //  public void setExtras(List<Extra> extras) {
-    //    this.extras = extras;
-    // }
 
     public void setExtras(List<Integer> extras) {
         for (int i : extras) {
@@ -117,11 +116,28 @@ public class Contract {
         return fromDate;
     }
 
-    public String getFromDateAsString() {
+
+    /**
+     * @author Sverri
+     * @return
+     */
+    public String getFromDateAsString(){
         String returnString = "";
         returnString += fromDate.toLocalDateTime().getDayOfMonth() + ". ";
         returnString += fromDate.toLocalDateTime().getMonth().name().toLowerCase() + " ";
         returnString += fromDate.toLocalDateTime().getHour() + ":" + fromDate.toLocalDateTime().getMinute();
+        return returnString;
+    }
+
+    /**
+     * @author Sverri
+     * @return
+     */
+    public String getToDateAsString(){
+        String returnString = "";
+        returnString += toDate.toLocalDateTime().getDayOfMonth()+". ";
+        returnString += toDate.toLocalDateTime().getMonth().name().toLowerCase() + " ";
+        returnString += toDate.toLocalDateTime().getHour() + ":" + toDate.toLocalDateTime().getMinute();
         return returnString;
     }
 
@@ -164,25 +180,8 @@ public class Contract {
     public int getOdometer() {
         return odometer;
     }
-
     public void setOdometer(int odometer) {
         this.odometer = odometer;
-    }
-
-    public int getCustomerNumber() {
-        return customerNumber;
-    }
-
-    public void setCustomerNumber(int customerNumber) {
-        this.customerNumber = customerNumber;
-    }
-
-    public String getMotorhome() {
-        return motorhome;
-    }
-
-    public void setMotorhome(String motorhome) {
-        this.motorhome = motorhome;
     }
 
     public int getExcessKm() {
@@ -225,6 +224,22 @@ public class Contract {
         this.pickupPoint = pickupPoint;
     }
 
+    public Motorhome getMotorhome() {
+        return motorhome;
+    }
+
+    public void setMotorhome(String licencePlate, String type, String brand, String model, String description, String imagePath, int price, boolean available) {
+        this.motorhome = new Motorhome(licencePlate, type, brand, model, description, imagePath, price, available);
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
+        this.customer = new Customer(customerNumber, name, licenceNumber, street, city, postCode);
+    }
+
     @Override
     public String toString() {
         return "Contract{" +
@@ -232,7 +247,7 @@ public class Contract {
                 ", fromDate=" + fromDate +
                 ", toDate=" + toDate +
                 ", odometer=" + odometer +
-                ", customerNumber=" + customerNumber +
+                ", customer=" + customer.toString() +
                 ", motorhome='" + motorhome + '\'' +
                 ", excessKm=" + excessKm +
                 ", transferKm=" + transferKm +
