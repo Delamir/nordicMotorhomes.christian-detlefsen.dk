@@ -23,6 +23,10 @@ public class Contract {
     private int transferKm;
     private String deliveryPoint;
     private String pickupPoint;
+    private boolean underHalfFuelTank;
+    private boolean delivered;
+    private boolean pickedUp;
+    private boolean closed;
 
     @ManyToMany
     private List<Extra> extras;
@@ -32,11 +36,7 @@ public class Contract {
 
     @OneToOne
     Motorhome motorhome;
-    private boolean underHalfFuelTank;
 
-    private boolean delivered;
-    private boolean pickedUp;
-    private boolean closed;
 
     /**
      * @author Christian
@@ -64,6 +64,13 @@ public class Contract {
         this.extras = extras;
     }
 
+    /**
+     * @author Sverri
+     * @param id
+     * @param price
+     * @param name
+     * @param description
+     */
     public void addExtra(int id, int price, String name, String description) {
         if (extras == null)
             extras = new ArrayList<>();
@@ -228,6 +235,17 @@ public class Contract {
         return motorhome;
     }
 
+    /**
+     * @author Christian
+     * @param licencePlate
+     * @param type
+     * @param brand
+     * @param model
+     * @param description
+     * @param imagePath
+     * @param price
+     * @param available
+     */
     public void setMotorhome(String licencePlate, String type, String brand, String model, String description, String imagePath, int price, boolean available) {
         this.motorhome = new Motorhome(licencePlate, type, brand, model, description, imagePath, price, available);
     }
@@ -236,6 +254,15 @@ public class Contract {
         return customer;
     }
 
+    /**
+     * @author Christian
+     * @param customerNumber
+     * @param name
+     * @param licenceNumber
+     * @param street
+     * @param city
+     * @param postCode
+     */
     public void setCustomer(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
         this.customer = new Customer(customerNumber, name, licenceNumber, street, city, postCode);
     }
@@ -248,7 +275,7 @@ public class Contract {
                 ", toDate=" + toDate +
                 ", odometer=" + odometer +
                 ", customer=" + customer.toString() +
-                ", motorhome='" + motorhome + '\'' +
+                ", motorhome='" + motorhome +
                 ", excessKm=" + excessKm +
                 ", transferKm=" + transferKm +
                 ", extras=" + extras +
