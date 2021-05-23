@@ -112,6 +112,7 @@
 
 .edit-button:hover {
     background-color: #65c6ca;
+    cursor: pointer;
 }
 
 .delete-button{
@@ -120,6 +121,7 @@
 
 .delete-button:hover{
     background-color: #ff0000;
+    cursor: pointer;
 }
 
 .close-button {
@@ -128,15 +130,24 @@
 
 .close-button:hover {
     background-color: #03a003;
+    cursor: pointer;
 }
 
 #addButton {
     font-family: 'Lato', Arial, serif;
-    font-size: large;
+    font-size: x-large;
+    font-weight: bold;
     margin-top: 35px;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 75%;
+    background-color: cornflowerblue;
+}
+
+#addButton:hover {
+    background-color: #8faef1;
+    cursor: pointer;
 }
 
 #genericTableHeader {
