@@ -5,14 +5,9 @@ import grp1.motorhomes.model.Customer;
 import grp1.motorhomes.model.Extra;
 import grp1.motorhomes.model.Motorhome;
 import org.junit.jupiter.api.Test;
-import org.springframework.cglib.core.Local;
-
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -25,14 +20,16 @@ class ContractServiceTest {
      */
     @Test
     void calculatePrice() {
+        ContractService contractService = new ContractService();
 
         ArrayList<Extra> extraList = new ArrayList<>();
         extraList.add(new Extra(1, 20, "Table", "Picnic Table"));
         extraList.add(new Extra(1, 80, "Bike Rack", "Bike Rack"));
 
-        ContractService contractService = new ContractService();
+
         Motorhome motorhome = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
                 "A motorhome", "An ImagePath", 200, true);
+
         Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
 
         Contract contract = new Contract(1, Timestamp.valueOf("2021-05-09 12:20:20"), Timestamp.valueOf("2021-05-19 12:20:20"),
@@ -59,6 +56,7 @@ class ContractServiceTest {
      */
     @Test
     void cancellationFee() {
+        ContractService contractService = new ContractService();
 
         LocalDateTime today = LocalDateTime.now();
 
@@ -66,7 +64,6 @@ class ContractServiceTest {
         extraList.add(new Extra(1, 2, "Table", "Picnic Table"));
         extraList.add(new Extra(1, 8, "Bike Rack", "Bike Rack"));
 
-        ContractService contractService = new ContractService();
 
         Motorhome motorhome = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
                 "A motorhome", "An ImagePath", 100, true);
