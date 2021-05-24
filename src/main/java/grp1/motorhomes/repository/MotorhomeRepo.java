@@ -33,6 +33,16 @@ public class MotorhomeRepo {
     }
 
     /**
+     * @author Christian
+     */
+    public List<Motorhome> fetchAllUnavailableMotorhomes() {
+        String sqlStatement = "SELECT registration as licencePlate, type, brand, model, description, price, available = false " +
+                "FROM motorhomes JOIN models using(model_id)";
+        RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
+        return template.query(sqlStatement, rowMapper);
+    }
+
+    /**
      * @param motorhome
      * @author Patrick
      */

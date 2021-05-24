@@ -1,7 +1,10 @@
 package grp1.motorhomes.model;
 
+import grp1.motorhomes.repository.MotorhomeRepo;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * @author Christian
@@ -9,5 +12,15 @@ import javax.persistence.Id;
 @Entity
 public class AutoService {
     @Id
-    int autoServiceId;
+    private int autoServiceId;
+    private String autocheck;
+    private boolean checked;
+
+    @OneToOne
+    private Motorhome;
+
+    /**
+     * @author Christian
+     */
+    public
 }
