@@ -165,6 +165,12 @@ public class ContractController {
         return "home/closeContract";
     }
 
+    @GetMapping("/calculatePrice/{contractId}")
+    public String calculatePrice(@PathVariable int contractId, Model model) {
+        model.addAttribute("rentalPrice", contractService.calculatePrice(contractService.findContract(contractId)));
+        return "home/closeContract";
+    }
+
     /**
      * @author Joachim
      * @param contract

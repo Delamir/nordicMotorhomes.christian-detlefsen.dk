@@ -16,8 +16,8 @@ public class Contract {
     @Id
     private int contractId;
 
-    private Timestamp fromDate;
-    private Timestamp toDate;
+    private LocalDateTime fromDate;
+    private LocalDateTime toDate;
     private int odometer;
     private int excessKm;
     private int transferKm;
@@ -53,7 +53,7 @@ public class Contract {
      * @param extras
      * @author Christian
      */
-    public Contract(int contractId, Timestamp fromDate, Timestamp toDate, int odometer, Customer customer,
+    public Contract(int contractId, LocalDateTime fromDate, LocalDateTime toDate, int odometer, Customer customer,
                     Motorhome motorhome, List<Extra> extras) {
         this.contractId = contractId;
         this.fromDate = fromDate;
@@ -119,7 +119,7 @@ public class Contract {
         this.contractId = contractId;
     }
 
-    public Timestamp getFromDate() {
+    public LocalDateTime getFromDate() {
         return fromDate;
     }
 
@@ -130,9 +130,9 @@ public class Contract {
      */
     public String getFromDateAsString(){
         String returnString = "";
-        returnString += fromDate.toLocalDateTime().getDayOfMonth() + ". ";
-        returnString += fromDate.toLocalDateTime().getMonth().name().toLowerCase() + " ";
-        returnString += fromDate.toLocalDateTime().getHour() + ":" + fromDate.toLocalDateTime().getMinute();
+        returnString += fromDate.getDayOfMonth() + ". ";
+        returnString += fromDate.getMonth().name().toLowerCase() + " ";
+        returnString += fromDate.getHour() + ":" + fromDate.getMinute();
         return returnString;
     }
 
@@ -142,9 +142,9 @@ public class Contract {
      */
     public String getToDateAsString(){
         String returnString = "";
-        returnString += toDate.toLocalDateTime().getDayOfMonth()+". ";
-        returnString += toDate.toLocalDateTime().getMonth().name().toLowerCase() + " ";
-        returnString += toDate.toLocalDateTime().getHour() + ":" + toDate.toLocalDateTime().getMinute();
+        returnString += toDate.getDayOfMonth()+". ";
+        returnString += toDate.getMonth().name().toLowerCase() + " ";
+        returnString += toDate.getHour() + ":" + toDate.getMinute();
         return returnString;
     }
 
@@ -161,10 +161,10 @@ public class Contract {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
             localDateTime = LocalDateTime.parse(from, formatter);
         }
-        this.fromDate = Timestamp.valueOf(localDateTime);
+        this.fromDate = localDateTime;
     }
 
-    public Timestamp getToDate() {
+    public LocalDateTime getToDate() {
         return toDate;
     }
 
@@ -181,7 +181,7 @@ public class Contract {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
             localDateTime = LocalDateTime.parse(to, formatter);
         }
-        this.toDate = Timestamp.valueOf(localDateTime);
+        this.toDate = localDateTime;
     }
 
     public int getOdometer() {

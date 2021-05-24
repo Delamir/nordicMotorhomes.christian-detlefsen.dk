@@ -32,11 +32,11 @@ class ContractServiceTest {
 
         Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
 
-        Contract contract = new Contract(1, Timestamp.valueOf("2021-05-09 12:20:20"), Timestamp.valueOf("2021-05-19 12:20:20"),
+        Contract contract = new Contract(1, Timestamp.valueOf("2021-05-09 12:20:20").toLocalDateTime(), Timestamp.valueOf("2021-05-19 12:20:20").toLocalDateTime(),
                 200000, customer, motorhome, extraList);
-        Contract contract1 = new Contract(1, Timestamp.valueOf("2021-05-09 13:45:42"), Timestamp.valueOf("2021-05-19 12:20:20"),
+        Contract contract1 = new Contract(1, Timestamp.valueOf("2021-05-09 13:45:42").toLocalDateTime(), Timestamp.valueOf("2021-05-19 12:20:20").toLocalDateTime(),
                 200000, customer, motorhome, extraList);
-        Contract contract2 = new Contract(1, Timestamp.valueOf("2021-05-09 11:10:20"), Timestamp.valueOf("2021-05-19 12:20:20"),
+        Contract contract2 = new Contract(1, Timestamp.valueOf("2021-05-09 11:10:20").toLocalDateTime(), Timestamp.valueOf("2021-05-19 12:20:20").toLocalDateTime(),
                 200000, customer, motorhome, extraList);
 
         assertEquals(3000, contractService.calculatePrice(contract));
@@ -69,15 +69,15 @@ class ContractServiceTest {
                 "A motorhome", "An ImagePath", 100, true);
         Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
 
-        Contract cOver50 = new Contract(1, Timestamp.valueOf(today.plusDays(60)), Timestamp.valueOf(today.plusDays(90)),
+        Contract cOver50 = new Contract(1, Timestamp.valueOf(today.plusDays(60)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(90)).toLocalDateTime(),
                 200000, customer, motorhome, extraList);
-        Contract cBetween49And15 = new Contract(1, Timestamp.valueOf(today.plusDays(30)), Timestamp.valueOf(today.plusDays(60)),
+        Contract cBetween49And15 = new Contract(1, Timestamp.valueOf(today.plusDays(30)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(60)).toLocalDateTime(),
                 200000, customer, motorhome, extraList);
-        Contract cUnder15 = new Contract(1, Timestamp.valueOf(today.plusDays(10)), Timestamp.valueOf(today.plusDays(40)),
+        Contract cUnder15 = new Contract(1, Timestamp.valueOf(today.plusDays(10)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(40)).toLocalDateTime(),
                 200000, customer, motorhome, extraList);
-        Contract cSameDay = new Contract(1, Timestamp.valueOf(today), Timestamp.valueOf(today.plusDays(30)),
+        Contract cSameDay = new Contract(1, Timestamp.valueOf(today).toLocalDateTime(), Timestamp.valueOf(today.plusDays(30)).toLocalDateTime(),
                 200000, customer, motorhome, extraList);
-        Contract cAfterStart = new Contract(1, Timestamp.valueOf(today.minusDays(2)), Timestamp.valueOf(today.plusDays(28)),
+        Contract cAfterStart = new Contract(1, Timestamp.valueOf(today.minusDays(2)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(28)).toLocalDateTime(),
                 200000, customer, motorhome, extraList);
 
         assertEquals(660, contractService.cancellationFee(cOver50));

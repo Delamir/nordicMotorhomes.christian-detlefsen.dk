@@ -80,7 +80,7 @@ public class ContractService {
         double transferFee = 0;
         double fuelCost = 0;
         double excessKm = 0;
-        int rentalDays = daysBetweenDates(contract.getFromDate(), contract.getToDate());
+        int rentalDays = daysBetweenDates(Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()));
 
         //Calculate price based on season
         if (LocalDateTime.now().getMonth().getValue() >= Constants.MAY &&
@@ -129,7 +129,7 @@ public class ContractService {
     public double cancellationFee(Contract contract) {
         double contractPrice = calculatePrice(contract);
         double cancellationFee;
-        int rentalDays = daysBetweenDates(Timestamp.valueOf(LocalDateTime.now()), contract.getFromDate());
+        int rentalDays = daysBetweenDates(Timestamp.valueOf(LocalDateTime.now()), Timestamp.valueOf(contract.getFromDate()));
 
         if (rentalDays >= Constants.CANCELLATION_50_DAYS) {
 
