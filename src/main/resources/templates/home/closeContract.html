@@ -18,21 +18,30 @@
 
 <div class="relative">
     <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Closed Contracts</h1>
+    <h1 class="headerTitle">Closed Contracts</h1>
 </div>
-
+<div class="formElement">
 <label>Start Date: </label>
 <p th:text="${contract.getFromDateAsString()}"></p>
+</div>
+<div class="formElement">
 <label>End Date: </label>
 <p th:text="${contract.toDate}"></p>
+</div>
+<div class="formElement">
 <label>Odometer: </label>
 <p th:text="${contract.odometer}"></p>
+</div>
 
-<form name="form" method="post" action="/closeContract">
+<div th:if="${rentalPrice==null}">
+<form name="form" method="post" action="/calculatePrice">
     <input type="hidden" name="contractId" th:value="${contract.contractId}">
     <input type="number" name="excessKm" placeholder="Excess Km">
-    <input type="submit" id="submitButton" value="Submit">
-</form>
 
+    <input type="submit" class="submitButton mt-4" value="Submit">
+</form>
+</div>
+<div th:if="${rentalPrice!=null}">
+</div>
 </body>
 </html>
