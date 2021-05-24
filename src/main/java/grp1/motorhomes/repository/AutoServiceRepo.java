@@ -25,7 +25,7 @@ public class AutoServiceRepo {
      */
     public List<AutoService> fetchAllAutoServices() {
         String sqlStatement = "SELECT autoservice_id AS autoServiceId, autocheck, motorhome, checked " +
-                "FROM autoservices JOIN motorhomes USING (motorhome) WHERE checked = false";
+                "FROM autoservices JOIN motorhomes ON autoservices.motorhome = motorhomes.registration WHERE checked = false";
 
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
 
