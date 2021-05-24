@@ -48,7 +48,7 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
                 contract.setCustomerParams(resultSet.getInt("customer_number"),
                         resultSet.getString("name"), resultSet.getString("licence_number"),
                         resultSet.getString("street"), resultSet.getString("city"), resultSet.getInt("post_code"));
-                contract.setMotorhomeParams(resultSet.getString("registration"),
+                contract.setMotorhomeParams(resultSet.getString("motorhome"),
                         resultSet.getString("type"), resultSet.getString("brand"),
                         resultSet.getString("model"), resultSet.getString("description"),
                         resultSet.getString("image_path"), resultSet.getInt("price"), resultSet.getBoolean("available"));
