@@ -53,15 +53,21 @@ public class AutoServiceController {
         return "redirect:/autoServiceIndex";
     }
 
+    /**
+     * @author Joachim
+     */
     @GetMapping("/editAutoService/{autoServiceId}")
     public String editAutoService(@PathVariable int autoServiceId, Model model) {
         model.addAttribute("autoService", autoServiceService.fetchAllAutoServices());
         return "home/editAutoService";
     }
 
+    /**
+     * @author Joachim
+     */
     @PostMapping("/editAutoService")
     public String editAutoService(@ModelAttribute AutoService autoService) {
-        autoServiceService.editAutoservice(autoService);
+        autoServiceService.editAutoService(autoService);
         return "redirect:/autoServiceIndex";
     }
 }
