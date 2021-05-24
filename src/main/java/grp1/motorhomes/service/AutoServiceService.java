@@ -21,10 +21,22 @@ public class AutoServiceService {
      * @author Chrsitian
      * @return
      */
-
-
     public List<AutoService> fetchAllAutoServices() {
         return autoServiceRepo.fetchAllAutoServices();
+    }
+
+    /**
+     * @author Joachim
+     */
+    public void createAutoService(AutoService autoService) {
+        autoServiceRepo.createAutoService(autoService);
+    }
+
+    /**
+     * @author Joachim
+     */
+    public void editAutoService(AutoService autoService) {
+        autoServiceRepo.editAutoService(autoService);
     }
 
 }
