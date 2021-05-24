@@ -153,15 +153,13 @@ public class Contract {
      * @author Sverri
      */
     public void setFromDate(String from) {
-        LocalDateTime localDateTime;
         if (from.contains("T")) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-            localDateTime = LocalDateTime.parse(from, formatter);
+            this.fromDate = LocalDateTime.parse(from, formatter);
         } else {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
-            localDateTime = LocalDateTime.parse(from, formatter);
+            this.fromDate = LocalDateTime.parse(from, formatter);
         }
-        this.fromDate = localDateTime;
     }
 
     public LocalDateTime getToDate() {
