@@ -134,8 +134,8 @@ public class ContractRepo {
                 "excess_km = ?, transfer_km = ?, delivery_point = ?, delivered = ?, pickup_point = ?, picked_up = ?, closed = ?" +
                 " WHERE contract_id = ?";
 
-        template.update(updateSql, contract.getFromDate(), contract.getToDate(), contract.getOdometer(), contract.getCustomer(),
-                contract.getMotorhome(), contract.getExcessKm(), contract.getTransferKm(), contract.getDeliveryPoint(),
+        template.update(updateSql, contract.getFromDate(), contract.getToDate(), contract.getOdometer(), contract.getCustomer().getCustomerNumber(),
+                contract.getMotorhome().getLicencePlate(), contract.getExcessKm(), contract.getTransferKm(), contract.getDeliveryPoint(),
                 contract.isDelivered(), contract.getPickupPoint(), contract.isPickedUp(), contract.isClosed(), contract.getContractId());
     }
 
