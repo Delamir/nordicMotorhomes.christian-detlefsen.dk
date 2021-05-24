@@ -27,4 +27,12 @@ public class AutoServiceService {
         return autoServiceRepo.fetchAllAutoServices();
     }
 
+    public void createAutoService(AutoService autoService) {
+        autoServiceRepo.createAutoService(autoService);
+    }
+
+    public void editAutoService(AutoService autoService) {
+        autoServiceRepo.editAutoService(autoService);
+    }
+
 }
