@@ -8,10 +8,7 @@ import grp1.motorhomes.service.MotorhomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Christian
@@ -165,9 +162,13 @@ public class ContractController {
         return "home/closeContract";
     }
 
-    @GetMapping("/calculatePrice/{contractId}")
-    public String calculatePrice(@PathVariable int contractId, Model model) {
-        model.addAttribute("rentalPrice", contractService.calculatePrice(contractService.findContract(contractId)));
+    @PostMapping("/calculatePrice")
+    public String calculatePrice(@RequestParam Integer contractId, @RequestParam Integer excessKm, Model model) {
+        Contract contract = contractService.findContract(contractId);
+        contract.setExcessKm(excessKm);
+        contractService.editContract(contract);
+        model.addAttribute("contract", contract);
+        model.addAttribute("rentalPrice", contractService.calculatePrice(contract));
         return "home/closeContract";
     }
 
@@ -179,7 +180,6 @@ public class ContractController {
     @PostMapping("/closeContract")
     public String closeContract(@ModelAttribute Contract contract) {
         contractService.closeContract(contract);
-        System.out.println(contract.getContractId());
         return "redirect:/contractIndex";
     }
 
