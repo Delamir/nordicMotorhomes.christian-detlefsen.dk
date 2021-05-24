@@ -56,5 +56,14 @@ public class MotorhomeService {
         motorhomeRepo.deleteMotorhome(licencePlate);
     }
 
+    /**
+     * @author Christian
+     * @param licencePlate
+     * @param status
+     */
+    public void setAvailable(String licencePlate, boolean status) {
+        motorhomeRepo.setAvailable(licencePlate, status);
+    }
+
 
 }

@@ -111,4 +111,15 @@ public class MotorhomeRepo {
         String deleteSql = "DELETE FROM motorhomes WHERE registration = ? ";
         template.update(deleteSql, licencePlate);
     }
+
+    /**
+     * @author Christian
+     * @param licencePlate
+     * @param status
+     */
+    public void setAvailable(String licencePlate, boolean status) {
+        String setAvailableSql = "INSERT INTO motorhomes(available) VALUES(?) WHERE registration = ?";
+
+        template.update(setAvailableSql, status, licencePlate);
+    }
 }
