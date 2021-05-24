@@ -39,16 +39,16 @@ class ContractServiceTest {
         Contract contract2 = new Contract(1, Timestamp.valueOf("2021-05-09 11:10:20"), Timestamp.valueOf("2021-05-19 12:20:20"),
                 200000, customer, motorhome, extraList);
 
-        assertEquals(3000, contractService.calculatePrice(contract, motorhome.getPrice()));
+        assertEquals(3000, contractService.calculatePrice(contract));
 
         contract.setUnderHalfFuelTank(true);
         contract.setPickedUp(true);
         contract.setExcessKm(200);
         contract.setTransferKm(100);
 
-        assertEquals(3340, contractService.calculatePrice(contract, motorhome.getPrice()));
-        assertEquals(3000, contractService.calculatePrice(contract1, motorhome.getPrice()));
-        assertEquals(3000, contractService.calculatePrice(contract2, motorhome.getPrice()));
+        assertEquals(3340, contractService.calculatePrice(contract));
+        assertEquals(3000, contractService.calculatePrice(contract1));
+        assertEquals(3000, contractService.calculatePrice(contract2));
     }
 
     /**
@@ -80,10 +80,10 @@ class ContractServiceTest {
         Contract cAfterStart = new Contract(1, Timestamp.valueOf(today.minusDays(2)), Timestamp.valueOf(today.plusDays(28)),
                 200000, customer, motorhome, extraList);
 
-        assertEquals(660, contractService.cancellationFee(cOver50, motorhome.getPrice()));
-        assertEquals(1650, contractService.cancellationFee(cBetween49And15, motorhome.getPrice()));
-        assertEquals(2640, contractService.cancellationFee(cUnder15, motorhome.getPrice()));
-        assertEquals(3135, contractService.cancellationFee(cSameDay, motorhome.getPrice()));
-        assertEquals(3300, contractService.cancellationFee(cAfterStart, motorhome.getPrice()));
+        assertEquals(660, contractService.cancellationFee(cOver50));
+        assertEquals(1650, contractService.cancellationFee(cBetween49And15));
+        assertEquals(2640, contractService.cancellationFee(cUnder15));
+        assertEquals(3135, contractService.cancellationFee(cSameDay));
+        assertEquals(3300, contractService.cancellationFee(cAfterStart));
     }
 }

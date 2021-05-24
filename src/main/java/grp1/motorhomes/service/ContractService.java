@@ -74,7 +74,7 @@ public class ContractService {
     /**
      * @author Christian og Patrick
      */
-    public double calculatePrice(Contract contract, int motorHomePrice) {
+    public double calculatePrice(Contract contract) {
         double priceExtra = 0;
         double priceMotorhome;
         double transferFee = 0;
@@ -86,15 +86,15 @@ public class ContractService {
         if (LocalDateTime.now().getMonth().getValue() >= Constants.MAY &&
                 LocalDateTime.now().getMonth().getValue() <= Constants.SEPTEMBER) {
 
-            priceMotorhome = motorHomePrice * rentalDays; //peak season price
+            priceMotorhome = contract.getMotorhome().getPrice() * rentalDays; //peak season price
 
         } else if (LocalDateTime.now().getMonth().getValue() >= Constants.NOVEMBER ||
                 LocalDateTime.now().getMonth().getValue() <= Constants.FEBRUARY) {
 
-            priceMotorhome = (motorHomePrice - (motorHomePrice * Constants.LOW_SEASON)) * rentalDays; //low season price
+            priceMotorhome = (contract.getMotorhome().getPrice() - (contract.getMotorhome().getPrice() * Constants.LOW_SEASON)) * rentalDays; //low season price
 
         } else {
-            priceMotorhome = (motorHomePrice - (motorHomePrice * Constants.MID_SEASON)) * rentalDays; //mid season price
+            priceMotorhome = (contract.getMotorhome().getPrice() - (contract.getMotorhome().getPrice() * Constants.MID_SEASON)) * rentalDays; //mid season price
         }
 
         //Calculate the price of all extras
@@ -126,8 +126,8 @@ public class ContractService {
     /**
      * @author Christian og Patrick
      */
-    public double cancellationFee(Contract contract, int motorHomePrice) {
-        double contractPrice = calculatePrice(contract, motorHomePrice);
+    public double cancellationFee(Contract contract) {
+        double contractPrice = calculatePrice(contract);
         double cancellationFee;
         int rentalDays = daysBetweenDates(Timestamp.valueOf(LocalDateTime.now()), contract.getFromDate());
 

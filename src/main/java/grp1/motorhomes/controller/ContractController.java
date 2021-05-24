@@ -62,7 +62,6 @@ public class ContractController {
      */
     @PostMapping("/createContract")
     public String createContract(@ModelAttribute Contract contract) {
-        System.out.println(contract);
         contractService.createContract(contract);
         return "redirect:/contractIndex";
     }
@@ -156,7 +155,6 @@ public class ContractController {
     @GetMapping("/closeContract/{contractId}")
     public String closeContract(@PathVariable int contractId, Model model) {
         model.addAttribute("contract", contractService.findContract(contractId));
-        System.out.println(contractService.findContract(contractId));
         return "home/closeContract";
     }
 
@@ -168,6 +166,7 @@ public class ContractController {
     @PostMapping("/closeContract")
     public String closeContract(@ModelAttribute Contract contract) {
         contractService.closeContract(contract);
+        System.out.println(contract.getContractId());
         return "redirect:/contractIndex";
     }
 

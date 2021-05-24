@@ -38,7 +38,7 @@
             <td th:text="${contract.getFromDateAsString}"></td>
             <td th:text="${contract.getToDateAsString}"></td>
             <td th:text="${contract.odometer}"></td>
-            <td th:text="${contract.customerNumber}"></td>
+            <td th:text="${contract.customer.getCustomerNumber()}"></td>
 
             <td class="actions" th:if="${!contract.delivered}">
                 <a  th:href="@{'/deliverContract/'+${contract.contractId}}">
