@@ -22,9 +22,9 @@ public class AutoServiceService {
      * @return
      */
 
-/*
+
     public List<AutoService> fetchAllAutoServices() {
         return autoServiceRepo.fetchAllAutoServices();
     }
-*/
+
 }

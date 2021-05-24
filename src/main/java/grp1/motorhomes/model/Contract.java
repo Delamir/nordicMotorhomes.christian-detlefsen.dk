@@ -187,6 +187,7 @@ public class Contract {
     public int getOdometer() {
         return odometer;
     }
+
     public void setOdometer(int odometer) {
         this.odometer = odometer;
     }
