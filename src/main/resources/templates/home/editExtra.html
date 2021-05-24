@@ -6,7 +6,7 @@
     <title>Edit Extra</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body id="manageBg">
+<body>
 
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
@@ -16,22 +16,31 @@
     <a class="active" th:href="@{'/extraIndex/'}">Manage Extra</a>
 </div>
 
-<div class="genericHeaderContainer">
-    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Edit an Extra Item</h1>
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Edit an Extra Item</h1>
 </div>
 
-<form class="form" onsubmit="return confirm('Are you sure you want to edit this extra item?')" action="/editExtra/" method="post">
-    <input type="hidden" name="extraId" th:value="${extra.extraId}">
-    <label>Name:</label>
-    <input type="text" name="name" th:value="${extra.name}">
-    <label>Description:</label>
-    <input type="text" name="description" th:value="${extra.description}">
-    <label>Price:</label>
-    <input type="text" name="price" th:value="${extra.price}">
-    <label></label>
-    <input type="submit" id="submitButton" value="Edit Extra">
-
-</form>
+<div>
+    <form class="form" onsubmit="return confirm('Are you sure you want to edit this extra item?')"
+          action="/editExtra/" method="post">
+        <input type="hidden" name="extraId" th:value="${extra.extraId}">
+        <div class="formElement">
+            <label>Name:</label>
+            <input type="text" name="name" th:value="${extra.name}">
+        </div>
+        <div class="formElement">
+            <label>Description:</label>
+            <input type="text" name="description" th:value="${extra.description}">
+        </div>
+        <div class="formElement">
+            <label>Price:</label>
+            <input type="text" name="price" th:value="${extra.price}">
+        </div>
+        <div>
+            <input type="submit" class="submitButton mt-4" value="Edit Extra">
+        </div>
+    </form>
+</div>
 </body>
 </html>
