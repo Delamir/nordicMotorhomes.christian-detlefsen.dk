@@ -23,6 +23,7 @@
 <div>
     <form class="form" onsubmit="return confirm('Are you sure you want to edit this contract?')" action="/editContract/"
           method="post">
+        <input type="hidden" name="contractId" th:value="${contract.contractId}">
         <div class="formElement">
             <label>Contract Start Date </label>
             <input type="datetime-local" name="fromDate" th:value="${contract.fromDate}">
