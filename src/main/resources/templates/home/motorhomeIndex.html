@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Manage Motorhomes</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body id="manageBg">
+
+<body>
 
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
@@ -16,17 +18,25 @@
 </div>
 
 
-<div class="genericHeaderContainer">
-    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Motorhome Management</h1>
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Motorhome Management</h1>
 </div>
 
 <div class="table">
     <table>
 
-
         <tr>
-            <th id="genericTableHeader" colspan="10">Motorhomes</th>
+            <th class="genericTableHeader relative" colspan="10">Motorhomes <span class="addButtonContainer">
+                        <a th:href="@{'/createMotorhome/'}">
+                            <button type="button" class="addNewButton"><svg fill="currentColor" viewBox="0 0 20 20"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                          clip-rule="evenodd"></path>
+                                </svg> Add new motorhome</button>
+                        </a>
+                    </span></th>
         </tr>
 
         <tbody>
@@ -69,9 +79,6 @@
         </tr>
         </tbody>
     </table>
-    <a th:href="@{'/createMotorhome/'}">
-        <button type="button" id="addButton">+</button>
-    </a>
 
 </div>
 

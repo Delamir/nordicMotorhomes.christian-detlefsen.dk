@@ -3,7 +3,6 @@ package grp1.motorhomes.repository;
 import grp1.motorhomes.model.Contract;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.thymeleaf.expression.Maps;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,10 +45,10 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
                 contract.setFromDate(resultSet.getTimestamp("from_Date").toString());
                 contract.setToDate(resultSet.getTimestamp("to_Date").toString());
                 contract.setOdometer(resultSet.getInt("odometer"));
-                contract.setCustomer(resultSet.getInt("customer_number"),
+                contract.setCustomerParams(resultSet.getInt("customer_number"),
                         resultSet.getString("name"), resultSet.getString("licence_number"),
                         resultSet.getString("street"), resultSet.getString("city"), resultSet.getInt("post_code"));
-                contract.setMotorhome(resultSet.getString("motorhome"),
+                contract.setMotorhomeParams(resultSet.getString("registration"),
                         resultSet.getString("type"), resultSet.getString("brand"),
                         resultSet.getString("model"), resultSet.getString("description"),
                         resultSet.getString("image_path"), resultSet.getInt("price"), resultSet.getBoolean("available"));

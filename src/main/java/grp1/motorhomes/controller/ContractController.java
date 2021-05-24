@@ -3,6 +3,7 @@ package grp1.motorhomes.controller;
 import grp1.motorhomes.model.Contract;
 import grp1.motorhomes.service.ContractService;
 import grp1.motorhomes.service.CustomerService;
+import grp1.motorhomes.service.ExtraService;
 import grp1.motorhomes.service.MotorhomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class ContractController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    ExtraService extraService;
 
     /**
      * @param model
@@ -52,6 +56,7 @@ public class ContractController {
     public String createContract(Model model) {
         model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
         model.addAttribute("customers", customerService.fetchAllCustomers());
+        model.addAttribute("extras", extraService.fetchAllExtras());
         return "home/createContract";
     }
 
@@ -77,6 +82,7 @@ public class ContractController {
         model.addAttribute("contract", contractService.findContract(contractId));
         model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
         model.addAttribute("customers", customerService.fetchAllCustomers());
+        model.addAttribute("extras", extraService.fetchAllExtras());
         return "home/editContract";
     }
 

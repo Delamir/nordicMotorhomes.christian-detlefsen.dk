@@ -15,49 +15,67 @@
     <a th:href="@{'/extraIndex/'}">Manage Extra</a>
 </div>
 
-<div class="genericHeaderContainer">
-    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Edit Contracts</h1>
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Edit Contracts</h1>
 </div>
 
+<div>
 <form class="form" onsubmit="return confirm('Are you sure you want to edit this contract?')" action="/editContract/"
       method="post">
+    <div class="formElement">
     <label>Contract Start Date: </label>
     <input type="datetime-local" name="fromDate" th:value="${contract.fromDate}">
+    </div>
+    <div class="formElement">
     <label>Contract End Date: </label>
     <input type="datetime-local" name="toDate" th:value="${contract.toDate}">
+    </div>
+    <div class="formElement">
     <label>Odometer: </label>
     <input type="text" name="odometer" placeholder="Odometer" th:value="${contract.odometer}">
+    </div>
+    <div class="formElement">
     <label>Price: </label>
     <input type="text" name="price" placeholder="Price" th:value="${contract.price}">
+    </div>
+    <div class="formElement">
     <label>Excess Km: </label>
     <input type="text" name="excessKm" th:value="${contract.excessKm}">
+    </div>
+    <div class="formElement">
     <label>Transfer Km: </label>
     <input type="text" name="transerKm" th:value="${contract.transferKm}">
+    </div>
+    <div class="formElement checkbox">
     <label>Delivered: </label>
     <input type="checkbox" name="delivered" th:value="${contract.delivered}">
+    </div>
+    <div class="formElement checkbox">
     <label>Picked up: </label>
     <input type="checkbox" name="pickedUp" th:value="${contract.pickedUp}">
+    </div>
+    <div class="formElement checkbox">
     <label>Closed: </label>
     <input type="checkbox" name="closed" th:value="${contract.closed}">
+    </div>
     <label>Customer:</label>
     <label>Motorhome: </label>
     <label></label>
-    <input type="submit" id="submitButton" value="Edit contract">
+    <input type="submit" class="submitButton mt-4" value="Edit contract">
     <select name="motorhome">
         <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
                 th:selected="${motorhome.licencePlate.equals(contract.motorhome)}"
                 th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
     </select>
 
-    <!--
     <select name="customer">
         <option th:each="customer:${customers}" th:value="${customer.customerNumber}"
                 th:selected="${customer.customerNumber.equals(contract.customer)}"
                 th:text="${customer.name} + ', ' + ${customer.licenceNumber}"></option>
     </select>
---->
 
 </form>
+</div>
 </body>
 </html>

@@ -19,9 +19,10 @@ public class AutoServiceRepo {
     /**
      * @author Christian
      */
-
+/*
     public List<AutoService> fetchAllAutoServices() {
         String sqlStatement = "SELECT autoservice_id AS autoServiceId, autocheck, motorhome, checked" +
                 "FROM autoservices JOIN motorhomes USING (motorhome)";
     }
+ */
 }

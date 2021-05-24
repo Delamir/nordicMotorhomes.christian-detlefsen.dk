@@ -246,8 +246,13 @@ public class Contract {
      * @param price
      * @param available
      */
-    public void setMotorhome(String licencePlate, String type, String brand, String model, String description, String imagePath, int price, boolean available) {
+    public void setMotorhomeParams(String licencePlate, String type, String brand, String model, String description, String imagePath, int price, boolean available) {
         this.motorhome = new Motorhome(licencePlate, type, brand, model, description, imagePath, price, available);
+    }
+
+    public void setMotorhome(String licencePlate) {
+        this.motorhome = new Motorhome();
+        this.motorhome.setLicencePlate(licencePlate);
     }
 
     public Customer getCustomer() {
@@ -263,8 +268,13 @@ public class Contract {
      * @param city
      * @param postCode
      */
-    public void setCustomer(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
+    public void setCustomerParams(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
         this.customer = new Customer(customerNumber, name, licenceNumber, street, city, postCode);
+    }
+
+    public void setCustomer(int customer) {
+        this.customer = new Customer();
+        this.customer.setCustomerNumber(customer);
     }
 
     @Override

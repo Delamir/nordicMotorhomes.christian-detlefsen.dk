@@ -71,8 +71,8 @@ public class ContractRepo {
      */
     public void createContract(Contract contract) {
         String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, excess_km, " +
-                "transfer_km, customer_number, motorhome, delivery_point, delivered, pickup_point, picked_up, closed) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "transfer_km, customer_number, motorhome, delivery_point, pickup_point) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -88,16 +88,9 @@ public class ContractRepo {
             preparedStatement.setInt(6, contract.getCustomer().getCustomerNumber());
             preparedStatement.setString(7, contract.getMotorhome().getLicencePlate());
             preparedStatement.setString(8, contract.getDeliveryPoint());
-            preparedStatement.setBoolean(9, contract.isDelivered());
-            preparedStatement.setString(10, contract.getPickupPoint());
-            preparedStatement.setBoolean(11, contract.isPickedUp());
-            preparedStatement.setBoolean(12, contract.isClosed());
+            preparedStatement.setString(9, contract.getPickupPoint());
             return preparedStatement;
         }, keyHolder);
-
-        template.update(insertContractValues, contract.getFromDate(), contract.getToDate(),
-                contract.getOdometer(), contract.getExcessKm(), contract.getTransferKm(), contract.getCustomer(),
-                contract.getMotorhome());
 
         if (contract.getExtras().size() > 0) {
             String insertExtraRelations = "INSERT INTO contracts_extras(contract_id, extra_id) VALUES(?, ?)";

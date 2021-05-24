@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+/*
 public class AutoServiceResultSetExtractor implements ResultSetExtractor {
 
     /**
@@ -20,6 +20,7 @@ public class AutoServiceResultSetExtractor implements ResultSetExtractor {
      * @throws SQLException
      * @throws DataAccessException
      */
+    /*
     @Override
     public List<Contract> extractData(ResultSet resultSet) throws SQLException, DataAccessException {
 
@@ -67,5 +68,7 @@ public class AutoServiceResultSetExtractor implements ResultSetExtractor {
 
         return new ArrayList<>(contracts.values());
     }
-}
 
+
+}
+*/

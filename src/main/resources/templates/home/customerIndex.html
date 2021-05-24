@@ -6,7 +6,8 @@
     <title>Manage Customer</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body id="manageBg">
+
+<body>
 
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
@@ -16,17 +17,27 @@
     <a th:href="@{'/extraIndex/'}">Manage Extra</a>
 </div>
 
-<div class="genericHeaderContainer">
-    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Customer Management</h1>
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Customer Management</h1>
 </div>
 <div class="table">
     <table>
 
 
         <tr>
-            <th id="genericTableHeader" colspan="7">Customers</th>
+            <th class="genericTableHeader relative" colspan="7">Customers<span class="addButtonContainer">
+                        <a th:href="@{'/createCustomer/'}">
+                            <button type="button" class="addNewButton"><svg fill="currentColor" viewBox="0 0 20 20"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                          clip-rule="evenodd"></path>
+                                </svg>Add new customer</button>
+                        </a>
+                    </span></th>
         </tr>
+
         <tbody>
         <th>Customer Name</th>
         <th>Licence Number</th>
@@ -50,7 +61,8 @@
 
             <td class="actions">
                 <a th:href="@{'/deleteCustomer/'+${customer.customerNumber}}">
-                    <button class="delete-button" type="button" th:confirm="'Are you sure you want to delete ' + ${customer.name} + '?'"
+                    <button class="delete-button" type="button"
+                            th:confirm="'Are you sure you want to delete ' + ${customer.name} + '?'"
                             onclick="return confirm(this.getAttribute('confirm'))">Delete
                     </button>
                 </a>
@@ -58,9 +70,6 @@
         </tr>
         </tbody>
     </table>
-    <a th:href="@{'/createCustomer/'}">
-        <button id="addButton" type="button">Add new customer</button>
-    </a>
 </div>
 
 </body>

@@ -6,7 +6,7 @@
     <title>Create new Extra</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body id="manageBg">
+<body>
 
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
@@ -16,21 +16,31 @@
     <a class="active" th:href="@{'/extraIndex/'}">Manage Extra</a>
 </div>
 
-<div class="genericHeaderContainer">
-    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Create an Extra Item</h1>
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Create an Extra Item</h1>
 </div>
 
-<form class="form" onsubmit="return confirm('Are you sure you want to create a extra item?')" action="/createExtra" method="post">
-    <label>Name:</label>
-    <input type="text" name="name" placeholder="Name">
-    <label>Description:</label>
-    <input type="text" name="description" placeholder="Description">
-    <label>Price:</label>
-    <input type="text" name="price" placeholder="Price">
-    <label></label>
-    <input type="submit" id="submitButton" value="Add Extra">
+<div>
+    <form class="form" onsubmit="return confirm('Are you sure you want to create a extra item?')" action="/createExtra"
+          method="post">
+        <div class="formElement">
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Name">
+        </div>
+        <div class="formElement">
+            <label>Description:</label>
+            <input type="text" name="description" placeholder="Description">
+        </div>
+        <div class="formElement">
+            <label>Price:</label>
+            <input type="text" name="price" placeholder="Price">
+        </div>
+        <div>
+            <button type="submit" id="submitButton mt-4">Create new Extra</button>
+        </div>
 
-</form>
+    </form>
+</div>
 </body>
 </html>

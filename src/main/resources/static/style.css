@@ -1,95 +1,249 @@
 /* With inspiration from https://www.w3schools.com/howto/howto_js_topnav.asp
 @Author Joachim*/
+
+/* GENERAL */
+
+:root{
+    --main-button-color: lightgray;
+    --main-header-font: "Britannic Bold", serif;
+    --primary-color: darkorange;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: var(--main-header-font);
+}
+
+/* RESET STANDARD STYLING */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* UTILITIES */
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mt-2 {
+    margin-top: 0.50rem;
+}
+
+.mt-3 {
+    margin-top: 0.75rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.relative {
+    position: relative;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.blur {
+    filter: blur(3px);
+}
+
+/* BUTTONS */
+
+.submitButton {
+    font-size: 1rem;
+    text-align: center;
+    position: relative;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid transparent;
+    transition: 0.1s;
+}
+
+.submitButton:hover {
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.addNewButton {
+    color: white;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+}
+
+/* https://heroicons.dev/ */
+.addNewButton svg {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.addNewButton:hover {
+    color: var(--primary-color);
+    background-color: white;
+}
+
+.edit-button{
+    background-color: cadetblue;
+    color: white;
+}
+
+.delete-button{
+    background-color: red;
+    color: white;
+}
+
+/* NAVBAR */
+
+/* With inspiration from https://www.w3schools.com/howto/howto_js_topnav.asp
+@Author Joachim*/
 .topmenu {
-    background-color: #1d1c1c;
-    opacity: 0.85;
-    overflow: hidden;
+    background-color: #485460;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.5);
 }
 
 .topmenu a {
-    float: left;
     color: white;
-    text-align: center;
     padding: 18px 20px;
     font-size: 20px;
     font-family: Arial, Helvetica, serif;
-    opacity: 0.9;
     text-decoration: none;
 }
 
 .topmenu a:hover {
     background-color: black;
+    cursor: pointer;
     color: white;
-    opacity: 1;
 }
 
 .topmenu a.active {
     opacity: 1;
-    background-color: darkorange;
+    background-color: var(--primary-color);
     color: white;
 }
 
-.form{
-    display: grid;
-    grid-template-columns: max-content max-content;
-    grid-gap: 10px;
-    top: 25%;
-    left: 25%;
+/* IMG HEADER */
+
+.headerImg {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: 0 -100%;
+}
+
+.headerTitle {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/* FORM */
+
+.form{
     font-size: larger;
+    display: flex;
+    flex-direction: column;
+    max-width: 768px;
+    margin: 4rem auto;
 }
 
-.form input{
-    text-align: left;
-    height: 30px;
-    width: 200px;
+.formElement {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
 }
 
-.form label{
-    text-align: right;
-    padding-top: 3px;
+.formElement.checkbox {
+    flex-direction: row;
+    align-items: center;
 }
 
-#submitButton {
-    height: 30px;
-    width: 150px;
-    font-size: 16px;
-    border-radius: 20px;
-    text-align: center;
-    background-color: lightgray;
-    color: black;
+.formElement.checkbox input{
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0 1rem 0.25rem 0;
     cursor: pointer;
 }
 
-#submitButton:hover {
-    background-color: #A0A0A0;
+.form input{
+    padding: 0.5rem;
 }
 
-.table {
+.singleSelect {
+    padding: 0.5rem;
+}
+
+.singleSelect option {
+    padding: 0.5rem;
+}
+
+.multipleSelect {
+    height: 5rem;
+}
+
+.multipleSelect option {
+    padding: 0.5rem;
+}
+
+.form label{
+    margin-bottom: 0.25rem;
+}
+
+/* TABLE */
+
+.table{
     position: relative;
     top: -25px;
 }
 
 .table table{
-    margin: auto auto;
+    margin: 0 auto;
+    padding: 2rem;
     text-align: center;
     border-collapse: collapse;
     background-color: white;
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
 
+.tableImage{
+    width: 10rem;
+    height: 6rem;
+    object-fit: cover;
 }
 
 .table td {
-    border: 1px solid gray;
-    padding: 10px;
-    font-family: Arial, serif;
+    padding: 1rem;
 }
 
 .table th {
-    border: 1px solid black;
-    padding: 5px;
-    background-color: #2f2d2d;
-    color: white;
-    font-family: Arial, serif;
+    padding: 1rem;
 }
 
 .table tr:hover {
@@ -97,96 +251,34 @@
 }
 
 .table .actions{
-    padding: 0px;
+    padding: 0.25rem;
 }
+
 .table table button{
     border: none;
-    height: 40px;
-    width: 50px;
-    padding: 0px;
-}
-
-.edit-button{
-    background-color: cadetblue;
-}
-
-.edit-button:hover {
-    background-color: #65c6ca;
+    padding: 0.5rem;
     cursor: pointer;
 }
 
-.delete-button{
-    background-color: #a70e0e;
-}
-
-.delete-button:hover{
-    background-color: #ff0000;
-    cursor: pointer;
-}
-
-.close-button {
-    background-color: #096709;
-}
-
-.close-button:hover {
-    background-color: #03a003;
-    cursor: pointer;
-}
-
-#addButton {
-    font-family: 'Lato', Arial, serif;
-    font-size: x-large;
-    font-weight: bold;
-    margin-top: 35px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 75%;
-    background-color: cornflowerblue;
-}
-
-#addButton:hover {
-    background-color: #8faef1;
-    cursor: pointer;
-}
-
-#genericTableHeader {
+.genericTableHeader {
     font-family: Arial, serif;
     font-weight: bold;
     font-size: 120%;
-    background-color: #1d1c1c;
+    background-color: var(--primary-color);
     color: white;
 }
 
-.genericHeaderContainer {
-    position: relative;
-}
-
-.genericHeaderPosition {
-    text-align: center;
-    font-family: "Britannic Bold", serif;
-    color: white;
+.addButtonContainer{
     position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.imgBlur {
-    filter: blur(3px);
-    width: 75%;
-    height: 200px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+/* WELCOME PAGE */
 
 /* With inspiration from https://www.w3schools.com/howto/howto_css_center_button.asp
 @Author Joachim*/
-
-#manageBg {
-    background-color: #e3e3e3;
-}
 
 #welcomePage {
     background-image: url("https://victoria.mediaplanet.com/app/uploads/sites/69/2019/06/iStock-915747216.jpg");
@@ -194,12 +286,9 @@
 }
 
 #welcomePageHeader {
-    text-align: center;
     font-size: xxx-large;
     top: 45%;
     left: 50%;
-    margin: 0;
     position: absolute;
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }

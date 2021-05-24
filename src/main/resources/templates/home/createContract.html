@@ -6,7 +6,7 @@
     <title>Create new contract</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body id="manageBg">
+<body>
 
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
@@ -16,34 +16,51 @@
     <a th:href="@{'/extraIndex/'}">Manage Extra</a>
 </div>
 
-<div class="genericHeaderContainer">
-    <img class="imgBlur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Create Contract</h1>
+<div class="relative">
+    <img class="headerImg blue" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Create Contract</h1>
 </div>
 
-<form class="form" onsubmit="return confirm('Are you sure you want to create a contract?')" action="/createContract" method="post">
-    <label>Contract Start Date: </label>
-    <input type="datetime-local" name="fromDate">
-    <label>Contract End Date: </label>
-    <input type="datetime-local" name="toDate">
-    <label>Odometer: </label>
-    <input type="text" name="odometer" placeholder="Odometer">
-    <label>Customer:</label>
-    <select name="customerNumber">
-        <option th:each="customer:${customers}" th:value="${customer.customerNumber}" th:text="${customer.name}"></option>
-    </select>
-    <label>Motorhome:</label>
-    <select name="motorhome">
-        <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
-                th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
-    </select>
-    <label>Extras</label>
-    <select multiple name="extras">
-        <option th:each="extra:${extras}" th:value="${extra.extraId}" th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
-    </select>
-    <label></label>
-    <button type="submit" id="submitButton">Create Contract</button>
-
-</form>
+<div>
+    <form class="form" onsubmit="return confirm('Are you sure you want to create a contract?')" action="/createContract"
+          method="post">
+        <div class="formElement">
+            <label>Contract Start Date </label>
+            <input type="datetime-local" name="fromDate">
+        </div>
+        <div class="formElement">
+            <label>Contract End Date </label>
+            <input type="datetime-local" name="toDate">
+        </div>
+        <div class="formElement">
+        <label>Odometer </label>
+        <input type="text" name="odometer" placeholder="Odometer">
+        </div>
+        <div class="formElement">
+        <label>Customer</label>
+        <select class="singleSelect" name="customer">
+            <option th:each="customer:${customers}" th:value="${customer.customerNumber}"
+                    th:text="${customer.name}"></option>
+        </select>
+        </div>
+        <div class="formElement">
+        <label>Motorhome</label>
+        <select class="singleSelect" name="motorhome">
+            <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
+                    th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+        </select>
+        </div>
+        <div class="formElement">
+        <label>Extras</label>
+        <select class="multipleSelect" multiple name="extras">
+            <option th:each="extra:${extras}" th:value="${extra.extraId}"
+                    th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
+        </select>
+        </div>
+        <div>
+        <button type="submit" class="submitButton mt-4">Create Contract</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
