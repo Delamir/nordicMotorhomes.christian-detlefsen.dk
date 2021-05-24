@@ -1,7 +1,6 @@
 package grp1.motorhomes.repository;
 
 import grp1.motorhomes.model.AutoService;
-import grp1.motorhomes.model.Contract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -26,7 +25,7 @@ public class AutoServiceRepo {
      */
 
     public List<AutoService> fetchAllAutoServices() {
-        String sqlStatement = "SELECT autoservice_id AS autoServiceId, autocheck, motorhome, checked" +
+        String sqlStatement = "SELECT autoservice_id AS autoServiceId, autocheck, motorhome, checked " +
                 "FROM autoservices JOIN motorhomes USING (motorhome) WHERE checked = false";
 
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
