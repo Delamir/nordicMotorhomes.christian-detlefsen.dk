@@ -18,7 +18,7 @@ public class AutoServiceService {
     AutoServiceRepo autoServiceRepo;
 
     /**
-     * @author Chrsitian
+     * @author Christain
      * @return
      */
     public List<AutoService> fetchAllAutoServices() {

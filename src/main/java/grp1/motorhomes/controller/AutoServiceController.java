@@ -29,9 +29,8 @@ public class AutoServiceController {
      * @Author Christian
      */
     @GetMapping("/autoServiceIndex")
-    public String serviceIndex(Model model) {
-        List<AutoService> autoServiceList = autoServiceService.fetchAllAutoServices();
-        model.addAttribute("services", autoServiceList);
+    public String autoServiceIndex(Model model) {
+        model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
         return "home/autoServiceIndex";
     }
 
@@ -40,7 +39,7 @@ public class AutoServiceController {
      */
     @GetMapping ("/createAutoService")
     public String createAutoService(Model model) {
-        model.addAttribute("autoSerivce", autoServiceService.fetchAllAutoServices());
+        model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
         return "home/createAutoService";
     }
 
@@ -58,7 +57,7 @@ public class AutoServiceController {
      */
     @GetMapping("/editAutoService/{autoServiceId}")
     public String editAutoService(@PathVariable int autoServiceId, Model model) {
-        model.addAttribute("autoService", autoServiceService.fetchAllAutoServices());
+        model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
         return "home/editAutoService";
     }
 
