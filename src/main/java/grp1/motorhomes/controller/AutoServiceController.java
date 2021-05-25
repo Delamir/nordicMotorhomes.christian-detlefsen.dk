@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
 
 /**
  * @auhtor Christian
@@ -32,7 +31,7 @@ public class AutoServiceController {
     public String autoServiceIndex(Model model) {
         model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
         model.addAttribute("motorhomes", motorhomeService.fetchAllUnavailableMotorhomes());
-        return "home/autoServiceIndex";
+        return "home/autoservice/autoServiceIndex";
     }
 
     /**
@@ -41,7 +40,7 @@ public class AutoServiceController {
     @GetMapping ("/createAutoService/{licencePlate}")
     public String createAutoService(@PathVariable String licencePlate, Model model) {
         model.addAttribute("licencePlate", licencePlate);
-        return "home/createAutoService";
+        return "home/autoservice/createAutoService";
     }
 
     /**
@@ -59,7 +58,7 @@ public class AutoServiceController {
     @GetMapping("/editAutoService/{autoServiceId}")
     public String editAutoService(@PathVariable int autoServiceId, Model model) {
         model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
-        return "home/editAutoService";
+        return "home/autoservice/editAutoService";
     }
 
     /**

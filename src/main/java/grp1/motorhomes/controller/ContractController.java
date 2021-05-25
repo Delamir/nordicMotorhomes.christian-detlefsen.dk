@@ -39,13 +39,13 @@ public class ContractController {
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
         model.addAttribute("contracts", contractService.fetchAllContracts());
-        return "home/contractIndex";
+        return "home/contract/contractIndex";
     }
 
     @GetMapping("/contractIndex/closed")
     public String closedContractIndex(Model model) {
         model.addAttribute("contracts", contractService.fetchAllClosedContracts());
-        return "home/contractIndex";
+        return "home/contract/contractIndex";
     }
 
     /**
@@ -54,7 +54,7 @@ public class ContractController {
      */
     @GetMapping("/createContract")
     public String createContract(Model model) {
-        return "home/createContract";
+        return "home/contract/createContract";
     }
 
     /**
@@ -70,7 +70,7 @@ public class ContractController {
             model.addAttribute("customers", customerService.fetchAllCustomers());
             model.addAttribute("extras", extraService.fetchAllExtras());
         }
-        return "home/createContract";
+        return "home/contract/createContract";
     }
 
     /**
@@ -97,7 +97,7 @@ public class ContractController {
         model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
         model.addAttribute("customers", customerService.fetchAllCustomers());
         model.addAttribute("extras", extraService.fetchAllExtras());
-        return "home/editContract";
+        return "home/contract/editContract";
     }
 
     /**
@@ -131,7 +131,7 @@ public class ContractController {
     @GetMapping("/deliverContract/{contractId}")
     public String deliverContract(@PathVariable int contractId, Model model) {
         model.addAttribute("contract", contractService.findContract(contractId));
-        return "home/deliverContract";
+        return "home/contract/deliverContract";
     }
 
     /**
@@ -154,7 +154,7 @@ public class ContractController {
     @GetMapping("/pickupContract/{contractId}")
     public String pickupContract(@PathVariable int contractId, Model model){
         model.addAttribute("contract", contractService.findContract(contractId));
-        return "home/pickupContract";
+        return "home/contract/pickupContract";
     }
 
     /**
@@ -176,7 +176,7 @@ public class ContractController {
     @GetMapping("/closeContract/{contractId}")
     public String closeContract(@PathVariable int contractId, Model model) {
         model.addAttribute("contract", contractService.findContract(contractId));
-        return "home/closeContract";
+        return "home/contract/closeContract";
     }
 
     /**
@@ -189,7 +189,7 @@ public class ContractController {
         contractService.editContract(contract);
         model.addAttribute("contract", contract);
         model.addAttribute("rentalPrice", contractService.calculatePrice(contract));
-        return "home/closeContract";
+        return "home/contract/closeContract";
     }
 
     /**

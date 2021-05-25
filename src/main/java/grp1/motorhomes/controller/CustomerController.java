@@ -27,7 +27,7 @@ public class CustomerController {
     @GetMapping("/customerIndex")
     public String customerIndex(Model model) {
         model.addAttribute("customers", customerService.fetchAllCustomers());
-        return "home/customerIndex";
+        return "home/customer/customerIndex";
     }
 
     /**
@@ -36,7 +36,7 @@ public class CustomerController {
     @GetMapping("/createCustomer")
     public String createCustomer(Model model) {
         model.addAttribute("customers", customerService.fetchAllCustomers());
-        return "home/createCustomer";
+        return "home/customer/createCustomer";
     }
 
     /**
@@ -54,7 +54,7 @@ public class CustomerController {
     @GetMapping("/editCustomer/{customerNumber}")
     public String editCustomer(@PathVariable ("customerNumber") int customerNumber, Model model) {
         model.addAttribute("customer", customerService.findCustomer(customerNumber));
-        return "home/editCustomer";
+        return "home/customer/editCustomer";
     }
 
     /**

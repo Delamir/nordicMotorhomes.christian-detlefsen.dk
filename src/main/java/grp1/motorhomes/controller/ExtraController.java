@@ -26,7 +26,7 @@ public class ExtraController {
     @GetMapping("/extraIndex")
     public String extraIndex(Model model) {
         model.addAttribute("extras", extraService.fetchAllExtras());
-        return "home/extraIndex";
+        return "home/extra/extraIndex";
     }
 
     /**
@@ -34,7 +34,7 @@ public class ExtraController {
      */
     @GetMapping("/createExtra")
     public String createExtra() {
-        return "home/createExtra";
+        return "home/extra/createExtra";
     }
 
     /**
@@ -61,7 +61,7 @@ public class ExtraController {
     @GetMapping("/editExtra/{extraId}")
     public String editExtra(@PathVariable("extraId") int extraId, Model model) {
         model.addAttribute("extra", extraService.findExtra(extraId));
-        return "home/editExtra";
+        return "home/extra/editExtra";
     }
 
     /**

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 /**
  * @author Patrick
  */
@@ -27,7 +25,7 @@ public class MotorhomeController {
     @GetMapping ("/motorhomeIndex")
     public String motorhomeIndex(Model model) {
         model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
-        return "home/motorhomeIndex";
+        return "home/motorhome/motorhomeIndex";
     }
 
     /**
@@ -35,7 +33,7 @@ public class MotorhomeController {
      */
     @GetMapping("/createMotorhome")
     public String createMotorhome() {
-        return "home/createMotorhome";
+        return "home/motorhome/createMotorhome";
     }
 
     /**
@@ -62,7 +60,7 @@ public class MotorhomeController {
     @GetMapping("/editMotorhome/{licencePlate}")
     public String editMotorhome(@PathVariable("licencePlate") String licencePlate, Model model) {
         model.addAttribute("motorhome", motorhomeService.findMotorhome(licencePlate));
-        return "home/editMotorhome";
+        return "home/motorhome/editMotorhome";
     }
 
     /**
@@ -80,7 +78,7 @@ public class MotorhomeController {
     @GetMapping("/makeAvailable/{licencePlate}")
     public String makeAvailable(@PathVariable String licencePlate) {
         motorhomeService.setAvailable(licencePlate, true);
-        return "home/autoServiceIndex";
+        return "home/autoservice/autoServiceIndex";
     }
 
 }
