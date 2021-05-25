@@ -13,8 +13,8 @@ public class AutoService {
     @Id
     private int autoServiceId;
 
-    private String autocheck;
-    private boolean checked;
+    private String serviceDescription;
+    private boolean done;
     @OneToOne
     private Motorhome motorhome;
 
@@ -28,10 +28,10 @@ public class AutoService {
     /**
      * @author Christian
      */
-    public AutoService(int autoServiceId, String autocheck, boolean checked, Motorhome motorhome) {
+    public AutoService(int autoServiceId, String serviceDescription, boolean done, Motorhome motorhome) {
         this.autoServiceId = autoServiceId;
-        this.autocheck = autocheck;
-        this.checked = checked;
+        this.serviceDescription = serviceDescription;
+        this.done = done;
         this.motorhome = motorhome;
     }
 
@@ -43,20 +43,20 @@ public class AutoService {
         this.autoServiceId = autoServiceId;
     }
 
-    public String getAutocheck() {
-        return autocheck;
+    public String getServiceDescription() {
+        return serviceDescription;
     }
 
-    public void setAutocheck(String autocheck) {
-        this.autocheck = autocheck;
+    public void setServiceDescription(String autocheck) {
+        this.serviceDescription = autocheck;
     }
 
-    public boolean isChecked() {
-        return checked;
+    public boolean isDone() {
+        return done;
     }
 
-    public void setChecked(boolean checked) {
-        this.checked = checked;
+    public void setDone(boolean checked) {
+        this.done = checked;
     }
 
     public Motorhome getMotorhome() {

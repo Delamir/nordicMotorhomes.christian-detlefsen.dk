@@ -69,4 +69,8 @@ public class MotorhomeService {
     public List<Motorhome> fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
         return motorhomeRepo.fetchMotorhomesBetween(from, to);
     }
+
+    public List<Motorhome> fetchAllUnavailableMotorhomes() {
+        return motorhomeRepo.fetchAllUnavailableMotorhomes();
+    }
 }

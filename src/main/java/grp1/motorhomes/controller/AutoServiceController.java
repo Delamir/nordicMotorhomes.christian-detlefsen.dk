@@ -31,22 +31,23 @@ public class AutoServiceController {
     @GetMapping("/autoServiceIndex")
     public String autoServiceIndex(Model model) {
         model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
+        model.addAttribute("motorhomes", motorhomeService.fetchAllUnavailableMotorhomes());
         return "home/autoServiceIndex";
     }
 
     /**
      * @author Joachim
      */
-    @GetMapping ("/createAutoService")
-    public String createAutoService(Model model) {
-        model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
+    @GetMapping ("/createAutoService/{licencePlate}")
+    public String createAutoService(@PathVariable String licencePlate, Model model) {
+        model.addAttribute("licencePlate", licencePlate);
         return "home/createAutoService";
     }
 
     /**
      * @author Joachim
      */
-    @PostMapping("/createAutoService")
+    @PostMapping("/createAutoService/")
     public String createAutoService(@ModelAttribute AutoService autoService) {
         autoServiceService.createAutoService(autoService);
         return "redirect:/autoServiceIndex";

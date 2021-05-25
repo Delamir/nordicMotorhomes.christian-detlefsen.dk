@@ -24,8 +24,8 @@ public class AutoServiceRepo {
      * @author Christian
      */
     public List<AutoService> fetchAllAutoServices() {
-        String sqlStatement = "SELECT autoservice_id AS autoServiceId, autocheck, motorhome, checked " +
-                "FROM autoservices JOIN motorhomes ON autoservices.motorhome = motorhomes.registration WHERE checked = false";
+        String sqlStatement = "SELECT autoservice_id AS autoServiceId, service_description AS serviceDescription, motorhome, done " +
+                "FROM autoservices JOIN motorhomes ON autoservices.motorhome = motorhomes.registration";
 
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
 
@@ -36,15 +36,15 @@ public class AutoServiceRepo {
      * @author Joachim
      */
     public void createAutoService(AutoService autoservice) {
-        String insertAutoServiceValues = "INSERT INTO autoservices (autocheck, motorhome, checked) VALUES (?, ?, ?)";
+        String insertAutoServiceValues = "INSERT INTO autoservices (service_description AS serviceDescription, motorhome, done) VALUES (?, ?, ?)";
 
         KeyHolder keyholder = new GeneratedKeyHolder();
 
         template.update(connection -> {
             PreparedStatement preparedStatement = connection.prepareStatement(insertAutoServiceValues, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, autoservice.getAutocheck());
+            preparedStatement.setString(1, autoservice.getServiceDescription());
             preparedStatement.setString(2, autoservice.getMotorhome().getLicencePlate());
-            preparedStatement.setBoolean(3, autoservice.isChecked());
+            preparedStatement.setBoolean(3, autoservice.isDone());
             return preparedStatement;
         }, keyholder);
     }
@@ -53,8 +53,8 @@ public class AutoServiceRepo {
      * @author Joachim
      */
     public void editAutoService(AutoService autoService) {
-        String updateSql = "UPDATE autoservices SET autocheck = ?, motorhome = ?, checked = ? WHERE autoservice_id = ?";
+        String updateSql = "UPDATE autoservices SET service_description = ?, motorhome = ?, done = ? WHERE autoservice_id = ?";
 
-        template.update(updateSql, autoService.getAutocheck(), autoService.getMotorhome(), autoService.isChecked());
+        template.update(updateSql, autoService.getServiceDescription(), autoService.getMotorhome(), autoService.isDone());
     }
 }

@@ -237,6 +237,8 @@ a {
 
 .table td {
     padding: 1rem;
+    word-wrap: break-word;
+    max-width: 15rem;
 }
 
 .table th {

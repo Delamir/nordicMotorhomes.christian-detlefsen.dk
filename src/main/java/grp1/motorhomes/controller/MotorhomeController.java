@@ -74,4 +74,13 @@ public class MotorhomeController {
         return "redirect:/motorhomeIndex";
     }
 
+    /**
+     * @author Christian
+     */
+    @GetMapping("/makeAvailable/{licencePlate}")
+    public String makeAvailable(@PathVariable String licencePlate) {
+        motorhomeService.setAvailable(licencePlate, true);
+        return "home/autoServiceIndex";
+    }
+
 }

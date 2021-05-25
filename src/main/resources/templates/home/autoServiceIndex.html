@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Register Service</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
+    <meta name="author" content="Joachim">
 </head>
 <body>
 <div class="topmenu">
@@ -20,20 +21,60 @@
     <h1 class="headerTitle">Auto Service</h1>
 </div>
 
-<div class="table">
+<div class="table" style="float: left; padding-left: 2rem">
+
+    <table>
+
+        <tr>
+            <th class="genericTableHeader relative" colspan="20">Motorhomes Requiring Check</th>
+        </tr>
+
+        <tbody>
+        <th>Type</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Licence Plate</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Availability</th>
+        <th colspan="2">Actions</th>
+
+        <tr th:each="motorhome : ${motorhomes}">
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.licencePlate}"></td>
+            <td th:text="${motorhome.description}"></td>
+            <td th:text="${motorhome.imagePath}"></td>
+            <td th:text="${motorhome.price}"></td>
+            <td th:text="${motorhome.available}"></td>
+
+            <td class="actions">
+                <a th:href="@{'/makeAvailable/'+${motorhome.licencePlate}}">
+                    <button class="edit-button" onclick="return confirm('Are you sure you want to make this motorhome available?')"
+                            type="button">✓</button>
+                </a>
+            </td>
+
+            <td class="actions">
+                <a th:href="@{'/createAutoService/'+${motorhome.licencePlate}}">
+                    <button class="delete-button" type="button">Register Service</button>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="table" style="float: right; padding-right: 10%">
 
     <table>
         <tr>
-            <th class="genericTableHeader relative" colspan="7">Auto Service<span class="addButtonContainer">
-                        <a th:href="@{'/createContract/'}">
-                            <button type="button" class="addNewButton"><svg fill="currentColor" viewBox="0 0 20 20"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                          clip-rule="evenodd"></path>
-                                </svg>Add new</button>
-                        </a>
-                    </span></th>
+            <th class="genericTableHeader relative" colspan="4">Auto Service</th>
         </tr>
 
         <tbody>

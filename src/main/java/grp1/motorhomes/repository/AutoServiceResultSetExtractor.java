@@ -37,12 +37,12 @@ public class AutoServiceResultSetExtractor implements ResultSetExtractor {
 
                 autoService = new AutoService();
                 autoService.setAutoServiceId(resultSet.getInt("autoservice_id"));
-                autoService.setAutocheck(resultSet.getString("autocheck").toString());
+                autoService.setServiceDescription(resultSet.getString("autocheck").toString());
                 autoService.setMotorhome(resultSet.getString("motorhome"),
                         resultSet.getString("type"), resultSet.getString("brand"),
                         resultSet.getString("model"), resultSet.getString("description"),
                         resultSet.getString("image_path"), resultSet.getInt("price"), resultSet.getBoolean("available"));
-                autoService.setChecked(resultSet.getBoolean("checked"));
+                autoService.setDone(resultSet.getBoolean("checked"));
 
                 autoServiceHashMap.put(autoService.getAutoServiceId(), autoService);
 
