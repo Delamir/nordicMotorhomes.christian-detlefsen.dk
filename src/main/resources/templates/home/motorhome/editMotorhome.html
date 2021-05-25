@@ -51,10 +51,10 @@
         </div>
         <div class="formElement">
             <label>Upload an image: </label>
-            <input type="file" name="price" th:value="${motorhome.imagePath}">
+            <input type="text" name="price" th:value="${motorhome.imagePath}">
         </div>
         <div class="formElement checkbox">
-            <input type="checkbox" name="available" th:value="${motorhome.available}">
+            <input type="checkbox" name="available" th:checked="${motorhome.available}">
             <label>Availability: </label>
         </div>
         <div>
