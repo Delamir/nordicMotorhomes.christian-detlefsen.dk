@@ -5,7 +5,7 @@
     <title>Create Auto Service</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body class="manageBg">
+<body>
 <div class="topmenu">
     <a th:href="@{'/'}">Home</a>
     <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
@@ -18,6 +18,22 @@
 <div class="relative">
     <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
     <h1 class="headerTitle">Auto Service</h1>
+</div>
+
+<div>
+    <form class="form" onsubmit="return confirm('Are you sure you want to register a new service?')"
+          action="/createAutoService" method="post">
+        <div class="formElement">
+            <label>Service Description</label>
+            <input type="text" name="serviceDescription" placeholder="Service Description">
+        </div>
+        <input type="hidden" name="motorhome" th:value="${licencePlate}">
+
+        <div>
+            <button type="submit" class="submitButton mt-4">Register Service</button>
+        </div>
+
+    </form>
 </div>
 </body>
 </html>

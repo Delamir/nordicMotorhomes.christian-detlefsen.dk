@@ -39,4 +39,11 @@ public class AutoServiceService {
         autoServiceRepo.editAutoService(autoService);
     }
 
+    /**
+     * @author Christian
+     */
+    public void markDone(AutoService autoService) {
+        autoServiceRepo.markDone(autoService);
+    }
+
 }

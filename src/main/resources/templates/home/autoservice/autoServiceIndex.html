@@ -30,10 +30,10 @@
         </tr>
 
         <tbody>
-        <th>Type</th>
+        <th>Licence Plate</th>
         <th>Brand</th>
         <th>Model</th>
-        <th>Licence Plate</th>
+        <th>Type</th>
         <th>Description</th>
         <th>Image</th>
         <th>Price</th>
@@ -41,10 +41,10 @@
         <th colspan="2">Actions</th>
 
         <tr th:each="motorhome : ${motorhomes}">
-            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.licencePlate}"></td>
             <td th:text="${motorhome.brand}"></td>
             <td th:text="${motorhome.model}"></td>
-            <td th:text="${motorhome.licencePlate}"></td>
+            <td th:text="${motorhome.type}"></td>
             <td th:text="${motorhome.description}"></td>
             <td th:text="${motorhome.imagePath}"></td>
             <td th:text="${motorhome.price}"></td>
@@ -55,9 +55,7 @@
                     <button class="edit-button" onclick="return confirm('Are you sure you want to make this motorhome available?')"
                             type="button">✓</button>
                 </a>
-            </td>
 
-            <td class="actions">
                 <a th:href="@{'/createAutoService/'+${motorhome.licencePlate}}">
                     <button class="delete-button" type="button">Register Service</button>
                 </a>
@@ -74,24 +72,33 @@
 
     <table>
         <tr>
-            <th class="genericTableHeader relative" colspan="4">Auto Service</th>
+            <th class="genericTableHeader relative" colspan="20">Auto Service</th>
         </tr>
 
         <tbody>
-        <th>Autocheck</th>
+        <th>Service Description</th>
         <th>Motorhome</th>
-        <th>Checked</th>
+        <th>Done</th>
         <th>Actions</th>
 
-        <tr th:each="autoservice : ${autoservices}">
-            <td th:text="${autoservice.autocheck}"></td>
-            <td th:text="${autoservice.motorhome}"></td>
-            <td th:text="${autoservice.checked}"></td>
+        <tr th:each="autoservice : ${autoServices}">
+            <td th:text="${autoservice.serviceDescription}"></td>
+            <td th:text="${autoservice.motorhome.getLicencePlate()}"></td>
+            <td th:text="${autoservice.done}"></td>
 
             <td class="actions">
-                <a th:href="@{'/editContract/'+${contract.contractId}}">
+                <a th:href="@{'/editAutoService/'+${autoservice.autoServiceId}}">
                     <button class="edit-button" type="button">Edit</button>
                 </a>
+            </td>
+
+            <td class="actions">
+                <form action="/markDone" method="post">
+                    <input type="hidden" name="autoServiceId" th:value="${autoservice.autoServiceId}">
+                    <input type="hidden" name="motorhome" th:value="${autoservice.motorhome.getLicencePlate()}">
+                    <button class="edit-button" onclick="return confirm('Are you sure you want to make this motorhome available?')"
+                            type="submit">Make Available</button>
+                </form>
             </td>
 
         </tr>

@@ -46,7 +46,7 @@ public class AutoServiceController {
     /**
      * @author Joachim
      */
-    @PostMapping("/createAutoService/")
+    @PostMapping("/createAutoService")
     public String createAutoService(@ModelAttribute AutoService autoService) {
         autoServiceService.createAutoService(autoService);
         return "redirect:/autoServiceIndex";
@@ -57,7 +57,7 @@ public class AutoServiceController {
      */
     @GetMapping("/editAutoService/{autoServiceId}")
     public String editAutoService(@PathVariable int autoServiceId, Model model) {
-        model.addAttribute("autoServices", autoServiceService.fetchAllAutoServices());
+        model.addAttribute("autoService", autoServiceService.fetchAllAutoServices());
         return "home/autoservice/editAutoService";
     }
 
@@ -67,6 +67,25 @@ public class AutoServiceController {
     @PostMapping("/editAutoService")
     public String editAutoService(@ModelAttribute AutoService autoService) {
         autoServiceService.editAutoService(autoService);
+        return "redirect:/autoServiceIndex";
+    }
+
+    /**
+     * @author Christian
+     */
+    @PostMapping("/markDone")
+    public String markDone(@ModelAttribute AutoService autoService) {
+        autoServiceService.markDone(autoService);
+        motorhomeService.setAvailable(autoService.getMotorhome().getLicencePlate(), true);
+        return "redirect:/autoServiceIndex";
+    }
+
+    /**
+     * @author Christian
+     */
+    @GetMapping("/makeAvailable/{licencePlate}")
+    public String makeAvailable(@PathVariable String licencePlate) {
+        motorhomeService.setAvailable(licencePlate, true);
         return "redirect:/autoServiceIndex";
     }
 }

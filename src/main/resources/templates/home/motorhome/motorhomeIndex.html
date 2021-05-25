@@ -41,10 +41,10 @@
         </tr>
 
         <tbody>
-        <th>Type</th>
+        <th>Licence Plate</th>
         <th>Brand</th>
         <th>Model</th>
-        <th>Licence Plate</th>
+        <th>Type</th>
         <th>Description</th>
         <th>Image</th>
         <th>Price</th>
@@ -52,10 +52,10 @@
         <th colspan="2">Actions</th>
 
         <tr th:each="motorhome : ${motorhomes}">
-            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.licencePlate}"></td>
             <td th:text="${motorhome.brand}"></td>
             <td th:text="${motorhome.model}"></td>
-            <td th:text="${motorhome.licencePlate}"></td>
+            <td th:text="${motorhome.type}"></td>
             <td th:text="${motorhome.description}"></td>
             <td th:text="${motorhome.imagePath}"></td>
             <td th:text="${motorhome.price}"></td>

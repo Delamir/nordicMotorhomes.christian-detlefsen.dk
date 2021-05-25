@@ -60,7 +60,7 @@ public class CustomerController {
     /**
      * @author Joachim
      */
-    @PostMapping("editCostumer")
+    @PostMapping("/editCostumer")
     public String editCustomer(@ModelAttribute Customer customer) {
         customerService.editCustomer(customer);
         return "redirect:/customerIndex";
