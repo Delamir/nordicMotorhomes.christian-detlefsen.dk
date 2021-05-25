@@ -17,8 +17,49 @@
 
 <div class="relative">
     <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
-    <h1 class="genericHeaderPosition">Auto Service</h1>
+    <h1 class="headerTitle">Auto Service</h1>
+</div>
+
+<div class="table">
+
+    <table>
+        <tr>
+            <th class="genericTableHeader relative" colspan="7">Auto Service<span class="addButtonContainer">
+                        <a th:href="@{'/createContract/'}">
+                            <button type="button" class="addNewButton"><svg fill="currentColor" viewBox="0 0 20 20"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                          clip-rule="evenodd"></path>
+                                </svg>Add new</button>
+                        </a>
+                    </span></th>
+        </tr>
+
+        <tbody>
+        <th>Autocheck</th>
+        <th>Motorhome</th>
+        <th>Checked</th>
+        <th>Actions</th>
+
+        <tr th:each="autoservice : ${autoservices}">
+            <td th:text="${autoservice.autocheck}"></td>
+            <td th:text="${autoservice.motorhome}"></td>
+            <td th:text="${autoservice.checked}"></td>
+
+            <td class="actions">
+                <a th:href="@{'/editContract/'+${contract.contractId}}">
+                    <button class="edit-button" type="button">Edit</button>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
 </div>
 
 </body>
+
 </html>
