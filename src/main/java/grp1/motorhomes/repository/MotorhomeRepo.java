@@ -61,7 +61,7 @@ public class MotorhomeRepo {
         String insertModel = "INSERT INTO models(brand, model) SELECT ?, ? WHERE NOT EXISTS ( SELECT * FROM models WHERE brand = ? AND model = ?)";
         template.update(insertModel, motorhome.getBrand(), motorhome.getModel(), motorhome.getBrand(), motorhome.getModel());
 
-        String insertMotorhome = "INSERT INTO motorhomes(registration, type, description, price, model_id) select ?, ?, ?, ?, ?, " +
+        String insertMotorhome = "INSERT INTO motorhomes(registration, type, description, price, model_id) select ?, ?, ?, ?," +
                 "model_id FROM models WHERE brand = ? AND model = ?";
         template.update(insertMotorhome, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription(), motorhome.getPrice(),
                 motorhome.getBrand(), motorhome.getModel());
@@ -123,12 +123,12 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @author Christian
      * @param licencePlate
      * @param status
+     * @author Christian
      */
     public void setAvailable(String licencePlate, boolean status) {
-        String setAvailableSql = "INSERT INTO motorhomes(available) VALUES(?) WHERE registration = ?";
+        String setAvailableSql = "UPDATE motorhomes SET available = ? WHERE registration = ?";
 
         template.update(setAvailableSql, status, licencePlate);
     }

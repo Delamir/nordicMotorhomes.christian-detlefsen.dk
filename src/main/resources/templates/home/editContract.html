@@ -46,15 +46,15 @@
             <input type="text" name="transerKm" th:value="${contract.transferKm}">
         </div>
         <div class="formElement checkbox">
-            <input type="checkbox" name="delivered" th:value="${contract.delivered}">
+            <input type="checkbox" name="delivered" th:checked="${contract.delivered}">
             <label>Delivered </label>
         </div>
         <div class="formElement checkbox">
-            <input type="checkbox" name="pickedUp" th:value="${contract.pickedUp}">
+            <input type="checkbox" name="pickedUp" th:checked="${contract.pickedUp}">
             <label>Picked up </label>
         </div>
         <div class="formElement checkbox">
-            <input type="checkbox" name="closed" th:value="${contract.closed}">
+            <input type="checkbox" name="closed" th:checked="${contract.closed}">
             <label>Closed </label>
         </div>
         <div class="formElement">
