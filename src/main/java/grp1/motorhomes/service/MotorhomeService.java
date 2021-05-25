@@ -5,6 +5,7 @@ import grp1.motorhomes.repository.MotorhomeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -65,5 +66,7 @@ public class MotorhomeService {
         motorhomeRepo.setAvailable(licencePlate, status);
     }
 
-
+    public void fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
+        motorhomeRepo.fetchMotorhomesBetween(from, to);
+    }
 }

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Christian
  */
@@ -66,6 +68,13 @@ public class ContractController {
     public String createContract(@ModelAttribute Contract contract) {
         contractService.createContract(contract);
         return "redirect:/contractIndex";
+    }
+
+    @PostMapping("/getAvailableMotorhomes")
+    public String getAvailableMotorhomes(@RequestParam LocalDateTime from, @RequestParam LocalDateTime to){
+        motorhomeService.fetchMotorhomesBetween(from, to);
+
+        return "home/createContract";
     }
 
     /**
@@ -149,6 +158,7 @@ public class ContractController {
     @PostMapping("/pickupContract")
     public String pickupContract(@ModelAttribute Contract contract) {
         contractService.pickupContract(contract);
+        motorhomeService.setAvailable(contract.getMotorhome().getLicencePlate(),false);
         return "redirect:/contractIndex";
     }
 
@@ -162,6 +172,9 @@ public class ContractController {
         return "home/closeContract";
     }
 
+    /**
+     * @author Sverri
+     */
     @PostMapping("/calculatePrice")
     public String calculatePrice(@RequestParam Integer contractId, @RequestParam Integer excessKm, Model model) {
         Contract contract = contractService.findContract(contractId);

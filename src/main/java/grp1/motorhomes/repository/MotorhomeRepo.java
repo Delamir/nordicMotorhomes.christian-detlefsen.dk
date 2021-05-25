@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -40,6 +41,15 @@ public class MotorhomeRepo {
                 "FROM motorhomes JOIN models using(model_id)";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sqlStatement, rowMapper);
+    }
+
+    public List<Motorhome> fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
+        String sql = "SELECT registration as licencePlate, type, brand, model, description, price, available from motorhomes " +
+                "LEFT JOIN contracts ON registration = motorhome " +
+                "JOIN models using(model_id) " +
+                "WHERE (from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?)";
+        RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
+        return template.query(sql, rowMapper, from.toLocalDate(), to.plusDays(2), from.toLocalDate(), to.plusDays(2));
     }
 
     /**
