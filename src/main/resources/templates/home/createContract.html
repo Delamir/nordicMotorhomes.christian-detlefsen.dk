@@ -32,7 +32,7 @@
         <div class="formElement">
             <label>Contract End Date </label>
             <input type="datetime-local" name="toDate" th:value="${toDate}">
-            <button type="submit" onsubmit="" formaction="/getAvailableMotorhomes">Find Available</button>
+            <button type="submit" onsubmit="return" formaction="/getAvailableMotorhomes">Find Available</button>
         </div>
         <div class="formElement" th:if="${customers != null}">
             <label>Customer</label>
@@ -55,7 +55,7 @@
                         th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
             </select>
         </div>
-        <div th:if="${cutomers != null && motorhomes != null}">
+        <div th:if="${customers != null && motorhomes != null}">
             <button type="submit" class="submitButton mt-4">Create Contract</button>
         </div>
     </form>
