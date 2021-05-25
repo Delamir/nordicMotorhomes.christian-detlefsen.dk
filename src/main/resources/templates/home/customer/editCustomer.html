@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Joachim">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body class="manageBg">
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a class="active" th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a th:href="@{'/extraIndex/'}">Manage Extra</a>
+    <a th:href="@{'/autoServiceIndex/'}">Auto Service</a>
+</div>
+
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Edit Customers</h1>
+</div>
+
+<div>
+    <form class="form" onsubmit="return confirm('Are you sure you want to edit this customer?')"
+          action="/editCostumer/" method="post">
+        <input type="hidden" name="customerNumber" th:value="${customer.customerNumber}">
+        <div class="formElement">
+            <label>Customer name: </label>
+            <input type="text" name="name" th:value="${customer.name}">
+        </div>
+        <div class="formElement">
+            <label>Licence number: </label>
+            <input type="text" name="licenceNumber" th:value="${customer.licenceNumber}">
+        </div>
+        <div class="formElement">
+            <label>Street: </label>
+            <input type="text" name="street" th:value="${customer.street}">
+        </div>
+        <div class="formElement">
+            <label>City: </label>
+            <input type="text" name="city" th:value="${customer.city}">
+        </div>
+        <div class="formElement">
+            <label>Postcode: </label>
+            <input type="text" name="postCode" th:value="${customer.postCode}">
+        </div>
+        <div>
+            <input type="submit" class="submitButton mt-4" value="Edit Customer">
+        </div>
+    </form>
+</div>
+</body>
+</html>

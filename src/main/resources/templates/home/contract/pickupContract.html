@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Pickup Contract</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body class="manageBg">
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a class="active" th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a th:href="@{'/extraIndex/'}">Manage Extra</a>
+    <a th:href="@{'/autoServiceIndex/'}">Auto Service</a>
+</div>
+
+<form class="form" method="post" action="/pickupContract">
+    <label>Pickup Point: </label>
+    <input type="hidden" name="contractId" th:value="${contract.contractId}">
+    <input type="hidden" name="motorhome" th:value="${contract.motorhome}"> 
+    <input type="text" name="pickupPoint" placeholder="Pickup Point">
+    <input type="number" name="transferKm" placeholder="transfer km"  >
+    <input type="submit" value="Pick Up">
+</form>
+</body>
+</html>

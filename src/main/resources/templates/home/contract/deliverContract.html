@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Deliver Contract</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body class="manageBg">
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a class="active" th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a th:href="@{'/extraIndex/'}">Manage Extra</a>
+    <a th:href="@{'/autoServiceIndex/'}">Auto Service</a>
+</div>
+
+<form class="form" method="post" action="/deliverContract">
+    <label>Transfer km</label>
+    <input type="hidden" name="contractId" th:value="${contract.contractId}">
+    <input type="number" name="transferKm" placeholder="km">
+    <label>Delivery point</label>
+    <input type="text" name="deliveryPoint" placeholder="Delivery Point">
+    <label>Odometer start value</label>
+    <input type="number" name="odometer" placeholder="km">
+    <input type="submit" value="Deliver">
+</form>
+
+
+
+
+
+</body>
+</html>

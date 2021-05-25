@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="author" content="Patrick">
+    <meta charset="UTF-8">
+    <title>Create new motorhome</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body class="manageBg">
+
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a class="active" th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a th:href="@{'/extraIndex/'}">Manage Extra</a>
+    <a th:href="@{'/autoServiceIndex/'}">Auto Service</a>
+</div>
+
+
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Create Motorhome</h1>
+</div>
+
+<div>
+    <form class="form" onsubmit="return confirm('Are you sure you want to create a motorhome?')"
+          action="/createMotorhome" method="post">
+        <div class="formElement">
+            <label>Licence plate</label>
+            <input type="text" name="licencePlate" placeholder="Licence Plate">
+        </div>
+        <div class="formElement">
+            <label>Type</label>
+            <input type="text" name="type" placeholder="Type">
+        </div>
+        <div class="formElement">
+            <label>Brand</label>
+            <input type="text" name="brand" placeholder="Brand">
+        </div>
+        <div class="formElement">
+            <label>Model</label>
+            <input type="text" name="model" placeholder="Model">
+        </div>
+        <div class="formElement">
+            <label>Description</label>
+            <input type="text" name="description" placeholder="Motorhome Description">
+        </div>
+        <div class="formElement">
+            <label>Price </label>
+            <input type="text" name="price" placeholder="Price">
+        </div>
+        <div class="formElement">
+            <label>Upload an image </label>
+            <input type="file" name="img" accept="image/*">
+        </div>
+
+        <div>
+            <button type="submit" class="submitButton mt-4">Create Motorhome</button>
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>

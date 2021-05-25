@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Service</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <meta name="author" content="Joachim">
+</head>
+<body class="manageBg">
+<div class="topmenu">
+    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{'/motorhomeIndex/'}">Manage Motorhome</a>
+    <a th:href="@{'/contractIndex/'}">Manage Contract</a>
+    <a th:href="@{'/customerIndex/'}">Manage Customer</a>
+    <a th:href="@{'/extraIndex/'}">Manage Extra</a>
+    <a class="active" th:href="@{'/autoServiceIndex/'}">Auto Service</a>
+</div>
+
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Auto Service</h1>
+</div>
+
+<div class="table" style="float: left; padding-left: 2rem">
+
+    <table>
+
+        <tr>
+            <th class="genericTableHeader relative" colspan="20">Motorhomes Requiring Check</th>
+        </tr>
+
+        <tbody>
+        <th>Type</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Licence Plate</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Availability</th>
+        <th colspan="2">Actions</th>
+
+        <tr th:each="motorhome : ${motorhomes}">
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.licencePlate}"></td>
+            <td th:text="${motorhome.description}"></td>
+            <td th:text="${motorhome.imagePath}"></td>
+            <td th:text="${motorhome.price}"></td>
+            <td th:text="${motorhome.available}"></td>
+
+            <td class="actions">
+                <a th:href="@{'/makeAvailable/'+${motorhome.licencePlate}}">
+                    <button class="edit-button" onclick="return confirm('Are you sure you want to make this motorhome available?')"
+                            type="button">✓</button>
+                </a>
+            </td>
+
+            <td class="actions">
+                <a th:href="@{'/createAutoService/'+${motorhome.licencePlate}}">
+                    <button class="delete-button" type="button">Register Service</button>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="table" style="float: right; padding-right: 10%">
+
+    <table>
+        <tr>
+            <th class="genericTableHeader relative" colspan="4">Auto Service</th>
+        </tr>
+
+        <tbody>
+        <th>Autocheck</th>
+        <th>Motorhome</th>
+        <th>Checked</th>
+        <th>Actions</th>
+
+        <tr th:each="autoservice : ${autoservices}">
+            <td th:text="${autoservice.autocheck}"></td>
+            <td th:text="${autoservice.motorhome}"></td>
+            <td th:text="${autoservice.checked}"></td>
+
+            <td class="actions">
+                <a th:href="@{'/editContract/'+${contract.contractId}}">
+                    <button class="edit-button" type="button">Edit</button>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>
