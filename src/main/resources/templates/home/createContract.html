@@ -27,39 +27,36 @@
           method="post">
         <div class="formElement">
             <label>Contract Start Date </label>
-            <input type="datetime-local" name="fromDate">
+            <input type="datetime-local" name="fromDate" th:value="${fromDate}">
         </div>
         <div class="formElement">
             <label>Contract End Date </label>
-            <input type="datetime-local" name="toDate">
+            <input type="datetime-local" name="toDate" th:value="${toDate}">
+            <button type="submit" formaction="/getAvailableMotorhomes">Find Available</button>
         </div>
-        <div class="formElement">
-        <label>Odometer </label>
-        <input type="text" name="odometer" placeholder="Odometer">
+        <div class="formElement" th:if="${customers != null}">
+            <label>Customer</label>
+            <select class="singleSelect" name="customer">
+                <option th:each="customer:${customers}" th:value="${customer.customerNumber}"
+                        th:text="${customer.name}"></option>
+            </select>
         </div>
-        <div class="formElement">
-        <label>Customer</label>
-        <select class="singleSelect" name="customer">
-            <option th:each="customer:${customers}" th:value="${customer.customerNumber}"
-                    th:text="${customer.name}"></option>
-        </select>
+        <div class="formElement" th:if="${motorhomes != null}">
+            <label>Motorhome</label>
+            <select class="singleSelect" name="motorhome">
+                <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
+                        th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+            </select>
         </div>
-        <div class="formElement">
-        <label>Motorhome</label>
-        <select class="singleSelect" name="motorhome">
-            <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
-                    th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
-        </select>
+        <div class="formElement" th:if="${extras != null}">
+            <label>Extras</label>
+            <select class="multipleSelect" multiple name="extras">
+                <option th:each="extra:${extras}" th:value="${extra.extraId}"
+                        th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
+            </select>
         </div>
-        <div class="formElement">
-        <label>Extras</label>
-        <select class="multipleSelect" multiple name="extras">
-            <option th:each="extra:${extras}" th:value="${extra.extraId}"
-                    th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
-        </select>
-        </div>
-        <div>
-        <button type="submit" class="submitButton mt-4">Create Contract</button>
+        <div th:if="${cutomers != null && motorhomes != null}">
+            <button th:if="$customers.size() > 0 && motorhomes.size() > 0" type="submit" class="submitButton mt-4">Create Contract</button>
         </div>
     </form>
 </div>

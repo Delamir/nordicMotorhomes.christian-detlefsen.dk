@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.model.IModel;
 
 import java.time.LocalDateTime;
 
@@ -53,9 +54,22 @@ public class ContractController {
      */
     @GetMapping("/createContract")
     public String createContract(Model model) {
-        model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
-        model.addAttribute("customers", customerService.fetchAllCustomers());
-        model.addAttribute("extras", extraService.fetchAllExtras());
+        return "home/createContract";
+    }
+
+    /**
+     * @author Sverri
+     */
+    @PostMapping("/getAvailableMotorhomes")
+    public String getAvailableMotorhomes(@RequestParam String fromDate, @RequestParam String toDate, Model model){
+        model.addAttribute("fromDate", fromDate);
+        model.addAttribute("toDate", toDate);
+
+        if (fromDate.length() != 0 && toDate.length() != 0) {
+            model.addAttribute("motorhomes", motorhomeService.fetchMotorhomesBetween(LocalDateTime.parse(fromDate), LocalDateTime.parse(toDate)));
+            model.addAttribute("customers", customerService.fetchAllCustomers());
+            model.addAttribute("extras", extraService.fetchAllExtras());
+        }
         return "home/createContract";
     }
 
@@ -68,13 +82,6 @@ public class ContractController {
     public String createContract(@ModelAttribute Contract contract) {
         contractService.createContract(contract);
         return "redirect:/contractIndex";
-    }
-
-    @PostMapping("/getAvailableMotorhomes")
-    public String getAvailableMotorhomes(@RequestParam LocalDateTime from, @RequestParam LocalDateTime to){
-        motorhomeService.fetchMotorhomesBetween(from, to);
-
-        return "home/createContract";
     }
 
     /**

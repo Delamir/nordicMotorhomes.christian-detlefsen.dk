@@ -66,7 +66,7 @@ public class MotorhomeService {
         motorhomeRepo.setAvailable(licencePlate, status);
     }
 
-    public void fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
-        motorhomeRepo.fetchMotorhomesBetween(from, to);
+    public List<Motorhome> fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
+        return motorhomeRepo.fetchMotorhomesBetween(from, to);
     }
 }
