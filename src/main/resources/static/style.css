@@ -14,6 +14,10 @@ h1,h2,h3,h4,h5{
     font-family: var(--main-header-font);
 }
 
+.manageBg {
+    background-color: #eaeaea;
+}
+
 /* RESET STANDARD STYLING */
 * {
     box-sizing: border-box;
