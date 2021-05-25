@@ -93,7 +93,8 @@ public class ContractRepo {
             return preparedStatement;
         }, keyHolder);
 
-        if (contract.getExtras().size() > 0) {
+
+        if (contract.getExtras() != null && contract.getExtras().size() > 0) {
             String insertExtraRelations = "INSERT INTO contracts_extras(contract_id, extra_id) VALUES(?, ?)";
             for (Extra extra : contract.getExtras()) {
                 template.update(insertExtraRelations, keyHolder.getKey().intValue(), extra.getExtraId());
