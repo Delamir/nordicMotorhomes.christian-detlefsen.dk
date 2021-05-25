@@ -1,7 +1,6 @@
 package grp1.motorhomes.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -167,7 +166,7 @@ public class Contract {
     }
 
     /**
-     * @param to spring was not able to parse Timstamp on its own
+     * @param to spring was not able to parse Timestamp on its own
      * @author Sverri
      */
     public void setToDate(String to) {
