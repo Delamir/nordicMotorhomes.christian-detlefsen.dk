@@ -33,11 +33,11 @@
                    th:value="${autoService.serviceDescription}">
         </div>
         <div class="formElement checkbox">
-            <input type="checkbox" name="done" th:value="${autoService.done}">
+            <input type="checkbox" name="done" th:checked="${autoService.done}">
             <label>Done</label>
         </div>
         <div>
-            <input type="submit" class="submitButton mt-4" value="Edit AutoService">
+            <input type="submit" class="submitButton mt-4" value="Edit Auto Service">
         </div>
     </form>
 </div>
