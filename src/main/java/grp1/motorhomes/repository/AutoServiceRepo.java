@@ -30,6 +30,23 @@ public class AutoServiceRepo {
 
     /**
      * @author Joachim
+     * @return
+     */
+    public AutoService findAutoService(int autoServiceId) {
+        String sqlStatement = "SELECT * FROM autoservices " +
+                "JOIN motorhomes ON autoservices.motorhome = motorhomes.registration " +
+                "JOIN models using(model_id) WHERE autoservice_id = ?";
+
+        AutoServiceResultSetExtractor extractor = new AutoServiceResultSetExtractor();
+
+        List<AutoService> autoServices = (List<AutoService>) template.query(sqlStatement, extractor, autoServiceId);
+
+        return autoServices.get(0);
+
+    }
+
+    /**
+     * @author Joachim
      */
     public void createAutoService(AutoService autoservice) {
         String insertAutoServiceValues = "INSERT INTO autoservices (service_description, motorhome, done) VALUES (?, ?, ?)";

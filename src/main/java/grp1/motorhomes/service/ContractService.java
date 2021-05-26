@@ -191,5 +191,4 @@ public class ContractService {
     public void closeContract(Contract contract) {
         contractRepo.closeContract(contract);
     }
-
 }
