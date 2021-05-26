@@ -25,6 +25,11 @@ public class AutoServiceService {
         return autoServiceRepo.fetchAllAutoServices();
     }
 
+    /**
+     * @author Patrick
+     * @param autoServiceId
+     * @return
+     */
     public AutoService findAutoService(int autoServiceId) {
         return autoServiceRepo.findAutoService(autoServiceId);
     }
