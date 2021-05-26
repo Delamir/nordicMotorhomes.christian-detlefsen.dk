@@ -140,14 +140,6 @@ public class ContractRepo {
                 contract.isDelivered(), contract.getPickupPoint(), contract.isPickedUp(), contract.isClosed(), contract.getContractId());
     }
 
-    /**
-     * @auhtor Sverri
-     * @param extra
-     */
-    public void editExtra(Extra extra) {
-        String updateSql = "UPDATE extras SET price = ?, name = ?, description = ? WHERE extra_id = ?";
-        template.update(updateSql, extra.getPrice(), extra.getName(), extra.getDescription(), extra.getExtraId());
-    }
 
     /**
      * @author Sverri
