@@ -16,6 +16,11 @@
     <a th:href="@{'/autoServiceIndex/'}">Auto Service</a>
 </div>
 
+<div class="relative">
+    <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
+    <h1 class="headerTitle">Deliver Contract</h1>
+</div>
+
 <form class="form" method="post" action="/deliverContract">
     <label>Transfer km</label>
     <input type="hidden" name="contractId" th:value="${contract.contractId}">
@@ -26,10 +31,5 @@
     <input type="number" name="odometer" placeholder="km">
     <input class="submitButton mt-4" type="submit" value="Deliver">
 </form>
-
-
-
-
-
 </body>
 </html>
