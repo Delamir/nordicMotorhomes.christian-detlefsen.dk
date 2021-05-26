@@ -101,6 +101,21 @@ a {
     background-color: white;
 }
 
+.closedContractsButton {
+    color: white;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+}
+
+.closedContractsButton:hover {
+    color: var(--primary-color);
+    background-color: white;
+}
+
 .edit-button{
     background-color: cadetblue;
     color: white;
