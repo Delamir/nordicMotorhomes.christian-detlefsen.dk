@@ -61,7 +61,8 @@ public class AutoServiceRepo {
     public void editAutoService(AutoService autoService) {
         String updateSql = "UPDATE autoservices SET service_description = ?, motorhome = ?, done = ? WHERE autoservice_id = ?";
 
-        template.update(updateSql, autoService.getServiceDescription(), autoService.getMotorhome(), autoService.isDone());
+        template.update(updateSql, autoService.getServiceDescription(), autoService.getMotorhome(),
+                autoService.isDone(), autoService.getAutoServiceId());
     }
 
     /**
