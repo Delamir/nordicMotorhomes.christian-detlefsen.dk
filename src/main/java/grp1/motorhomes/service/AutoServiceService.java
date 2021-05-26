@@ -26,6 +26,15 @@ public class AutoServiceService {
     }
 
     /**
+     * @author Patrick
+     * @param autoServiceId
+     * @return
+     */
+    public AutoService findAutoService(int autoServiceId) {
+        return autoServiceRepo.findAutoService(autoServiceId);
+    }
+
+    /**
      * @author Joachim
      */
     public void createAutoService(AutoService autoService) {

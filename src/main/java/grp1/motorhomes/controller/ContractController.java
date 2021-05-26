@@ -180,6 +180,28 @@ public class ContractController {
     }
 
     /**
+     * @author Joachim
+     * @param contract
+     * @return
+     */
+    @PostMapping("/closeContract")
+    public String closeContract(@ModelAttribute Contract contract) {
+        contractService.closeContract(contract);
+        return "redirect:/contractIndex";
+    }
+
+    /**
+     * @author Joachim
+     * @param model
+     * @return
+     */
+    @GetMapping("/closedContracts")
+    public String closedContracts(Model model ) {
+        model.addAttribute("contract", contractService.fetchAllClosedContracts());
+        return "home/contract/closedContracts";
+    }
+
+    /**
      * @author Sverri
      */
     @PostMapping("/calculatePrice")
@@ -192,15 +214,5 @@ public class ContractController {
         return "home/contract/closeContract";
     }
 
-    /**
-     * @author Joachim
-     * @param contract
-     * @return
-     */
-    @PostMapping("/closeContract")
-    public String closeContract(@ModelAttribute Contract contract) {
-        contractService.closeContract(contract);
-        return "redirect:/contractIndex";
-    }
 
 }
