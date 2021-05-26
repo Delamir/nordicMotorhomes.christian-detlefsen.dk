@@ -21,20 +21,24 @@
 </div>
 
 <div>
-    <form class="form" onsubmit="return confirm('Are you sure you want to edit this Auto Service?')" action="/editAutoService/"
+    <form class="form" onsubmit="return confirm('Are you sure you want to edit this Auto Service?')"
+          action="/editAutoService/"
           method="post">
         <input type="hidden" name="autoServiceId" th:value="${autoService.autoServiceId}">
+
+        <input type="hidden" name="motorhome" th:value="${autoService.motorhome.getLicencePlate()}">
         <div class="formElement">
             <label>Service Description</label>
-            <input type="text" name="serviceDescription" placeholder="Service Description" th:value="${autoService.serviceDescription}">
+            <input type="text" name="serviceDescription" placeholder="Service Description"
+                   th:value="${autoService.serviceDescription}">
         </div>
-            <div class="formElement checkbox">
-                <input type="checkbox" name="done" th:value="${autoService.done}">
-                <label>Done</label>
-            </div>
-            <div>
-                <input type="submit" class="submitButton mt-4" value="Edit AutoService">
-            </div>
+        <div class="formElement checkbox">
+            <input type="checkbox" name="done" th:value="${autoService.done}">
+            <label>Done</label>
+        </div>
+        <div>
+            <input type="submit" class="submitButton mt-4" value="Edit AutoService">
+        </div>
     </form>
 </div>
 </body>
