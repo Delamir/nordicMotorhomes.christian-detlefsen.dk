@@ -57,7 +57,7 @@ public class AutoServiceController {
      */
     @GetMapping("/editAutoService/{autoServiceId}")
     public String editAutoService(@PathVariable int autoServiceId, Model model) {
-        model.addAttribute("autoService", autoServiceService.fetchAllAutoServices());
+        model.addAttribute("autoService", autoServiceService.findAutoService(autoServiceId));
         return "home/autoservice/editAutoService";
     }
 
