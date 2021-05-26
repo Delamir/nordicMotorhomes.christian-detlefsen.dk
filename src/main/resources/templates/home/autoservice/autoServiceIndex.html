@@ -26,7 +26,7 @@
     <table>
 
         <tr>
-            <th class="genericTableHeader relative" colspan="20">Motorhomes Requiring Check</th>
+            <th class="genericTableHeader relative" colspan="100%">Motorhomes Requiring Check</th>
         </tr>
 
         <tbody>
@@ -38,7 +38,7 @@
         <th>Image</th>
         <th>Price</th>
         <th>Availability</th>
-        <th colspan="2">Actions</th>
+        <th colspan="100%">Actions</th>
 
         <tr th:each="motorhome : ${motorhomes}">
             <td th:text="${motorhome.licencePlate}"></td>
@@ -72,14 +72,14 @@
 
     <table>
         <tr>
-            <th class="genericTableHeader relative" colspan="20">Auto Service</th>
+            <th class="genericTableHeader relative" colspan="100%">Auto Service</th>
         </tr>
 
         <tbody>
         <th>Service Description</th>
         <th>Motorhome</th>
         <th>Done</th>
-        <th>Actions</th>
+        <th colspan="100%">Actions</th>
 
         <tr th:each="autoservice : ${autoServices}">
             <td th:text="${autoservice.serviceDescription}"></td>
@@ -91,7 +91,6 @@
                     <button class="edit-button" type="button">Edit</button>
                 </a>
             </td>
-
             <td class="actions">
                 <form action="/markDone" method="post">
                     <input type="hidden" name="autoServiceId" th:value="${autoservice.autoServiceId}">
@@ -99,7 +98,10 @@
                     <button class="edit-button" onclick="return confirm('Are you sure you want to make this motorhome available?')"
                             type="submit">Make Available</button>
                 </form>
+
             </td>
+
+
 
         </tr>
         </tbody>
