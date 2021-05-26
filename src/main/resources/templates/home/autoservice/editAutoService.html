@@ -19,5 +19,23 @@
     <h1 class="headerTitle">Auto Service</h1>
 </div>
 
+<div>
+    <form class="form" onsubmit="return confirm('Are you sure you want to edit this Auto Service?')" action="/editAutoService/"
+          method="post">
+        <input type="hidden" name="AutoServiceId" th:value="${autoService.autoServiceId}">
+        <div class="formElement">
+            <label>Service Description</label>
+            <input type="text" name="Service Description" placeholder="Service Description" th:value="${autoService.serviceDescription}">
+            <div class="formElement checkbox">
+                <label>Done</label>
+                <input type="checkbox" name="Done" th:value="${autoService.done}">
+            </div>
+            <div>
+                <input type="submit" class="submitButton mt-4" value="Edit AutoService">
+            </div>
+        </div>
+
+    </form>
+</div>
 </body>
 </html>
