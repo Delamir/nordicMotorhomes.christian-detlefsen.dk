@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Auto Service</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body class="manageBg">
 <div class="topmenu">
@@ -26,15 +27,14 @@
         <div class="formElement">
             <label>Service Description</label>
             <input type="text" name="Service Description" placeholder="Service Description" th:value="${autoService.serviceDescription}">
+        </div>
             <div class="formElement checkbox">
-                <label>Done</label>
                 <input type="checkbox" name="Done" th:value="${autoService.done}">
+                <label>Done</label>
             </div>
             <div>
                 <input type="submit" class="submitButton mt-4" value="Edit AutoService">
             </div>
-        </div>
-
     </form>
 </div>
 </body>
