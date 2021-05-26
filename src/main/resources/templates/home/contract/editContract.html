@@ -58,20 +58,28 @@
             <label>Closed </label>
         </div>
         <div class="formElement">
-        <label>Motorhome </label>
-        <select class="singleSelect" name="motorhome">
-            <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
-                    th:selected="${motorhome.licencePlate.equals(contract.motorhome)}"
-                    th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
-        </select>
+            <label>Motorhome </label>
+            <select class="singleSelect" name="motorhome">
+                <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
+                        th:selected="${motorhome.licencePlate.equals(contract.motorhome.getLicencePlate)}"
+                        th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+            </select>
         </div>
         <div class="formElement">
-        <label>Customer</label>
-        <select class="singleSelect" name="customer">
-            <option th:each="customer:${customers}" th:value="${customer.customerNumber}"
-                    th:selected="${customer.customerNumber.equals(contract.customer)}"
-                    th:text="${customer.name} + ', ' + ${customer.licenceNumber}"></option>
-        </select>
+            <label>Customer</label>
+            <select class="singleSelect" name="customer">
+                <option th:each="customer:${customers}" th:value="${customer.customerNumber}"
+                        th:selected="${customer.customerNumber.equals(contract.customer.getCustomerNumber())}"
+                        th:text="${customer.name} + ', ' + ${customer.licenceNumber}"></option>
+            </select>
+        </div>
+        <div class="formElement">
+            <label>Extras</label>
+            <select class="multipleSelect" multiple name="extras">
+                <option th:each="extra:${extras}" th:value="${extra.extraId}"
+                        th:selected="${contract.getExtras().contains(extra)}"
+                        th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
+            </select>
         </div>
         <div>
             <input type="submit" class="submitButton mt-4" value="Edit contract">
