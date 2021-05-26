@@ -23,13 +23,13 @@
 <div>
     <form class="form" onsubmit="return confirm('Are you sure you want to edit this Auto Service?')" action="/editAutoService/"
           method="post">
-        <input type="hidden" name="AutoServiceId" th:value="${autoService.autoServiceId}">
+        <input type="hidden" name="autoServiceId" th:value="${autoService.autoServiceId}">
         <div class="formElement">
             <label>Service Description</label>
-            <input type="text" name="Service Description" placeholder="Service Description" th:value="${autoService.serviceDescription}">
+            <input type="text" name="serviceDescription" placeholder="Service Description" th:value="${autoService.serviceDescription}">
         </div>
             <div class="formElement checkbox">
-                <input type="checkbox" name="Done" th:value="${autoService.done}">
+                <input type="checkbox" name="done" th:value="${autoService.done}">
                 <label>Done</label>
             </div>
             <div>
