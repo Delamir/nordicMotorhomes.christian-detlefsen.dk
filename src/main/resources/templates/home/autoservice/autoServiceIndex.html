@@ -31,14 +31,14 @@
         </tr>
 
         <tbody>
-        <th>Licence Plate</th>
-        <th>Brand</th>
-        <th>Model</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Availability</th>
-        <th colspan="100%">Actions</th>
+        <th style="background-color: white">Licence Plate</th>
+        <th style="background-color: white">Brand</th>
+        <th style="background-color: white">Model</th>
+        <th style="background-color: white">Type</th>
+        <th style="background-color: white">Description</th>
+        <th style="background-color: white">Price</th>
+        <th style="background-color: white">Availability</th>
+        <th style="background-color: white" colspan="100%">Actions</th>
 
         <tr th:each="motorhome : ${motorhomes}">
             <td th:text="${motorhome.licencePlate}"></td>
@@ -75,10 +75,10 @@
         </tr>
 
         <tbody>
-        <th>Service Description</th>
-        <th>Motorhome</th>
-        <th>Done</th>
-        <th colspan="100%">Actions</th>
+        <th style="background-color: white">Service Description</th>
+        <th style="background-color: white">Motorhome</th>
+        <th style="background-color: white">Done</th>
+        <th style="background-color: white" colspan="100%">Actions</th>
 
         <tr th:each="autoservice : ${autoServices}">
             <td th:text="${autoservice.serviceDescription}"></td>
