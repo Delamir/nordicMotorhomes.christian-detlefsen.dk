@@ -47,7 +47,8 @@ public class MotorhomeRepo {
         String sql = "SELECT registration as licencePlate, type, brand, model, description, price, available from motorhomes " +
                 "LEFT JOIN contracts ON registration = motorhome " +
                 "JOIN models using(model_id) " +
-                "WHERE ((from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?)) OR from_date is null OR to_date is null";
+                "LEFT JOIN autoservices a on motorhomes.registration = a.motorhome " +
+                "WHERE autoservice_id is null AND ((from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?))  OR from_date is null OR to_date is null";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sql, rowMapper, from.toLocalDate(), to.plusDays(2), from.toLocalDate(), to.plusDays(2));
     }
