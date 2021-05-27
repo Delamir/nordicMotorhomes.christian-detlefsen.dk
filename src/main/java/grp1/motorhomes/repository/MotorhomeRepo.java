@@ -128,7 +128,10 @@ public class MotorhomeRepo {
      * @author Patrick
      */
     public void deleteMotorhome(String licencePlate) {
-        String deleteSql = "DELETE FROM motorhomes WHERE registration = ? ";
+        String deleteSql = "DELETE FROM autoservices WHERE motorhome = ?";
+        template.update(deleteSql, licencePlate);
+
+        deleteSql = "DELETE FROM motorhomes WHERE registration = ? ";
         template.update(deleteSql, licencePlate);
     }
 
