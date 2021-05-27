@@ -25,11 +25,11 @@
     <input type="hidden" name="contractId" th:value="${contract.contractId}">
     <input type="hidden" name="motorhome" th:value="${contract.motorhome.getLicencePlate()}">
     <label>Pick up point</label>
-    <input type="text" name="pickupPoint" placeholder="Pickup Point">
+    <input type="text" name="pickupPoint" placeholder="Pickup Point" th:value="${contract.pickupPoint}">
     <label>Transfer km</label>
     <input type="number" name="transferKm" placeholder="km"  >
-    <label>Odometer value</label>
-    <input type="number" name="odometerEnd" placeholder="km">
+    <label>Odometer end value</label>
+    <input type="number" name="odometer" placeholder="km">
     <input class="submitButton mt-4" type="submit" value="Pick Up">
 </form>
 </body>

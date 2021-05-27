@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.Timestamp;
@@ -46,8 +47,8 @@ public class ContractRepo {
     }
 
     /**
-     * @author Sverri
      * @return
+     * @author Sverri
      */
     public List<Contract> fetchAllClosedContracts() {
         String sqlStatement =
@@ -152,16 +153,16 @@ public class ContractRepo {
     }
 
     public void deliverContract(Contract contract) {
-        String updateSql = "UPDATE contracts SET delivered = true, transfer_km = ? WHERE contract_id = ?";
-        template.update(updateSql, contract.getTransferKm(), contract.getContractId());
+        String updateSql = "UPDATE contracts SET delivered = true, transfer_km = ?, odometer = ?, delivery_point = ? WHERE contract_id = ?";
+        template.update(updateSql, contract.getTransferKm(), contract.getOdometer(), contract.getDeliveryPoint(), contract.getContractId());
     }
 
     /**
      * @author Joachim
      */
     public void pickupContract(Contract contract) {
-        String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ? WHERE contract_id = ?";
-        template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getContractId());
+        String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ?, excess_km = ? WHERE contract_id = ?";
+        template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getExcessKm(), contract.getContractId());
 
     }
 

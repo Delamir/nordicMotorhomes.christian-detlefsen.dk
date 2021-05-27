@@ -26,7 +26,7 @@
     <input type="hidden" name="contractId" th:value="${contract.contractId}">
     <input type="number" name="transferKm" placeholder="km">
     <label>Delivery point</label>
-    <input type="text" name="deliveryPoint" placeholder="Delivery Point">
+    <input type="text" name="deliveryPoint" placeholder="Delivery Point" th:value="${contract.deliveryPoint}">
     <label>Odometer start value</label>
     <input type="number" name="odometer" placeholder="km">
     <input class="submitButton mt-4" type="submit" value="Deliver">

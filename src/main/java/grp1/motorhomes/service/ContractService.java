@@ -6,6 +6,7 @@ import grp1.motorhomes.repository.ContractRepo;
 import grp1.motorhomes.repository.MotorhomeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -71,6 +72,7 @@ public class ContractService {
      * @author Christian og Patrick
      */
     public double calculatePrice(Contract contract) {
+        System.out.println(contract);
         double priceExtra = 0;
         double priceMotorhome;
         double transferFee = 0;
@@ -114,7 +116,11 @@ public class ContractService {
         if (contract.getExcessKm() > 0) {
             excessKm = contract.getExcessKm() * Constants.FEE_ON_EXCESS_KM;
         }
-
+        System.out.println(priceExtra);
+        System.out.println(priceMotorhome);
+        System.out.println(transferFee);
+        System.out.println(fuelCost);
+        System.out.println(excessKm);
 
         return priceExtra + priceMotorhome + transferFee + fuelCost + excessKm;
     }
@@ -131,23 +137,23 @@ public class ContractService {
 
             cancellationFee = contractPrice * Constants.CANCELLATION_FEE_50;
 
-            } else if (rentalDays >= Constants.CANCELLATION_15_DAYS) {
+        } else if (rentalDays >= Constants.CANCELLATION_15_DAYS) {
 
-                cancellationFee = contractPrice * Constants.CANCELLATION_FEE_49_TO_15;
+            cancellationFee = contractPrice * Constants.CANCELLATION_FEE_49_TO_15;
 
-            } else if (rentalDays > Constants.CANCELLATION_SAME_DAY) {
+        } else if (rentalDays > Constants.CANCELLATION_SAME_DAY) {
 
-                cancellationFee = contractPrice * Constants.CANCELLATION_FEE_LESS_15;
+            cancellationFee = contractPrice * Constants.CANCELLATION_FEE_LESS_15;
 
-            } else if (rentalDays  == Constants.CANCELLATION_SAME_DAY) {
+        } else if (rentalDays == Constants.CANCELLATION_SAME_DAY) {
 
-                cancellationFee = contractPrice * Constants.CANCELLATION_FEE_ON_DAY;
+            cancellationFee = contractPrice * Constants.CANCELLATION_FEE_ON_DAY;
 
-            } else {
-                cancellationFee = contractPrice;
-            }
+        } else {
+            cancellationFee = contractPrice;
+        }
 
-        if(cancellationFee < Constants.MINIMUM_CANCELLATION_FEE) {
+        if (cancellationFee < Constants.MINIMUM_CANCELLATION_FEE) {
             cancellationFee = Constants.MINIMUM_CANCELLATION_FEE;
         }
 
@@ -155,34 +161,44 @@ public class ContractService {
     }
 
     /**
-     * @author Sverri
      * @param contract
+     * @author Sverri
      */
     public void deliverContract(Contract contract) {
         contractRepo.deliverContract(contract);
     }
 
     /**
-     * @author Sverri and Christian
      * @param from
      * @param to
      * @return
+     * @author Sverri and Christian
      */
     public int daysBetweenDates(Timestamp from, Timestamp to) {
         return (int) Duration.between(from.toLocalDateTime().toLocalDate().atStartOfDay(), to.toLocalDateTime().toLocalDate().atStartOfDay()).toDays();
     }
 
     /**
-     * @author Joachim
      * @param contract
+     * @author Joachim
      */
     public void pickupContract(Contract contract) {
+        contract.setExcessKm(calculateExcessKm(findContract(contract.getContractId()), contract.getOdometer()));
         contractRepo.pickupContract(contract);
     }
 
+    public int calculateExcessKm(Contract contract, int endOdometer) {
+        int rentalDays = daysBetweenDates(Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()));
+        int kmDriven = endOdometer - contract.getOdometer();
+        int kmDrivenPerDay = kmDriven / rentalDays;
+        if (kmDrivenPerDay > 400)
+            return 0;
+        return kmDrivenPerDay- 400;
+    }
+
     /**
-     * @author Joachim
      * @param contract
+     * @author Joachim
      */
     public void closeContract(Contract contract) {
         contractRepo.closeContract(contract);

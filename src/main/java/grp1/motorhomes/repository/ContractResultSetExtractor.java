@@ -46,12 +46,12 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
                 contract.setToDate(resultSet.getTimestamp("to_Date").toString());
                 contract.setOdometer(resultSet.getInt("odometer"));
                 contract.setCustomerParams(resultSet.getInt("customer_number"),
-                        resultSet.getString("name"), resultSet.getString("licence_number"),
+                        resultSet.getString("customers.name"), resultSet.getString("licence_number"),
                         resultSet.getString("street"), resultSet.getString("city"), resultSet.getInt("post_code"));
                 contract.setMotorhomeParams(resultSet.getString("motorhome"),
                         resultSet.getString("type"), resultSet.getString("brand"),
-                        resultSet.getString("model"), resultSet.getString("description"),
-                        resultSet.getInt("price"), resultSet.getBoolean("available"));
+                        resultSet.getString("model"), resultSet.getString("motorhomes.description"),
+                        resultSet.getInt("motorhomes.price"), resultSet.getBoolean("available"));
                 contract.setExcessKm(resultSet.getInt("excess_km"));
                 contract.setTransferKm(resultSet.getInt("transfer_km"));
                 contract.setDeliveryPoint(resultSet.getString("delivery_point"));
@@ -65,8 +65,8 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
             }
 
             // lastly we add the extra of the current row of the result set
-            contract.addExtra(resultSet.getInt("extra_id"), resultSet.getInt("price"),
-                    resultSet.getString("name"), resultSet.getString("description"));
+            contract.addExtra(resultSet.getInt("extra_id"), resultSet.getInt("extras.price"),
+                    resultSet.getString("extras.name"), resultSet.getString("extras.description"));
 
         }
 

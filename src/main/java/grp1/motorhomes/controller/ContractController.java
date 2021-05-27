@@ -175,7 +175,9 @@ public class ContractController {
      */
     @GetMapping("/closeContract/{contractId}")
     public String closeContract(@PathVariable int contractId, Model model) {
-        model.addAttribute("contract", contractService.findContract(contractId));
+        Contract contract = contractService.findContract(contractId);
+        model.addAttribute("contract", contract);
+        model.addAttribute("rentalPrice", contractService.calculatePrice(contract));
         return "home/contract/closeContract";
     }
 
