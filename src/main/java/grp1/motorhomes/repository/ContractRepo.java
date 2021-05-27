@@ -183,7 +183,7 @@ public class ContractRepo {
      * @author Joachim
      */
     public void closeContract(Contract contract) {
-        String updateSql = "UPDATE contracts SET closed = true WHERE contract_id = ?";
-        template.update(updateSql, contract.getContractId());
+        String updateSql = "UPDATE contracts SET closed = true, total_price = ? WHERE contract_id = ?";
+        template.update(updateSql, contract.getFinalPrice(), contract.getContractId());
     }
 }
