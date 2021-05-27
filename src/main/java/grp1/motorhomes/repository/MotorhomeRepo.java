@@ -1,5 +1,6 @@
 package grp1.motorhomes.repository;
 
+import grp1.motorhomes.model.Constants;
 import grp1.motorhomes.model.Motorhome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -55,7 +56,7 @@ public class MotorhomeRepo {
                 "LEFT JOIN autoservices a on motorhomes.registration = a.motorhome " +
                 "WHERE (autoservice_id is null OR done = true) AND ((from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?))  OR from_date is null OR to_date is null";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
-        return template.query(sql, rowMapper, from.toLocalDate(), to.plusDays(2), from.toLocalDate(), to.plusDays(2));
+        return template.query(sql, rowMapper, from.toLocalDate(), to.plusDays(Constants.GRACE_PERIOD), from.toLocalDate(), to.plusDays(2));
     }
 
     /**
