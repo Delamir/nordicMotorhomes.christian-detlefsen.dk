@@ -55,6 +55,14 @@
                         th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
             </select>
         </div>
+        <div class="formElement">
+            <label>Delivery Point</label>
+            <input type="text" name="deliveryPoint" placeholder="Address">
+        </div>
+        <div class="formElement">
+            <label>Pick Up Point</label>
+            <input type="text" name="pickupPoint" placeholder="Address">
+        </div>
         <div th:if="${customers != null && motorhomes != null}">
             <button type="submit" onclick="return confirm('Are you sure you want to create a contract?')" class="submitButton mt-4">Create Contract</button>
         </div>

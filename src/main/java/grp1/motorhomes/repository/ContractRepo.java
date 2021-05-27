@@ -139,6 +139,16 @@ public class ContractRepo {
         template.update(updateSql, contract.getFromDate(), contract.getToDate(), contract.getOdometer(), contract.getCustomer().getCustomerNumber(),
                 contract.getMotorhome().getLicencePlate(), contract.getExcessKm(), contract.getTransferKm(), contract.getDeliveryPoint(),
                 contract.isDelivered(), contract.getPickupPoint(), contract.isPickedUp(), contract.isClosed(), contract.getContractId());
+
+        String deleteExtras = "DELETE FROM contracts_extras WHERE contract_id = ?";
+        template.update(deleteExtras, contract.getContractId());
+
+        String insertExtras = "INSERT INTO contracts_extras(contract_id, extra_id) VALUES(?,?)";
+
+        if (contract.getExtras() != null) {
+            for (Extra extra : contract.getExtras())
+                template.update(insertExtras, contract.getContractId(), extra.getExtraId());
+        }
     }
 
 

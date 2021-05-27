@@ -34,8 +34,16 @@
             <input type="datetime-local" name="toDate" th:value="${contract.toDate}">
         </div>
         <div class="formElement">
-            <label>Odometer </label>
+            <label>Start Odometer</label>
             <input type="text" name="odometer" placeholder="Odometer" th:value="${contract.odometer}">
+        </div>
+        <div class="formElement">
+            <label>Delivery Point</label>
+            <input type="text" name="deliveryPoint" placeholder="Address">
+        </div>
+        <div class="formElement">
+            <label>Pick Up Point</label>
+            <input type="text" name="pickupPoint" placeholder="Address">
         </div>
         <div class="formElement">
             <label>Excess Km </label>
@@ -77,10 +85,11 @@
             <label>Extras</label>
             <select class="multipleSelect" multiple name="extras">
                 <option th:each="extra:${extras}" th:value="${extra.extraId}"
-                        th:selected="${contract.getExtras().contains(extra)}"
+                        th:selected="${contract.getExtras().toString().contains(extra.toString())}"
                         th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
             </select>
         </div>
+
         <div>
             <input type="submit" class="submitButton mt-4" value="Edit contract">
         </div>
