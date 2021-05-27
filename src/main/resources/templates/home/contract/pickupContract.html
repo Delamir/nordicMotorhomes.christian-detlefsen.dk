@@ -21,16 +21,31 @@
     <h1 class="headerTitle">Pick Up Contract</h1>
 </div>
 
-<form class="form" method="post" action="/pickupContract">
-    <input type="hidden" name="contractId" th:value="${contract.contractId}">
-    <input type="hidden" name="motorhome" th:value="${contract.motorhome.getLicencePlate()}">
-    <label>Pick up point</label>
-    <input type="text" name="pickupPoint" placeholder="Pickup Point" th:value="${contract.pickupPoint}">
-    <label>Transfer km</label>
-    <input type="number" name="transferKm" placeholder="km"  >
-    <label>Odometer end value</label>
-    <input type="number" name="odometer" placeholder="km">
-    <input class="submitButton mt-4" type="submit" value="Pick Up">
-</form>
+<div>
+    <form class="form" method="post" action="/pickupContract">
+        <input type="hidden" name="contractId" th:value="${contract.contractId}">
+        <input type="hidden" name="motorhome" th:value="${contract.motorhome.getLicencePlate()}">
+        <div class="formElement">
+        <label>Pick up point</label>
+        <input type="text" name="pickupPoint" placeholder="Pickup Point" th:value="${contract.pickupPoint}">
+        </div>
+        <div class="formElement">
+            <label>Transfer km</label>
+        <input type="number" name="transferKm" placeholder="km">
+        </div>
+        <div class="formElement">
+        <label>Odometer end value</label>
+        <input type="number" name="odometer" placeholder="km">
+        </div>
+        <div class="formElement checkbox">
+        <label>Is Fuel tank under half full?</label>
+        <input type="checkbox" name="underHalfFuelTank">
+        </div>
+        <div>
+        <input class="submitButton mt-4" type="submit" value="Pick Up">
+        </div>
+    </form>
+</div>
+
 </body>
 </html>

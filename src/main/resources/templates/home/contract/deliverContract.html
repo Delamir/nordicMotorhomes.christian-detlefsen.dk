@@ -20,16 +20,25 @@
     <img class="headerImg blur" src="https://i.redd.it/cr9cz1ts82071.png">
     <h1 class="headerTitle">Deliver Contract</h1>
 </div>
-
-<form class="form" method="post" action="/deliverContract">
-    <label>Transfer km</label>
-    <input type="hidden" name="contractId" th:value="${contract.contractId}">
-    <input type="number" name="transferKm" placeholder="km">
-    <label>Delivery point</label>
-    <input type="text" name="deliveryPoint" placeholder="Delivery Point" th:value="${contract.deliveryPoint}">
-    <label>Odometer start value</label>
-    <input type="number" name="odometer" placeholder="km">
-    <input class="submitButton mt-4" type="submit" value="Deliver">
-</form>
+<div>
+    <form class="form" method="post" action="/deliverContract">
+        <input type="hidden" name="contractId" th:value="${contract.contractId}">
+        <div class="formElement">
+            <label>Delivery point</label>
+            <input type="text" name="deliveryPoint" placeholder="Delivery Point" th:value="${contract.deliveryPoint}">
+        </div>
+        <div class="formElement">
+            <label>Transfer km</label>
+            <input type="number" name="transferKm" placeholder="km">
+        </div>
+        <div class="formElement">
+            <label>Odometer start value</label>
+            <input type="number" name="odometer" placeholder="km">
+        </div>
+        <div>
+            <input class="submitButton mt-4" type="submit" value="Deliver">
+        </div>
+    </form>
+</div>
 </body>
 </html>
