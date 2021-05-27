@@ -107,8 +107,6 @@ a {
     font-weight: bold;
     font-size: 1rem;
     transition: 0.1s;
-    display: flex;
-    align-items: center;
 }
 
 .closedContractsButton:hover {
@@ -290,9 +288,16 @@ a {
     background-color: white;
 }
 
-.addButtonContainer{
+.addButtonContainer {
     position: absolute;
     right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.closedButtonContainer{
+    position: absolute;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
 }
