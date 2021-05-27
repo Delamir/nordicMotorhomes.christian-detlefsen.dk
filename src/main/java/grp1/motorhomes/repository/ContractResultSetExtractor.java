@@ -59,8 +59,10 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
                 contract.setPickupPoint(resultSet.getString("pickup_point"));
                 contract.setPickedUp(resultSet.getBoolean("picked_up"));
                 contract.setClosed(resultSet.getBoolean("closed"));
+                contract.setFinalPrice(resultSet.getInt("total_price"));
+                contract.setUnderHalfFuelTank(resultSet.getBoolean("under_half_fuel_tank"));
 
-                contracts.put(contract.getContractId(),contract);
+                contracts.put(contract.getContractId(), contract);
 
             }
 

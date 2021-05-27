@@ -20,6 +20,7 @@ public class Contract {
     private int odometer;
     private int excessKm;
     private int transferKm;
+    private int finalPrice;
     private String deliveryPoint;
     private String pickupPoint;
     private boolean underHalfFuelTank;
@@ -43,6 +44,7 @@ public class Contract {
     public Contract() {
 
     }
+
     /**
      * @param contractId
      * @param fromDate
@@ -62,7 +64,6 @@ public class Contract {
         this.motorhome = motorhome;
         this.extras = extras;
     }
-
     /**
      * @author Sverri
      * @param id
@@ -203,6 +204,14 @@ public class Contract {
 
     public void setTransferKm(int transferKm) {
         this.transferKm = transferKm;
+    }
+
+    public int getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(int finalPrice) {
+        this.finalPrice = finalPrice;
     }
 
     public boolean isUnderHalfFuelTank() {
