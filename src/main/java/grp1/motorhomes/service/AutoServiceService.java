@@ -27,7 +27,6 @@ public class AutoServiceService {
 
     /**
      * @author Patrick
-     * @param autoServiceId
      * @return
      */
     public AutoService findAutoService(int autoServiceId) {

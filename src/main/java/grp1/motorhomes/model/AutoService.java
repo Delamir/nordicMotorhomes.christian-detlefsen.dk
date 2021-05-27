@@ -22,7 +22,6 @@ public class AutoService {
      * @author Christian
      */
     public AutoService() {
-
     }
 
     /**
