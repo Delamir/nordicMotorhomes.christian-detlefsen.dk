@@ -27,7 +27,7 @@
 
 
         <tr>
-            <th class="genericTableHeader relative" colspan="7">Customers<span class="addButtonContainer">
+            <th class="genericTableHeader relative" colspan="100%">Customers<span class="addButtonContainer">
                         <a th:href="@{'/createCustomer/'}">
                             <button type="button" class="addNewButton"><svg fill="currentColor" viewBox="0 0 20 20"
                                                                             xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
         <th>Street</th>
         <th>City</th>
         <th>Postcode</th>
-        <th colspan="2">Actions</th>
+        <th colspan="100">Actions</th>
 
         <tr th:each="customer : ${customers}">
             <td th:text="${customer.name}"></td>
