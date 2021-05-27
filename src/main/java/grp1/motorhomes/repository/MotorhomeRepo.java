@@ -129,7 +129,7 @@ public class MotorhomeRepo {
      */
     public void setAvailable(String licencePlate, boolean status) {
         String setAvailableSql = "UPDATE motorhomes SET available = ? WHERE registration = ?";
-
+        System.out.println(licencePlate+"  "+status);
         template.update(setAvailableSql, status, licencePlate);
     }
 }

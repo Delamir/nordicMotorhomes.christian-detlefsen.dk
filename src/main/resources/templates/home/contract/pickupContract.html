@@ -23,7 +23,7 @@
 
 <form class="form" method="post" action="/pickupContract">
     <input type="hidden" name="contractId" th:value="${contract.contractId}">
-    <input type="hidden" name="motorhome" th:value="${contract.motorhome}">
+    <input type="hidden" name="motorhome" th:value="${contract.motorhome.getLicencePlate()}">
     <label>Pick up point</label>
     <input type="text" name="pickupPoint" placeholder="Pickup Point">
     <label>Transfer km</label>
