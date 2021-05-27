@@ -41,7 +41,7 @@ public class AutoServiceResultSetExtractor implements ResultSetExtractor {
                 autoService.setMotorhomeWithParam(resultSet.getString("motorhome"),
                         resultSet.getString("type"), resultSet.getString("brand"),
                         resultSet.getString("model"), resultSet.getString("description"),
-                        resultSet.getString("image_path"), resultSet.getInt("price"), resultSet.getBoolean("available"));
+                        resultSet.getInt("price"), resultSet.getBoolean("available"));
                 autoService.setDone(resultSet.getBoolean("done"));
 
                 autoServiceHashMap.put(autoService.getAutoServiceId(), autoService);

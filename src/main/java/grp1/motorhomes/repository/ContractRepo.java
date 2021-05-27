@@ -30,7 +30,7 @@ public class ContractRepo {
                 "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
                         "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
                         "extras.price, extras.name, extras.description, " +
-                        "type, motorhomes.description, image_path, model_id, motorhomes.price, available, model, brand, " +
+                        "type, motorhomes.description, model_id, motorhomes.price, available, model, brand, " +
                         "customers.name, licence_number, address_id, street, post_code, city " +
                         "FROM contracts " +
                         "LEFT JOIN contracts_extras using(contract_id) " +
@@ -54,7 +54,7 @@ public class ContractRepo {
                 "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
                         "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
                         "extras.price, extras.name, extras.description, " +
-                        "type, motorhomes.description, image_path, model_id, motorhomes.price, available, model, brand, " +
+                        "type, motorhomes.description, model_id, motorhomes.price, available, model, brand, " +
                         "customers.name, licence_number, address_id, street, post_code, city " +
                         "FROM contracts " +
                         "LEFT JOIN contracts_extras using(contract_id) " +
@@ -110,7 +110,7 @@ public class ContractRepo {
                 "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
                         "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
                         "extras.price, extras.name, extras.description, " +
-                        "type, motorhomes.description, image_path, model_id, motorhomes.price, available, model, brand, " +
+                        "type, motorhomes.description, model_id, motorhomes.price, available, model, brand, " +
                         "customers.name, licence_number, address_id, street, post_code, city " +
                         "FROM contracts " +
                         "LEFT JOIN contracts_extras using(contract_id) " +

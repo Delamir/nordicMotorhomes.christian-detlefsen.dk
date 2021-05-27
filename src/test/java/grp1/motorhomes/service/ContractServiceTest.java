@@ -28,7 +28,7 @@ class ContractServiceTest {
 
 
         Motorhome motorhome = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
-                "A motorhome", "An ImagePath", 200, true);
+                "A motorhome", 200, true);
 
         Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
 
@@ -66,7 +66,7 @@ class ContractServiceTest {
 
 
         Motorhome motorhome = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
-                "A motorhome", "An ImagePath", 100, true);
+                "A motorhome", 100, true);
         Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
 
         Contract cOver50 = new Contract(1, Timestamp.valueOf(today.plusDays(60)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(90)).toLocalDateTime(),

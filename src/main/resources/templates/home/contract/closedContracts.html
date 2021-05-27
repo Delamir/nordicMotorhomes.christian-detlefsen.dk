@@ -25,21 +25,30 @@
 
     <table>
         <tr>
-            <th class="genericTableHeader relative" colspan="7">Closed Contracts</th>
+            <th class="genericTableHeader relative" colspan="100%">Closed Contracts</th>
         </tr>
 
         <tbody>
         <th>Contract start date</th>
         <th>Contract end date</th>
         <th>Odometer</th>
-        <th>Customer ID</th>
-        <th colspan="3">Actions</th>
+        <th>Customer Number</th>
+        <th>Customer Name</th>
+        <th>Motorhome</th>
+        <th>Delivery Point</th>
+        <th>Pick Up Point</th>
+        <th colspan="100%">Actions</th>
 
         <tr th:each="contract : ${contracts}">
             <td th:text="${contract.getFromDateAsString}"></td>
             <td th:text="${contract.getToDateAsString}"></td>
             <td th:text="${contract.odometer}"></td>
             <td th:text="${contract.customer.getCustomerNumber()}"></td>
+            <td th:text="${contract.customer.getName()}"></td>
+            <td th:text="${contract.motorhome.getLicencePlate()}"></td>
+            <td th:text="${contract.getDeliveryPoint()}"></td>
+            <td th:text="${contract.getPickupPoint}"></td>
+
 
             <td class="actions">
                 <a th:href="@{'/editContract/'+${contract.contractId}}">

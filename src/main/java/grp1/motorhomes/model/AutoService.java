@@ -63,8 +63,8 @@ public class AutoService {
         return motorhome;
     }
 
-    public void setMotorhomeWithParam(String licencePlate, String type, String brand, String model, String description, String imagePath, int price, boolean available) {
-        this.motorhome = new Motorhome(licencePlate, type, brand, model, description, imagePath, price, available);
+    public void setMotorhomeWithParam(String licencePlate, String type, String brand, String model, String description, int price, boolean available) {
+        this.motorhome = new Motorhome(licencePlate, type, brand, model, description, price, available);
     }
 
     public void setMotorhome(String licencePlate) {

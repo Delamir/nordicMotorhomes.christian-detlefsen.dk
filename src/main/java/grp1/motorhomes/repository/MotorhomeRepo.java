@@ -108,9 +108,9 @@ public class MotorhomeRepo {
         }
 
         //update the motorhome
-        String sqlUpdate = "UPDATE motorhomes SET registration = ?, type = ?, description = ?, image_path = ?, model_id = ?, price = ?, available = ? WHERE registration = ?";
+        String sqlUpdate = "UPDATE motorhomes SET registration = ?, type = ?, description = ?, model_id = ?, price = ?, available = ? WHERE registration = ?";
         template.update(sqlUpdate, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription(),
-                motorhome.getImagePath(), modelId, motorhome.getPrice(), motorhome.isAvailable(), motorhome.getPreviousLicencePlate());
+                modelId, motorhome.getPrice(), motorhome.isAvailable(), motorhome.getPreviousLicencePlate());
     }
 
     /**

@@ -22,7 +22,6 @@ public class Motorhome {
     private String brand;
     private String model;
     private String description;
-    private String imagePath;
     private int price;
     private boolean available;
 
@@ -39,16 +38,14 @@ public class Motorhome {
      * @param brand
      * @param model
      * @param description
-     * @param imagePath
      */
-    public Motorhome(String licencePlate, String type, String brand, String model, String description, String imagePath, int price, boolean available) {
+    public Motorhome(String licencePlate, String type, String brand, String model, String description, int price, boolean available) {
 
         this.licencePlate = licencePlate;
         this.type = type;
         this.brand = brand;
         this.model = model;
         this.description = description;
-        this.imagePath = imagePath;
         this.price = price;
         this.available = available;
     }
@@ -95,14 +92,6 @@ public class Motorhome {
         this.description = description;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
     public int getPrice() {
         return price;
     }
@@ -135,7 +124,6 @@ public class Motorhome {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", description='" + description + '\'' +
-                ", imagePath='" + imagePath + '\'' +
                 ", price='" + price + '\'' +
                 '}';
     }
