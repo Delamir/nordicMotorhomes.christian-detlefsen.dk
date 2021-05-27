@@ -30,8 +30,12 @@
             <input type="text" name="licencePlate" th:value="${motorhome.licencePlate}">
         </div>
         <div class="formElement">
-            <label>Type:</label>
-            <input type="text" name="type" th:value="${motorhome.type}">
+            <label>Type</label>
+            <select class="singleSelect" name="type">
+                <option value="2 Person Camper">2 Person Camper</option>
+                <option value="4 Person Camper">4 Person Camper</option>
+                <option value="6 Person Camper">6 Person Camper</option>
+            </select>
         </div>
         <div class="formElement">
             <label>Brand:</label>
