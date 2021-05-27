@@ -31,5 +31,6 @@ public class Constants {
     public static final int OCTOBER = 10;
     public static final int NOVEMBER = 11;
     public static final int DECEMBER = 12;
+    public static final int GRACE_PERIOD = 2; // two days grace period after contract is done before the motorhome can be on other contracts
 
 }
