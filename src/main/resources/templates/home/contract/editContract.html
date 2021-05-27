@@ -77,7 +77,7 @@
             <label>Extras</label>
             <select class="multipleSelect" multiple name="extras">
                 <option th:each="extra:${extras}" th:value="${extra.extraId}"
-                        th:selected="${contract.getExtras().contains(extra)}"
+                        th:selected="${contract.getExtras().toString().contains(extra.toString())}"
                         th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
             </select>
         </div>

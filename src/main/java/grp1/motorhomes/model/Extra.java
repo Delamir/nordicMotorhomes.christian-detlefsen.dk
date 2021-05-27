@@ -29,7 +29,7 @@ public class Extra {
      * @param description
      * @param name
      */
-    public Extra(int extraId, int price, String description, String name) {
+    public Extra(int extraId, int price, String name, String description) {
         this.extraId = extraId;
         this.price = price;
         this.description = description;
