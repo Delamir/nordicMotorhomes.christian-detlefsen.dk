@@ -28,7 +28,7 @@
     <table>
 
         <tr>
-            <th class="genericTableHeader relative" colspan="10">Motorhomes <span class="addButtonContainer">
+            <th class="genericTableHeader relative" colspan="9">Motorhomes <span class="addButtonContainer">
                         <a th:href="@{'/createMotorhome/'}">
                             <button type="button" class="addNewButton"><svg fill="currentColor" viewBox="0 0 20 20"
                                                                             xmlns="http://www.w3.org/2000/svg">
@@ -46,10 +46,9 @@
         <th>Model</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Image</th>
         <th>Price</th>
         <th>Availability</th>
-        <th colspan="2">Actions</th>
+        <th colspan="100%">Actions</th>
 
         <tr th:each="motorhome : ${motorhomes}">
             <td th:text="${motorhome.licencePlate}"></td>
@@ -57,9 +56,9 @@
             <td th:text="${motorhome.model}"></td>
             <td th:text="${motorhome.type}"></td>
             <td th:text="${motorhome.description}"></td>
-            <td th:text="${motorhome.imagePath}"></td>
             <td th:text="${motorhome.price}"></td>
-            <td th:text="${motorhome.available}"></td>
+            <td th:if="${motorhome.available}">Available</td>
+            <td th:if="${!motorhome.available}">Unavailable</td>
 
             <td class="actions">
                 <a th:href="@{'/editMotorhome/'+${motorhome.licencePlate}}">

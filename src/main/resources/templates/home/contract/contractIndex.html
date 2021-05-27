@@ -25,7 +25,11 @@
 
     <table>
         <tr>
-            <th class="genericTableHeader relative" colspan="100%">Contracts <span class="addButtonContainer">
+            <th class="genericTableHeader relative" colspan="100%"> <span class="closedButtonContainer">
+            <a th:href="@{'/closedContracts/'}">
+                <button type="button" class="closedContractsButton">View Closed Contracts</button>
+            </a>
+                    </span> Contracts <span class="addButtonContainer">
                         <a th:href="@{'/createContract/'}">
                             <button type="button" class="addNewButton"><svg fill="currentColor" viewBox="0 0 20 20"
                                                                             xmlns="http://www.w3.org/2000/svg">
@@ -35,9 +39,6 @@
                                 </svg>Add new contract</button>
                         </a>
                     </span>
-            <a th:href="@{'/closedContracts/'}">
-                <button type="button" class="closedContractsButton">View Closed Contracts</button>
-            </a>
             </th>
         </tr>
 
