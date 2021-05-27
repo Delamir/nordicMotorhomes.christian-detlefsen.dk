@@ -37,6 +37,7 @@
         <th style="background-color: white">Motorhome</th>
         <th style="background-color: white">Delivery Point</th>
         <th style="background-color: white">Pick Up Point</th>
+        <th style="background-color: white">Total Price</th>
         <th style="background-color: white" colspan="100%">Actions</th>
 
         <tr th:each="contract : ${contracts}">
@@ -48,13 +49,8 @@
             <td th:text="${contract.motorhome.getLicencePlate()}"></td>
             <td th:text="${contract.getDeliveryPoint()}"></td>
             <td th:text="${contract.getPickupPoint}"></td>
+            <td th:text="${contract.getFinalPrice}"></td>
 
-
-            <td class="actions">
-                <a th:href="@{'/editContract/'+${contract.contractId}}">
-                    <button class="edit-button" type="button">Edit</button>
-                </a>
-            </td>
             <td class="actions">
                 <a th:href="@{'/deleteContract/'+${contract.contractId}}">
                     <button class="delete-button" type="button"

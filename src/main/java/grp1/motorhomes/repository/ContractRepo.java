@@ -29,8 +29,8 @@ public class ContractRepo {
     public List<Contract> fetchAllContracts() {
         String sqlStatement =
                 "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
-                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
-                        "extras.price, extras.name, extras.description, " +
+                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, total_price, under_half_fuel_tank, " +
+                        "extra_id, extras.price, extras.name, extras.description, " +
                         "type, motorhomes.description, model_id, motorhomes.price, available, model, brand, " +
                         "customers.name, licence_number, address_id, street, post_code, city " +
                         "FROM contracts " +
@@ -53,8 +53,8 @@ public class ContractRepo {
     public List<Contract> fetchAllClosedContracts() {
         String sqlStatement =
                 "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
-                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
-                        "extras.price, extras.name, extras.description, " +
+                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, total_price, under_half_fuel_tank, " +
+                        "extra_id, extras.price, extras.name, extras.description, " +
                         "type, motorhomes.description, model_id, motorhomes.price, available, model, brand, " +
                         "customers.name, licence_number, address_id, street, post_code, city " +
                         "FROM contracts " +
@@ -73,8 +73,8 @@ public class ContractRepo {
      */
     public void createContract(Contract contract) {
         String insertContractValues = "INSERT INTO contracts (from_date, to_date, odometer, excess_km, " +
-                "transfer_km, customer_number, motorhome, delivery_point, pickup_point) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "transfer_km, customer_number, motorhome, delivery_point, pickup_point, total_price, under_half_fuel_tank) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -91,6 +91,8 @@ public class ContractRepo {
             preparedStatement.setString(7, contract.getMotorhome().getLicencePlate());
             preparedStatement.setString(8, contract.getDeliveryPoint());
             preparedStatement.setString(9, contract.getPickupPoint());
+            preparedStatement.setInt(10, contract.getFinalPrice());
+            preparedStatement.setBoolean(11, contract.isUnderHalfFuelTank());
             return preparedStatement;
         }, keyHolder);
 
@@ -109,8 +111,8 @@ public class ContractRepo {
     public Contract findContract(int contractId) {
         String sqlStatement =
                 "SELECT contract_id, from_date, to_date, odometer, excess_km, transfer_km, customer_number, " +
-                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, extra_id, " +
-                        "extras.price, extras.name, extras.description, " +
+                        "motorhome, delivery_point, delivered, pickup_point, picked_up, closed, total_price, under_half_fuel_tank, " +
+                        "extra_id, extras.price, extras.name, extras.description, " +
                         "type, motorhomes.description, model_id, motorhomes.price, available, model, brand, " +
                         "customers.name, licence_number, address_id, street, post_code, city " +
                         "FROM contracts " +
@@ -133,12 +135,13 @@ public class ContractRepo {
      */
     public void editContract(Contract contract) {
         String updateSql = "UPDATE contracts SET from_date = ?, to_date = ?, odometer = ?, customer_number = ?, motorhome = ?, " +
-                "excess_km = ?, transfer_km = ?, delivery_point = ?, delivered = ?, pickup_point = ?, picked_up = ?, closed = ?" +
+                "excess_km = ?, transfer_km = ?, delivery_point = ?, delivered = ?, pickup_point = ?, picked_up = ?, closed = ?, total_price = ?, under_half_fuel_tank = ?" +
                 " WHERE contract_id = ?";
 
         template.update(updateSql, contract.getFromDate(), contract.getToDate(), contract.getOdometer(), contract.getCustomer().getCustomerNumber(),
                 contract.getMotorhome().getLicencePlate(), contract.getExcessKm(), contract.getTransferKm(), contract.getDeliveryPoint(),
-                contract.isDelivered(), contract.getPickupPoint(), contract.isPickedUp(), contract.isClosed(), contract.getContractId());
+                contract.isDelivered(), contract.getPickupPoint(), contract.isPickedUp(), contract.isClosed(), contract.getFinalPrice(),
+                contract.isUnderHalfFuelTank(), contract.getContractId());
 
         String deleteExtras = "DELETE FROM contracts_extras WHERE contract_id = ?";
         template.update(deleteExtras, contract.getContractId());
