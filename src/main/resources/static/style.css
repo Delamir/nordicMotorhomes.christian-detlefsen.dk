@@ -237,6 +237,12 @@ a {
     top: -25px;
 }
 
+.tableSpaceBetween {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .table table{
     margin: 0 auto;
     padding: 2rem;

@@ -59,13 +59,15 @@ public class MotorhomeRepo {
      */
     public void createMotorhome(Motorhome motorhome) {
 
-        String insertModel = "INSERT INTO models(brand, model) SELECT ?, ? WHERE NOT EXISTS ( SELECT * FROM models WHERE brand = ? AND model = ?)";
-        template.update(insertModel, motorhome.getBrand(), motorhome.getModel(), motorhome.getBrand(), motorhome.getModel());
+        String insertModel = "INSERT INTO models(brand, model, type) SELECT ?, ?, ? WHERE NOT EXISTS " +
+                "( SELECT * FROM models WHERE brand = ? AND model = ? AND type = ?)";
+        template.update(insertModel, motorhome.getBrand(), motorhome.getModel(), motorhome.getType(),
+                motorhome.getBrand(), motorhome.getModel(), motorhome.getType());
 
-        String insertMotorhome = "INSERT INTO motorhomes(registration, type, description, price, model_id) select ?, ?, ?, ?," +
-                "model_id FROM models WHERE brand = ? AND model = ?";
-        template.update(insertMotorhome, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription(), motorhome.getPrice(),
-                motorhome.getBrand(), motorhome.getModel());
+        String insertMotorhome = "INSERT INTO motorhomes(registration, description, price, model_id) select ?, ?, ?," +
+                "model_id FROM models WHERE brand = ? AND model = ? AND type = ?";
+        template.update(insertMotorhome, motorhome.getLicencePlate(), motorhome.getDescription(), motorhome.getPrice(),
+                motorhome.getBrand(), motorhome.getModel(), motorhome.getType());
     }
 
     /**
@@ -89,11 +91,11 @@ public class MotorhomeRepo {
         // if model was edited get modelId and insert new model if needed
         int modelId;
         try { //try and find the model
-            String modelSelect = "SELECT model_id FROM models WHERE brand = ? AND model = ?";
-            modelId = template.queryForObject(modelSelect, Integer.class, motorhome.getBrand(), motorhome.getModel());
+            String modelSelect = "SELECT model_id FROM models WHERE brand = ? AND model = ? AND type = ?";
+            modelId = template.queryForObject(modelSelect, Integer.class, motorhome.getBrand(), motorhome.getModel(), motorhome.getType());
             System.out.println(modelId);
         } catch (EmptyResultDataAccessException e) { //if model not found insert
-            String insertModel = "INSERT INTO models(brand, model) VALUES(?,?)";
+            String insertModel = "INSERT INTO models(brand, model, type) VALUES(?, ?, ?)";
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
             // jdbc template does not by default support returning generated keys
@@ -102,6 +104,7 @@ public class MotorhomeRepo {
                 PreparedStatement preparedStatement = connection.prepareStatement(insertModel, Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, motorhome.getBrand());
                 preparedStatement.setString(2, motorhome.getModel());
+                preparedStatement.setString(3, motorhome.getType());
                 return preparedStatement;
             }, keyHolder);
 
@@ -109,8 +112,8 @@ public class MotorhomeRepo {
         }
 
         //update the motorhome
-        String sqlUpdate = "UPDATE motorhomes SET registration = ?, type = ?, description = ?, model_id = ?, price = ?, available = ? WHERE registration = ?";
-        template.update(sqlUpdate, motorhome.getLicencePlate(), motorhome.getType(), motorhome.getDescription(),
+        String sqlUpdate = "UPDATE motorhomes SET registration = ?, description = ?, model_id = ?, price = ?, available = ? WHERE registration = ?";
+        template.update(sqlUpdate, motorhome.getLicencePlate(), motorhome.getDescription(),
                 modelId, motorhome.getPrice(), motorhome.isAvailable(), motorhome.getPreviousLicencePlate());
     }
 
