@@ -37,18 +37,23 @@ public class MotorhomeRepo {
      * @author Christian
      */
     public List<Motorhome> fetchAllUnavailableMotorhomes() {
+        // we select all motorhomes that are set as unavailable and do not have any autoservices registered
         String sqlStatement = "SELECT registration as licencePlate, type, brand, model, description, price, available " +
                 "FROM motorhomes JOIN models using(model_id) LEFT JOIN autoservices a on motorhomes.registration = a.motorhome WHERE available = false AND autoservice_id is null";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sqlStatement, rowMapper);
     }
 
+    /**
+     * @author Sverri
+     */
     public List<Motorhome> fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
+        // we select all motorhomes that are not on contracts between the given dates and do not have any autoservices registered
         String sql = "SELECT registration as licencePlate, type, brand, model, description, price, available from motorhomes " +
                 "LEFT JOIN contracts ON registration = motorhome " +
                 "JOIN models using(model_id) " +
                 "LEFT JOIN autoservices a on motorhomes.registration = a.motorhome " +
-                "WHERE autoservice_id is null AND ((from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?))  OR from_date is null OR to_date is null";
+                "WHERE (autoservice_id is null OR done = true) AND ((from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?))  OR from_date is null OR to_date is null";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sql, rowMapper, from.toLocalDate(), to.plusDays(2), from.toLocalDate(), to.plusDays(2));
     }
