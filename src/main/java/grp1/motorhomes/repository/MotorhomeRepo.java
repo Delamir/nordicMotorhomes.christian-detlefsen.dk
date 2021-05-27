@@ -38,7 +38,7 @@ public class MotorhomeRepo {
      */
     public List<Motorhome> fetchAllUnavailableMotorhomes() {
         String sqlStatement = "SELECT registration as licencePlate, type, brand, model, description, price, available " +
-                "FROM motorhomes JOIN models using(model_id) WHERE available = false";
+                "FROM motorhomes JOIN models using(model_id) LEFT JOIN autoservices a on motorhomes.registration = a.motorhome WHERE available = false AND autoservice_id is null";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sqlStatement, rowMapper);
     }
