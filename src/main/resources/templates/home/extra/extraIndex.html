@@ -40,10 +40,10 @@
 
         <tbody>
 
-        <th class="genericTableHeader2">Name</th>
-        <th class="genericTableHeader2">Description</th>
-        <th class="genericTableHeader2">Price</th>
-        <th class="genericTableHeader2" colspan="100%">Actions</th>
+        <th style="background-color: white">Name</th>
+        <th style="background-color: white">Description</th>
+        <th style="background-color: white">Price</th>
+        <th style="background-color: white" colspan="100%">Actions</th>
 
 
         <tr th:each="extra : ${extras}">
@@ -59,7 +59,8 @@
 
             <td class="actions">
                 <a th:href="@{'/deleteExtra/'+${extra.extraId}}">
-                    <button class="delete-button" type="button" onclick="return confirm('Are you sure you want to delete this extra item?')">
+                    <button class="delete-button" type="button"
+                            onclick="return confirm('Are you sure you want to delete this extra item?')">
                         Delete
                     </button>
                 </a>

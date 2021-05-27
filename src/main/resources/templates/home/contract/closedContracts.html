@@ -29,15 +29,15 @@
         </tr>
 
         <tbody>
-        <th>Contract start date</th>
-        <th>Contract end date</th>
-        <th>Odometer</th>
-        <th>Customer Number</th>
-        <th>Customer Name</th>
-        <th>Motorhome</th>
-        <th>Delivery Point</th>
-        <th>Pick Up Point</th>
-        <th colspan="100%">Actions</th>
+        <th style="background-color: white">Contract start date</th>
+        <th style="background-color: white">Contract end date</th>
+        <th style="background-color: white">Odometer</th>
+        <th style="background-color: white">Customer Number</th>
+        <th style="background-color: white">Customer Name</th>
+        <th style="background-color: white">Motorhome</th>
+        <th style="background-color: white">Delivery Point</th>
+        <th style="background-color: white">Pick Up Point</th>
+        <th style="background-color: white" colspan="100%">Actions</th>
 
         <tr th:each="contract : ${contracts}">
             <td th:text="${contract.getFromDateAsString}"></td>
