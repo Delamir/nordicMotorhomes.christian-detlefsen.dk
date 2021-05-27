@@ -197,7 +197,7 @@ public class ContractController {
      */
     @GetMapping("/closedContracts")
     public String closedContracts(Model model ) {
-        model.addAttribute("contract", contractService.fetchAllClosedContracts());
+        model.addAttribute("contracts", contractService.fetchAllClosedContracts());
         return "home/contract/closedContracts";
     }
 

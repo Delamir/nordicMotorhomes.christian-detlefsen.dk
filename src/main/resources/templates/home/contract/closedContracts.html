@@ -33,14 +33,28 @@
         <th>Contract end date</th>
         <th>Odometer</th>
         <th>Customer ID</th>
-        <th>Closed</th>
+        <th colspan="3">Actions</th>
 
         <tr th:each="contract : ${contracts}">
             <td th:text="${contract.getFromDateAsString}"></td>
-            <td th:text="${#strings.substring(contract.toDate.toString(),0,16)}"></td>
+            <td th:text="${contract.getToDateAsString}"></td>
             <td th:text="${contract.odometer}"></td>
-            <td th:text="${contract.customerNumber}"></td>
-            <td th:text="${contract.closed}"></td>
+            <td th:text="${contract.customer.getCustomerNumber()}"></td>
+
+            <td class="actions">
+                <a th:href="@{'/editContract/'+${contract.contractId}}">
+                    <button class="edit-button" type="button">Edit</button>
+                </a>
+            </td>
+            <td class="actions">
+                <a th:href="@{'/deleteContract/'+${contract.contractId}}">
+                    <button class="delete-button" type="button"
+                            onclick="return confirm('Are you sure you want to delete this contract?')">
+                        Delete
+                    </button>
+                </a>
+            </td>
+
         </tr>
         </tbody>
     </table>
