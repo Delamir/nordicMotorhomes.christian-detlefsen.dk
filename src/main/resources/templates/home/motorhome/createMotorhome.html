@@ -32,7 +32,11 @@
         </div>
         <div class="formElement">
             <label>Type</label>
-            <input type="text" name="type" placeholder="Type">
+            <select class="singleSelect" name="type">
+                <option value="2 Person Camper">2 Person Camper</option>
+                <option value="4 Person Camper">4 Person Camper</option>
+                <option value="6 Person Camper">6 Person Camper</option>
+            </select>
         </div>
         <div class="formElement">
             <label>Brand</label>
@@ -50,11 +54,6 @@
             <label>Price </label>
             <input type="number" name="price" placeholder="Price">
         </div>
-        <div class="formElement">
-            <label>Upload an image </label>
-            <input type="file" name="img" accept="image/*">
-        </div>
-
         <div>
             <button type="submit" class="submitButton mt-4">Create Motorhome</button>
         </div>
