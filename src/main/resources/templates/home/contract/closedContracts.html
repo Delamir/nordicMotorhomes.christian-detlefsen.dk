@@ -49,7 +49,7 @@
             <td th:text="${contract.motorhome.getLicencePlate()}"></td>
             <td th:text="${contract.getDeliveryPoint()}"></td>
             <td th:text="${contract.getPickupPoint}"></td>
-            <td th:text="${contract.getFinalPrice}"></td>
+            <td th:text="${contract.getFinalPrice} + €"></td>
 
             <td class="actions">
                 <a th:href="@{'/deleteContract/'+${contract.contractId}}">
