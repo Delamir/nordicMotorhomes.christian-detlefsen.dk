@@ -194,7 +194,7 @@ public class ContractService {
         int kmDrivenPerDay = kmDriven / rentalDays;
         if (kmDrivenPerDay < 400)
             return 0;
-        return kmDrivenPerDay- 400;
+        return kmDrivenPerDay*rentalDays - 400*rentalDays;
     }
 
     /**
