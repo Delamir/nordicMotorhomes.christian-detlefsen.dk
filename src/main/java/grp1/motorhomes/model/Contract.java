@@ -72,8 +72,9 @@ public class Contract {
      * @param description
      */
     public void addExtra(int id, int price, String name, String description) {
-        if (extras == null)
+        if (extras == null) {
             extras = new ArrayList<>();
+        }
         extras.add(new Extra(id, price, name, description));
     }
 

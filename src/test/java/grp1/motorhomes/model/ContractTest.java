@@ -11,33 +11,42 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ContractTest {
 
-        /**
-         * @author Christian
-         */
-        @Test
-        public void setFromDateTest() {
-            Contract c = new Contract();
+    /**
+     * @author Christian
+     */
+    @Test
+    public void setFromDateTest() {
+        Contract c = new Contract();
 
             c.setFromDate("2021-05-10T18:29");
             assertEquals(LocalDateTime.of(2021, 5, 10, 18, 29), c.getFromDate());
 
-        }
+    }
 
-        /**
-         * @author Christian
-         */
-        @Test
-        public void setToDateTest() {
-            Contract c = new Contract();
+    /**
+     * @author Christian
+     */
+    @Test
+    public void setToDateTest() {
+        Contract c = new Contract();
 
             c.setToDate("2021-05-10T18:29");
             assertEquals(LocalDateTime.of(2021, 5, 10, 18, 29), c.getToDate());
 
-        }
+    }
 
 
+    /**
+     * @author Christian
+     */
     @Test
     void addExtra() {
+        Contract c = new Contract();
+        Extra e = new Extra(1, 2, "Extra 1", "Description212231");
+
+        c.addExtra(e.getExtraId(), e.getPrice(), e.getName(), e.getDescription());
+
+        assertEquals("Extra 1, Description212231, 2€ per day", c.getExtras().get(0).toString());
     }
 
     @Test
