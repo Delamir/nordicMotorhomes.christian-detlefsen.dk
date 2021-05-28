@@ -12,7 +12,6 @@ public class Customer {
 
     @Id
     private int customerNumber;
-
     private String name;
     private String licenceNumber;
     private String street;

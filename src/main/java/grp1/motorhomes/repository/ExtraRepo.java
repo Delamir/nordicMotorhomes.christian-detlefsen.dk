@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 /**
@@ -31,7 +30,6 @@ public class ExtraRepo {
      * @author Patrick
      */
     public void createExtra(Extra extra) {
-
         String insertExtra = "INSERT INTO extras(extra_id, price, description, name) SELECT ?, ?, ?, ?";
         template.update(insertExtra, extra.getExtraId(), extra.getPrice(), extra.getDescription(), extra.getName());
     }
@@ -60,5 +58,4 @@ public class ExtraRepo {
         String deleteSql = "DELETE FROM extras WHERE extra_id = ?";
         template.update(deleteSql, extraId);
     }
-
 }

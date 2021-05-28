@@ -4,7 +4,6 @@ import grp1.motorhomes.model.Customer;
 import grp1.motorhomes.repository.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**

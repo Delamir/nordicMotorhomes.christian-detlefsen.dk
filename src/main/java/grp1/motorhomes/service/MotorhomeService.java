@@ -4,8 +4,6 @@ import grp1.motorhomes.model.Motorhome;
 import grp1.motorhomes.repository.MotorhomeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,7 +12,6 @@ import java.util.List;
  */
 @Service
 public class MotorhomeService {
-
 
     @Autowired
     MotorhomeRepo motorhomeRepo;
@@ -67,10 +64,20 @@ public class MotorhomeService {
         motorhomeRepo.setAvailable(licencePlate, status);
     }
 
+    /**
+     * @author Sverri
+     * @param from
+     * @param to
+     * @return
+     */
     public List<Motorhome> fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
         return motorhomeRepo.fetchMotorhomesBetween(from, to);
     }
 
+    /**
+     * @author Joachim
+     * @return
+     */
     public List<Motorhome> fetchAllUnavailableMotorhomes() {
         return motorhomeRepo.fetchAllUnavailableMotorhomes();
     }

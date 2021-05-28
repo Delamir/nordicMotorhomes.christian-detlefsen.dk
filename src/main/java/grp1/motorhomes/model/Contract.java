@@ -14,7 +14,6 @@ public class Contract {
 
     @Id
     private int contractId;
-
     private LocalDateTime fromDate;
     private LocalDateTime toDate;
     private int odometer;
@@ -64,6 +63,7 @@ public class Contract {
         this.motorhome = motorhome;
         this.extras = extras;
     }
+
     /**
      * @author Sverri
      * @param id

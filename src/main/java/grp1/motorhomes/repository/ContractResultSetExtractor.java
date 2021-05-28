@@ -3,7 +3,6 @@ package grp1.motorhomes.repository;
 import grp1.motorhomes.model.Contract;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -69,9 +68,7 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
             // lastly we add the extra of the current row of the result set
             contract.addExtra(resultSet.getInt("extra_id"), resultSet.getInt("extras.price"),
                     resultSet.getString("extras.name"), resultSet.getString("extras.description"));
-
         }
-
         return new ArrayList<>(contracts.values());
     }
 }

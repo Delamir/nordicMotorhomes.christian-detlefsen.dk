@@ -12,9 +12,9 @@ import javax.persistence.OneToOne;
 public class AutoService {
     @Id
     private int autoServiceId;
-
     private String serviceDescription;
     private boolean done;
+
     @OneToOne
     private Motorhome motorhome;
 

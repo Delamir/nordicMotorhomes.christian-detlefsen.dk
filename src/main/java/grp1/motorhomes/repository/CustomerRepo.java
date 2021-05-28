@@ -62,7 +62,6 @@ public class CustomerRepo {
      * @Author Christian og Joachim
      * @param customerNumber
      */
-
     public Customer findCustomer(int customerNumber) {
         String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber, post_code AS postCode, street, city " +
                 "FROM customers JOIN addresses USING(customer_number) WHERE customer_number = ?";
@@ -81,6 +80,7 @@ public class CustomerRepo {
         updateSql = "UPDATE addresses SET street = ?, post_code = ?, city = ? WHERE customer_number = ?";
         template.update(updateSql, customer.getStreet(), customer.getPostCode(), customer.getCity(), customer.getCustomerNumber());
     }
+
     /**
      * @Author Christian og Joachim
      * @param customerNumber
@@ -91,5 +91,4 @@ public class CustomerRepo {
         deleteSql = "DELETE FROM customers WHERE customer_number = ?";
         template.update(deleteSql, customerNumber);
     }
-
 }

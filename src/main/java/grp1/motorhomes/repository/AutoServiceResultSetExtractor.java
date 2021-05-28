@@ -3,7 +3,6 @@ package grp1.motorhomes.repository;
 import grp1.motorhomes.model.AutoService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,11 +46,8 @@ public class AutoServiceResultSetExtractor implements ResultSetExtractor {
                 autoServiceHashMap.put(autoService.getAutoServiceId(), autoService);
 
             }
-
         }
         return new ArrayList<>(autoServiceHashMap.values());
     }
-
-
 }
 
