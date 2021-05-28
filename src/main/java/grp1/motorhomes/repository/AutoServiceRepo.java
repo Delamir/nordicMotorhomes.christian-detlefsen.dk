@@ -48,11 +48,11 @@ public class AutoServiceRepo {
     /**
      * @author Joachim
      */
-    public void createAutoService(AutoService autoservice) {
+    public void createAutoService(AutoService autoService) {
         String insertAutoServiceValues = "INSERT INTO autoservices (service_description, motorhome, done) VALUES (?, ?, ?)";
 
-        template.update(insertAutoServiceValues, autoservice.getServiceDescription(),
-                autoservice.getMotorhome().getLicencePlate(), autoservice.isDone());
+        template.update(insertAutoServiceValues, autoService.getServiceDescription(),
+                autoService.getMotorhome().getLicencePlate(), autoService.isDone());
     }
 
     /**
