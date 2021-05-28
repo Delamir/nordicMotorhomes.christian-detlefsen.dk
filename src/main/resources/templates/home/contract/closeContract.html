@@ -52,6 +52,8 @@
         <p th:text="${rentalPrice} + '€'">
         <form name="form" method="post" action="/closeContract">
             <input type="hidden" name="contractId" th:value="${contract.contractId}">
+            <input type="hidden" name="finalPrice" th:value="${rentalPrice}">
+            <br>
             <input type="submit" class="submitButton mt-4" value="Close Contract">
         </form>
     </div>

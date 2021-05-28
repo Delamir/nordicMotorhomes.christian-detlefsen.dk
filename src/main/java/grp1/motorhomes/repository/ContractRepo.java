@@ -91,7 +91,7 @@ public class ContractRepo {
             preparedStatement.setString(7, contract.getMotorhome().getLicencePlate());
             preparedStatement.setString(8, contract.getDeliveryPoint());
             preparedStatement.setString(9, contract.getPickupPoint());
-            preparedStatement.setInt(10, contract.getFinalPrice());
+            preparedStatement.setDouble(10, contract.getFinalPrice());
             preparedStatement.setBoolean(11, contract.isUnderHalfFuelTank());
             return preparedStatement;
         }, keyHolder);

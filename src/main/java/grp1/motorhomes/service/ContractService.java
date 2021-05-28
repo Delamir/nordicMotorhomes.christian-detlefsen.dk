@@ -192,7 +192,7 @@ public class ContractService {
         int rentalDays = daysBetweenDates(Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()));
         int kmDriven = endOdometer - contract.getOdometer();
         int kmDrivenPerDay = kmDriven / rentalDays;
-        if (kmDrivenPerDay > 400)
+        if (kmDrivenPerDay < 400)
             return 0;
         return kmDrivenPerDay- 400;
     }

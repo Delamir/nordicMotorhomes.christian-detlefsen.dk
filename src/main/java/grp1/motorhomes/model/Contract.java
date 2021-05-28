@@ -20,7 +20,7 @@ public class Contract {
     private int odometer;
     private int excessKm;
     private int transferKm;
-    private int finalPrice;
+    private double finalPrice;
     private String deliveryPoint;
     private String pickupPoint;
     private boolean underHalfFuelTank;
@@ -202,11 +202,15 @@ public class Contract {
         this.transferKm = transferKm;
     }
 
-    public int getFinalPrice() {
+    public String getFinalPriceAsString() {
+        return String.format("%.2f", finalPrice);
+    }
+
+    public double getFinalPrice() {
         return finalPrice;
     }
 
-    public void setFinalPrice(int finalPrice) {
+    public void setFinalPrice(double finalPrice) {
         this.finalPrice = finalPrice;
     }
 
@@ -282,23 +286,10 @@ public class Contract {
 
     @Override
     public String toString() {
-        return "Contract{" +
-                "contractId=" + contractId +
-                ", fromDate=" + fromDate +
-                ", toDate=" + toDate +
-                ", odometer=" + odometer +
-                ", excessKm=" + excessKm +
-                ", transferKm=" + transferKm +
-                ", finalPrice=" + finalPrice +
-                ", deliveryPoint='" + deliveryPoint + '\'' +
-                ", pickupPoint='" + pickupPoint + '\'' +
-                ", underHalfFuelTank=" + underHalfFuelTank +
-                ", delivered=" + delivered +
-                ", pickedUp=" + pickedUp +
-                ", closed=" + closed +
-                ", extras=" + extras +
-                ", customer=" + customer +
-                ", motorhome=" + motorhome +
-                '}';
+        return "Contract (" + "contractId: " + contractId + ", fromDate: " + fromDate + ", toDate: " + toDate +
+                ", odometer: " + odometer + ", excessKm: " + excessKm + ", transferKm: " + transferKm +
+                ", finalPrice: " + finalPrice + ", deliveryPoint: " + deliveryPoint + ", pickupPoint: " + pickupPoint +
+                ", underHalfFuelTank: " + underHalfFuelTank + ", delivered: " + delivered + ", pickedUp: " + pickedUp +
+                ", closed: " + closed + ", extras: " + extras + ", customer: " + customer + ", motorhome: " + motorhome + ")";
     }
 }
