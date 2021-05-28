@@ -295,6 +295,24 @@ a {
     color: white;
 }
 
+.receipt {
+    background-color: white;
+    border: solid black 0.10rem;
+    padding-bottom: 0.5rem;
+}
+
+.receiptHeader {
+    text-align: center;
+    font-family: Arial, serif;
+    font-weight: bold;
+    font-size: 120%;
+    background-color: var(--primary-color);
+    color: white;
+    margin-bottom: 1rem;
+    width: auto;
+    box-sizing: border-box;
+}
+
 .addButtonContainer {
     position: absolute;
     right: 1rem;
@@ -310,9 +328,6 @@ a {
 }
 
 /* WELCOME PAGE */
-
-/* With inspiration from https://www.w3schools.com/howto/howto_css_center_button.asp
-@Author Joachim*/
 
 #welcomePage {
     background-image: url("https://victoria.mediaplanet.com/app/uploads/sites/69/2019/06/iStock-915747216.jpg");
