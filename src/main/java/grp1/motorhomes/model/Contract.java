@@ -175,6 +175,7 @@ public class Contract {
             localDateTime = LocalDateTime.parse(to, formatter);
         }
         this.toDate = localDateTime;
+        System.out.println(to);
     }
 
     public int getOdometer() {

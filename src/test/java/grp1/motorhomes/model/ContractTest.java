@@ -49,8 +49,15 @@ public class ContractTest {
         assertEquals("Extra 1, Description212231, 2€ per day", c.getExtras().get(0).toString());
     }
 
+    /**
+     * @author Patrick
+     */
     @Test
     void getFromDateAsString() {
+        Contract c = new Contract();
+
+        c.setFromDate("2021-05-10 18:29:00.5");
+        assertEquals("10. may 18:29", c.getFromDateAsString());
     }
 
 
