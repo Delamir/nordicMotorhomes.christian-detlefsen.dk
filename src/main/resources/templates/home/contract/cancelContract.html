@@ -29,13 +29,14 @@
 
     <div class="formElement">
         <label><b>Cancellation Date:</b></label>
-        <p th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy HH:mm')}"></p>
+        <p th:text="${#dates.format(#dates.createNow(), 'dd. MMMM HH:mm')}"></p>
     </div>
 
     <div class="formElement">
         <p th:text="'The cancellation fee is: ' + ${cancellationFee} + '€'"></p>
         <form name="form" method="post" action="/closeContract">
             <input type="hidden" name="contractId" th:value="${contract.contractId}"><br>
+            <input type="hidden" name="finalPrice" th:value="${cancellationFee}">
             <input type="submit" class="submitButton mt-4" value="Close Contract">
         </form>
     </div>
