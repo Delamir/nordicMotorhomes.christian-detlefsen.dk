@@ -28,15 +28,16 @@
             <input type="text" name="deliveryPoint" placeholder="Delivery Point" th:value="${contract.deliveryPoint}">
         </div>
         <div class="formElement">
-            <label>Transfer km</label>
-            <input type="number" name="transferKm" placeholder="km" required value="0">
+            <label>Transfer Kilometer</label>
+            <input type="number" name="transferKm" placeholder="Kilometer" value="0" required>
         </div>
         <div class="formElement">
-            <label>Odometer start value</label>
-            <input type="number" name="odometer" placeholder="km" required>
+            <label>Odometer Start Value</label>
+            <input type="number" name="odometer" placeholder="Kilometer" required>
         </div>
         <div>
             <input class="submitButton mt-4" type="submit" value="Deliver">
+            <label style="color: red" th:text="${errorMessage}"></label>
         </div>
     </form>
 </div>

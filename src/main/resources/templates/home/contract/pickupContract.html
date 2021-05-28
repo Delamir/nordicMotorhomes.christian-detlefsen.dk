@@ -30,12 +30,12 @@
         <input type="text" name="pickupPoint" placeholder="Pickup Point" th:value="${contract.pickupPoint}">
         </div>
         <div class="formElement">
-            <label>Transfer km</label>
-        <input type="number" name="transferKm" placeholder="km" value="0">
+            <label>Transfer Kilometer</label>
+        <input type="number" name="transferKm" placeholder="Kilometer" value="0" required>
         </div>
         <div class="formElement">
-        <label>Odometer end value</label>
-        <input type="number" name="odometer" placeholder="km" th:value="${contract.odometer}">
+        <label>Odometer End Value</label>
+        <input type="number" name="odometer" placeholder="Kilometer" th:value="${contract.odometer}" required>
         </div>
         <div class="formElement checkbox">
         <label>Is Fuel tank under half full?</label>
@@ -43,6 +43,7 @@
         </div>
         <div>
         <input class="submitButton mt-4" type="submit" value="Pick Up">
+            <label style="color: red" th:text="${errorMessage}"></label>
         </div>
     </form>
 </div>

@@ -130,8 +130,8 @@ public class Contract {
      * @return
      */
     public String getFromDateAsString(){
-        String format = "%02d. %s %02d:%02d";
-        return String.format(format,fromDate.getDayOfMonth(),fromDate.getMonth().name().toLowerCase(),fromDate.getHour(),fromDate.getMinute());
+        return String.format("%02d. %s %02d:%02d",fromDate.getDayOfMonth(),fromDate.getMonth().name().toLowerCase(),
+                fromDate.getHour(),fromDate.getMinute());
     }
 
     /**
@@ -139,8 +139,8 @@ public class Contract {
      * @return
      */
     public String getToDateAsString(){
-        String format = "%02d. %s %02d:%02d";
-        return String.format(format,toDate.getDayOfMonth(),toDate.getMonth().name().toLowerCase(),toDate.getHour(),toDate.getMinute());
+        return String.format("%02d. %s %02d:%02d",toDate.getDayOfMonth(),toDate.getMonth().name().toLowerCase(),
+                toDate.getHour(),toDate.getMinute());
     }
 
     /**
@@ -175,7 +175,6 @@ public class Contract {
             localDateTime = LocalDateTime.parse(to, formatter);
         }
         this.toDate = localDateTime;
-        System.out.println(to);
     }
 
     public int getOdometer() {

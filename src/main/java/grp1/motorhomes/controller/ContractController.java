@@ -139,9 +139,15 @@ public class ContractController {
      * @return
      */
     @PostMapping("/deliverContract")
-    public String deliverContract(@ModelAttribute Contract contract) {
-        contractService.deliverContract(contract);
-        return "redirect:/contractIndex";
+    public String deliverContract(@ModelAttribute Contract contract, Model model) {
+
+        try {
+            contractService.deliverContract(contract);
+            return "redirect:/contractIndex";
+        } catch (Exception e){
+            model.addAttribute("errorMessage", e.getMessage());
+            return "redirect:/deliverContract/" + contract.getContractId();
+        }
     }
 
     /**
@@ -162,10 +168,16 @@ public class ContractController {
      * @return
      */
     @PostMapping("/pickupContract")
-    public String pickupContract(@ModelAttribute Contract contract) {
-        contractService.pickupContract(contract);
-        motorhomeService.setAvailable(contract.getMotorhome().getLicencePlate(),false);
-        return "redirect:/contractIndex";
+    public String pickupContract(@ModelAttribute Contract contract, Model model) {
+
+        try {
+            contractService.pickupContract(contract);
+            motorhomeService.setAvailable(contract.getMotorhome().getLicencePlate(), false);
+            return "redirect:/contractIndex";
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "redirect:/pickupContract/" + contract.getContractId();
+        }
     }
 
     /**

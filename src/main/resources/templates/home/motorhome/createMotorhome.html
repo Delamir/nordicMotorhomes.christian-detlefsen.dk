@@ -28,7 +28,7 @@
           action="/createMotorhome" method="post">
         <div class="formElement">
             <label>Licence plate</label>
-            <input th:if="${duplicateError == null}" type="text" name="licencePlate" placeholder="Licence Plate">
+            <input th:if="${duplicateError == null}" type="text" name="licencePlate" placeholder="Licence Plate" required>
             <input class="error" th:unless="${duplicateError == null}" type="text" name="licencePlate" th:placeholder="${duplicateError}">
 
         </div>
@@ -42,11 +42,11 @@
         </div>
         <div class="formElement">
             <label>Brand</label>
-            <input type="text" name="brand" placeholder="Brand">
+            <input type="text" name="brand" placeholder="Brand" required>
         </div>
         <div class="formElement">
             <label>Model</label>
-            <input type="text" name="model" placeholder="Model">
+            <input type="text" name="model" placeholder="Model" required>
         </div>
         <div class="formElement">
             <label>Description</label>
@@ -54,7 +54,7 @@
         </div>
         <div class="formElement">
             <label>Price </label>
-            <input type="number" name="price" placeholder="Price">
+            <input type="number" name="price" placeholder="Price" required>
         </div>
         <div>
             <button type="submit" class="submitButton mt-4">Create Motorhome</button>

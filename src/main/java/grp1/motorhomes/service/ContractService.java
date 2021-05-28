@@ -160,8 +160,17 @@ public class ContractService {
      * @param contract
      * @author Sverri
      */
-    public void deliverContract(Contract contract) {
+    public void deliverContract(Contract contract) throws Exception {
         contractRepo.deliverContract(contract);
+    }
+
+    /**
+     * @param contract
+     * @author Joachim
+     */
+    public void pickupContract(Contract contract) throws Exception {
+        contract.setExcessKm(calculateExcessKm(findContract(contract.getContractId()), contract.getOdometer()));
+        contractRepo.pickupContract(contract);
     }
 
     /**
@@ -172,15 +181,6 @@ public class ContractService {
      */
     public int daysBetweenDates(Timestamp from, Timestamp to) {
         return (int) Duration.between(from.toLocalDateTime().toLocalDate().atStartOfDay(), to.toLocalDateTime().toLocalDate().atStartOfDay()).toDays();
-    }
-
-    /**
-     * @param contract
-     * @author Joachim
-     */
-    public void pickupContract(Contract contract) {
-        contract.setExcessKm(calculateExcessKm(findContract(contract.getContractId()), contract.getOdometer()));
-        contractRepo.pickupContract(contract);
     }
 
     /**
