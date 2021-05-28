@@ -63,7 +63,7 @@ public class ContractRepo {
                         "JOIN customers using(customer_number) " +
                         "JOIN addresses using(customer_number) " +
                         "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
-                        "JOIN models using(model_id) WHERE closed = true";
+                        "JOIN models using(model_id) WHERE closed = true ORDER BY to_date";
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
         return (List<Contract>) template.query(sqlStatement, extractor);
     }
