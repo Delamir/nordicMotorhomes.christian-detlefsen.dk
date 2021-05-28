@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 /**
- * @auhtor Christian
+ * @author Christian
  */
 @Controller
 public class AutoServiceController {
@@ -25,7 +25,7 @@ public class AutoServiceController {
     MotorhomeService motorhomeService;
 
     /**
-     * @Author Christian
+     * @author Christian
      */
     @GetMapping("/autoServiceIndex")
     public String autoServiceIndex(Model model) {
