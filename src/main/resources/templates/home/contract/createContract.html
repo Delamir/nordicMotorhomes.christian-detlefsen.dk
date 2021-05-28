@@ -55,11 +55,11 @@
                         th:text="${extra.toString()}"></option>
             </select>
         </div>
-        <div class="formElement">
+        <div th:if="${motorhome != null}" class="formElement">
             <label>Delivery Point</label>
             <input type="text" name="deliveryPoint" placeholder="Address">
         </div>
-        <div class="formElement">
+        <div th:if="${motorhome != null}" class="formElement">
             <label>Pick Up Point</label>
             <input type="text" name="pickupPoint" placeholder="Address">
         </div>

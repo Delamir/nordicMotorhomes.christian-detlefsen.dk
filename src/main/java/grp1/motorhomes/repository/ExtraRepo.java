@@ -21,7 +21,7 @@ public class ExtraRepo {
      * @author Patrick
      */
     public List<Extra> fetchAllExtras() {
-        String sql = "SELECT extra_id AS extraId, price, description, name FROM extras";
+        String sql = "SELECT extra_id AS extraId, price, description, name FROM extras ORDER BY name";
         RowMapper<Extra> rowMapper = new BeanPropertyRowMapper<>(Extra.class);
         return template.query(sql, rowMapper);
     }

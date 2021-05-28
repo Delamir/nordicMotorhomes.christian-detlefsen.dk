@@ -53,7 +53,8 @@ public class MotorhomeRepo {
                 "LEFT JOIN contracts ON registration = motorhome " +
                 "JOIN models using(model_id) " +
                 "LEFT JOIN autoservices a on motorhomes.registration = a.motorhome " +
-                "WHERE (autoservice_id is null OR done = true) AND ((from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?))  OR from_date is null OR to_date is null ORDER BY type";
+                "WHERE (autoservice_id is null OR done = true) AND ((from_Date NOT BETWEEN ? AND ?) AND (to_Date NOT BETWEEN ? AND ?)) " +
+                "OR from_date is null OR to_date is null ORDER BY price";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sql, rowMapper, from.toLocalDate(), to.plusDays(Constants.GRACE_PERIOD), from.toLocalDate(), to.plusDays(2));
     }
