@@ -32,9 +32,7 @@ public class ContractTest {
 
             c.setToDate("2021-05-10T18:29");
             assertEquals(LocalDateTime.of(2021, 5, 10, 18, 29), c.getToDate());
-
     }
-
 
     /**
      * @author Christian

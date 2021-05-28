@@ -26,7 +26,7 @@
     <form class="form" onsubmit="return confirm('Are you sure you want to edit this motorhome?')"
           action="/editMotorhome/" method="post">
         <div class="formElement">
-            <label>Licence plate:</label>
+            <label>Licence plate</label>
             <input type="text" name="licencePlate" th:value="${motorhome.licencePlate}">
         </div>
         <div class="formElement">
@@ -38,24 +38,24 @@
             </select>
         </div>
         <div class="formElement">
-            <label>Brand:</label>
+            <label>Brand</label>
             <input type="text" name="brand" th:value="${motorhome.brand}">
         </div>
         <div class="formElement">
-            <label>Model:</label>
+            <label>Model</label>
             <input type="text" name="model" th:value="${motorhome.model}">
         </div>
         <div class="formElement">
-            <label>Description:</label>
+            <label>Description</label>
             <input type="text" name="description" th:value="${motorhome.description}">
         </div>
         <div class="formElement">
-            <label>Price: </label>
+            <label>Price </label>
             <input type="number" name="price" th:value="${motorhome.price}">
         </div>
         <div class="formElement checkbox">
             <input type="checkbox" name="available" th:checked="${motorhome.available}">
-            <label>Availability: </label>
+            <label>Availability </label>
         </div>
         <div>
             <input type="submit" class="submitButton mt-4" value="Edit Motorhome">
