@@ -84,11 +84,33 @@ public class ContractTest {
 
     }
 
+    /**
+     * @author Christian
+     */
     @Test
     void setMotorhomeParams() {
+
+        Contract contract = new Contract();
+
+        contract.setMotorhomeParams("LicencePlate", "Type 1", "Brand 1", "Model 1",
+                "Description 12345", 10,true);
+
+        assertEquals(new Motorhome("LicencePlate", "Type 1", "Brand 1", "Model 1",
+                "Description 12345", 10,true).toString(), contract.getMotorhome().toString());
     }
 
+    /**
+     * @author Christian
+     */
     @Test
     void setCustomerParams() {
+
+        Contract contract = new Contract();
+
+        contract.setCustomerParams(1, "Sverri", "22222222", "Vejen 12",
+                "Bagsværd", 2880);
+
+        assertEquals(new Customer(1, "Sverri", "22222222", "Vejen 12",
+                "Bagsværd", 2880).toString(), contract.getCustomer().toString());
     }
 }
