@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.Timestamp;
@@ -21,7 +20,6 @@ public class ContractRepo {
 
     @Autowired
     JdbcTemplate template;
-
 
     /**
      * @author Christian
@@ -153,7 +151,6 @@ public class ContractRepo {
                 template.update(insertExtras, contract.getContractId(), extra.getExtraId());
         }
     }
-
 
     /**
      * @author Sverri

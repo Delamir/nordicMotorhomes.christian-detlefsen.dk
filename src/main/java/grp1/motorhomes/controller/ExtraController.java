@@ -72,5 +72,4 @@ public class ExtraController {
         extraService.deleteExtra(extraId);
         return "redirect:/extraIndex";
     }
-
 }

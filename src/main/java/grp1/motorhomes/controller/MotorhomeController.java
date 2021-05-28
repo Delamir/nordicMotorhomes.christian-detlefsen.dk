@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.sql.SQLIntegrityConstraintViolationException;
-
 /**
  * @author Patrick
  */
@@ -79,5 +77,4 @@ public class MotorhomeController {
         motorhomeService.deleteMotorhome(licencePlate);
         return "redirect:/motorhomeIndex";
     }
-
 }

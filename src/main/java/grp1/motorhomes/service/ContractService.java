@@ -6,7 +6,6 @@ import grp1.motorhomes.repository.ContractRepo;
 import grp1.motorhomes.repository.MotorhomeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -32,6 +31,10 @@ public class ContractService {
         return contractRepo.fetchAllContracts();
     }
 
+    /**
+     * @author Joachim
+     * @return
+     */
     public List<Contract> fetchAllClosedContracts() {
         return contractRepo.fetchAllClosedContracts();
     }
@@ -116,14 +119,7 @@ public class ContractService {
         if (contract.getExcessKm() > 0) {
             excessKm = contract.getExcessKm() * Constants.FEE_ON_EXCESS_KM;
         }
-        System.out.println(contract);
-        System.out.println(priceExtra);
-        System.out.println(priceMotorhome);
-        System.out.println(transferFee);
-        System.out.println(fuelCost);
-        System.out.println(excessKm);
-
-        return priceExtra + priceMotorhome + transferFee + fuelCost + excessKm;
+          return priceExtra + priceMotorhome + transferFee + fuelCost + excessKm;
     }
 
     /**
@@ -157,7 +153,6 @@ public class ContractService {
         if (cancellationFee < Constants.MINIMUM_CANCELLATION_FEE) {
             cancellationFee = Constants.MINIMUM_CANCELLATION_FEE;
         }
-
         return cancellationFee;
     }
 

@@ -14,8 +14,9 @@ public class Motorhome {
     @Id
     private String licencePlate;
 
-    @Transient  // means that we ignore this variable when interacting with the database
+    // Transient means that we ignore this variable when interacting with the database
     // used when editing licencePlate
+    @Transient
     private String previousLicencePlate;
 
     private String type;
@@ -49,8 +50,6 @@ public class Motorhome {
         this.price = price;
         this.available = available;
     }
-
-
 
     public void setLicencePlate(String licencePlate) {
         this.licencePlate = licencePlate;
