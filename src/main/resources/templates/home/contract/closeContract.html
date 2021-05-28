@@ -23,7 +23,8 @@
 
 
 
-<div class="form">
+<div class="form receipt" style="text-align: center">
+    <h2 class="receiptHeader">Receipt</h2>
     <div class="formElement">
         <label><b>Start Date:</b> </label>
         <p th:text="${contract.getFromDateAsString()}"></p>
@@ -47,10 +48,10 @@
     </div>
 
     <div th:if="${rentalPrice != null}">
-        <p th:text="'The rental price for the contract is: ' + ${rentalPrice} + '€'">
+        <label><b>Total price:</b></label>
+        <p th:text="${rentalPrice} + '€'">
         <form name="form" method="post" action="/closeContract">
             <input type="hidden" name="contractId" th:value="${contract.contractId}">
-            <br>
             <input type="submit" class="submitButton mt-4" value="Close Contract">
         </form>
     </div>
