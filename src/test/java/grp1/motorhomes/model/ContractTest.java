@@ -2,6 +2,8 @@ package grp1.motorhomes.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -17,7 +19,7 @@ public class ContractTest {
             Contract c = new Contract();
 
             c.setFromDate("2021-05-10T18:29");
-            assertEquals("2021-05-10 18:29:00.0", c.getFromDate().toString());
+            assertEquals(LocalDateTime.of(2021, 5, 10, 18, 29), c.getFromDate());
 
         }
 
@@ -29,7 +31,7 @@ public class ContractTest {
             Contract c = new Contract();
 
             c.setToDate("2021-05-10T18:29");
-            assertEquals("2021-05-10 18:29:00.0", c.getToDate().toString());
+            assertEquals(LocalDateTime.of(2021, 5, 10, 18, 29), c.getToDate());
 
         }
 
@@ -42,12 +44,28 @@ public class ContractTest {
     void getFromDateAsString() {
     }
 
+
+    /**
+     * @author Patrick
+     */
     @Test
     void getToDateAsString() {
+        Contract c = new Contract();
+
+        c.setToDate("2021-05-10T18:29");
+        assertEquals("10. may 18:29", c.getToDateAsString());
     }
 
+    /**
+     * @author Patrick
+     */
     @Test
     void getFinalPriceAsString() {
+        Contract c = new Contract();
+
+        c.setFinalPrice(42.4343434343434343);
+        assertEquals("42,43", c.getFinalPriceAsString());
+
     }
 
     @Test
