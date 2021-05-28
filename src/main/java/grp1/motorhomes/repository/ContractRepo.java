@@ -39,7 +39,7 @@ public class ContractRepo {
                         "JOIN customers using(customer_number) " +
                         "JOIN addresses using(customer_number) " +
                         "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
-                        "JOIN models using(model_id) WHERE closed = false";
+                        "JOIN models using(model_id) WHERE closed = false ORDER BY from_date";
 
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
 
