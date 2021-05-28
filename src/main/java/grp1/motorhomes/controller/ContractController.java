@@ -41,6 +41,11 @@ public class ContractController {
         return "home/contract/contractIndex";
     }
 
+    /**
+     * @author Joachim
+     * @param model
+     * @return
+     */
     @GetMapping("/contractIndex/closed")
     public String closedContractIndex(Model model) {
         model.addAttribute("contracts", contractService.fetchAllClosedContracts());
@@ -52,8 +57,19 @@ public class ContractController {
      * @author Christian
      */
     @GetMapping("/createContract")
-    public String createContract(Model model) {
+    public String createContract() {
         return "home/contract/createContract";
+    }
+
+    /**
+     * @param contract
+     * @return
+     * @author Chritian
+     */
+    @PostMapping("/createContract")
+    public String createContract(@ModelAttribute Contract contract) {
+        contractService.createContract(contract);
+        return "redirect:/contractIndex";
     }
 
     /**
@@ -70,17 +86,6 @@ public class ContractController {
             model.addAttribute("extras", extraService.fetchAllExtras());
         }
         return "home/contract/createContract";
-    }
-
-    /**
-     * @param contract
-     * @return
-     * @author Chritian
-     */
-    @PostMapping("/createContract")
-    public String createContract(@ModelAttribute Contract contract) {
-        contractService.createContract(contract);
-        return "redirect:/contractIndex";
     }
 
     /**
