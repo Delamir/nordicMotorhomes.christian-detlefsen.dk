@@ -31,6 +31,11 @@ a {
 
 /* UTILITIES */
 
+.error::placeholder {
+    color: red;
+    opacity: 1
+}
+
 .mt-1 {
     margin-top: 0.25rem;
 }

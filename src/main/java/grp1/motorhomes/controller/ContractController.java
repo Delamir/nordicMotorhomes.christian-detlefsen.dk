@@ -119,7 +119,7 @@ public class ContractController {
     @GetMapping("/deleteContract/{contractId}")
     public String deleteContract(@PathVariable int contractId) {
         contractService.deleteContract(contractId);
-        return "redirect:/contractIndex";
+        return "redirect:/closedContracts";
     }
 
     /**
@@ -214,6 +214,28 @@ public class ContractController {
         model.addAttribute("contract", contract);
         model.addAttribute("rentalPrice", contractService.calculatePrice(contract));
         return "home/contract/closeContract";
+    }
+
+    /**
+     * @author Christian
+     */
+    @GetMapping("/cancelContract/{contractId}")
+    public String cancelContract(@PathVariable int contractId, Model model) {
+        Contract contract = contractService.findContract(contractId);
+        model.addAttribute("contract", contract);
+        model.addAttribute("cancellationFee", contractService.cancellationFee(contract));
+        return "home/contract/cancelContract";
+    }
+
+    /**
+     * @author Chritsian
+     */
+    @PostMapping("/cancellationFee")
+    public String cancellationFee(@RequestParam Integer contractId, Model model) {
+        Contract contract = contractService.findContract(contractId);
+        contractService.editContract(contract);
+        model.addAttribute("contract", contract);
+        return "home/contract/cancelContract";
     }
 
 

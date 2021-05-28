@@ -118,13 +118,6 @@ public class Motorhome {
 
     @Override
     public String toString() {
-        return "Motorhome{" +
-                "licencePlate='" + licencePlate + '\'' +
-                ", type='" + type + '\'' +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", description='" + description + '\'' +
-                ", price='" + price + '\'' +
-                '}';
+        return price + "€ per day, " + licencePlate + ", " + brand + " " + model + ", " + type;
     }
 }

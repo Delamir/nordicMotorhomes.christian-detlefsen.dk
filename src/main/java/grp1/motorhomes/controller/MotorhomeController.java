@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 /**
  * @author Patrick
  */
@@ -40,9 +42,15 @@ public class MotorhomeController {
      * @author Patrick
      */
     @PostMapping("/createMotorhome")
-    public String createMotorhome(@ModelAttribute Motorhome motorhome) {
-        motorhomeService.createMotorhome(motorhome);
-        return "redirect:/motorhomeIndex";
+    public String createMotorhome(@ModelAttribute Motorhome motorhome, Model model) {
+
+        try {
+            motorhomeService.createMotorhome(motorhome);
+            return "redirect:/motorhomeIndex";
+        } catch (Exception e) {
+            model.addAttribute("duplicateError", "Duplicate, Licence plate already in system");
+            return "home/motorhome/createMotorhome";
+        }
     }
 
     /**

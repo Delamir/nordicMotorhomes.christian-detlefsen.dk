@@ -5,6 +5,7 @@ import grp1.motorhomes.repository.MotorhomeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class MotorhomeService {
      * @author Patrick
      * @param motorhome
      */
-    public void createMotorhome(Motorhome motorhome) {
+    public void createMotorhome(Motorhome motorhome) throws Exception {
         motorhomeRepo.createMotorhome(motorhome);
     }
 

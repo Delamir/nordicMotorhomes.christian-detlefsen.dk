@@ -93,13 +93,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerNumber=" + customerNumber +
-                ", name='" + name + '\'' +
-                ", licenceNumber='" + licenceNumber + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", postCode=" + postCode +
-                '}';
+        return "Customer (" + "customerNumber=" + customerNumber + ", name: " + name + ", licenceNumber: " + licenceNumber +
+                ", street: " + street + ", city: " + city + ", postCode: " + postCode + ")";
     }
 }

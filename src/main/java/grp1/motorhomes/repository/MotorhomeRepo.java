@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -63,7 +64,7 @@ public class MotorhomeRepo {
      * @param motorhome
      * @author Patrick
      */
-    public void createMotorhome(Motorhome motorhome) {
+    public void createMotorhome(Motorhome motorhome) throws Exception {
 
         String insertModel = "INSERT INTO models(brand, model, type) SELECT ?, ?, ? WHERE NOT EXISTS " +
                 "( SELECT * FROM models WHERE brand = ? AND model = ? AND type = ?)";

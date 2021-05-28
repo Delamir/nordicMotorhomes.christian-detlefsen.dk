@@ -283,6 +283,7 @@ public class Contract {
         this.customer.setCustomerNumber(customer);
     }
 
+
     @Override
     public String toString() {
         return "Contract{" +
@@ -290,14 +291,18 @@ public class Contract {
                 ", fromDate=" + fromDate +
                 ", toDate=" + toDate +
                 ", odometer=" + odometer +
-                ", customer=" + customer.toString() +
-                ", motorhome='" + motorhome +
                 ", excessKm=" + excessKm +
                 ", transferKm=" + transferKm +
-                ", extras=" + extras +
+                ", finalPrice=" + finalPrice +
+                ", deliveryPoint='" + deliveryPoint + '\'' +
+                ", pickupPoint='" + pickupPoint + '\'' +
+                ", underHalfFuelTank=" + underHalfFuelTank +
                 ", delivered=" + delivered +
                 ", pickedUp=" + pickedUp +
                 ", closed=" + closed +
+                ", extras=" + extras +
+                ", customer=" + customer +
+                ", motorhome=" + motorhome +
                 '}';
     }
 }

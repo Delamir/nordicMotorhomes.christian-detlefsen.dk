@@ -174,8 +174,10 @@ public class ContractRepo {
      * @author Joachim
      */
     public void pickupContract(Contract contract) {
-        String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ?, excess_km = ? WHERE contract_id = ?";
-        template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getExcessKm(), contract.getContractId());
+        String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ?, excess_km = ?, " +
+                " under_half_fuel_tank = ? WHERE contract_id = ?";
+        template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getExcessKm(),
+                contract.isUnderHalfFuelTank(), contract.getContractId());
 
     }
 

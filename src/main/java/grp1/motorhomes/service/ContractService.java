@@ -116,6 +116,7 @@ public class ContractService {
         if (contract.getExcessKm() > 0) {
             excessKm = contract.getExcessKm() * Constants.FEE_ON_EXCESS_KM;
         }
+        System.out.println(contract);
         System.out.println(priceExtra);
         System.out.println(priceMotorhome);
         System.out.println(transferFee);

@@ -45,14 +45,14 @@
             <label>Motorhome</label>
             <select class="singleSelect" name="motorhome">
                 <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
-                        th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+                        th:text="${motorhome.toString()}"></option>
             </select>
         </div>
         <div class="formElement" th:if="${extras != null}">
             <label>Extras</label>
             <select class="multipleSelect" multiple name="extras">
                 <option th:each="extra:${extras}" th:value="${extra.extraId}"
-                        th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
+                        th:text="${extra.toString()}"></option>
             </select>
         </div>
         <div class="formElement">

@@ -28,7 +28,9 @@
           action="/createMotorhome" method="post">
         <div class="formElement">
             <label>Licence plate</label>
-            <input type="text" name="licencePlate" placeholder="Licence Plate">
+            <input th:if="${duplicateError == null}" type="text" name="licencePlate" placeholder="Licence Plate">
+            <input class="error" th:unless="${duplicateError == null}" type="text" name="licencePlate" th:placeholder="${duplicateError}">
+
         </div>
         <div class="formElement">
             <label>Type</label>

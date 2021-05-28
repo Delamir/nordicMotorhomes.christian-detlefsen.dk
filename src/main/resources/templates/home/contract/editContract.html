@@ -70,7 +70,7 @@
             <select class="singleSelect" name="motorhome">
                 <option th:each="motorhome:${motorhomes}" th:value="${motorhome.licencePlate}"
                         th:selected="${motorhome.licencePlate.equals(contract.motorhome.getLicencePlate)}"
-                        th:text="${motorhome.type} + ', ' + ${motorhome.brand} + ', ' + ${motorhome.model}"></option>
+                        th:text="${motorhome.toString()}"></option>
             </select>
         </div>
         <div class="formElement">
@@ -86,7 +86,7 @@
             <select class="multipleSelect" multiple name="extras">
                 <option th:each="extra:${extras}" th:value="${extra.extraId}"
                         th:selected="${contract.getExtras().toString().contains(extra.toString())}"
-                        th:text="${extra.name} + ' ' + ${extra.price} + '€  ' + ${extra.description}"></option>
+                        th:text="${extra.toString()}"></option>
             </select>
         </div>
 

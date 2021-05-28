@@ -73,10 +73,7 @@ public class AutoService {
 
     @Override
     public String toString() {
-        return "AutoService{" +
-                "autoServiceId=" + autoServiceId +
-                ", serviceDescription='" + serviceDescription + '\'' +
-                ", done=" + done +
-                '}';
+        return "AutoService (" + "autoServiceId: " + autoServiceId + ", serviceDescription: " + serviceDescription +
+                ", done: " + done + ")";
     }
 }
