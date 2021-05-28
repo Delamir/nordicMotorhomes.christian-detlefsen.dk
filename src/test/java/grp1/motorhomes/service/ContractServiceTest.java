@@ -86,4 +86,29 @@ class ContractServiceTest {
         assertEquals(3135, contractService.cancellationFee(cSameDay));
         assertEquals(3300, contractService.cancellationFee(cAfterStart));
     }
+
+    /**
+     * @author Christian og Patrick
+     */
+    @Test
+    void calculateExcessKm() {
+        ContractService contractService = new ContractService();
+
+
+        ArrayList<Extra> extraList = new ArrayList<>();
+        extraList.add(new Extra(1, 20, "Table", "Picnic Table"));
+        extraList.add(new Extra(1, 80, "Bike Rack", "Bike Rack"));
+
+        Motorhome motorhome = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
+                "A motorhome", 200, true);
+
+        Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
+
+        Contract contract = new Contract(1, Timestamp.valueOf("2021-05-09 12:20:20").toLocalDateTime(), Timestamp.valueOf("2021-05-19 12:20:20").toLocalDateTime(),
+                200000, customer, motorhome, extraList);
+
+        contract.setExcessKm(contractService.calculateExcessKm(contract,210000));
+
+        assertEquals(6000, contract.getExcessKm());
+    }
 }
