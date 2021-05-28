@@ -130,8 +130,7 @@ public class Contract {
      */
     public String getFromDateAsString(){
         String format = "%02d. %s %02d:%02d";
-        String returnString = String.format(format,fromDate.getDayOfMonth(),fromDate.getMonth().name().toLowerCase(),fromDate.getHour(),fromDate.getMinute());
-        return returnString;
+        return String.format(format,fromDate.getDayOfMonth(),fromDate.getMonth().name().toLowerCase(),fromDate.getHour(),fromDate.getMinute());
     }
 
     /**
@@ -140,8 +139,7 @@ public class Contract {
      */
     public String getToDateAsString(){
         String format = "%02d. %s %02d:%02d";
-        String returnString = String.format(format,toDate.getDayOfMonth(),toDate.getMonth().name().toLowerCase(),toDate.getHour(),toDate.getMinute());
-        return returnString;
+        return String.format(format,toDate.getDayOfMonth(),toDate.getMonth().name().toLowerCase(),toDate.getHour(),toDate.getMinute());
     }
 
     /**

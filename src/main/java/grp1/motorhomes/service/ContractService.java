@@ -188,13 +188,19 @@ public class ContractService {
         contractRepo.pickupContract(contract);
     }
 
+    /**
+     * @author Sverri
+     * @param contract
+     * @param endOdometer
+     * @return
+     */
     public int calculateExcessKm(Contract contract, int endOdometer) {
         int rentalDays = daysBetweenDates(Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()));
         int kmDriven = endOdometer - contract.getOdometer();
         int kmDrivenPerDay = kmDriven / rentalDays;
         if (kmDrivenPerDay < 400)
             return 0;
-        return kmDrivenPerDay*rentalDays - 400*rentalDays;
+        return kmDrivenPerDay * rentalDays - 400 * rentalDays;
     }
 
     /**

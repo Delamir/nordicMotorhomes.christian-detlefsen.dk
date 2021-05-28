@@ -32,4 +32,29 @@ public class ContractTest {
             assertEquals("2021-05-10 18:29:00.0", c.getToDate().toString());
 
         }
+
+
+    @Test
+    void addExtra() {
     }
+
+    @Test
+    void getFromDateAsString() {
+    }
+
+    @Test
+    void getToDateAsString() {
+    }
+
+    @Test
+    void getFinalPriceAsString() {
+    }
+
+    @Test
+    void setMotorhomeParams() {
+    }
+
+    @Test
+    void setCustomerParams() {
+    }
+}
