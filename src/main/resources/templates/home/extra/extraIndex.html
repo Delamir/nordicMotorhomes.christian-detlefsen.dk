@@ -49,7 +49,7 @@
         <tr th:each="extra : ${extras}">
             <td th:text="${extra.name}"></td>
             <td th:text="${extra.description}"></td>
-            <td th:text="${extra.price}"></td>
+            <td th:text="${extra.price} + €"></td>
 
             <td class="actions">
                 <a th:href="@{'/editExtra/'+${extra.extraId}}">
