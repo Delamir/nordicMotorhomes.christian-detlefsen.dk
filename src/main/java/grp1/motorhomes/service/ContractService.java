@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 /**
@@ -84,13 +85,13 @@ public class ContractService {
         int rentalDays = daysBetweenDates(Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()));
 
         //Calculate price based on season
-        if (LocalDateTime.now().getMonth().getValue() >= Constants.MAY &&
-                LocalDateTime.now().getMonth().getValue() <= Constants.SEPTEMBER) {
+        if (LocalDateTime.now().getMonth().getValue() >= Month.MAY.getValue() &&
+                LocalDateTime.now().getMonth().getValue() <= Month.SEPTEMBER.getValue()) {
 
             priceMotorhome = contract.getMotorhome().getPrice() * rentalDays; //peak season price
 
-        } else if (LocalDateTime.now().getMonth().getValue() >= Constants.NOVEMBER ||
-                LocalDateTime.now().getMonth().getValue() <= Constants.FEBRUARY) {
+        } else if (LocalDateTime.now().getMonth().getValue() >= Month.NOVEMBER.getValue() ||
+                LocalDateTime.now().getMonth().getValue() <= Month.FEBRUARY.getValue()) {
 
             priceMotorhome = (contract.getMotorhome().getPrice() - (contract.getMotorhome().getPrice() * Constants.LOW_SEASON)) * rentalDays; //low season price
 
