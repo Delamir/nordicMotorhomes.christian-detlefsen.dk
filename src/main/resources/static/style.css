@@ -231,9 +231,35 @@ a {
     padding: 0.5rem;
 }
 
+.multipleSelectElement {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.multipleSelectElement input[type="checkbox"] {
+    margin-right: 0.5rem;
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+}
+
+.multipleSelectContainer {
+    height: 9rem;
+    overflow: auto;
+    border: 1px solid gray;
+    background-color: white;
+}
+
 .form label{
     margin-bottom: 0.25rem;
 }
+
+.multipleSelectElement label {
+    margin: 0;
+    font-size: 1rem;
+}
+
 
 /* TABLE */
 
@@ -245,7 +271,6 @@ a {
 .tableSpaceBetween {
     display: flex;
     justify-content: space-around;
-    align-items: center;
 }
 
 .table table{

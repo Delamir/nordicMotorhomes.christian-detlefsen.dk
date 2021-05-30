@@ -49,10 +49,12 @@
         </div>
         <div class="formElement" th:if="${extras != null}">
             <label>Extras</label>
-            <select class="multipleSelect" multiple name="extras">
-                <option th:each="extra:${extras}" th:value="${extra.extraId}"
-                        th:text="${extra.toString()}"></option>
-            </select>
+            <div class="multipleSelectContainer">
+                <div class="multipleSelectElement" th:each="extra:${extras}">
+                    <input type="checkbox" name="extras" th:value="${extra.extraId}">
+                    <label th:text="${extra.toString()}"></label>
+                </div>
+            </div>
         </div>
         <div th:if="${motorhome != null}" class="formElement">
             <label>Delivery Point</label>
@@ -63,7 +65,9 @@
             <input type="text" name="pickupPoint" placeholder="Address">
         </div>
         <div th:if="${customers != null && motorhomes != null}">
-            <button type="submit" onclick="return confirm('Are you sure you want to create a contract?')" class="submitButton mt-4">Create Contract</button>
+            <button type="submit" onclick="return confirm('Are you sure you want to create a contract?')"
+                    class="submitButton mt-4">Create Contract
+            </button>
         </div>
     </form>
 </div>

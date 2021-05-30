@@ -81,13 +81,15 @@
                         th:text="${customer.name} + ', ' + ${customer.licenceNumber}"></option>
             </select>
         </div>
+
         <div class="formElement">
             <label>Extras</label>
-            <select class="multipleSelect" multiple name="extras">
-                <option th:each="extra:${extras}" th:value="${extra.extraId}"
-                        th:selected="${contract.getExtras().toString().contains(extra.toString())}"
-                        th:text="${extra.toString()}"></option>
-            </select>
+            <div class="multipleSelectContainer">
+                <div class="multipleSelectElement" th:each="extra:${extras}">
+                    <input type="checkbox" name="extras" th:value="${extra.extraId}" th:checked="${contract.getExtras().toString().contains(extra.toString())}">
+                    <label th:text="${extra.toString()}"></label>
+                </div>
+            </div>
         </div>
 
         <div>
