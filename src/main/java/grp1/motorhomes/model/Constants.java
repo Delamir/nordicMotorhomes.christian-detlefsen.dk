@@ -16,21 +16,9 @@ public class Constants {
     public static final double CANCELLATION_FEE_LESS_15 = 0.8; //cancellation fee 80% for cancelling less than 15 days prior
     public static final double CANCELLATION_FEE_ON_DAY = 0.95; //cancellation fee 95% for cancelling on the same day
     public static final double CANCELLATION_50_DAYS = 50;
-    public static final double CANCELLATION_49_DAYS = 49;
     public static final double CANCELLATION_15_DAYS = 15;
     public static final double CANCELLATION_SAME_DAY = 0;
-    public static final int JANUARY = 1;
-    public static final int FEBRUARY = 2;
-    public static final int MARCH = 3;
-    public static final int APRIL = 4;
-    public static final int MAY = 5;
-    public static final int JUNE = 6;
-    public static final int JULY = 7;
-    public static final int AUGUST = 8;
-    public static final int SEPTEMBER = 9;
-    public static final int OCTOBER = 10;
-    public static final int NOVEMBER = 11;
-    public static final int DECEMBER = 12;
+
     public static final int GRACE_PERIOD = 2; // two days grace period after contract is done before the motorhome can be on other contracts
 
 }
