@@ -95,7 +95,6 @@ a {
     align-items: center;
 }
 
-/* https://heroicons.dev/ */
 .addNewButton svg {
     height: 1.5rem;
     width: 1.5rem;
@@ -133,6 +132,7 @@ a {
 
 /* With inspiration from https://www.w3schools.com/howto/howto_js_topnav.asp
 @Author Joachim*/
+
 .topmenu {
     background-color: #485460;
     display: flex;
@@ -259,7 +259,6 @@ a {
     margin: 0;
     font-size: 1rem;
 }
-
 
 /* TABLE */
 
