@@ -65,7 +65,7 @@ public class CustomerRepo {
         }, keyHolder);
 
         String insertAddressValues = "INSERT INTO addresses(customer_number, street, city_id)" +
-                "VALUES (?, ?, ?, ?)";
+                "VALUES (?, ?, ?)";
 
         template.update(insertAddressValues, keyHolder.getKey().intValue(), customer.getStreet(), city_id);
     }

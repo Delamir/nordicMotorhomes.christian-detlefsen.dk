@@ -38,16 +38,16 @@
         <th style="background-color: white">Customer Name</th>
         <th style="background-color: white">Licence Number</th>
         <th style="background-color: white">Street</th>
-        <th style="background-color: white">City</th>
         <th style="background-color: white">Postcode</th>
+        <th style="background-color: white">City</th>
         <th style="background-color: white" colspan="100">Actions</th>
 
         <tr th:each="customer : ${customers}">
             <td th:text="${customer.name}"></td>
             <td th:text="${customer.licenceNumber}"></td>
             <td th:text="${customer.street}"></td>
-            <td th:text="${customer.city}"></td>
             <td th:text="${customer.postCode}"></td>
+            <td th:text="${customer.city}"></td>
 
             <td class="actions">
                 <a th:href="@{'/editCustomer/'+${customer.customerNumber}}">
