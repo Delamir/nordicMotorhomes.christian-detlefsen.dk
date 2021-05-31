@@ -19,10 +19,7 @@ public class ContractResultSetExtractor implements ResultSetExtractor {
 
     /**
      * the method that is run when the class tries to map data from a resultSet from the JdbcTemplate
-     * @param resultSet
-     * @return
-     * @throws SQLException
-     * @throws DataAccessException
+     * made with help from https://stackoverflow.com/questions/32093350/rowmapper-put-multiple-results-into-list-attribute
      */
     @Override
     public List<Contract> extractData(ResultSet resultSet) throws SQLException, DataAccessException {
