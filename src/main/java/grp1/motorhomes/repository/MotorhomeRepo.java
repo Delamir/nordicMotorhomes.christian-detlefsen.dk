@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.tags.form.SelectTag;
+
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.time.LocalDateTime;
@@ -65,11 +67,20 @@ public class MotorhomeRepo {
      */
     public void createMotorhome(Motorhome motorhome) throws Exception {
 
+        try { // insert into brand if brands does not exist
+            String insertBrand = "INSERT INTO brands(brand) VALUES(?)";
+            template.update(insertBrand,motorhome.getBrand());
+        }catch (Exception e){
+            //brand already exists
+        }
+
+        // if the model does not exist insert it
         String insertModel = "INSERT INTO models(brand, model, type) SELECT ?, ?, ? WHERE NOT EXISTS " +
                 "( SELECT * FROM models WHERE brand = ? AND model = ? AND type = ?)";
         template.update(insertModel, motorhome.getBrand(), motorhome.getModel(), motorhome.getType(),
                 motorhome.getBrand(), motorhome.getModel(), motorhome.getType());
 
+        //finally insert motorhome
         String insertMotorhome = "INSERT INTO motorhomes(registration, description, price, model_id) select ?, ?, ?," +
                 "model_id FROM models WHERE brand = ? AND model = ? AND type = ?";
         template.update(insertMotorhome, motorhome.getLicencePlate(), motorhome.getDescription(), motorhome.getPrice(),
@@ -93,6 +104,15 @@ public class MotorhomeRepo {
      * @author Sverri
      */
     public void editMotorhome(Motorhome motorhome) {
+
+        try{ // try to find the brand
+            String brandSelect = "SELECT * FROM brands WHERE brand = ?";
+            template.queryForObject(brandSelect, String.class,motorhome.getBrand());
+        }catch (EmptyResultDataAccessException e){ //if brand not found insert
+            String insertBrand = "INSERT INTO brands(brand) VALUES(?)";
+            template.update(insertBrand,motorhome.getBrand());
+        }
+
 
         // if model was edited get modelId and insert new model if needed
         int modelId;

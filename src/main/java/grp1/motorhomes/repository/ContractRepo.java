@@ -36,6 +36,7 @@ public class ContractRepo {
                         "LEFT JOIN extras using(extra_id) " +
                         "JOIN customers using(customer_number) " +
                         "JOIN addresses using(customer_number) " +
+                        "JOIN cities using(city_id) " +
                         "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
                         "JOIN models using(model_id) WHERE closed = false ORDER BY from_date";
 
@@ -60,6 +61,7 @@ public class ContractRepo {
                         "LEFT JOIN extras using(extra_id) " +
                         "JOIN customers using(customer_number) " +
                         "JOIN addresses using(customer_number) " +
+                        "JOIN cities using(city_id) " +
                         "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
                         "JOIN models using(model_id) WHERE closed = true ORDER BY to_date";
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
@@ -118,6 +120,7 @@ public class ContractRepo {
                         "LEFT JOIN extras using(extra_id) " +
                         "JOIN customers using(customer_number) " +
                         "JOIN addresses using(customer_number) " +
+                        "JOIN cities using(city_id) " +
                         "JOIN motorhomes on contracts.motorhome = motorhomes.registration " +
                         "JOIN models using(model_id) WHERE contract_id = ?";
         ContractResultSetExtractor extractor = new ContractResultSetExtractor();
