@@ -26,6 +26,7 @@ public class AutoServiceController {
 
     /**
      * @author Christian
+     * Our home page for AutoService which shows all unavailable motorhomes and all motorhomes in need of service
      */
     @GetMapping("/autoServiceIndex")
     public String autoServiceIndex(Model model) {
@@ -72,6 +73,7 @@ public class AutoServiceController {
 
     /**
      * @author Christian
+     * This is where we can mark our motorhomes service done and is ready to be rented out again.
      */
     @PostMapping("/markDone")
     public String markDone(@ModelAttribute AutoService autoService) {

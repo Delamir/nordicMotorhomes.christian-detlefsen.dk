@@ -32,6 +32,7 @@ public class ContractController {
 
     /**
      * @author Christian
+     * Home page for our contract page showing all our contracts
      */
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
@@ -41,6 +42,7 @@ public class ContractController {
 
     /**
      * @author Joachim
+     * If we click on view closed contracts this is where all closed contracts are
      */
     @GetMapping("/contractIndex/closed")
     public String closedContractIndex(Model model) {
@@ -67,6 +69,8 @@ public class ContractController {
 
     /**
      * @author Sverri
+     * We choose a start date from when we want to rent the motorhome from and a to date where we want to deliver it back.
+     * We then gets shown with the available motorhomes between those 2 dates and customers and our extras also show up.
      */
     @PostMapping("/getAvailableMotorhomes")
     public String getAvailableMotorhomes(@RequestParam String fromDate, @RequestParam String toDate, Model model){
@@ -83,6 +87,7 @@ public class ContractController {
 
     /**
      * @author Sverri
+     * We fetch all motorhomes, customers and extras because that is what we need to make a new contract.
      */
     @GetMapping("/editContract/{contractId}")
     public String editContract(@PathVariable int contractId, Model model) {
