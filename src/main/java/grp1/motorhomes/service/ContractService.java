@@ -76,7 +76,6 @@ public class ContractService {
      * @author Christian og Patrick
      */
     public double calculatePrice(Contract contract) {
-        System.out.println(contract);
         double priceExtra = 0;
         double priceMotorhome;
         double transferFee = 0;
