@@ -78,8 +78,7 @@ public class ContractTest {
         Contract c = new Contract();
 
         c.setFinalPrice(42.4343434343434343);
-        assertTrue(c.getFinalPriceAsString().matches("47[,.]43"));
-        assertEquals("42.43", c.getFinalPriceAsString());
+        assertTrue(c.getFinalPriceAsString().matches("42[,.]43"));
     }
 
     /**
