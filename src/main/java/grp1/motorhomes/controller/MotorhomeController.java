@@ -38,6 +38,8 @@ public class MotorhomeController {
 
     /**
      * @author Patrick
+     * If we create a motorhome with the same licenceplate, the method throws an exception telling the user
+     * that a licenceplate with the same number already exists
      */
     @PostMapping("/createMotorhome")
     public String createMotorhome(@ModelAttribute Motorhome motorhome, Model model) {

@@ -2,6 +2,7 @@ package grp1.motorhomes.model;
 
 /**
  * @author Christian og Patrick
+ * Constants which are used to calculate prices
  */
 public class Constants {
 

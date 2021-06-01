@@ -69,6 +69,7 @@ public class ContractService {
 
     /**
      * @author Christian og Patrick
+     * Method used to calculate prices when we close a contract
      */
     public double calculatePrice(Contract contract) {
         double priceExtra = 0;
@@ -119,6 +120,7 @@ public class ContractService {
 
     /**
      * @author Christian og Patrick
+     * Method used to calculate the cancellation fee if a contract is cancelled
      */
     public double cancellationFee(Contract contract) {
         double contractPrice = calculatePrice(contract);
