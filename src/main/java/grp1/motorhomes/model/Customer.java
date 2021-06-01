@@ -26,12 +26,6 @@ public class Customer {
 
     /**
      * @auhor Christian
-     * @param customerNumber
-     * @param name
-     * @param licenceNumber
-     * @param street
-     * @param city
-     * @param postCode
      */
     public Customer(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
         this.customerNumber = customerNumber;

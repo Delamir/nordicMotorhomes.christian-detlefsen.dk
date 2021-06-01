@@ -25,7 +25,6 @@ public class ContractService {
     MotorhomeRepo motorhomeRepo;
 
     /**
-     * @return
      * @author Christian
      */
     public List<Contract> fetchAllContracts() {
@@ -34,14 +33,12 @@ public class ContractService {
 
     /**
      * @author Joachim
-     * @return
      */
     public List<Contract> fetchAllClosedContracts() {
         return contractRepo.fetchAllClosedContracts();
     }
 
     /**
-     * @param contract
      * @author Christian
      */
     public void createContract(Contract contract) {
@@ -49,8 +46,6 @@ public class ContractService {
     }
 
     /**
-     * @param contractId
-     * @return
      * @author Sverri
      */
     public Contract findContract(int contractId) {
@@ -157,7 +152,6 @@ public class ContractService {
     }
 
     /**
-     * @param contract
      * @author Sverri
      */
     public void deliverContract(Contract contract) throws Exception {
@@ -165,7 +159,6 @@ public class ContractService {
     }
 
     /**
-     * @param contract
      * @author Joachim
      */
     public void pickupContract(Contract contract) throws Exception {
@@ -183,9 +176,6 @@ public class ContractService {
 
     /**
      * @author Sverri
-     * @param contract
-     * @param endOdometer
-     * @return
      */
     public int calculateExcessKm(Contract contract, int endOdometer) {
         int rentalDays = daysBetweenDates(contract.getFromDate(),contract.getToDate());
@@ -197,7 +187,6 @@ public class ContractService {
     }
 
     /**
-     * @param contract
      * @author Joachim
      */
     public void closeContract(Contract contract) {

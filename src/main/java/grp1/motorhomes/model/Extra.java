@@ -24,10 +24,6 @@ public class Extra {
 
     /**
      * @author Christain
-     * @param extraId
-     * @param price
-     * @param description
-     * @param name
      */
     public Extra(int extraId, int price, String name, String description) {
         this.extraId = extraId;

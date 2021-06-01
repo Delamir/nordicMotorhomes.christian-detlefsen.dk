@@ -31,8 +31,6 @@ public class ContractController {
     ExtraService extraService;
 
     /**
-     * @param model
-     * @return
      * @author Christian
      */
     @GetMapping("/contractIndex")
@@ -43,8 +41,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-     * @param model
-     * @return
      */
     @GetMapping("/contractIndex/closed")
     public String closedContractIndex(Model model) {
@@ -53,7 +49,6 @@ public class ContractController {
     }
 
     /**
-     * @return
      * @author Christian
      */
     @GetMapping("/createContract")
@@ -62,8 +57,6 @@ public class ContractController {
     }
 
     /**
-     * @param contract
-     * @return
      * @author Chritian
      */
     @PostMapping("/createContract")
@@ -89,9 +82,6 @@ public class ContractController {
     }
 
     /**
-     * @param contractId
-     * @param model
-     * @return
      * @author Sverri
      */
     @GetMapping("/editContract/{contractId}")
@@ -104,8 +94,6 @@ public class ContractController {
     }
 
     /**
-     * @param contract
-     * @return
      * @author Sverri
      */
     @PostMapping("/editContract")
@@ -115,8 +103,6 @@ public class ContractController {
     }
 
     /**
-     * @param contractId
-     * @return
      * @author Sverri
      */
     @GetMapping("/deleteContract/{contractId}")
@@ -127,9 +113,6 @@ public class ContractController {
 
     /**
      * @author Patrick
-     * @param contractId
-     * @param model
-     * @return
      */
     @GetMapping("/deliverContract/{contractId}")
     public String deliverContract(@PathVariable int contractId, Model model) {
@@ -139,8 +122,6 @@ public class ContractController {
 
     /**
      * @author Patrick
-     * @param contract
-     * @return
      */
     @PostMapping("/deliverContract")
     public String deliverContract(@ModelAttribute Contract contract, Model model) {
@@ -156,9 +137,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-     * @param contractId
-     * @param model
-     * @return
      */
     @GetMapping("/pickupContract/{contractId}")
     public String pickupContract(@PathVariable int contractId, Model model){
@@ -168,8 +146,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-     * @param contract
-     * @return
      */
     @PostMapping("/pickupContract")
     public String pickupContract(@ModelAttribute Contract contract, Model model) {
@@ -186,7 +162,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-     * @return
      */
     @GetMapping("/closeContract/{contractId}")
     public String closeContract(@PathVariable int contractId, Model model) {
@@ -198,8 +173,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-     * @param contract
-     * @return
      */
     @PostMapping("/closeContract")
     public String closeContract(@ModelAttribute Contract contract) {
@@ -209,8 +182,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-     * @param model
-     * @return
      */
     @GetMapping("/closedContracts")
     public String closedContracts(Model model ) {

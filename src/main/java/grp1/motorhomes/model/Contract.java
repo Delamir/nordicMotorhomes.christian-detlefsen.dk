@@ -45,12 +45,6 @@ public class Contract {
     }
 
     /**
-     * @param contractId
-     * @param fromDate
-     * @param toDate
-     * @param odometer
-     * @param customer
-     * @param extras
      * @author Christian
      */
     public Contract(int contractId, LocalDateTime fromDate, LocalDateTime toDate, int odometer, Customer customer,
@@ -66,10 +60,6 @@ public class Contract {
 
     /**
      * @author Sverri
-     * @param id
-     * @param price
-     * @param name
-     * @param description
      */
     public void addExtra(int id, int price, String name, String description) {
         if (extras == null) {
@@ -127,7 +117,6 @@ public class Contract {
 
     /**
      * @author Sverri
-     * @return
      */
     public String getFromDateAsString(){
         return String.format("%02d. %s %02d:%02d",fromDate.getDayOfMonth(),fromDate.getMonth().name().toLowerCase(),
@@ -136,7 +125,6 @@ public class Contract {
 
     /**
      * @author Sverri
-     * @return
      */
     public String getToDateAsString(){
         return String.format("%02d. %s %02d:%02d",toDate.getDayOfMonth(),toDate.getMonth().name().toLowerCase(),
@@ -243,13 +231,6 @@ public class Contract {
 
     /**
      * @author Christian
-     * @param licencePlate
-     * @param type
-     * @param brand
-     * @param model
-     * @param description
-     * @param price
-     * @param available
      */
     public void setMotorhomeParams(String licencePlate, String type, String brand, String model, String description, int price, boolean available) {
         this.motorhome = new Motorhome(licencePlate, type, brand, model, description, price, available);
@@ -266,12 +247,6 @@ public class Contract {
 
     /**
      * @author Christian
-     * @param customerNumber
-     * @param name
-     * @param licenceNumber
-     * @param street
-     * @param city
-     * @param postCode
      */
     public void setCustomerParams(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
         this.customer = new Customer(customerNumber, name, licenceNumber, street, city, postCode);

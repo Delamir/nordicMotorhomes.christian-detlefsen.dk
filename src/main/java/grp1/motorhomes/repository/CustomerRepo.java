@@ -71,8 +71,7 @@ public class CustomerRepo {
     }
 
     /**
-     * @Author Christian og Joachim
-     * @param customerNumber
+     * @author Christian og Joachim
      */
     public Customer findCustomer(int customerNumber) {
         String selectSql = "SELECT customer_number AS customerNumber, name, licence_number AS licenceNumber, post_code AS postCode, street, city " +
@@ -82,8 +81,7 @@ public class CustomerRepo {
     }
 
     /**
-     * @param customer
-     * @Author Christian og Joachim
+     * @author Christian og Joachim
      */
     public void editCustomer(Customer customer) {
         String updateSql = "UPDATE customers SET licence_number = ?, name = ? WHERE customer_number = ?";
@@ -103,8 +101,7 @@ public class CustomerRepo {
     }
 
     /**
-     * @Author Christian og Joachim
-     * @param customerNumber
+     * @author Christian og Joachim
      */
     public void deleteCustomer(int customerNumber) {
         String deleteSql = "DELETE FROM addresses WHERE customer_number = ? ";

@@ -62,7 +62,6 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @param motorhome
      * @author Patrick
      */
     public void createMotorhome(Motorhome motorhome) throws Exception {
@@ -88,7 +87,6 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @param licencePlate
      * @author Patrick og Sverri
      */
 
@@ -100,7 +98,6 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @param motorhome
      * @author Sverri
      */
     public void editMotorhome(Motorhome motorhome) {
@@ -144,7 +141,6 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @param licencePlate
      * @author Patrick
      */
     public void deleteMotorhome(String licencePlate) {
@@ -156,8 +152,6 @@ public class MotorhomeRepo {
     }
 
     /**
-     * @param licencePlate
-     * @param status
      * @author Christian
      */
     public void setAvailable(String licencePlate, boolean status) {

@@ -25,7 +25,6 @@ public class MotorhomeService {
 
     /**
      * @author Patrick
-     * @param motorhome
      */
     public void createMotorhome(Motorhome motorhome) throws Exception {
         motorhomeRepo.createMotorhome(motorhome);
@@ -33,7 +32,6 @@ public class MotorhomeService {
 
     /**
      * @author Patrick
-     * @param licencePlate
      */
     public Motorhome findMotorhome(String licencePlate) {
         return motorhomeRepo.findMotorhome(licencePlate);
@@ -41,7 +39,6 @@ public class MotorhomeService {
 
     /**
      * @author Patrick
-     * @param motorhome
      */
     public void editMotorhome(Motorhome motorhome) {
         motorhomeRepo.editMotorhome(motorhome);
@@ -49,7 +46,6 @@ public class MotorhomeService {
 
     /**
      * @author Patrick
-     * @param licencePlate
      */
     public void deleteMotorhome(String licencePlate) {
         motorhomeRepo.deleteMotorhome(licencePlate);
@@ -57,8 +53,6 @@ public class MotorhomeService {
 
     /**
      * @author Christian
-     * @param licencePlate
-     * @param status
      */
     public void setAvailable(String licencePlate, boolean status) {
         motorhomeRepo.setAvailable(licencePlate, status);
@@ -66,9 +60,6 @@ public class MotorhomeService {
 
     /**
      * @author Sverri
-     * @param from
-     * @param to
-     * @return
      */
     public List<Motorhome> fetchMotorhomesBetween(LocalDateTime from, LocalDateTime to) {
         return motorhomeRepo.fetchMotorhomesBetween(from, to);
@@ -76,7 +67,6 @@ public class MotorhomeService {
 
     /**
      * @author Joachim
-     * @return
      */
     public List<Motorhome> fetchAllUnavailableMotorhomes() {
         return motorhomeRepo.fetchAllUnavailableMotorhomes();

@@ -167,8 +167,6 @@ public class ContractRepo {
 
     /**
      * @author Patrick
-     * @param contract
-     * @throws Exception
      */
     public void deliverContract(Contract contract) throws Exception{
 

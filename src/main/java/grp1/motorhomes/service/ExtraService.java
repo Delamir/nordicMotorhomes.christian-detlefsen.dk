@@ -25,7 +25,6 @@ public class ExtraService {
 
     /**
      * @author Patrick
-     * @param extra
      */
     public void createExtras(Extra extra) {
         extraRepo.createExtra(extra);
@@ -33,7 +32,6 @@ public class ExtraService {
 
     /**
      * @author Patrick
-     * @param extraId
      */
     public Extra findExtra(int extraId) {
         return extraRepo.findExtra(extraId);
@@ -41,7 +39,6 @@ public class ExtraService {
 
     /**
      * @author Patrick
-     * @param extra
      */
     public void editExtra(Extra extra) {
         extraRepo.editExtra(extra);
@@ -49,7 +46,6 @@ public class ExtraService {
 
     /**
      * @author Patrick
-     * @param extraId
      */
     public void deleteExtra(int extraId) {
         extraRepo.deleteExtra(extraId);

@@ -34,11 +34,6 @@ public class Motorhome {
 
     /**
      * @author Patrick
-     * @param licencePlate
-     * @param type
-     * @param brand
-     * @param model
-     * @param description
      */
     public Motorhome(String licencePlate, String type, String brand, String model, String description, int price, boolean available) {
 
