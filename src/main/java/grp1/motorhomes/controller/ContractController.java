@@ -112,7 +112,6 @@ public class ContractController {
     @PostMapping("/editContract")
     public String editContract(@ModelAttribute Contract contract) {
         contractService.editContract(contract);
-        System.out.println(contract);
         return "redirect:/contractIndex";
     }
 
