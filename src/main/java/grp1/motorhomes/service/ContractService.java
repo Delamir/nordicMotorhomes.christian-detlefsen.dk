@@ -81,7 +81,7 @@ public class ContractService {
         double transferFee = 0;
         double fuelCost = 0;
         double excessKm = 0;
-        int rentalDays = daysBetweenDates(Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()));
+        int rentalDays = daysBetweenDates(contract.getFromDate(),contract.getToDate());
 
         //Calculate price based on season
         if (LocalDateTime.now().getMonth().getValue() >= Month.MAY.getValue() &&
@@ -128,7 +128,7 @@ public class ContractService {
     public double cancellationFee(Contract contract) {
         double contractPrice = calculatePrice(contract);
         double cancellationFee;
-        int rentalDays = daysBetweenDates(Timestamp.valueOf(LocalDateTime.now()), Timestamp.valueOf(contract.getFromDate()));
+        int rentalDays = daysBetweenDates(LocalDateTime.now(), contract.getFromDate());
 
         if (rentalDays >= Constants.CANCELLATION_50_DAYS) {
 
@@ -174,13 +174,11 @@ public class ContractService {
     }
 
     /**
-     * @param from
-     * @param to
-     * @return
      * @author Sverri and Christian
      */
-    public int daysBetweenDates(Timestamp from, Timestamp to) {
-        return (int) Duration.between(from.toLocalDateTime().toLocalDate().atStartOfDay(), to.toLocalDateTime().toLocalDate().atStartOfDay()).toDays();
+    public int daysBetweenDates(LocalDateTime from, LocalDateTime  to) {
+        return (int) Duration.between(from.toLocalDate().atStartOfDay(),
+                to.toLocalDate().atStartOfDay()).toDays();
     }
 
     /**
@@ -190,7 +188,7 @@ public class ContractService {
      * @return
      */
     public int calculateExcessKm(Contract contract, int endOdometer) {
-        int rentalDays = daysBetweenDates(Timestamp.valueOf(contract.getFromDate()), Timestamp.valueOf(contract.getToDate()));
+        int rentalDays = daysBetweenDates(contract.getFromDate(),contract.getToDate());
         int kmDriven = endOdometer - contract.getOdometer();
         int kmDrivenPerDay = kmDriven / rentalDays;
         if (kmDrivenPerDay < 400)

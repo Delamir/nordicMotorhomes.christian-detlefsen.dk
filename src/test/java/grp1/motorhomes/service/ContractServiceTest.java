@@ -69,15 +69,15 @@ class ContractServiceTest {
                 "A motorhome", 100, true);
         Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
 
-        Contract cOver50 = new Contract(1, Timestamp.valueOf(today.plusDays(60)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(90)).toLocalDateTime(),
+        Contract cOver50 = new Contract(1, today.plusDays(60),today.plusDays(90),
                 200000, customer, motorhome, extraList);
-        Contract cBetween49And15 = new Contract(1, Timestamp.valueOf(today.plusDays(30)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(60)).toLocalDateTime(),
+        Contract cBetween49And15 = new Contract(1, today.plusDays(30), today.plusDays(60),
                 200000, customer, motorhome, extraList);
-        Contract cUnder15 = new Contract(1, Timestamp.valueOf(today.plusDays(10)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(40)).toLocalDateTime(),
+        Contract cUnder15 = new Contract(1, today.plusDays(10),today.plusDays(40),
                 200000, customer, motorhome, extraList);
-        Contract cSameDay = new Contract(1, Timestamp.valueOf(today).toLocalDateTime(), Timestamp.valueOf(today.plusDays(30)).toLocalDateTime(),
+        Contract cSameDay = new Contract(1, today, today.plusDays(30),
                 200000, customer, motorhome, extraList);
-        Contract cAfterStart = new Contract(1, Timestamp.valueOf(today.minusDays(2)).toLocalDateTime(), Timestamp.valueOf(today.plusDays(28)).toLocalDateTime(),
+        Contract cAfterStart = new Contract(1, today.minusDays(2), today.plusDays(28),
                 200000, customer, motorhome, extraList);
 
         assertEquals(660, contractService.cancellationFee(cOver50));
