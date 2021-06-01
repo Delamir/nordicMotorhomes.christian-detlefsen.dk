@@ -95,11 +95,6 @@ a {
     align-items: center;
 }
 
-.addNewButton svg {
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
 .addNewButton:hover {
     color: var(--primary-color);
     background-color: white;
@@ -261,7 +256,7 @@ a {
 
 /* TABLE */
 
-.table{
+.table {
     position: relative;
     top: -25px;
 }
@@ -271,7 +266,7 @@ a {
     justify-content: space-around;
 }
 
-.table table{
+.table table {
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
@@ -280,7 +275,7 @@ a {
     box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
-.tableImage{
+.tableImage {
     width: 10rem;
     height: 6rem;
     object-fit: cover;
@@ -300,7 +295,7 @@ a {
     background-color: #cbcbcb;
 }
 
-.table .actions{
+.table .actions {
     padding: 0.25rem;
 }
 

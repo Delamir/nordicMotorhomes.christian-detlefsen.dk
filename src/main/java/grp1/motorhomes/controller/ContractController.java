@@ -97,7 +97,6 @@ public class ContractController {
     @GetMapping("/editContract/{contractId}")
     public String editContract(@PathVariable int contractId, Model model) {
         model.addAttribute("contract", contractService.findContract(contractId));
-        System.out.println(contractService.findContract(contractId));
         model.addAttribute("motorhomes", motorhomeService.fetchAllMotorhomes());
         model.addAttribute("customers", customerService.fetchAllCustomers());
         model.addAttribute("extras", extraService.fetchAllExtras());
@@ -112,7 +111,6 @@ public class ContractController {
     @PostMapping("/editContract")
     public String editContract(@ModelAttribute Contract contract) {
         contractService.editContract(contract);
-        System.out.println(contract);
         return "redirect:/contractIndex";
     }
 
