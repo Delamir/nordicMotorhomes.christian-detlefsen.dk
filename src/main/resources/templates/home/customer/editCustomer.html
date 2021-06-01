@@ -28,23 +28,23 @@
         <input type="hidden" name="customerNumber" th:value="${customer.customerNumber}">
         <div class="formElement">
             <label>Customer name </label>
-            <input type="text" name="name" th:value="${customer.name}">
+            <input type="text" name="name" th:value="${customer.name}" required>
         </div>
         <div class="formElement">
             <label>Licence number </label>
-            <input type="text" name="licenceNumber" th:value="${customer.licenceNumber}">
+            <input type="text" name="licenceNumber" th:value="${customer.licenceNumber}" required>
         </div>
         <div class="formElement">
             <label>Street </label>
-            <input type="text" name="street" th:value="${customer.street}">
+            <input type="text" name="street" th:value="${customer.street}" required>
         </div>
         <div class="formElement">
             <label>Postcode </label>
-            <input type="text" name="postCode" th:value="${customer.postCode}">
+            <input type="number" name="postCode" th:value="${customer.postCode}" required>
         </div>
         <div class="formElement">
             <label>City </label>
-            <input type="text" name="city" th:value="${customer.city}">
+            <input type="text" name="city" th:value="${customer.city}" required>
         </div>
         <div>
             <input type="submit" class="submitButton mt-4" value="Edit Customer">

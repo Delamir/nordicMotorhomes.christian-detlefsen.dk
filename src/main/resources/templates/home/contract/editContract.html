@@ -35,7 +35,7 @@
         </div>
         <div class="formElement">
             <label>Start Odometer</label>
-            <input type="text" name="odometer" placeholder="Odometer" th:value="${contract.odometer}">
+            <input type="number" name="odometer" placeholder="Odometer" th:value="${contract.odometer}" required>
         </div>
         <div class="formElement">
             <label>Delivery Point</label>
@@ -47,11 +47,11 @@
         </div>
         <div class="formElement">
             <label>Excess Km </label>
-            <input type="text" name="excessKm" th:value="${contract.excessKm}">
+            <input type="number" name="excessKm" th:value="${contract.excessKm}" required>
         </div>
         <div class="formElement">
             <label>Transfer Km </label>
-            <input type="text" name="transferKm" th:value="${contract.transferKm}">
+            <input type="number" name="transferKm" th:value="${contract.transferKm}" required>
         </div>
         <div class="formElement checkbox">
             <input type="checkbox" name="delivered" th:checked="${contract.delivered}">

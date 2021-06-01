@@ -28,7 +28,7 @@
         <input type="hidden" name="extraId" th:value="${extra.extraId}">
         <div class="formElement">
             <label>Name</label>
-            <input type="text" name="name" th:value="${extra.name}">
+            <input type="text" name="name" th:value="${extra.name}" required>
         </div>
         <div class="formElement">
             <label>Description</label>
@@ -36,7 +36,7 @@
         </div>
         <div class="formElement">
             <label>Price</label>
-            <input type="text" name="price" th:value="${extra.price}">
+            <input type="number" name="price" th:value="${extra.price}" required>
         </div>
         <div>
             <input type="submit" class="submitButton mt-4" value="Edit Extra">
