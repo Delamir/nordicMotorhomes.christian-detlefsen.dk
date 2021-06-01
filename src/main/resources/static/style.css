@@ -161,7 +161,6 @@ a {
 }
 
 .topmenu a.active {
-    opacity: 1;
     background-color: var(--primary-color);
     color: white;
 }
