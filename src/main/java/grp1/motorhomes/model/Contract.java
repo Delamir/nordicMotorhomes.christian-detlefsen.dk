@@ -117,6 +117,7 @@ public class Contract {
 
     /**
      * @author Sverri
+     * Format a date and time to a string
      */
     public String getFromDateAsString(){
         return String.format("%02d. %s %02d:%02d",fromDate.getDayOfMonth(),fromDate.getMonth().name().toLowerCase(),
@@ -125,6 +126,7 @@ public class Contract {
 
     /**
      * @author Sverri
+     * Format a date and time to a string
      */
     public String getToDateAsString(){
         return String.format("%02d. %s %02d:%02d",toDate.getDayOfMonth(),toDate.getMonth().name().toLowerCase(),
@@ -132,8 +134,9 @@ public class Contract {
     }
 
     /**
-     * @param from spring was not able to parse Timestamp on its own
      * @author Sverri
+     *  Since there is a difference between how dates are handles from the database and data handle form the
+     *  HTML datetime field it was necessary to have two different ways to parse it.
      */
     public void setFromDate(String from) {
         if (from.contains("T")) {
@@ -150,8 +153,9 @@ public class Contract {
     }
 
     /**
-     * @param to spring was not able to parse Timestamp on its own
      * @author Sverri
+     * Since there is a difference between how dates are handles from the database and data handle form the
+     * HTML datetime field it was necessary to have two different ways to parse it.
      */
     public void setToDate(String to) {
         LocalDateTime localDateTime;
@@ -229,9 +233,6 @@ public class Contract {
         return motorhome;
     }
 
-    /**
-     * @author Christian
-     */
     public void setMotorhomeParams(String licencePlate, String type, String brand, String model, String description, int price, boolean available) {
         this.motorhome = new Motorhome(licencePlate, type, brand, model, description, price, available);
     }
@@ -245,9 +246,6 @@ public class Contract {
         return customer;
     }
 
-    /**
-     * @author Christian
-     */
     public void setCustomerParams(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
         this.customer = new Customer(customerNumber, name, licenceNumber, street, city, postCode);
     }
@@ -256,7 +254,6 @@ public class Contract {
         this.customer = new Customer();
         this.customer.setCustomerNumber(customer);
     }
-
 
     @Override
     public String toString() {

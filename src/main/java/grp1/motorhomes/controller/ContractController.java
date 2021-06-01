@@ -32,7 +32,6 @@ public class ContractController {
 
     /**
      * @author Christian
-     * Home page for our contract page showing all our contracts
      */
     @GetMapping("/contractIndex")
     public String contractIndex(Model model) {
@@ -42,7 +41,6 @@ public class ContractController {
 
     /**
      * @author Joachim
-     * If we click on view closed contracts this is where all closed contracts are
      */
     @GetMapping("/contractIndex/closed")
     public String closedContractIndex(Model model) {
@@ -73,7 +71,7 @@ public class ContractController {
      * We then gets shown with the available motorhomes between those 2 dates and customers and our extras also show up.
      */
     @PostMapping("/getAvailableMotorhomes")
-    public String getAvailableMotorhomes(@RequestParam String fromDate, @RequestParam String toDate, Model model){
+    public String getAvailableMotorhomes(@RequestParam String fromDate, @RequestParam String toDate, Model model) {
         model.addAttribute("fromDate", fromDate);
         model.addAttribute("toDate", toDate);
 
@@ -127,24 +125,20 @@ public class ContractController {
 
     /**
      * @author Patrick
+     * SKAL HAVE DUX
      */
     @PostMapping("/deliverContract")
-    public String deliverContract(@ModelAttribute Contract contract, Model model) {
+    public String deliverContract(@ModelAttribute Contract contract) {
 
-        try {
-            contractService.deliverContract(contract);
-            return "redirect:/contractIndex";
-        } catch (Exception e){
-            model.addAttribute("errorMessage", e.getMessage());
-            return "redirect:/deliverContract/" + contract.getContractId();
-        }
+        contractService.deliverContract(contract);
+        return "redirect:/contractIndex";
     }
 
     /**
      * @author Joachim
      */
     @GetMapping("/pickupContract/{contractId}")
-    public String pickupContract(@PathVariable int contractId, Model model){
+    public String pickupContract(@PathVariable int contractId, Model model) {
         model.addAttribute("contract", contractService.findContract(contractId));
         return "home/contract/pickupContract";
     }
@@ -153,16 +147,10 @@ public class ContractController {
      * @author Joachim
      */
     @PostMapping("/pickupContract")
-    public String pickupContract(@ModelAttribute Contract contract, Model model) {
-
-        try {
-            contractService.pickupContract(contract);
-            motorhomeService.setAvailable(contract.getMotorhome().getLicencePlate(), false);
-            return "redirect:/contractIndex";
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            return "redirect:/pickupContract/" + contract.getContractId();
-        }
+    public String pickupContract(@ModelAttribute Contract contract) {
+        contractService.pickupContract(contract);
+        motorhomeService.setAvailable(contract.getMotorhome().getLicencePlate(), false);
+        return "redirect:/contractIndex";
     }
 
     /**
@@ -189,7 +177,7 @@ public class ContractController {
      * @author Joachim
      */
     @GetMapping("/closedContracts")
-    public String closedContracts(Model model ) {
+    public String closedContracts(Model model) {
         model.addAttribute("contracts", contractService.fetchAllClosedContracts());
         return "home/contract/closedContracts";
     }

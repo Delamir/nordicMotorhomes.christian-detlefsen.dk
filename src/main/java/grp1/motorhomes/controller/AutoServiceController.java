@@ -26,7 +26,6 @@ public class AutoServiceController {
 
     /**
      * @author Christian
-     * Our home page for AutoService which shows all unavailable motorhomes and all motorhomes in need of service
      */
     @GetMapping("/autoServiceIndex")
     public String autoServiceIndex(Model model) {

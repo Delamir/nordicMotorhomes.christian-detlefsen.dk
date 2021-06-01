@@ -17,7 +17,6 @@ public class AutoServiceService {
 
     /**
      * @author Christain
-     * @return
      */
     public List<AutoService> fetchAllAutoServices() {
         return autoServiceRepo.fetchAllAutoServices();
@@ -25,7 +24,6 @@ public class AutoServiceService {
 
     /**
      * @author Patrick
-     * @return
      */
     public AutoService findAutoService(int autoServiceId) {
         return autoServiceRepo.findAutoService(autoServiceId);

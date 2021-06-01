@@ -30,7 +30,6 @@ public class AutoServiceRepo {
 
     /**
      * @author Joachim
-     * @return
      */
     public AutoService findAutoService(int autoServiceId) {
         String sqlStatement = "SELECT * FROM autoservices " +

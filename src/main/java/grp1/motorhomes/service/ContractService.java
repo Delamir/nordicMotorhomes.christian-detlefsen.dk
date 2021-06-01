@@ -6,7 +6,6 @@ import grp1.motorhomes.repository.ContractRepo;
 import grp1.motorhomes.repository.MotorhomeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -53,7 +52,6 @@ public class ContractService {
     }
 
     /**
-     * @param contract
      * @author Sverri
      */
     public void editContract(Contract contract) {
@@ -156,14 +154,14 @@ public class ContractService {
     /**
      * @author Sverri
      */
-    public void deliverContract(Contract contract) throws Exception {
+    public void deliverContract(Contract contract) {
         contractRepo.deliverContract(contract);
     }
 
     /**
      * @author Joachim
      */
-    public void pickupContract(Contract contract) throws Exception {
+    public void pickupContract(Contract contract) {
         contract.setExcessKm(calculateExcessKm(findContract(contract.getContractId()), contract.getOdometer()));
         contractRepo.pickupContract(contract);
     }

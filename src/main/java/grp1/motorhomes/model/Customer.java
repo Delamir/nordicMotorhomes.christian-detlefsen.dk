@@ -25,7 +25,7 @@ public class Customer {
     }
 
     /**
-     * @auhor Christian
+     * @author Christian
      */
     public Customer(int customerNumber, String name, String licenceNumber, String street, String city, int postCode) {
         this.customerNumber = customerNumber;

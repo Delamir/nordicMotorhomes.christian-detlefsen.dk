@@ -168,32 +168,22 @@ public class ContractRepo {
     /**
      * @author Patrick
      */
-    public void deliverContract(Contract contract) throws Exception{
+    public void deliverContract(Contract contract){
 
         String updateSql = "UPDATE contracts SET delivered = true, transfer_km = ?, odometer = ?, delivery_point = ? WHERE contract_id = ?";
-
-        try {
             template.update(updateSql, contract.getTransferKm(), contract.getOdometer(), contract.getDeliveryPoint(), contract.getContractId());
-        } catch (Exception e) {
-            throw new Exception("Odometer needs a value");
-        }
     }
 
     /**
      * @author Joachim
      */
-    public void pickupContract(Contract contract) throws Exception {
+    public void pickupContract(Contract contract) {
 
         String updateSql = "UPDATE contracts SET picked_up = true, transfer_km = transfer_km+?, pickup_point = ?, excess_km = ?, " +
                 " under_half_fuel_tank = ? WHERE contract_id = ?";
 
-        try {
             template.update(updateSql, contract.getTransferKm(), contract.getPickupPoint(), contract.getExcessKm(),
                     contract.isUnderHalfFuelTank(), contract.getContractId());
-        } catch (Exception e) {
-            throw new Exception("Odometer needs a value");
-        }
-
     }
 
     /**
