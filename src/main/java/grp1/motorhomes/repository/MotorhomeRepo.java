@@ -41,7 +41,8 @@ public class MotorhomeRepo {
     public List<Motorhome> fetchAllUnavailableMotorhomes() {
         // we select all motorhomes that are set as unavailable and do not have any autoservices registered
         String sqlStatement = "SELECT registration as licencePlate, type, brand, model, description, price, available " +
-                "FROM motorhomes JOIN models using(model_id) LEFT JOIN autoservices a on motorhomes.registration = a.motorhome WHERE available = false AND autoservice_id is null";
+                "FROM motorhomes JOIN models using(model_id) LEFT JOIN autoservices a on motorhomes.registration = a.motorhome " +
+                "WHERE available = false AND (autoservice_id is null OR (autoservice_id is not null AND done = 1))";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper<>(Motorhome.class);
         return template.query(sqlStatement, rowMapper);
     }
