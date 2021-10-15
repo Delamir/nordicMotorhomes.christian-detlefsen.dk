@@ -75,6 +75,7 @@ public class ContractController {
         model.addAttribute("fromDate", fromDate);
         model.addAttribute("toDate", toDate);
 
+        // tjekker for null point exceptions
         if (fromDate.length() != 0 && toDate.length() != 0) {
             model.addAttribute("motorhomes", motorhomeService.fetchMotorhomesBetween(LocalDateTime.parse(fromDate), LocalDateTime.parse(toDate)));
             model.addAttribute("customers", customerService.fetchAllCustomers());

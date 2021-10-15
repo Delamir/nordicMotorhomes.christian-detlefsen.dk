@@ -39,7 +39,7 @@ class ContractServiceTest {
         Contract contract2 = new Contract(1, Timestamp.valueOf("2021-05-09 11:10:20").toLocalDateTime(), Timestamp.valueOf("2021-05-19 12:20:20").toLocalDateTime(),
                 200000, customer, motorhome, extraList);
 
-        assertEquals(3000, contractService.calculatePrice(contract));
+        assertEquals(2400, contractService.calculatePrice(contract));
 
         contract.setUnderHalfFuelTank(true);
         contract.setPickedUp(true);
@@ -67,7 +67,8 @@ class ContractServiceTest {
 
         Motorhome motorhome = new Motorhome("AD99999", "TypeA", "BrandB", "ModelC",
                 "A motorhome", 100, true);
-        Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12", "Byen", 2000);
+        Customer customer = new Customer(1, "Bent", "KY768IO", "Vejen 12",
+                "Byen", 2000);
 
         Contract cOver50 = new Contract(1, today.plusDays(60),today.plusDays(90),
                 200000, customer, motorhome, extraList);
@@ -80,7 +81,7 @@ class ContractServiceTest {
         Contract cAfterStart = new Contract(1, today.minusDays(2), today.plusDays(28),
                 200000, customer, motorhome, extraList);
 
-        assertEquals(660, contractService.cancellationFee(cOver50));
+        assertEquals(480, contractService.cancellationFee(cOver50));
         assertEquals(1650, contractService.cancellationFee(cBetween49And15));
         assertEquals(2640, contractService.cancellationFee(cUnder15));
         assertEquals(3135, contractService.cancellationFee(cSameDay));
