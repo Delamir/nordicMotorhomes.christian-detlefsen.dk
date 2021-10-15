@@ -46,9 +46,9 @@ class ContractServiceTest {
         contract.setExcessKm(200);
         contract.setTransferKm(100);
 
-        assertEquals(3340, contractService.calculatePrice(contract));
-        assertEquals(3000, contractService.calculatePrice(contract1));
-        assertEquals(3000, contractService.calculatePrice(contract2));
+        assertEquals(2740, contractService.calculatePrice(contract));
+        assertEquals(2400, contractService.calculatePrice(contract1));
+        assertEquals(2400, contractService.calculatePrice(contract2));
     }
 
     /**
@@ -82,10 +82,10 @@ class ContractServiceTest {
                 200000, customer, motorhome, extraList);
 
         assertEquals(480, contractService.cancellationFee(cOver50));
-        assertEquals(1650, contractService.cancellationFee(cBetween49And15));
-        assertEquals(2640, contractService.cancellationFee(cUnder15));
-        assertEquals(3135, contractService.cancellationFee(cSameDay));
-        assertEquals(3300, contractService.cancellationFee(cAfterStart));
+        assertEquals(1200, contractService.cancellationFee(cBetween49And15));
+        assertEquals(1920, contractService.cancellationFee(cUnder15));
+        assertEquals(2280, contractService.cancellationFee(cSameDay));
+        assertEquals(2400, contractService.cancellationFee(cAfterStart));
     }
 
     /**
