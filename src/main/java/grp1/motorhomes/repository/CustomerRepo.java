@@ -2,6 +2,7 @@ package grp1.motorhomes.repository;
 
 import grp1.motorhomes.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,6 +12,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
@@ -102,13 +104,20 @@ public class CustomerRepo {
      * @author Christian og Joachim
      */
     public void deleteCustomer(int customerNumber) {
+        int city_id = 0;
         String deleteSql = "DELETE FROM addresses WHERE customer_number = ? ";
         template.update(deleteSql, customerNumber);
         deleteSql = "DELETE FROM customers WHERE customer_number = ?";
         template.update(deleteSql, customerNumber);
 
         String select = "SELECT city_id FROM addresses JOIN cities using(city_id) WHERE customer_number = ?";
-        int city_id = template.queryForObject(select,Integer.class,customerNumber);
+
+        try {
+            city_id = template.queryForObject(select, Integer.class, customerNumber);
+        } catch (EmptyResultDataAccessException e) {
+            e.printStackTrace();
+        }
+
         deleteSql = "DELETE FROM cities WHERE city_id = ?";
         template.update(deleteSql,city_id);
     }
